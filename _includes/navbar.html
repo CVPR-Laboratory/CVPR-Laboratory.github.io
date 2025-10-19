@@ -1,0 +1,16 @@
+<header class="navbar">
+  <div class="nav-container">
+    <a href="{{ '/' | relative_url }}" class="logo">
+      <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo">
+      <span>CVPR-Laboratory</span>
+    </a>
+    <nav class="nav-menu">
+      {%- for item in site.nav -%}
+        <a href="{{ item.link | relative_url }}" {% if page.url==item.link %}class="active"{%- endif -%}>{{ item.name }}</a>
+      {%- endfor -%}
+    </nav>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>

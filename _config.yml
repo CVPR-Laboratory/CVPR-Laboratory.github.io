@@ -1,0 +1,42 @@
+# ========== 站点信息 ==========
+title: CVPR-Laboratory
+email: cvpr@xxx.edu.cn
+description: 计算机视觉与模式识别实验室 | 三维视觉 · 医疗AI · 多模态学习
+baseurl: ""                       # 子路径，自定义域名可留空
+url: "https://cvpr-laboratory.github.io"
+
+# ========== 导航栏（中文） ==========
+nav:
+  - name: 首页
+    link: /
+  - name: 关于我们
+    link: /about/
+  - name: 团队成员
+    link: /team/
+  - name: 研究方向
+    link: /research/
+  - name: 研究成果
+    link: /publication/
+  - name: 新闻动态
+    link: /news/
+  - name: 合作交流
+    link: /collaboration/
+  - name: 联系我们
+    link: /contact/
+
+# ========== 构建设置 ==========
+theme: minima
+plugins:
+  - jekyll-feed
+
+# ========== Sass 静默 & 压缩 ==========
+sass:
+  quiet_deps: true
+  style: compressed
+
+defaults:
+  - scope:
+      path: "_pages"
+      type: "pages"          # 小写复数
+    values:
+      layout: "page"

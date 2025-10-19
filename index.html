@@ -1,0 +1,55 @@
+---
+layout: default
+---
+<section class="carousel">
+  <div class="item active" style="background-image:url(assets/img/b1.jpg)">
+    <div class="caption"><h2>三维视觉与机器人感知</h2><p>面向下一代智能机器人的前沿研究</p></div>
+  </div>
+  <div class="item" style="background-image:url(assets/img/b2.jpg)">
+    <div class="caption"><h2>CVPR 2024 最佳论文奖</h2><p>本实验室第一作者获奖</p></div>
+  </div>
+  <div class="item" style="background-image:url(assets/img/b3.jpg)">
+    <div class="caption"><h2>开放数据集全球下载量 50W+</h2><p>助力产学研共同体</p></div>
+  </div>
+</section>
+
+<section>
+  <h1>欢迎来到 CVPR-Laboratory</h1>
+  <p>我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。</p>
+  <a class="btn" href="{{ '/about/' | relative_url }}">了解更多</a>
+</section>
+
+<section>
+  <h2>快速入口</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="assets/img/ico-research.png" alt="">
+      <h3>研究方向</h3>
+      <p>三维视觉 / 医疗 AI / 多模态学习</p>
+      <a href="{{ '/research/' | relative_url }}">查看详情</a>
+    </div>
+    <div class="card">
+      <img src="assets/img/ico-pub.png" alt="">
+      <h3>最新成果</h3>
+      <p>2025 年已发表 12 篇 CCF-A 论文</p>
+      <a href="{{ '/publication/' | relative_url }}">阅读论文</a>
+    </div>
+    <div class="card">
+      <img src="assets/img/ico-news.png" alt="">
+      <h3>新闻动态</h3>
+      <p>招生 / 获奖 / 学术报告</p>
+      <a href="{{ '/news/' | relative_url }}">立即浏览</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 简易轮播，每 4 秒切一次
+  const items = document.querySelectorAll('.carousel .item');
+  let idx = 0;
+  setInterval(() => {
+    items[idx].classList.remove('active');
+    idx = (idx + 1) % items.length;
+    items[idx].classList.add('active');
+  }, 2000);
+</script>
