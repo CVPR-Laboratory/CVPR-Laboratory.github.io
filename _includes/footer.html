@@ -1,6 +1,15 @@
+<!-- 最外层页脚标签，class="footer" 便于 CSS 统一控制页脚样式 -->
 <footer class="footer">
+  <!-- 内部容器，class="container" 通常用来限制最大宽度并居中，保证在不同分辨率下排版一致 -->
   <div class="container">
+    <!-- 版权行：使用 Liquid 模板语法 {{ 'now' | date: "%Y" }} 动态输出当前年份；
+         {{ site.title }} 输出站点配置文件中的站点标题；
+         “All rights reserved.” 是标准英文版权宣告 -->
     <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+    
+    <!-- 联系信息行：&nbsp; 是不换行空格，用来在“地址”与“邮箱”之间插入视觉分隔竖线；
+         曲阜师范大学 JS526室 是物理位置；
+         wnb_915@163.com 是对外公共邮箱 -->
     <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
   </div>
 </footer>

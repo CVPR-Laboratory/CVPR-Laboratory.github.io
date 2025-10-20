@@ -1,16 +1,28 @@
+<!-- 页头导航栏最外层容器，class="navbar" 用于整站统一的导航栏样式 -->
 <header class="navbar">
+  <!-- 导航栏内部弹性容器，限制宽度并居中，方便左右分栏布局 -->
   <div class="nav-container">
+    
+    <!-- 站点 Logo 区域，点击后跳转到首页；relative_url 会根据站点 baseurl 自动补全路径 -->
     <a href="{{ '/' | relative_url }}" class="logo">
+      <!-- Logo 图片，alt 属性提供无障碍文本说明 -->
       <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Logo">
+      <!-- 站点文字标题，与 Logo 图片横向并排 -->
       <span>CVPR-Laboratory</span>
     </a>
+    
+    <!-- 桌面端水平菜单：通过 Liquid 循环读取 _config.yml 中定义的 site.nav 数组，动态生成导航链接 -->
     <nav class="nav-menu">
       {%- for item in site.nav -%}
+        <!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
         <a href="{{ item.link | relative_url }}" {% if page.url==item.link %}class="active"{%- endif -%}>{{ item.name }}</a>
       {%- endfor -%}
     </nav>
+    
+    <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
     <div class="hamburger">
       <span></span><span></span><span></span>
     </div>
+    
   </div>
 </header>

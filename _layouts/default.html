@@ -1,11 +1,29 @@
+<!-- 声明文档类型：HTML5 -->
 <!DOCTYPE html>
+
+<!-- 根元素，lang="zh-CN" 告诉浏览器与搜索引擎本页主要语言为简体中文 -->
 <html lang="zh-CN">
-{%- include head.html -%}
-<body>
-{%- include navbar.html -%}
-<main class="main">{{ content }}</main>
-{%- include footer.html -%}
-{%- include scroll-top.html -%}
-<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-</body>
+
+  <!-- 头部区域：通过 Jekyll 的 include 引入 head.html 模板，包含 meta、SEO、样式表等 -->
+  {%- include head.html -%}
+
+  <!-- 页面主体开始 -->
+  <body>
+
+    <!-- 导航栏：引入 navbar.html，生成站点 Logo 与菜单 -->
+    {%- include navbar.html -%}
+
+    <!-- 主要内容容器：class="main" 用于全局样式控制，{{ content }} 会被 Jekyll 替换为具体页面的 Markdown/HTML 内容 -->
+    <main class="main">{{ content }}</main>
+
+    <!-- 页脚：引入 footer.html，显示版权与联系信息 -->
+    {%- include footer.html -%}
+
+    <!-- 返回顶部按钮：引入 scroll-top.html，仅含一个 ▲ 按钮元素 -->
+    {%- include scroll-top.html -%}
+
+    <!-- 主脚本文件：main.js 通常负责移动端菜单、返回顶部、平滑滚动等交互行为 -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+  </body>
 </html>
