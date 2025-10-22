@@ -1,19 +1,4 @@
-/* 1. 移动端默认隐藏菜单 */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: absolute;
-    top: 100%;               /* 紧贴在导航栏下方 */
-    left: 0;
-    right: 0;
-    background: #036;        /* 与导航栏同色 */
-    flex-direction: column;
-    padding: 1rem 0;
-    transform: translateY(-120%); /* 收上去，看不见 */
-    transition: transform 0.3s ease;
-  }
-
-  /* 2. 点击汉堡后展开 */
-  .nav-menu.open {
-    transform: translateY(0); /* 滑下来，可见 */
-  }
-}
+---
+# 让 Jekyll 处理
+---
+@import "style";
