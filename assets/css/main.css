@@ -305,63 +305,165 @@ p {
     visibility: visible;
 }
 
-/* ==========  响应式：≤768px  ========== */
+/* =========================================================
+   移动端全局改造：≤768px
+   ========================================================= */
 @media (max-width: 768px) {
 
-    /* 导航菜单：垂直抽屉 */
+    /* ---------- 1. 基础字体与排版 ---------- */
+    body {
+        /* 系统原生字体，加载 0 成本，观感更“手机原生” */
+        font-family:
+            -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto,
+            "Helvetica Neue", Arial,
+            "PingFang SC", "Hiragino Sans GB",
+            "Microsoft YaHei", sans-serif;
+        font-size: 15px;
+        /* 基准字号 */
+        line-height: 1.55;
+        /* 略小一点，屏高有限 */
+        color: #222;
+        /* 比 #333 稍深，对比度更好 */
+        -webkit-font-smoothing: antialiased;
+        /* 字体更平滑 */
+    }
+
+    /* 标题阶梯式缩小，避免手机屏“大字撞脸” */
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    /* ---------- 2. 导航栏 ---------- */
+    .nav-container {
+        height: 56px;
+    }
+
+    /* 导航栏瘦身 */
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    /* LOGO 文字缩小 */
+    .logo img {
+        height: 44px;
+    }
+
+    /* LOGO 图片同步缩小 */
+
+    /* 下拉抽屉 */
     .nav-menu {
         position: absolute;
-        top: 60px;
-        /* 导航栏下方 */
+        top: 56px;
+        /* 与导航栏高度对齐 */
         left: 0;
         right: 0;
-        background: rgb(226, 22, 22);
-        /* 与导航同色background: #036; */
+        background: #036;
         flex-direction: column;
-        /* 垂直排列 */
-        padding: 1rem 0;
-        transform: translateY(-300%);
-        /* 初始滑出屏幕外 */
-        transition: .5s;
+        padding: .8rem 0 1.2rem;
+        transform: translateY(-120%);
+        transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, .15);
+        /* 下拉时增加层次 */
     }
 
     .nav-menu.open {
         transform: translateY(0);
     }
 
-    /* 汉堡点击后滑入 */
+    
     .nav-menu a {
-        margin: .5rem 1rem;
+        margin: .6rem 1.2rem;
+        font-size: 1.15rem;
+        /* 字号略小，行距更紧凑 */
+        font-weight: 500;
     }
 
-    /* 垂直间距 */
-
-    /* 显示汉堡按钮 */
+    /* 汉堡按钮 */
     .hamburger {
         display: flex;
     }
-    /* --- 2. 移动端专属字体 --- */
-    body {
-        /* 举例：优先使用系统原生字体，加载更快，视觉更“手机” */
-        font-family:
-            -apple-system,           /* iOS Safari/macOS Safari */
-            BlinkMacSystemFont,      /* Chrome macOS */
-            "Segoe UI",              /* Windows */
-            Roboto,                  /* Android 4+ */
-            "Helvetica Neue",
-            Arial,
-            "PingFang SC",
-            "Hiragino Sans GB",
-            "Microsoft YaHei",
-            sans-serif;
-        line-height: 1.6;            /* 移动端行高可略小，节省空间 */
-    }
 
-
-    /* 轮播图高度降低，适配手机 */
+    /* ---------- 3. 轮播图 ---------- */
     .carousel {
-        height: 250px;
+        height: 46vw;
+        /* 使用视口宽度比例，更灵活 */
+        max-height: 320px;
+        /* 极限高宽限制 */
+        border-radius: 0;
+        /* 手机通栏更常见 */
     }
-}
 
-/*# sourceMappingURL=main.css.map */
+    .carousel .caption {
+        left: 12px;
+        bottom: 12px;
+        /* 贴边，扩大可视区域 */
+        padding: .6rem 1rem;
+        font-size: .95rem;
+        border-radius: 8px;
+    }
+
+    /* ---------- 4. 按钮 ---------- */
+    .btn {
+        padding: .55rem 1.1rem;
+        font-size: .95rem;
+        border-radius: 8px;
+        /* 小圆角更精致 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+        /* 轻投影提升点击欲 */
+    }
+
+    /* ---------- 5. 卡片区域 ---------- */
+    .cards {
+        gap: 1rem;
+        /* 缩小卡片间距 */
+    }
+
+    .card {
+        flex: 1 1 100%;
+        /* 手机单栏排布 */
+        padding: 1.2rem;
+        border-radius: 12px;
+        /* 稍小圆角 */
+        background: #fff;
+        /* 纯白卡片，层次更强 */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+    }
+
+    .card img {
+        border-radius: 6px;
+        margin-bottom: .8rem;
+    }
+
+    /* ---------- 6. 回到顶部 ---------- */
+    #scroll-top {
+        width: 40px;
+        height: 40px;
+        line-height: 38px;
+        bottom: 20px;
+        right: 20px;
+        /* 更贴边，防止误触 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
+    }
+
+
+    /* ---------- 7. 其他细节 ---------- */
+    .main {
+        margin: 1rem auto;
+    }
+
+    /* 上下留白缩小 */
+    section {
+        margin-bottom: 2rem;
+    }
+
+    /* 段间距更紧凑 */
+}
