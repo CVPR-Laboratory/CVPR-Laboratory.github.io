@@ -320,7 +320,7 @@ p {
         flex-direction: column;
         /* 垂直排列 */
         padding: 1rem 0;
-        transform: translateY(-100%);
+        transform: translateY(-300%);
         /* 初始滑出屏幕外 */
         transition: .5s;
     }
