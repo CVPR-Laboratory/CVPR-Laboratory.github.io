@@ -336,7 +336,7 @@ p {
             sans-serif;
         /* 兜底无衬线 */
         /* 1.2 基准字号：15px 在 375px 宽屏上阅读舒适 */
-        font-size: 15px;
+        font-size: 18px;
         /* 1.3 行高：1.55 既保证可读性，又节省纵向空间 */
         line-height: 1.55;
         /* 1.4 字体颜色：#222 比 #333 更深，提高对比度 */
@@ -408,11 +408,11 @@ p {
     }
     /* 2.3 导航链接：纵向间距 + 稍细字重 */
     .nav-menu a {
-        margin: .6rem 1.2rem;
+        margin: .6rem 3rem;
         /* 上下 0.6 / 左右 1.2 */
         font-size: 1.15rem;
         /* 比桌面端小 */
-        font-weight: 500;
+        font-weight: 600;
         /* 中等粗细，避免过粗 */
     }
     /* 2.4 汉堡按钮：默认隐藏，移动端才显示 */
@@ -434,7 +434,7 @@ p {
     .carousel .caption {
         left: 12px;
         bottom: 12px;
-        
+
         padding: .6rem 1rem;
 
         font-size: .95rem;
