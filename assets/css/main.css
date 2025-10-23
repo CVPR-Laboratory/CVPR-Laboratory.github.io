@@ -305,165 +305,206 @@ p {
     visibility: visible;
 }
 
+
 /* =========================================================
    移动端全局改造：≤768px
+   全部样式只会在视口宽度 ≤ 768px 时生效
    ========================================================= */
 @media (max-width: 768px) {
 
-    /* ---------- 1. 基础字体与排版 ---------- */
+    /* ---------- 1. 基础字体与排版 ----------
+       让手机端拥有更快渲染速度 + 原生系统视觉体验 */
     body {
-        /* 系统原生字体，加载 0 成本，观感更“手机原生” */
+        /* 1.1 字体栈：优先调用系统内置字体，节省下载时间 */
         font-family:
-            -apple-system, BlinkMacSystemFont,
-            "Segoe UI", Roboto,
-            "Helvetica Neue", Arial,
-            "PingFang SC", "Hiragino Sans GB",
-            "Microsoft YaHei", sans-serif;
+            -apple-system,
+            /* iOS Safari / macOS Safari */
+            BlinkMacSystemFont,
+            /* Chrome on macOS */
+            "Segoe UI",
+            /* Windows 原生 */
+            Roboto,
+            /* Android 4.0+ */
+            "Helvetica Neue",
+            Arial,
+            "PingFang SC",
+            /* 苹方，macOS 简体 */
+            "Hiragino Sans GB",
+            /* 冬青黑体，旧版 macOS */
+            "Microsoft YaHei",
+            /* 微软雅黑，Windows 简体 */
+            sans-serif;
+        /* 兜底无衬线 */
+        /* 1.2 基准字号：15px 在 375px 宽屏上阅读舒适 */
         font-size: 15px;
-        /* 基准字号 */
+        /* 1.3 行高：1.55 既保证可读性，又节省纵向空间 */
         line-height: 1.55;
-        /* 略小一点，屏高有限 */
+        /* 1.4 字体颜色：#222 比 #333 更深，提高对比度 */
         color: #222;
-        /* 比 #333 稍深，对比度更好 */
-        -webkit-font-smoothing: antialiased;
-        /* 字体更平滑 */
+        /* 1.5 抗锯齿，使笔画更细滑（iOS / macOS 有效） */
+        -webkit-font-smoothing: antialiased; 
     }
-
-    /* 标题阶梯式缩小，避免手机屏“大字撞脸” */
+    /* ---------- 标题阶梯式缩小 ----------
+       避免手机屏出现“巨型字”导致频繁换行 */
     h1 {
         font-size: 1.6rem;
     }
 
+    /* ≈ 24px */
     h2 {
         font-size: 1.35rem;
     }
 
+    /* ≈ 20px */
     h3 {
         font-size: 1.15rem;
     }
 
-    /* ---------- 2. 导航栏 ---------- */
+    /* ≈ 17px */
+
+    /* ---------- 2. 导航栏 ----------
+       整体瘦身，增加可点击区域，减少误触 */
     .nav-container {
         height: 56px;
     }
 
-    /* 导航栏瘦身 */
+    /* 从 65px → 56px，节省高度 */
     .logo {
         font-size: 1.3rem;
     }
 
-    /* LOGO 文字缩小 */
+    /* LOGO 文字缩小，防止换行 */
     .logo img {
         height: 44px;
     }
 
-    /* LOGO 图片同步缩小 */
+    /* 图标同步缩小，保持比例 */
 
-    /* 下拉抽屉 */
+    /* 2.1 下拉抽屉（汉堡菜单展开后） */
     .nav-menu {
         position: absolute;
+        /* 脱离文档流，悬在内容上方 */
         top: 56px;
-        /* 与导航栏高度对齐 */
+        /* 紧挨导航栏底部 */
         left: 0;
         right: 0;
+        /* 通栏宽度 */
         background: #036;
+        /* 品牌深蓝 */
         flex-direction: column;
+        /* 垂直排列 */
         padding: .8rem 0 1.2rem;
-        transform: translateY(-120%);
-        transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+        /* 上 0.8 / 下 1.2，留白更均衡 */
+        transform: translateY(-200%);
+        /* 初始状态：移出屏幕顶部 */
+        transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+        /* 缓动更顺滑 */
         box-shadow: 0 4px 6px rgba(0, 0, 0, .15);
-        /* 下拉时增加层次 */
+        /* 下拉后增加层级阴影 */
     }
-
+    /* 2.2 展开态：复位 */
     .nav-menu.open {
         transform: translateY(0);
     }
-
-    
+    /* 2.3 导航链接：纵向间距 + 稍细字重 */
     .nav-menu a {
         margin: .6rem 1.2rem;
+        /* 上下 0.6 / 左右 1.2 */
         font-size: 1.15rem;
-        /* 字号略小，行距更紧凑 */
+        /* 比桌面端小 */
         font-weight: 500;
+        /* 中等粗细，避免过粗 */
     }
-
-    /* 汉堡按钮 */
+    /* 2.4 汉堡按钮：默认隐藏，移动端才显示 */
     .hamburger {
         display: flex;
     }
-
-    /* ---------- 3. 轮播图 ---------- */
+    /* ---------- 3. 轮播图 ----------
+       使用 vw 单位，跟随屏幕宽度变化，避免固定 px 裁剪 */
     .carousel {
         height: 46vw;
-        /* 使用视口宽度比例，更灵活 */
+        /* 46% 视口宽度，约 16:9 比例 */
         max-height: 320px;
-        /* 极限高宽限制 */
+        /* 极限高宽限制，防止平板过高 */
         border-radius: 0;
-        /* 手机通栏更常见 */
+        /* 手机通栏，取消圆角更主流 */
     }
 
+    /* 3.1 轮播文字说明：贴边 + 内边距缩小 */
     .carousel .caption {
         left: 12px;
         bottom: 12px;
-        /* 贴边，扩大可视区域 */
+        
         padding: .6rem 1rem;
+
         font-size: .95rem;
         border-radius: 8px;
+        /* 小圆角精致 */
     }
 
-    /* ---------- 4. 按钮 ---------- */
+    /* ---------- 4. 按钮 ----------
+       更大点击区域 + 轻投影，提升点击欲 */
     .btn {
         padding: .55rem 1.1rem;
+        /* 上下 0.55 / 左右 1.1 */
         font-size: .95rem;
+        /* 稍小字号 */
         border-radius: 8px;
-        /* 小圆角更精致 */
+        /* 小圆角 */
         box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
-        /* 轻投影提升点击欲 */
+        /* 轻投影 */
     }
 
-    /* ---------- 5. 卡片区域 ---------- */
+    /* ---------- 5. 卡片区域 ----------
+       单栏排布，纯白卡片 + 浅阴影，层次更强 */
     .cards {
         gap: 1rem;
-        /* 缩小卡片间距 */
+        /* 卡片间距缩小 */
     }
 
     .card {
         flex: 1 1 100%;
-        /* 手机单栏排布 */
+        /* 强制单栏，占满行宽 */
         padding: 1.2rem;
+        /* 内边距缩小 */
         border-radius: 12px;
         /* 稍小圆角 */
         background: #fff;
-        /* 纯白卡片，层次更强 */
+        /* 纯白，区别于桌面灰底 */
         box-shadow: 0 2px 6px rgba(0, 0, 0, .06);
+        /* 浅阴影 */
     }
 
     .card img {
         border-radius: 6px;
+        /* 图片圆角同步缩小 */
         margin-bottom: .8rem;
+        /* 图与下文间距 */
     }
 
-    /* ---------- 6. 回到顶部 ---------- */
+    /* ---------- 6. 回到顶部 ----------
+       更小尺寸 + 贴边，防止误触 */
     #scroll-top {
         width: 40px;
         height: 40px;
         line-height: 38px;
+        /* 垂直居中图标 */
         bottom: 20px;
         right: 20px;
-        /* 更贴边，防止误触 */
+        /* 贴边 20px */
         box-shadow: 0 2px 5px rgba(0, 0, 0, .15);
     }
 
-
-    /* ---------- 7. 其他细节 ---------- */
+    /* ---------- 7. 其他细节 ----------
+       缩小整体留白，让一屏展示更多内容 */
     .main {
         margin: 1rem auto;
     }
 
-    /* 上下留白缩小 */
+    /* 上下留白 1rem，比桌面 2rem 小 */
     section {
         margin-bottom: 2rem;
     }
 
-    /* 段间距更紧凑 */
+    /* 段间距从 3rem → 2rem */
 }
