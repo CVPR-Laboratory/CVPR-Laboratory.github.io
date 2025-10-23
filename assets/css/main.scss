@@ -4,7 +4,7 @@ $accent : #0099cc;   // 点缀蓝（用于按钮、高亮）
 $bg     : #d2dfe7;   // 页面整体背景色
 $text   : #333333;   // 默认文字颜色
 $gray   : #f5f5f5;   // 浅灰（卡片等区域的背景）
-$maxWidth: 1390px;   // 全局最大宽度，控制网页整体长度
+$maxWidth: 1300px;   // 全局最大宽度，控制网页整体长度
 
 // 全局盒模型重置
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,7 +48,7 @@ body {
   font-size: 1.6rem;       // 字号
 }
 .logo img { 
-  height: 54px;            // Logo 图片高度
+  height: 50px;            // Logo 图片高度
   margin-right: .6rem;     // 与文字间隔
 }
 
@@ -204,7 +204,7 @@ p { margin-bottom: 1rem; }  // 段落底部留白
     background: $primary;  // 与导航同色
     flex-direction: column; // 垂直排列
     padding: 1rem 0;       // 上下内边距
-    transform: translateY(-120%); // 初始移出屏幕上方
+    transform: translateY(-1200%); // 初始移出屏幕上方
     transition: .3s;       // 过渡动画
   }
   .nav-menu.open { 
