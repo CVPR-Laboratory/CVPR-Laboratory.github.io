@@ -1,137 +1,237 @@
 /* ==========  全局重置  ========== */
 * {
-    box-sizing: border-box;          /* 统一盒模型：width/height 包含 border 与 padding */
-    margin: 0;                       /* 清除浏览器默认外边距 */
-    padding: 0;                      /* 清除浏览器默认内边距 */
+    box-sizing: border-box;
+    /* 统一盒模型：width/height 包含 border 与 padding */
+    margin: 0;
+    /* 清除浏览器默认外边距 */
+    padding: 0;
+    /* 清除浏览器默认内边距 */
 }
 
 /* ==========  页面基础  ========== */
 body {
-    font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif; /* 英文字体→中文字体→兜底无衬线 */
-    color: #333;                     /* 默认字体颜色：深灰 */
-    background: #d2dfe7;             /* 页面背景：淡蓝灰 */
-    line-height: 1.7;                /* 全局行高，阅读更舒适 */
+    font-family: "Helvetica Neue", Arial, "PingFang SC", sans-serif;
+    /* 英文字体→中文字体→兜底无衬线 */
+    color: #333;
+    /* 默认字体颜色：深灰 */
+    background: #d2dfe7;
+    /* 页面背景：淡蓝灰 */
+    line-height: 1.7;
+    /* 全局行高，阅读更舒适 */
 }
 
 /* ==========  顶部导航  ========== */
 .navbar {
-    position: sticky;                /* 粘性定位：页面滚动时仍吸附在顶部 */
-    top: 0;                          /* 距离视口顶部 0px 时触发粘性 */
-    z-index: 1000;                   /* 保证导航在最上层，不被其他元素遮挡 */
-    background: #036;                /* 深蓝背景 */
-    color: #fff;                     /* 白色文字 */
+    position: sticky;
+    /* 粘性定位：页面滚动时仍吸附在顶部 */
+    top: 0;
+    /* 距离视口顶部 0px 时触发粘性 */
+    z-index: 1000;
+    /* 保证导航在最上层，不被其他元素遮挡 */
+    background: #036;
+    /* 深蓝背景 */
+    color: #fff;
+    /* 白色文字 */
 }
 
 /* 导航内部容器：限制最大宽度并水平居中 */
 .nav-container {
-    max-width: 1390px;               /* 最大宽度，防止超宽屏下导航过长 */
-    margin: auto;                    /* 水平居中 */
-    display: flex;                   /* Flex 布局：左右两端对齐 */
-    align-items: center;             /* 垂直居中 */
-    justify-content: space-between;  /* 两端分散：logo 左、菜单右 */
-    padding: 0 1rem;                 /* 左右留空隙，避免贴边 */
-    height: 65px;                    /* 固定导航栏高度 */
+    max-width: 1390px;
+    /* 最大宽度，防止超宽屏下导航过长 */
+    margin: auto;
+    /* 水平居中 */
+    display: flex;
+    /* Flex 布局：左右两端对齐 */
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: space-between;
+    /* 两端分散：logo 左、菜单右 */
+    padding: 0 1rem;
+    /* 左右留空隙，避免贴边 */
+    height: 65px;
+    /* 固定导航栏高度 */
 }
 
 /* LOGO 区域 */
 .logo {
-    display: flex;                   /* 图标与文字横向排列 */
-    margin-left: 0;                  /* 原写法“margin: left;”不合法，修正 */
-    align-items: center;             /* 图标文字垂直居中 */
-    color: #fff;                     /* 白色文字 */
-    text-decoration: none;           /* 去掉下划线 */
-    font-weight: bold;               /* 加粗 */
-    font-size: 1.6rem;               /* 字号 */
+    display: flex;
+    /* 图标与文字横向排列 */
+    margin-left: 0;
+    /* 原写法“margin: left;”不合法，修正 */
+    align-items: center;
+    /* 图标文字垂直居中 */
+    color: #fff;
+    /* 白色文字 */
+    text-decoration: none;
+    /* 去掉下划线 */
+    font-weight: bold;
+    /* 加粗 */
+    font-size: 1.6rem;
+    /* 字号 */
 }
 
 .logo img {
-    height: 54px;                    /* LOGO 图片高度 */
-    margin-right: .6rem;             /* 图标与文字间距 */
+    height: 54px;
+    /* LOGO 图片高度 */
+    margin-right: .6rem;
+    /* 图标与文字间距 */
 }
 
 /* 导航链接 */
 .nav-menu a {
-    color: #fff;                     /* 默认白色 */
-    text-decoration: none;           /* 去下划线 */
-    margin-left: 1.1rem;             /* 链接之间左侧间距 */
-    font-size: 1.4rem;               /* 字号 */
+    color: #fff;
+    /* 默认白色 */
+    text-decoration: none;
+    /* 去下划线 */
+    margin-left: 1.1rem;
+    /* 链接之间左侧间距 */
+    font-size: 1.4rem;
+    /* 字号 */
 }
 
 .nav-menu a:hover,
-.nav-menu a.active {                 /* 鼠标悬停 / 当前页高亮 */
-    color: #09c;                     /* 亮蓝 */
+.nav-menu a.active {
+    /* 鼠标悬停 / 当前页高亮 */
+    color: #09c;
+    /* 亮蓝 */
 }
 
 /* 移动端汉堡按钮（默认隐藏） */
 .hamburger {
-    display: none;                   /* 宽屏时不显示 */
-    flex-direction: column;          /* 三条横线纵向排列 */
-    cursor: pointer;                 /* 手型光标 */
+    display: none;
+    /* 宽屏时不显示 */
+    flex-direction: column;
+    /* 三条横线纵向排列 */
+    cursor: pointer;
+    /* 手型光标 */
 }
 
 .hamburger span {
-    width: 24px;                     /* 单条线宽度 */
-    height: 3px;                     /* 单条线高度 */
-    background: #fff;                /* 白色 */
-    margin: 3px 0;                   /* 线间距 */
-    transition: .3s;                 /* 切换动画 */
+    width: 24px;
+    /* 单条线宽度 */
+    height: 3px;
+    /* 单条线高度 */
+    background: #fff;
+    /* 白色 */
+    margin: 3px 0;
+    /* 线间距 */
+    transition: .3s;
+    /* 切换动画 */
 }
 
 /* ==========  主体内容  ========== */
 .main {
-    min-height: 70vh;                /* 最低高度，保证 footer 不会过早贴顶 */
-    max-width: 1390px;               /* 与导航保持一致 */
-    margin: 2rem auto;               /* 上下留白 + 水平居中 */
-    padding: 0 1rem;                 /* 左右内边距，防止贴边 */
+    min-height: 70vh;
+    /* 最低高度，保证 footer 不会过早贴顶 */
+    max-width: 1390px;
+    /* 与导航保持一致 */
+    margin: 2rem auto;
+    /* 上下留白 + 水平居中 */
+    padding: 0 1rem;
+    /* 左右内边距，防止贴边 */
 }
 
 /* 通用段落、标题、按钮 */
-section { margin-bottom: 3rem; }    /* 每段区域下留白 */
-h1, h2, h3 {
-    line-height: 1.3;                /* 标题行高更紧凑 */
-    margin-bottom: .8rem;            /* 标题与下文间距 */
-    color: #036;                     /* 与导航同色系 */
+section {
+    margin-bottom: 3rem;
 }
-h1 { font-size: 2rem;   }
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.25rem;}
-p  { margin-bottom: 1rem; }         /* 段落与段落间距 */
+
+/* 每段区域下留白 */
+h1,
+h2,
+h3 {
+    line-height: 1.3;
+    /* 标题行高更紧凑 */
+    margin-bottom: .8rem;
+    /* 标题与下文间距 */
+    color: #036;
+    /* 与导航同色系 */
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* 段落与段落间距 */
 
 /* 通用按钮 */
 .btn {
-    display: inline-block;           /* 行内块，可设置宽高 */
-    background: #09c;                /* 亮蓝背景 */
-    color: #fff;                     /* 白色字 */
-    padding: .6rem 1.2rem;           /* 上下 左右 */
-    border-radius: 10px;             /* 圆角 */
-    text-decoration: none;           /* 去下划线 */
+    display: inline-block;
+    /* 行内块，可设置宽高 */
+    background: #09c;
+    /* 亮蓝背景 */
+    color: #fff;
+    /* 白色字 */
+    padding: .6rem 1.2rem;
+    /* 上下 左右 */
+    border-radius: 10px;
+    /* 圆角 */
+    text-decoration: none;
+    /* 去下划线 */
 }
-.btn:hover { background: rgb(0, 114.75, 153); } /* 鼠标悬停加深 */
+
+.btn:hover {
+    background: rgb(0, 114.75, 153);
+}
+
+/* 鼠标悬停加深 */
 
 /* ==========  轮播图  ========== */
 .carousel {
-    position: relative;              /* 作为内部绝对定位的包含块 */
-    width: 100%;                     /* 通栏宽度 */
-    height: 580px;                   /* 默认高度（大屏） */
-    overflow: hidden;                /* 隐藏超出部分，实现平滑切换 */
-    border-radius: 10px;             /* 整体圆角 */
+    position: relative;
+    /* 作为内部绝对定位的包含块 */
+    width: 100%;
+    /* 通栏宽度 */
+    height: 580px;
+    /* 默认高度（大屏） */
+    overflow: hidden;
+    /* 隐藏超出部分，实现平滑切换 */
+    border-radius: 10px;
+    /* 整体圆角 */
 }
 
 .carousel .item {
-    position: absolute;              /* 叠放 */
-    width: 100%; height: 100%;      /* 撑满父级 */
-    opacity: 0;                      /* 默认全透明 */
-    transition: 1s;                  /* 淡入淡出 1s */
-    background-size: cover;          /* 背景图铺满 */
-    background-position: center;     /* 背景图居中 */
+    position: absolute;
+    /* 叠放 */
+    width: 100%;
+    height: 100%;
+    /* 撑满父级 */
+    opacity: 0;
+    /* 默认全透明 */
+    transition: 1s;
+    /* 淡入淡出 1s */
+    background-size: cover;
+    /* 背景图铺满 */
+    background-position: center;
+    /* 背景图居中 */
 }
-.carousel .item.active { opacity: 1; } /* 当前可见项 */
+
+.carousel .item.active {
+    opacity: 1;
+}
+
+/* 当前可见项 */
 
 /* 轮播文字说明 */
 .carousel .caption {
     position: absolute;
-    bottom: 20px;  left: 20px;      /* 左下角 */
-    background: rgba(0,0,0,.5);      /* 半透明黑 */
+    bottom: 20px;
+    left: 20px;
+    /* 左下角 */
+    background: rgba(0, 0, 0, .5);
+    /* 半透明黑 */
     color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 10px;
@@ -140,26 +240,36 @@ p  { margin-bottom: 1rem; }         /* 段落与段落间距 */
 /* ==========  卡片列表  ========== */
 .cards {
     display: flex;
-    flex-wrap: wrap;                 /* 超出换行 */
-    gap: 1.5rem;                     /* 卡片间距（flex 自带） */
+    flex-wrap: wrap;
+    /* 超出换行 */
+    gap: 1.5rem;
+    /* 卡片间距（flex 自带） */
 }
 
 .card {
-    flex: 1 1 260px;                 /* 平均分配剩余空间，最小 260px，不足换行 */
-    background: #f5f5f5;             /* 浅灰背景 */
-    padding: 1.5rem;                 /* 内边距 */
-    border-radius: 15px;             /* 大圆角 */
+    flex: 1 1 260px;
+    /* 平均分配剩余空间，最小 260px，不足换行 */
+    background: #f5f5f5;
+    /* 浅灰背景 */
+    padding: 1.5rem;
+    /* 内边距 */
+    border-radius: 15px;
+    /* 大圆角 */
 }
 
 .card img {
-    width: 100%;                     /* 图片自适应卡片宽度 */
-    border-radius: 8px;              /* 图片圆角 */
-    margin-bottom: 1rem;             /* 图与下文间距 */
+    width: 100%;
+    /* 图片自适应卡片宽度 */
+    border-radius: 8px;
+    /* 图片圆角 */
+    margin-bottom: 1rem;
+    /* 图与下文间距 */
 }
 
 /* ==========  页脚  ========== */
 .footer {
-    background: #036;                 /* 与导航同色 */
+    background: #036;
+    /* 与导航同色 */
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -169,44 +279,72 @@ p  { margin-bottom: 1rem; }         /* 段落与段落间距 */
 /* ==========  回到顶部  ========== */
 #scroll-top {
     position: fixed;
-    bottom: 40px;  right: 40px;      /* 右下角 */
+    bottom: 40px;
+    right: 40px;
+    /* 右下角 */
     background: #09c;
     color: #fff;
-    width: 45px;  height: 45px;
-    line-height: 40px;               /* 垂直居中图标 */
+    width: 45px;
+    height: 45px;
+    line-height: 40px;
+    /* 垂直居中图标 */
     text-align: center;
-    border-radius: 50%;              /* 正圆 */
+    border-radius: 50%;
+    /* 正圆 */
     cursor: pointer;
-    opacity: 0;                      /* 默认隐藏 */
+    opacity: 0;
+    /* 默认隐藏 */
     visibility: hidden;
-    transition: .3s;                 /* 淡入淡出 */
+    transition: .3s;
+    /* 淡入淡出 */
 }
-#scroll-top.show {                   /* JS 滚动到一定距离后添加 .show */
+
+#scroll-top.show {
+    /* JS 滚动到一定距离后添加 .show */
     opacity: 1;
     visibility: visible;
 }
 
 /* ==========  响应式：≤768px  ========== */
 @media (max-width: 1000px) {
+
     /* 导航菜单：垂直抽屉 */
     .nav-menu {
         position: absolute;
-        top: 60px;                    /* 导航栏下方 */
-        left: 0;  right: 0;
-        background: #036;             /* 与导航同色 */
-        flex-direction: column;       /* 垂直排列 */
+        top: 60px;
+        /* 导航栏下方 */
+        left: 0;
+        right: 0;
+        background: #036;
+        /* 与导航同色 */
+        flex-direction: column;
+        /* 垂直排列 */
         padding: 1rem 0;
-        transform: translateY(-1200%); /* 初始滑出屏幕外 */
+        transform: translateY(-1200%);
+        /* 初始滑出屏幕外 */
         transition: .3s;
     }
-    .nav-menu.open { transform: translateY(0); } /* 汉堡点击后滑入 */
-    .nav-menu a { margin: .5rem 1rem; } /* 垂直间距 */
+
+    .nav-menu.open {
+        transform: translateY(0);
+    }
+
+    /* 汉堡点击后滑入 */
+    .nav-menu a {
+        margin: .5rem 1rem;
+    }
+
+    /* 垂直间距 */
 
     /* 显示汉堡按钮 */
-    .hamburger { display: flex; }
+    .hamburger {
+        display: flex;
+    }
 
     /* 轮播图高度降低，适配手机 */
-    .carousel { height: 250px; }
+    .carousel {
+        height: 250px;
+    }
 }
 
 /*# sourceMappingURL=main.css.map */
