@@ -24,10 +24,7 @@ nav:
   - name: 联系我们
     link: /contact/
 
-# ========== 构建设置 ==========
-theme: minima
-plugins:
-  - jekyll-feed
+
 
 # ========== Sass 静默 & 压缩 ==========
 sass:
