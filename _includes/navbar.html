@@ -15,7 +15,7 @@
     <nav class="nav-menu">
       {%- for item in site.nav -%}
         <!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
-        <a href="{{ item.link | relative_url }}" {% if page.url==item.link %}class="active"{%- endif -%}>{{ item.name }}</a>
+        <a href="{{ item.link | relative_url }}" {% if page.url=item.link %}class="active"{%- endif -%}>{{ item.name }}</a>
       {%- endfor -%}
     </nav>
     

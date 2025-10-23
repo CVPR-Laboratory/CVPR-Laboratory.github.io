@@ -306,7 +306,7 @@ p {
 }
 
 /* ==========  响应式：≤768px  ========== */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
 
     /* 导航菜单：垂直抽屉 */
     .nav-menu {
@@ -320,7 +320,7 @@ p {
         flex-direction: column;
         /* 垂直排列 */
         padding: 1rem 0;
-        transform: translateY(-1%);
+        transform: translateY(-100%);
         /* 初始滑出屏幕外 */
         transition: .5s;
     }
@@ -340,6 +340,23 @@ p {
     .hamburger {
         display: flex;
     }
+    /* --- 2. 移动端专属字体 --- */
+    body {
+        /* 举例：优先使用系统原生字体，加载更快，视觉更“手机” */
+        font-family:
+            -apple-system,           /* iOS Safari/macOS Safari */
+            BlinkMacSystemFont,      /* Chrome macOS */
+            "Segoe UI",              /* Windows */
+            Roboto,                  /* Android 4+ */
+            "Helvetica Neue",
+            Arial,
+            "PingFang SC",
+            "Hiragino Sans GB",
+            "Microsoft YaHei",
+            sans-serif;
+        line-height: 1.6;            /* 移动端行高可略小，节省空间 */
+    }
+
 
     /* 轮播图高度降低，适配手机 */
     .carousel {
