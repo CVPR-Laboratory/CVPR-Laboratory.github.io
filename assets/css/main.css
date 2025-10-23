@@ -315,14 +315,14 @@ p {
         /* 导航栏下方 */
         left: 0;
         right: 0;
-        background: #036;
-        /* 与导航同色 */
+        background: rgb(226, 22, 22);
+        /* 与导航同色background: #036; */
         flex-direction: column;
         /* 垂直排列 */
         padding: 1rem 0;
-        transform: translateY(-100%);
+        transform: translateY(-1%);
         /* 初始滑出屏幕外 */
-        transition: .3s;
+        transition: .5s;
     }
 
     .nav-menu.open {
