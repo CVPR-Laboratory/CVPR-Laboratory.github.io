@@ -21,9 +21,9 @@ permalink: /news/
       <button class="filter-btn" data-filter="team">团队动态</button>
     </div>
 
-    <div class="news-timeline" id="news-timeline"></div>
+  <div class="news-timeline" id="news-timeline"></div>
 
-    <div class="news-archive">
+  <div class="news-archive">
       <h3>历史档案</h3>
       <div class="archive-years">
         <a href="#" class="archive-year">2023年</a>

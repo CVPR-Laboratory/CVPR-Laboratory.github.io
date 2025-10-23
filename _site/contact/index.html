@@ -1,0 +1,385 @@
+<!-- 声明文档类型：HTML5 -->
+<!DOCTYPE html>
+
+<!-- 根元素，lang="zh-CN" 告诉浏览器与搜索引擎本页主要语言为简体中文 -->
+<html lang="zh-CN">
+
+  <!-- 头部区域：通过 Jekyll 的 include 引入 head.html 模板，包含 meta、SEO、样式表等 --><!-- 文档头开始：包含网页的元数据，不会直接显示在页面上 -->
+<head>
+  <!-- 声明字符编码为 UTF-8，确保支持多语言字符（如中文、表情符号） -->
+  <meta charset="utf-8">
+  
+  <!-- 告诉 IE 浏览器使用最新的渲染引擎，而不是兼容模式 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- 设置视口（viewport）参数，使网页在移动设备上正确缩放和响应式显示 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+  <!-- Jekyll 插件 jekyll-seo-tag 的 Liquid 标签，自动生成 SEO 相关的 meta 标签（如 title、description、Open Graph、Twitter Card 等） --><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>联系我们 | CVPR-Laboratory</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="联系我们" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习" />
+<meta property="og:description" content="计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习" />
+<link rel="canonical" href="http://localhost:4000/contact/" />
+<meta property="og:url" content="http://localhost:4000/contact/" />
+<meta property="og:site_name" content="CVPR-Laboratory" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="联系我们" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习","headline":"联系我们","url":"http://localhost:4000/contact/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- 引入主样式表：main.css 位于 /assets/css/ 目录下，relative_url 会根据站点 baseurl 自动调整路径 -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- 设置网站图标（favicon）：浏览器标签页、书签栏显示的小图标，图片为 /assets/img/logo.png -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo.png">
+</head><!-- 页面主体开始 -->
+  <body>
+
+    <!-- 导航栏：引入 navbar.html，生成站点 Logo 与菜单 --><!-- 页头导航栏最外层容器，class="navbar" 用于整站统一的导航栏样式 -->
+<header class="navbar">
+  <!-- 导航栏内部弹性容器，限制宽度并居中，方便左右分栏布局 -->
+  <div class="nav-container">
+    
+    <!-- 站点 Logo 区域，点击后跳转到首页；relative_url 会根据站点 baseurl 自动补全路径 -->
+    <a href="/" class="logo">
+      <!-- Logo 图片，alt 属性提供无障碍文本说明 -->
+      <img src="/assets/img/logo.png" alt="Logo">
+      <!-- 站点文字标题，与 Logo 图片横向并排 -->
+      <span>CVPR-Laboratory</span>
+    </a>
+    
+    <!-- 桌面端水平菜单：通过 Liquid 循环读取 _config.yml 中定义的 site.nav 数组，动态生成导航链接 -->
+    <nav class="nav-menu"><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/" >首页</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/about/" >关于我们</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/team/" >团队成员</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/research/" >研究方向</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/publication/" >研究成果</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/news/" >新闻动态</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/collaboration/" >合作交流</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/contact/" class="active">联系我们</a></nav>
+    
+    <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    
+  </div>
+</header><!-- 主要内容容器：class="main" 用于全局样式控制，<section class="page-header">
+    <div class="container">
+        <h1>联系我们</h1>
+        <p>欢迎与我们取得联系</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>联系信息</h2>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>地址</h3>
+                        <p>北京市海淀区XX路XX号</p>
+                        <p>XX大学计算机学院科研楼A座301室</p>
+                        <p>邮编: 100190</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>邮箱</h3>
+                        <p>实验室邮箱: <a href="mailto:contact@cvpr-lab.edu">contact@cvpr-lab.edu</a></p>
+                        <p>张教授邮箱: <a href="mailto:prof.zhang@cvpr-lab.edu">prof.zhang@cvpr-lab.edu</a></p>
+                        <p>李副教授邮箱: <a href="mailto:associate.li@cvpr-lab.edu">associate.li@cvpr-lab.edu</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        <p>实验室办公室: +86-10-6278XXXX</p>
+                        <p>张教授: +86-10-6278XXXX</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>办公时间</h3>
+                        <p>周一至周五: 9:00 - 17:00</p>
+                        <p>周末: 预约访问</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>发送消息</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" name="name" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">邮箱 *</label>
+                        <input type="email" id="email" name="email" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">主题 *</label>
+                        <input type="text" id="subject" name="subject" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">消息内容 *</label>
+                        <textarea id="message" name="message" rows="6" required=""></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">联系目的</label>
+                        <select id="purpose" name="purpose">
+                            <option value="">请选择...</option>
+                            <option value="collaboration">科研合作</option>
+                            <option value="admission">招生咨询</option>
+                            <option value="visit">访问交流</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="background-color: var(--light-gray);">
+    <div class="container">
+        <h2>实验室位置</h2>
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map" style="font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                <h3>地图位置</h3>
+                <p>XX大学计算机学院科研楼A座</p>
+                <p>北京市海淀区XX路XX号</p>
+                <a href="https://maps.google.com/?q=XX大学计算机学院" class="cta-button small" target="_blank">查看Google地图</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>招生信息</h2>
+        <div class="admission-info">
+            <div class="admission-item">
+                <h3>博士研究生</h3>
+                <p>欢迎对计算机视觉、机器学习有浓厚兴趣的同学申请博士研究生。</p>
+                <ul>
+                    <li>申请时间: 每年9月-12月</li>
+                    <li>要求: 相关专业硕士学位</li>
+                    <li>联系方式: prof.zhang@cvpr-lab.edu</li>
+                </ul>
+            </div>
+            
+            <div class="admission-item">
+                <h3>硕士研究生</h3>
+                <p>招收计算机科学、电子信息等相关专业的硕士研究生。</p>
+                <ul>
+                    <li>申请时间: 每年3月-5月</li>
+                    <li>要求: 相关专业本科学位</li>
+                    <li>联系方式: associate.li@cvpr-lab.edu</li>
+                </ul>
+            </div>
+            
+            <div class="admission-item">
+                <h3>访问学生/学者</h3>
+                <p>欢迎国内外访问学者和交换学生来实验室交流学习。</p>
+                <ul>
+                    <li>申请: 全年接受申请</li>
+                    <li>期限: 3个月至1年</li>
+                    <li>联系方式: contact@cvpr-lab.edu</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+ 会被 Jekyll 替换为具体页面的 Markdown/HTML 内容 -->
+    <main class="main"><section class="page-header">
+    <div class="container">
+        <h1>联系我们</h1>
+        <p>欢迎与我们取得联系</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>联系信息</h2>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>地址</h3>
+                        <p>北京市海淀区XX路XX号</p>
+                        <p>XX大学计算机学院科研楼A座301室</p>
+                        <p>邮编: 100190</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>邮箱</h3>
+                        <p>实验室邮箱: <a href="mailto:contact@cvpr-lab.edu">contact@cvpr-lab.edu</a></p>
+                        <p>张教授邮箱: <a href="mailto:prof.zhang@cvpr-lab.edu">prof.zhang@cvpr-lab.edu</a></p>
+                        <p>李副教授邮箱: <a href="mailto:associate.li@cvpr-lab.edu">associate.li@cvpr-lab.edu</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        <p>实验室办公室: +86-10-6278XXXX</p>
+                        <p>张教授: +86-10-6278XXXX</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>办公时间</h3>
+                        <p>周一至周五: 9:00 - 17:00</p>
+                        <p>周末: 预约访问</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>发送消息</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" name="name" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">邮箱 *</label>
+                        <input type="email" id="email" name="email" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">主题 *</label>
+                        <input type="text" id="subject" name="subject" required="" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">消息内容 *</label>
+                        <textarea id="message" name="message" rows="6" required=""></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">联系目的</label>
+                        <select id="purpose" name="purpose">
+                            <option value="">请选择...</option>
+                            <option value="collaboration">科研合作</option>
+                            <option value="admission">招生咨询</option>
+                            <option value="visit">访问交流</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="cta-button">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="background-color: var(--light-gray);">
+    <div class="container">
+        <h2>实验室位置</h2>
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map" style="font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                <h3>地图位置</h3>
+                <p>XX大学计算机学院科研楼A座</p>
+                <p>北京市海淀区XX路XX号</p>
+                <a href="https://maps.google.com/?q=XX大学计算机学院" class="cta-button small" target="_blank">查看Google地图</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <h2>招生信息</h2>
+        <div class="admission-info">
+            <div class="admission-item">
+                <h3>博士研究生</h3>
+                <p>欢迎对计算机视觉、机器学习有浓厚兴趣的同学申请博士研究生。</p>
+                <ul>
+                    <li>申请时间: 每年9月-12月</li>
+                    <li>要求: 相关专业硕士学位</li>
+                    <li>联系方式: prof.zhang@cvpr-lab.edu</li>
+                </ul>
+            </div>
+            
+            <div class="admission-item">
+                <h3>硕士研究生</h3>
+                <p>招收计算机科学、电子信息等相关专业的硕士研究生。</p>
+                <ul>
+                    <li>申请时间: 每年3月-5月</li>
+                    <li>要求: 相关专业本科学位</li>
+                    <li>联系方式: associate.li@cvpr-lab.edu</li>
+                </ul>
+            </div>
+            
+            <div class="admission-item">
+                <h3>访问学生/学者</h3>
+                <p>欢迎国内外访问学者和交换学生来实验室交流学习。</p>
+                <ul>
+                    <li>申请: 全年接受申请</li>
+                    <li>期限: 3个月至1年</li>
+                    <li>联系方式: contact@cvpr-lab.edu</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+    <!-- 页脚：引入 footer.html，显示版权与联系信息 --><!-- 最外层页脚标签，class="footer" 便于 CSS 统一控制页脚样式 -->
+<footer class="footer">
+  <!-- 内部容器，class="container" 通常用来限制最大宽度并居中，保证在不同分辨率下排版一致 -->
+  <div class="container">
+    <!-- 版权行：使用 Liquid 模板语法 2025 动态输出当前年份；
+         CVPR-Laboratory 输出站点配置文件中的站点标题；
+         “All rights reserved.” 是标准英文版权宣告 -->
+    <p>&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
+    
+    <!-- 联系信息行：&nbsp; 是不换行空格，用来在“地址”与“邮箱”之间插入视觉分隔竖线；
+         曲阜师范大学 JS526室 是物理位置；
+         wnb_915@163.com 是对外公共邮箱 -->
+    <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+  </div>
+</footer><!-- 返回顶部按钮：引入 scroll-top.html，仅含一个 ▲ 按钮元素 --><!-- 返回顶部按钮 -->
+<!-- id="scroll-top" 用于 JS 绑定点击事件与 CSS 样式控制 -->
+<!-- title="返回顶部" 提供鼠标悬停时的提示文本（无障碍/用户体验） -->
+<!-- 内部字符 "▲" 是一个向上的三角形符号，作为纯文本图标 -->
+<div id="scroll-top" title="返回顶部">▲</div><!-- 主脚本文件：main.js 通常负责移动端菜单、返回顶部、平滑滚动等交互行为 -->
+    <script src="/assets/js/main.js"></script>
+
+  </body>
+</html>

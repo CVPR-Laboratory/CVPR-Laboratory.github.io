@@ -1,0 +1,503 @@
+<!-- 声明文档类型：HTML5 -->
+<!DOCTYPE html>
+
+<!-- 根元素，lang="zh-CN" 告诉浏览器与搜索引擎本页主要语言为简体中文 -->
+<html lang="zh-CN">
+
+  <!-- 头部区域：通过 Jekyll 的 include 引入 head.html 模板，包含 meta、SEO、样式表等 --><!-- 文档头开始：包含网页的元数据，不会直接显示在页面上 -->
+<head>
+  <!-- 声明字符编码为 UTF-8，确保支持多语言字符（如中文、表情符号） -->
+  <meta charset="utf-8">
+  
+  <!-- 告诉 IE 浏览器使用最新的渲染引擎，而不是兼容模式 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- 设置视口（viewport）参数，使网页在移动设备上正确缩放和响应式显示 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+  <!-- Jekyll 插件 jekyll-seo-tag 的 Liquid 标签，自动生成 SEO 相关的 meta 标签（如 title、description、Open Graph、Twitter Card 等） --><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>新闻动态 | CVPR-Laboratory</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="新闻动态" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习" />
+<meta property="og:description" content="计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习" />
+<link rel="canonical" href="http://localhost:4000/news/" />
+<meta property="og:url" content="http://localhost:4000/news/" />
+<meta property="og:site_name" content="CVPR-Laboratory" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="新闻动态" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"计算机视觉与模式识别实验室 三维视觉 · 医疗AI · 多模态学习","headline":"新闻动态","url":"http://localhost:4000/news/"}</script>
+<!-- End Jekyll SEO tag -->
+<!-- 引入主样式表：main.css 位于 /assets/css/ 目录下，relative_url 会根据站点 baseurl 自动调整路径 -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- 设置网站图标（favicon）：浏览器标签页、书签栏显示的小图标，图片为 /assets/img/logo.png -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo.png">
+</head><!-- 页面主体开始 -->
+  <body>
+
+    <!-- 导航栏：引入 navbar.html，生成站点 Logo 与菜单 --><!-- 页头导航栏最外层容器，class="navbar" 用于整站统一的导航栏样式 -->
+<header class="navbar">
+  <!-- 导航栏内部弹性容器，限制宽度并居中，方便左右分栏布局 -->
+  <div class="nav-container">
+    
+    <!-- 站点 Logo 区域，点击后跳转到首页；relative_url 会根据站点 baseurl 自动补全路径 -->
+    <a href="/" class="logo">
+      <!-- Logo 图片，alt 属性提供无障碍文本说明 -->
+      <img src="/assets/img/logo.png" alt="Logo">
+      <!-- 站点文字标题，与 Logo 图片横向并排 -->
+      <span>CVPR-Laboratory</span>
+    </a>
+    
+    <!-- 桌面端水平菜单：通过 Liquid 循环读取 _config.yml 中定义的 site.nav 数组，动态生成导航链接 -->
+    <nav class="nav-menu"><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/" >首页</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/about/" >关于我们</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/team/" >团队成员</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/research/" >研究方向</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/publication/" >研究成果</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/news/" class="active">新闻动态</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/collaboration/" >合作交流</a><!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+        <a href="/contact/" >联系我们</a></nav>
+    
+    <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    
+  </div>
+</header><!-- 主要内容容器：class="main" 用于全局样式控制，<section class="page-header">
+  <div class="container">
+    <h1>新闻动态</h1>
+    <p>关注实验室的最新进展和活动信息</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="news-filters">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="research">科研进展</button>
+      <button class="filter-btn" data-filter="award">获奖荣誉</button>
+      <button class="filter-btn" data-filter="event">学术活动</button>
+      <button class="filter-btn" data-filter="team">团队动态</button>
+    </div>
+
+    <div class="news-timeline" id="news-timeline"></div>
+
+    <div class="news-archive">
+      <h3>历史档案</h3>
+      <div class="archive-years">
+        <a href="#" class="archive-year">2023年</a>
+        <a href="#" class="archive-year">2022年</a>
+        <a href="#" class="archive-year">2021年</a>
+        <a href="#" class="archive-year">2020年</a>
+        <a href="#" class="archive-year">更早</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+:root {
+  --primary-color: #003366;
+  --secondary-color: #0099cc;
+  --white: #fff;
+  --medium-gray: #ccc;
+  --dark-gray: #666;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+.news-filters { text-align: center; margin-bottom: 3rem; }
+.filter-btn {
+  background: var(--white);
+  border: 2px solid var(--medium-gray);
+  padding: 0.5rem 1.5rem;
+  margin: 0.25rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--secondary-color);
+  color: var(--white);
+  border-color: var(--secondary-color);
+}
+.news-timeline { max-width: 800px; margin: 0 auto; }
+.timeline-year { margin-bottom: 3rem; }
+.timeline-year h2 {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.news-item {
+  display: flex;
+  margin-bottom: 2rem;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.news-item:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+.news-date {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 1.5rem;
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.date-day { font-size: 2rem; font-weight: bold; }
+.date-month { font-size: 1rem; margin-top: 0.25rem; }
+.news-content { padding: 1.5rem; flex: 1; }
+.news-meta { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.9rem; color: var(--dark-gray); }
+.category {
+  padding: 0.2rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.category.research { background: #e3f2fd; color: #1976d2; }
+.category.award { background: #f3e5f5; color: #7b1fa2; }
+.category.event { background: #e8f5e8; color: #388e3c; }
+.category.team { background: #fff3e0; color: #f57c00; }
+.news-links { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+.news-link { color: var(--secondary-color); text-decoration: none; font-size: 0.9rem; }
+.news-link:hover { color: var(--primary-color); }
+.news-images img { max-width: 100%; border-radius: 8px; margin-top: 1rem; }
+.news-archive { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--medium-gray); }
+.archive-years { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.archive-year {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  border: 2px solid var(--medium-gray);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+.archive-year:hover { border-color: var(--secondary-color); color: var(--secondary-color); }
+@media (max-width: 768px) {
+  .news-item { flex-direction: column; }
+  .news-date { flex-direction: row; gap: 0.5rem; min-width: auto; }
+  .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+}
+</style>
+
+<script>
+const newsData = [
+  {
+    year: 2025, day: 15, month: '03月', title: '实验室最新论文被CVPR 2025接收', category: 'research', author: '张教授',
+    summary: '我们关于深度学习的论文《RegFormer: Real-time Registration Transformer for Large-scale LiDAR Scenes》被CVPR 2025接收。',
+    links: [{ label: '论文PDF', icon: 'fas fa-file-pdf', href: '#' }, { label: '代码仓库', icon: 'fab fa-github', href: '#' }]
+  },
+  {
+    year: 2025, day: 28, month: '02月', title: '张教授荣获国家自然科学二等奖', category: 'award', author: '实验室办公室',
+    summary: '实验室主任张教授因其在计算机视觉领域的突出贡献，荣获2025年度国家自然科学二等奖。',
+    image: '/assets/img/b3.jpg'
+  },
+  {
+    year: 2025, day: 10, month: '01月', title: '成功举办2025年度学术研讨会', category: 'event', author: '学术委员会',
+    summary: '实验室成功举办了2025年度学术研讨会，邀请了来自斯坦福大学、MIT、清华大学等国内外知名高校的专家学者进行学术交流。',
+    links: [{ label: '活动照片', icon: 'fas fa-images', href: '#' }, { label: '演讲幻灯片', icon: 'fas fa-file-powerpoint', href: '#' }]
+  },
+  {
+    year: 2024, day: 15, month: '12月', title: '欢迎新成员加入实验室', category: 'team', author: '人力资源部',
+    summary: '热烈欢迎三位新研究生加入我们的研究团队：李明（博士研究生）、王静（硕士研究生）、张伟（硕士研究生）。'
+  },
+  {
+    year: 2024, day: 30, month: '10月', title: 'Med-SAM 3D论文在Nature Medicine发表', category: 'research', author: '李副教授',
+    summary: '实验室在医学影像分析领域取得重大突破，论文《Med-SAM 3D: Segment Anything in 3D Medical Images》在Nature Medicine上发表。',
+    links: [{ label: '论文链接', icon: 'fas fa-file-pdf', href: '#' }, { label: '数据集下载', icon: 'fas fa-database', href: '#' }]
+  }
+];
+
+function renderNews(filter = 'all') {
+  const container = document.getElementById('news-timeline');
+  container.innerHTML = '';
+  const grouped = {};
+  newsData.forEach(item => {
+    if (filter !== 'all' && item.category !== filter) return;
+    if (!grouped[item.year]) grouped[item.year] = [];
+    grouped[item.year].push(item);
+  });
+  Object.entries(grouped).forEach(([year, items]) => {
+    const section = document.createElement('div');
+    section.className = 'timeline-year';
+    section.innerHTML = `<h2>${year}年</h2>`;
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'news-item';
+      div.setAttribute('data-category', item.category);
+      div.innerHTML = `
+        <div class="news-date">
+          <span class="date-day">${item.day}</span>
+          <span class="date-month">${item.month}</span>
+        </div>
+        <div class="news-content">
+          <h3>${item.title}</h3>
+          <div class="news-meta">
+            <span class="category ${item.category}">${({research:'科研进展',award:'获奖荣誉',event:'学术活动',team:'团队动态'}[item.category])}</span>
+            <span class="author">作者: ${item.author}</span>
+          </div>
+          <p>${item.summary}</p>
+          ${item.image ? `<div class="news-images"><img src="${item.image}" alt="新闻图片" /></div>` : ''}
+          ${item.links ? `<div class="news-links">${item.links.map(l=>`<a href="${l.href}" class="news-link"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}</div>` : ''}
+        </div>
+      `;
+      section.appendChild(div);
+    });
+    container.appendChild(section);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderNews();
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderNews(btn.dataset.filter);
+    });
+  });
+});
+</script>
+
+ 会被 Jekyll 替换为具体页面的 Markdown/HTML 内容 -->
+    <main class="main"><section class="page-header">
+  <div class="container">
+    <h1>新闻动态</h1>
+    <p>关注实验室的最新进展和活动信息</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="news-filters">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="research">科研进展</button>
+      <button class="filter-btn" data-filter="award">获奖荣誉</button>
+      <button class="filter-btn" data-filter="event">学术活动</button>
+      <button class="filter-btn" data-filter="team">团队动态</button>
+    </div>
+
+    <div class="news-timeline" id="news-timeline"></div>
+
+    <div class="news-archive">
+      <h3>历史档案</h3>
+      <div class="archive-years">
+        <a href="#" class="archive-year">2023年</a>
+        <a href="#" class="archive-year">2022年</a>
+        <a href="#" class="archive-year">2021年</a>
+        <a href="#" class="archive-year">2020年</a>
+        <a href="#" class="archive-year">更早</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+:root {
+  --primary-color: #003366;
+  --secondary-color: #0099cc;
+  --white: #fff;
+  --medium-gray: #ccc;
+  --dark-gray: #666;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+.news-filters { text-align: center; margin-bottom: 3rem; }
+.filter-btn {
+  background: var(--white);
+  border: 2px solid var(--medium-gray);
+  padding: 0.5rem 1.5rem;
+  margin: 0.25rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--secondary-color);
+  color: var(--white);
+  border-color: var(--secondary-color);
+}
+.news-timeline { max-width: 800px; margin: 0 auto; }
+.timeline-year { margin-bottom: 3rem; }
+.timeline-year h2 {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.news-item {
+  display: flex;
+  margin-bottom: 2rem;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+.news-item:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+.news-date {
+  background: var(--secondary-color);
+  color: var(--white);
+  padding: 1.5rem;
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.date-day { font-size: 2rem; font-weight: bold; }
+.date-month { font-size: 1rem; margin-top: 0.25rem; }
+.news-content { padding: 1.5rem; flex: 1; }
+.news-meta { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.9rem; color: var(--dark-gray); }
+.category {
+  padding: 0.2rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.category.research { background: #e3f2fd; color: #1976d2; }
+.category.award { background: #f3e5f5; color: #7b1fa2; }
+.category.event { background: #e8f5e8; color: #388e3c; }
+.category.team { background: #fff3e0; color: #f57c00; }
+.news-links { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+.news-link { color: var(--secondary-color); text-decoration: none; font-size: 0.9rem; }
+.news-link:hover { color: var(--primary-color); }
+.news-images img { max-width: 100%; border-radius: 8px; margin-top: 1rem; }
+.news-archive { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--medium-gray); }
+.archive-years { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.archive-year {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  border: 2px solid var(--medium-gray);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+.archive-year:hover { border-color: var(--secondary-color); color: var(--secondary-color); }
+@media (max-width: 768px) {
+  .news-item { flex-direction: column; }
+  .news-date { flex-direction: row; gap: 0.5rem; min-width: auto; }
+  .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+}
+</style>
+
+<script>
+const newsData = [
+  {
+    year: 2025, day: 15, month: '03月', title: '实验室最新论文被CVPR 2025接收', category: 'research', author: '张教授',
+    summary: '我们关于深度学习的论文《RegFormer: Real-time Registration Transformer for Large-scale LiDAR Scenes》被CVPR 2025接收。',
+    links: [{ label: '论文PDF', icon: 'fas fa-file-pdf', href: '#' }, { label: '代码仓库', icon: 'fab fa-github', href: '#' }]
+  },
+  {
+    year: 2025, day: 28, month: '02月', title: '张教授荣获国家自然科学二等奖', category: 'award', author: '实验室办公室',
+    summary: '实验室主任张教授因其在计算机视觉领域的突出贡献，荣获2025年度国家自然科学二等奖。',
+    image: '/assets/img/b3.jpg'
+  },
+  {
+    year: 2025, day: 10, month: '01月', title: '成功举办2025年度学术研讨会', category: 'event', author: '学术委员会',
+    summary: '实验室成功举办了2025年度学术研讨会，邀请了来自斯坦福大学、MIT、清华大学等国内外知名高校的专家学者进行学术交流。',
+    links: [{ label: '活动照片', icon: 'fas fa-images', href: '#' }, { label: '演讲幻灯片', icon: 'fas fa-file-powerpoint', href: '#' }]
+  },
+  {
+    year: 2024, day: 15, month: '12月', title: '欢迎新成员加入实验室', category: 'team', author: '人力资源部',
+    summary: '热烈欢迎三位新研究生加入我们的研究团队：李明（博士研究生）、王静（硕士研究生）、张伟（硕士研究生）。'
+  },
+  {
+    year: 2024, day: 30, month: '10月', title: 'Med-SAM 3D论文在Nature Medicine发表', category: 'research', author: '李副教授',
+    summary: '实验室在医学影像分析领域取得重大突破，论文《Med-SAM 3D: Segment Anything in 3D Medical Images》在Nature Medicine上发表。',
+    links: [{ label: '论文链接', icon: 'fas fa-file-pdf', href: '#' }, { label: '数据集下载', icon: 'fas fa-database', href: '#' }]
+  }
+];
+
+function renderNews(filter = 'all') {
+  const container = document.getElementById('news-timeline');
+  container.innerHTML = '';
+  const grouped = {};
+  newsData.forEach(item => {
+    if (filter !== 'all' && item.category !== filter) return;
+    if (!grouped[item.year]) grouped[item.year] = [];
+    grouped[item.year].push(item);
+  });
+  Object.entries(grouped).forEach(([year, items]) => {
+    const section = document.createElement('div');
+    section.className = 'timeline-year';
+    section.innerHTML = `<h2>${year}年</h2>`;
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'news-item';
+      div.setAttribute('data-category', item.category);
+      div.innerHTML = `
+        <div class="news-date">
+          <span class="date-day">${item.day}</span>
+          <span class="date-month">${item.month}</span>
+        </div>
+        <div class="news-content">
+          <h3>${item.title}</h3>
+          <div class="news-meta">
+            <span class="category ${item.category}">${({research:'科研进展',award:'获奖荣誉',event:'学术活动',team:'团队动态'}[item.category])}</span>
+            <span class="author">作者: ${item.author}</span>
+          </div>
+          <p>${item.summary}</p>
+          ${item.image ? `<div class="news-images"><img src="${item.image}" alt="新闻图片" /></div>` : ''}
+          ${item.links ? `<div class="news-links">${item.links.map(l=>`<a href="${l.href}" class="news-link"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}</div>` : ''}
+        </div>
+      `;
+      section.appendChild(div);
+    });
+    container.appendChild(section);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderNews();
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderNews(btn.dataset.filter);
+    });
+  });
+});
+</script>
+
+</main>
+
+    <!-- 页脚：引入 footer.html，显示版权与联系信息 --><!-- 最外层页脚标签，class="footer" 便于 CSS 统一控制页脚样式 -->
+<footer class="footer">
+  <!-- 内部容器，class="container" 通常用来限制最大宽度并居中，保证在不同分辨率下排版一致 -->
+  <div class="container">
+    <!-- 版权行：使用 Liquid 模板语法 2025 动态输出当前年份；
+         CVPR-Laboratory 输出站点配置文件中的站点标题；
+         “All rights reserved.” 是标准英文版权宣告 -->
+    <p>&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
+    
+    <!-- 联系信息行：&nbsp; 是不换行空格，用来在“地址”与“邮箱”之间插入视觉分隔竖线；
+         曲阜师范大学 JS526室 是物理位置；
+         wnb_915@163.com 是对外公共邮箱 -->
+    <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+  </div>
+</footer><!-- 返回顶部按钮：引入 scroll-top.html，仅含一个 ▲ 按钮元素 --><!-- 返回顶部按钮 -->
+<!-- id="scroll-top" 用于 JS 绑定点击事件与 CSS 样式控制 -->
+<!-- title="返回顶部" 提供鼠标悬停时的提示文本（无障碍/用户体验） -->
+<!-- 内部字符 "▲" 是一个向上的三角形符号，作为纯文本图标 -->
+<div id="scroll-top" title="返回顶部">▲</div><!-- 主脚本文件：main.js 通常负责移动端菜单、返回顶部、平滑滚动等交互行为 -->
+    <script src="/assets/js/main.js"></script>
+
+  </body>
+</html>
