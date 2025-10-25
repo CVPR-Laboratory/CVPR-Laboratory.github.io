@@ -342,8 +342,9 @@ p {
         /* 1.4 字体颜色：#222 比 #333 更深，提高对比度 */
         color: #222;
         /* 1.5 抗锯齿，使笔画更细滑（iOS / macOS 有效） */
-        -webkit-font-smoothing: antialiased; 
+        -webkit-font-smoothing: antialiased;
     }
+
     /* ---------- 标题阶梯式缩小 ----------
        避免手机屏出现“巨型字”导致频繁换行 */
     h1 {
@@ -402,10 +403,12 @@ p {
         box-shadow: 0 4px 6px rgba(0, 0, 0, .15);
         /* 下拉后增加层级阴影 */
     }
+
     /* 2.2 展开态：复位 */
     .nav-menu.open {
         transform: translateY(0);
     }
+
     /* 2.3 导航链接：纵向间距 + 稍细字重 */
     .nav-menu a {
         margin: .6rem 3rem;
@@ -415,10 +418,12 @@ p {
         font-weight: 600;
         /* 中等粗细，避免过粗 */
     }
+
     /* 2.4 汉堡按钮：默认隐藏，移动端才显示 */
     .hamburger {
         display: flex;
     }
+
     /* ---------- 3. 轮播图 ----------
        使用 vw 单位，跟随屏幕宽度变化，避免固定 px 裁剪 */
     .carousel {
@@ -510,60 +515,92 @@ p {
 }
 
 
-/* =========================================================
-   中英文切换按钮样式
-   ========================================================= */
-/* ===== 语言切换按钮：高级微交互版 ===== */
-.lang-btn {
-  /* 固定盒子 42×26，圆角胶囊 */
-  width: 42px;
-  height: 26px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-
-  cursor: pointer;
-  outline: none;
-
-  /* 文字居中 */
-  line-height: 26px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-
-  /* 等宽无衬线，减少字符宽度差 */
-  font-family: "SF Mono", "Segoe UI Mono", Roboto Mono, monospace;
-
-  /* 动画：颜色 + 微缩放 */
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* =========================================================中英文切换按钮样式========================================================= */
+/* ===== 滑动语言开关 ===== */
+.lang-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    /* 固定宽 */
+    height: 28px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-.lang-btn:hover,
-.lang-btn:focus {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
+.lang-switch input {
+    display: none;
 }
 
-.lang-btn:active {
-  transform: translateY(0) scale(0.96);
+/* 隐藏原生 checkbox */
+
+/* 底槽 */
+.lang-switch .slider {
+    position: absolute;
+    inset: 0;
+    background: #036;
+    border-radius: 14px;
+    transition: background .25s;
 }
 
-/* 当前语言高亮（可选） */
-.lang-btn.on {
-  background: #fff;
-  color: #036;
+.lang-switch input:checked+.slider {
+    background: #ff6b00;
+    /* 英文状态变橙色 */
 }
 
-/* 移动端导航栏高度 56px，垂直居中 */
-@media (max-width: 768px) {
-  .lang-btn {
-    width: 40px;
-    height: 24px;
-    line-height: 24px;
+/* 滑块 */
+.lang-switch .slider::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+.lang-switch input:checked+.slider::before {
+    transform: translateX(32px);
+    /* 滑到右边 */
+}
+
+/* 文字 */
+.lang-switch .label-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    line-height: 28px;
     font-size: 12px;
-  }
+    font-weight: 600;
+    color: #fff;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+
+.lang-switch .label-text:nth-of-type(2) {
+    left: 8px;
+}
+
+/* 中 */
+.lang-switch .label-text:nth-of-type(3) {
+    right: 8px;
+}
+
+/* EN */
+.lang-switch input~.label-text:nth-of-type(2) {
+    opacity: 1;
+}
+
+.lang-switch input~.label-text:nth-of-type(3) {
+    opacity: 0;
+}
+
+.lang-switch input:checked~.label-text:nth-of-type(2) {
+    opacity: 0;
+}
+
+.lang-switch input:checked~.label-text:nth-of-type(3) {
+    opacity: 1;
 }
