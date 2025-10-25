@@ -37,7 +37,7 @@
     max-width: var(--max-width);
     margin: -2rem auto 0;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 60%;
     /* 关键：写死比例 */
     gap: 0;
     padding: 0 1rem;
