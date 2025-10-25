@@ -45,8 +45,7 @@ permalink: /publication/
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>        
         <!-- 可以在此添加更多年份 -->
         <!-- 
         <div class="publication-year">
