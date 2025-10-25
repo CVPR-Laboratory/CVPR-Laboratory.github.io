@@ -12,7 +12,10 @@
 
     <!-- 导航栏：引入 navbar.html，生成站点 Logo 与菜单 -->
     {%- include navbar.html -%}
-    
+
+    <!-- 主要内容容器：class="main" 用于全局样式控制，{{ content }} 会被 Jekyll 替换为具体页面的 Markdown/HTML 内容 -->
+    <main class="main">{{ content }}</main>
+
     <!-- 页脚：引入 footer.html，显示版权与联系信息 -->
     {%- include footer.html -%}
 
