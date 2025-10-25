@@ -211,6 +211,13 @@
     .page-hero h1{ font-size: 1.75rem; }
 }
 
+
+
+
+
+
+
+
 /* ===== 强制修复招生信息不显示 ===== */
 .admission-section{
     display:block!important;          /* 防止被任何规则隐藏 */
