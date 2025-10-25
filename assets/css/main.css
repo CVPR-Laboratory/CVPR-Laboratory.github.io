@@ -511,77 +511,93 @@ p {
 
 
 /* =========================================================中英文切换按钮样式========================================================= */
-/* ========= 语言胶囊-双面滑块 ========= */
+/* 
+  中英文语言切换按钮的样式定义
+  这个组件在桌面端和移动端都有使用，需要保证响应式适配
+*/
+
+/* ========= 语言胶囊滑块（桌面+移动通用） ========= */
+/* 
+  定义语言切换开关的基础样式
+  使用CSS变量便于统一管理和响应式调整
+*/
 .lang-switch{
-  --h:20px;
-  --w:65px;
-  --thumb:12px;          /* 滑块直径 */
-  --gap:4px;             /* 滑块与胶囊边缘距离 */
+  /* 定义CSS变量：高度、宽度、滑块大小、边距偏移量 */
+  --h:20px;          /* 开关容器高度 */
+  --w:65px;          /* 开关容器宽度 */
+  --thumb:12px;      /* 圆形滑块的直径 */
+  --offset:4px;      /* 滑块距离边缘的偏移量 */
 
-  position:relative;
-  width:var(--w);
-  height:var(--h);
-  border-radius:calc(var(--h)/2);
-  background:rgb(28, 135, 241);
-  border:1px solid rgba(255,255,255,.45);
-  cursor:pointer;
-  outline:none;
-  transition:background .25s;
+  /* 定位和布局 */
+  position:relative;  /* 为内部绝对定位元素提供参考 */
+  width:var(--w);     /* 使用变量设置宽度 */
+  height:var(--h);    /* 使用变量设置高度 */
+  
+  /* 视觉效果 */
+  border-radius:calc(var(--h)/2);  /* 圆角，设置为高度的一半形成胶囊形状 */
+  background:rgb(28, 133, 238);                 /* 背景色，与导航栏保持一致 */
+  border:1px solid rgba(255,255,255,.45);  /* 半透明白色边框 */
+  cursor:pointer;     /* 鼠标悬停时显示手型指针 */
+  outline:none;       /* 移除焦点轮廓，避免影响视觉效果 */
+  transition:background .25s;  /* 背景色过渡动画，持续0.25秒 */
 }
 
-/* 滑块容器：负责水平滑动+3D翻转 */
+/* 滑块样式 - 使用伪元素实现圆形滑块 */
 .lang-switch::before{
-  content:'';
-  position:absolute;
-  top:var(--gap);
-  bottom:var(--gap);
-  left:var(--gap);
-  width:var(--thumb);
-  border-radius:50%;
-  background:#fff;
-  transition:left .3s cubic-bezier(.4,0,.2,1), transform .3s;
-  /* 3D预备 */
-  transform-style:preserve-3d;
+  content:'';         /* 伪元素必须设置content属性 */
+  position:absolute;  /* 绝对定位，相对于.lang-switch容器 */
+  top:50%;            /* 垂直居中 */
+  transform:translateY(-50%);  /* 通过transform微调垂直居中位置 */
+  left:var(--offset);          /* 初始位置：左侧偏移量处 */
+  width:var(--thumb);          /* 滑块宽度 */
+  height:var(--thumb);         /* 滑块高度 */
+  border-radius:50%;           /* 圆形滑块 */
+  background:#fff;             /* 白色滑块 */
+  /* 滑块移动动画：使用贝塞尔曲线实现更自然的运动效果 */
+  transition:left .3s cubic-bezier(.4,0,.2,1);
 }
 
-/* 正面：“中” */
-.lang-switch::after{
-  content:'中';
-  position:absolute;
-  top:50%;
-  left:var(--gap);
-  width:var(--thumb);
-  transform:translateY(-50%);
-  color:#036;               /* 白底用深蓝字 */
-  font-size:11px;
-  font-weight:600;
-  text-align:center;
-  line-height:1;
-  pointer-events:none;
-  transition:opacity .15s;
-}
-
-/* 英文态：滑块滑到右侧+翻转180°，露出背面“EN” */
+/* 英文状态样式 - 当开关切换到英文时应用 */
 .lang-switch.on{
-  background:#09c;
-}
-.lang-switch.on::before{
-  left:calc(100% - var(--thumb) - var(--gap));
-  transform:rotateY(180deg);
-}
-.lang-switch.on::after{
-  content:'EN';             /* 翻转后背面文字变成EN */
-  left:auto;
-  right:var(--gap);
+  background:#09c;  /* 切换到更亮的蓝色背景 */
 }
 
-/* 移动端尺寸微调 */
+/* 英文状态下滑块位置 */
+.lang-switch.on::before{
+  /* 计算滑块在右侧的位置：总宽度减去滑块宽度再减去偏移量 */
+  left:calc(100% - var(--thumb) - var(--offset));
+}
+
+/* 文字标签通用样式 */
+.lang-switch .txt{
+  position:absolute;      /* 绝对定位 */
+  top:50%;               /* 垂直居中 */
+  transform:translateY(-50%);  /* 精确垂直居中 */
+  font-size:8px;        /* 字体大小 */
+  font-weight:600;       /* 字体粗细， semi-bold */
+  color:#fff;            /* 白色文字 */
+  user-select:none;      /* 禁止用户选择文字，提升交互体验 */
+}
+
+/* 中文文字定位 */
+.lang-switch .txt.zh{
+  left:-27px;  /* 距离左侧7像素 */
+}
+
+/* 英文文字定位 */
+.lang-switch .txt.en{
+  right:-27px;  /* 距离右侧7像素 */
+}
+
+/* 移动端响应式调整 - 在屏幕宽度小于768px时生效 */
 @media (max-width:768px){
   .lang-switch{
-    --h:24px;
-    --w:48px;
-    --thumb:18px;
-    --gap:3px;
+    /* 调整移动端的尺寸变量 */
+    --h:20px;    /* 增加高度便于触摸操作 */
+    --w:40px;    /* 稍微减小宽度 */
+    --thumb:14px;  /* 稍微减小滑块大小 */
+    --offset:3px;  /* 调整偏移量 */
   }
-  .lang-switch::after{font-size:10px;}
+  /* 移动端减小字体大小 */
+  .lang-switch .txt{font-size:6px;}
 }

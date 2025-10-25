@@ -6,7 +6,7 @@ permalink: /contact/
 
 <section class="page-header">
     <div class="container">
-        <h1>联系我们</h1>
+        <h1 data-zh="联系我们" data-en="Contact Us">联系我们</h1>
         <p>欢迎与我们取得联系</p>
     </div>
 </section>
@@ -15,11 +15,11 @@ permalink: /contact/
     <div class="container">
         <div class="contact-content">
             <div class="contact-info">
-                <h2>联系信息</h2>                
+                <h2 data-zh="联系信息" data-en="Contact Information">联系信息</h2>              
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <h3>地址</h3>
+                        <h3 data-zh="地址" data-en="Address">地址</h3>
                         <p>北京市海淀区XX路XX号</p>
                         <p>XX大学计算机学院科研楼A座301室</p>
                         <p>邮编: 100190</p>
@@ -28,7 +28,7 @@ permalink: /contact/
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <h3>邮箱</h3>
+                        <h3 data-zh="邮箱" data-en="Email">邮箱</h3>
                         <p>实验室邮箱: <a href="mailto:contact@cvpr-lab.edu">contact@cvpr-lab.edu</a></p>
                         <p>张教授邮箱: <a href="mailto:prof.zhang@cvpr-lab.edu">prof.zhang@cvpr-lab.edu</a></p>
                         <p>李副教授邮箱: <a href="mailto:associate.li@cvpr-lab.edu">associate.li@cvpr-lab.edu</a></p>
@@ -37,7 +37,7 @@ permalink: /contact/
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <h3>电话</h3>
+                        <h3 data-zh="电话" data-en="Phone">电话</h3>
                         <p>实验室办公室: +86-10-6278XXXX</p>
                         <p>张教授: +86-10-6278XXXX</p>
                     </div>
@@ -45,14 +45,14 @@ permalink: /contact/
                 <div class="contact-item">
                     <i class="fas fa-clock"></i>
                     <div>
-                        <h3>办公时间</h3>
+                        <h3 data-zh="办公时间" data-en="Office Hours">办公时间</h3>
                         <p>周一至周五: 9:00 - 17:00</p>
                         <p>周末: 预约访问</p>
                     </div>
                 </div>
             </div>            
             <div class="contact-form">
-                <h2>发送消息</h2>
+                <h2 data-zh="发送消息" data-en="Send a Message">发送消息</h2>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">姓名 *</label>
@@ -89,7 +89,7 @@ permalink: /contact/
 
 <section class="content-section" style="background-color: var(--light-gray);">
     <div class="container">
-        <h2>实验室位置</h2>
+        <h2 data-zh="实验室位置" data-en="Lab Location">实验室位置</h2>
         <div class="map-container">
             <div class="map-placeholder">
                 <i class="fas fa-map" style="font-size: 48px; color: var(--secondary-color); margin-bottom: 1rem;"></i>

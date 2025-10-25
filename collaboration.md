@@ -6,14 +6,14 @@ permalink: /collaboration/
 
 <section class="page-header">
     <div class="container">
-        <h1>合作交流</h1>
+        <h1 data-zh="合作交流" data-en="Collaboration & Exchange">合作交流</h1>
         <p>建立广泛的学术合作网络</p>
     </div>
 </section>
 
 <section class="content-section">
     <div class="container">
-        <h2>合作机构</h2>
+        <h2 data-zh="合作机构" data-en="Partner Institutions">合作机构</h2>
         <p>我们与国内外多家知名高校和研究机构保持紧密合作关系，包括：</p>
         <ul>
             <li>清华大学计算机系</li>
