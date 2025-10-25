@@ -15,8 +15,9 @@
     <!-- 导航链接 -->
     <nav class="nav-menu">
       {%- for item in site.nav -%}
-      {%- assign nav_name = item.name[page.lang] -%} <!-- 关键行 -->
-      <a href="{{ item.link | relative_url }}" {%- if page.url == item.link -%}class="active"{%- endif -%}>
+      {%- assign nav_name = item.name[page.lang] -%}
+      <a href="{{ item.link | relative_url }}" {%- if page.url==item.link -%}class="active" {%- endif -%}
+        data-zh="{{ item.name.zh }}" data-en="{{ item.name.en }}">
         {{ nav_name }}
       </a>
       
@@ -24,9 +25,9 @@
     </nav>
     <!-- 语言切换按钮 -->
     <!-- 语言胶囊滑块 -->
-    <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
-      <span class="txt zh">中</span>
-      <span class="txt en">EN</span>
+    <!-- 修正后的语言切换按钮 -->
+    <button id="lang-toggle" class="lang-switch" aria-label="Switch to English">
+      <!-- 使用data属性存储语言信息，而不是内部span -->
     </button>
 
     <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
