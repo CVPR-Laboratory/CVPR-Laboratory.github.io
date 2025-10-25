@@ -15,41 +15,41 @@ topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
 
 /* =========================================================中英文切效果实现========================================================= */
 
-// 语言切换：修复版
+// 语言切换：高级版
 const langBtn = document.getElementById('lang-toggle');
 const html = document.documentElement;
 
-const langMap = { 
-  zh: { txt: '中', aria: '切换到中文' },
-  en: { txt: 'EN', aria: 'Switch to English' } 
-};
+const langMap = { zh: { txt: 'EN',  aria: 'Switch to English' },
+                  en: { txt: '中',  aria: '切换到中文' } };
 
 function applyLang(lang) {
   html.lang = lang;
   localStorage.setItem('lang', lang);
-
-  // 更新按钮的无障碍标签
+  // 按钮文字 & 无障碍标签
+  langBtn.textContent = langMap[lang].txt;
   langBtn.setAttribute('aria-label', langMap[lang].aria);
-
-  // 更新按钮内部文本（保留 <span> 结构）
-  const zhSpan = langBtn.querySelector('.txt.zh');
-  const enSpan = langBtn.querySelector('.txt.en');
-  if (lang === 'zh') {
-    zhSpan.style.display = 'inline';
-    enSpan.style.display = 'none';
-    langBtn.classList.remove('on');
-  } else {
-    zhSpan.style.display = 'none';
-    enSpan.style.display = 'inline';
-    langBtn.classList.add('on');
-  }
-
+  // 高亮当前语言
+  langBtn.classList.toggle('on', lang === 'en');
   // 执行翻译
   translatePage(lang);
 }
 
-// ===== 放在 main.js 末尾 =====
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('lang') || 'zh';
-  applyLang(savedLang);
+// 初始加载
+applyLang(localStorage.getItem('lang') || 'zh');
+
+langBtn.addEventListener('click', () => {
+  const next = html.lang === 'zh' ? 'en' : 'zh';
+  applyLang(next);
 });
+// 双语翻译
+function translatePage(lang) {
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+}
+
+
+/* 新增：切换语言后整页跳转 */
+const base = '{{ site.baseurl }}';
+const target = (lang === 'en') ? base + '/en/' : base + '/';
+if (location.pathname !== target) location.href = target;

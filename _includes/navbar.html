@@ -12,22 +12,18 @@
     </a>
 
     <!-- 桌面端水平菜单：通过 Liquid 循环读取 _config.yml 中定义的 site.nav 数组，动态生成导航链接 -->
-    <!-- 导航链接 -->
     <nav class="nav-menu">
       {%- for item in site.nav -%}
-      {%- assign nav_name = item.name[page.lang] -%}
-      <a href="{{ item.link | relative_url }}" {%- if page.url==item.link -%}class="active" {%- endif -%}
-        data-zh="{{ item.name.zh }}" data-en="{{ item.name.en }}">
-        {{ nav_name }}
-      </a>
-      
+      <!-- 如果当前页面 URL 与导航项 link 完全一致，则追加 class="active" 以高亮当前栏目 -->
+      <a href="{{ item.link | relative_url }}" {% if page.url=item.link %}class="active" {%- endif -%}>{{ item.name
+        }}</a>
       {%- endfor -%}
     </nav>
     <!-- 语言切换按钮 -->
     <!-- 语言胶囊滑块 -->
-    <!-- 修正后的语言切换按钮 -->
-    <button id="lang-toggle" class="lang-switch" aria-label="Switch to English">
-      <!-- 使用data属性存储语言信息，而不是内部span -->
+    <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
+      <span class="txt zh">中</span>
+      <span class="txt en">EN</span>
     </button>
 
     <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
