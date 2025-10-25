@@ -46,7 +46,7 @@ permalink: /publication/
 </section>
 
 <!-- 专利内容区域，使用浅灰色背景区分 -->
-<section class="content-section" style="background-color: var(--light-gray);">
+<section class="content-section">
     <div class="container">
         <h2>专利</h2>        
         <div class="patent-list">
