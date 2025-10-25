@@ -213,14 +213,27 @@
 
 
 /* ========= 移动端地图精细化显示 ========= */
+/* ===== 移动端地图居中 ===== */
 @media (max-width: 768px) {
-  /* 1. 让地图高宽随屏宽自适应，避免横向滚动条 */
   #map {
-    width: 75%;          /* 占满屏宽 */
-    height: 45vh;         /* 占可视高度一半，约 375×0.5≈188px，信息+表单一屏可见 */
-    max-height: 320px;    /* 极限上限，防止超长手机出现“半屏都是图” */
-    border-radius: 0;     /* 通栏取消圆角，与手机系统地图体验一致 */
+    width: 80%;        /* 你已定 */
+    height: 45vh;
+    max-height: 320px;
+    border-radius: 0;
+
+    /* 关键：让地图本身水平居中 */
+    margin: 0 auto;    /* 左右 auto → 居中 */
+    display: block;    /* 块级元素才能用 auto 居中 */
   }
+
+  /* 提示文字也顺手居中 */
+  .map-box small {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+  }
+}
 
   /* 2. 全屏提示文字缩小、居中，更精致 */
   .map-box small {
