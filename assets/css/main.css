@@ -510,81 +510,27 @@ p {
 }
 
 
-/* =========================================================
-   中英文切换按钮样式
-   ========================================================= */
-/* ===== 语言切换按钮：高级微交互版 ===== */
-.lang-btn {
-  /* 固定盒子 42×26，圆角胶囊 */
-  width: 42px;
-  height: 26px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #fff;
-
-  cursor: pointer;
-  outline: none;
-
-  /* 文字居中 */
-  line-height: 26px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-
-  /* 等宽无衬线，减少字符宽度差 */
-  font-family: "SF Mono", "Segoe UI Mono", Roboto Mono, monospace;
-
-  /* 动画：颜色 + 微缩放 */
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.lang-btn:hover,
-.lang-btn:focus {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-1px);
-}
-
-.lang-btn:active {
-  transform: translateY(0) scale(0.96);
-}
-
-/* 当前语言高亮（可选） */
-.lang-btn.on {
-  background: #fff;
-  color: #036;
-}
-
-/* 移动端导航栏高度 56px，垂直居中 */
-@media (max-width: 768px) {
-  .lang-btn {
-    width: 40px;
-    height: 24px;
-    line-height: 24px;
-    font-size: 12px;
-  }
-}
-
-
-/* ===== 语言胶囊滑块 ===== */
+/* =========================================================中英文切换按钮样式========================================================= */
+/* ========= 语言胶囊滑块（桌面+移动通用） ========= */
 .lang-switch{
-  --h:28px;               /* 胶囊高度 */
-  --w:52px;               /* 胶囊宽度 */
-  --thumb:20px;           /* 滑块直径 */
-  --offset:4px;           /* 滑块左右留空 */
+  --h:28px;
+  --w:52px;
+  --thumb:20px;
+  --offset:4px;
+
   position:relative;
   width:var(--w);
   height:var(--h);
   border-radius:calc(var(--h)/2);
-  background:#036;        /* 与导航条同色 */
-  cursor:pointer;
+  background:#036;          /* 导航同色 */
   border:1px solid rgba(255,255,255,.45);
+  cursor:pointer;
+  outline:none;
   transition:background .25s;
 }
-.lang-switch::before{     /* 滑块 */
+
+/* 滑块 */
+.lang-switch::before{
   content:'';
   position:absolute;
   top:50%;
@@ -596,13 +542,17 @@ p {
   background:#fff;
   transition:left .3s cubic-bezier(.4,0,.2,1);
 }
-.lang-switch.on{          /* 英文态 */
+
+/* 英文态 */
+.lang-switch.on{
   background:#09c;
 }
 .lang-switch.on::before{
   left:calc(100% - var(--thumb) - var(--offset));
 }
-.lang-switch .txt{        /* 文字提示 */
+
+/* 文字 */
+.lang-switch .txt{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
@@ -611,10 +561,10 @@ p {
   color:#fff;
   user-select:none;
 }
-.lang-switch .txt.zh{ left:7px; }
-.lang-switch .txt.en{ right:7px; }
+.lang-switch .txt.zh{left:7px;}
+.lang-switch .txt.en{right:7px;}
 
-/* 移动端适配 */
+/* 移动端微调尺寸 */
 @media (max-width:768px){
   .lang-switch{
     --h:24px;
