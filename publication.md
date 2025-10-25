@@ -80,8 +80,7 @@ permalink: /publication/
                 <p>授权日期: 2025-06-15</p>
                 <!-- 发明人信息 -->
                 <p>发明人: 张教授, 王明, 李副教授</p>
-            </div>
-            
+            </div>  
         </div>
     </div>
 </section>
