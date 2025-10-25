@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 团队成员
-lang: zh
 permalink: /team/
 ---
 

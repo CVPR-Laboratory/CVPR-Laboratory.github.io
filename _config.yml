@@ -9,35 +9,27 @@ url: "https://cvpr-laboratory.github.io"
 nav:
   - name:
       zh: 首页
-      en: Home
     link: /
   - name:
       zh: 关于我们
-      en: About
     link: /about/
   - name:
       zh: 团队成员
-      en: Team
     link: /team/
   - name:
       zh: 研究方向
-      en: Research
     link: /research/
   - name:
       zh: 研究成果
-      en: Publications
     link: /publication/
   - name:
       zh: 新闻动态
-      en: News
     link: /news/
   - name:
       zh: 合作交流
-      en: Collaboration
     link: /collaboration/
   - name:
       zh: 联系我们
-      en: Contact
     link: /contact/
 
 # ========== Sass 静默 & 压缩 ==========

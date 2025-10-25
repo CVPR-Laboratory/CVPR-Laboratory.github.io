@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 新闻动态
-lang: zh
 permalink: /news/
 ---
 

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 联系我们
-lang: zh
 permalink: /contact/
 ---
 

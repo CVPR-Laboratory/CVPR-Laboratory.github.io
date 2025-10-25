@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 合作交流
-lang: zh
 permalink: /collaboration/
 ---
 

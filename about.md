@@ -1,7 +1,6 @@
 ---
 layout: default
 title: 关于我们
-lang: zh
 permalink: /about/
 ---
 
