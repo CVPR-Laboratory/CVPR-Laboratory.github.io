@@ -203,12 +203,15 @@
     line-height: 1.5;
 }
 
-.admission-section {
-    margin-top: 6rem;   /* 大于等于 4rem 即可 */
-}
+
 
 /* ---- 移动端微调 ---- */
 @media (max-width: 768px){
     .form-row{ grid-template-columns: 1fr; }
     .page-hero h1{ font-size: 1.75rem; }
+}
+
+.admission-section {
+    scroll-margin-top: 6rem;   /* 兼顾锚点跳转 */
+    padding-top: 2rem;         /* 视觉空隙 */
 }
