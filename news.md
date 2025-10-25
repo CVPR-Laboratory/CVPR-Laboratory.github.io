@@ -6,35 +6,34 @@ permalink: /news/
 
 <section class="page-header">
   <div class="container">
-    <h1>新闻动态</h1>
-    <p>关注实验室的最新进展和活动信息</p>
+    <h1 data-zh="新闻动态" data-en="News">新闻动态</h1>
+    <p data-zh="关注实验室的最新进展和活动信息" data-en="Stay updated with our latest progress and events">关注实验室的最新进展和活动信息</p>
   </div>
 </section>
 
 <section class="content-section">
   <div class="container">
     <div class="news-filters">
-      <button class="filter-btn active" data-filter="all">全部</button>
-      <button class="filter-btn" data-filter="research">科研进展</button>
-      <button class="filter-btn" data-filter="award">获奖荣誉</button>
-      <button class="filter-btn" data-filter="event">学术活动</button>
-      <button class="filter-btn" data-filter="team">团队动态</button>
+      <button class="filter-btn active" data-filter="all" data-zh="全部" data-en="All">全部</button>
+      <button class="filter-btn" data-filter="research" data-zh="科研进展" data-en="Research">科研进展</button>
+      <button class="filter-btn" data-filter="award" data-zh="获奖荣誉" data-en="Awards">获奖荣誉</button>
+      <button class="filter-btn" data-filter="event" data-zh="学术活动" data-en="Events">学术活动</button>
+      <button class="filter-btn" data-filter="team" data-zh="团队动态" data-en="Team">团队动态</button>
     </div>
-
-  <div class="news-timeline" id="news-timeline"></div>
-
-  <div class="news-archive">
-      <h3>历史档案</h3>
+    <div class="news-timeline" id="news-timeline"></div>
+    <div class="news-archive">
+      <h3 data-zh="历史档案" data-en="Archives">历史档案</h3>
       <div class="archive-years">
-        <a href="#" class="archive-year">2023年</a>
-        <a href="#" class="archive-year">2022年</a>
-        <a href="#" class="archive-year">2021年</a>
-        <a href="#" class="archive-year">2020年</a>
-        <a href="#" class="archive-year">更早</a>
+        <a href="#" class="archive-year" data-zh="2023年" data-en="2023">2023年</a>
+        <a href="#" class="archive-year" data-zh="2022年" data-en="2022">2022年</a>
+        <a href="#" class="archive-year" data-zh="2021年" data-en="2021">2021年</a>
+        <a href="#" class="archive-year" data-zh="2020年" data-en="2020">2020年</a>
+        <a href="#" class="archive-year" data-zh="更早" data-en="Earlier">更早</a>
       </div>
     </div>
   </div>
 </section>
+
 
 <style>
 :root {

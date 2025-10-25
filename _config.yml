@@ -5,26 +5,39 @@ description: 计算机视觉与模式识别实验室 | 三维视觉 · 医疗AI 
 baseurl: ""                       # 子路径，自定义域名可留空
 url: "https://cvpr-laboratory.github.io"
 
-# ========== 导航栏（中文） ==========
+# ========== 多语言导航栏 ==========
 nav:
-  - name:   首页
+  - name:
+      zh: 首页
+      en: Home
     link: /
-  - name: 关于我们
+  - name:
+      zh: 关于我们
+      en: About
     link: /about/
-  - name: 团队成员
+  - name:
+      zh: 团队成员
     link: /team/
-  - name: 研究方向
+  - name:
+      zh: 研究方向
+      en: Research
     link: /research/
-  - name: 研究成果
+  - name:
+      zh: 研究成果
+      en: Publications
     link: /publication/
-  - name: 新闻动态
+  - name:
+      zh: 新闻动态
+      en: News
     link: /news/
-  - name: 合作交流
+  - name:
+      zh: 合作交流
+      en: Collaboration
     link: /collaboration/
-  - name: 联系我们
+  - name:
+      zh: 联系我们
+      en: Contact
     link: /contact/
-
-
 
 # ========== Sass 静默 & 压缩 ==========
 sass:
