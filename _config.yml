@@ -7,30 +7,22 @@ url: "https://cvpr-laboratory.github.io"
 
 # ========== 多语言导航栏 ==========
 nav:
-  - name:
-      zh: 首页
-    link: /
-  - name:
-      zh: 关于我们
-    link: /about/
-  - name:
-      zh: 团队成员
-    link: /team/
-  - name:
-      zh: 研究方向
-    link: /research/
-  - name:
-      zh: 研究成果
-    link: /publication/
-  - name:
-      zh: 新闻动态
-    link: /news/
-  - name:
-      zh: 合作交流
-    link: /collaboration/
-  - name:
-      zh: 联系我们
-    link: /contact/
+  - name:首页
+    link:/
+  - name:关于我们
+    link:/about/
+  - name:团队成员
+    link:/team/
+  - name:研究方向
+    link:/research/
+  - name:研究成果
+    link:/publication/
+  - name:新闻动态
+    link:/news/
+  - name:合作交流
+    link:/collaboration/
+  - name:联系我们
+    link:/contact/
 
 # ========== Sass 静默 & 压缩 ==========
 sass:
