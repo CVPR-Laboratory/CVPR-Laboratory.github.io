@@ -210,3 +210,29 @@
     .form-row{ grid-template-columns: 1fr; }
     .page-hero h1{ font-size: 1.75rem; }
 }
+
+
+/* ========= 移动端地图精细化显示 ========= */
+@media (max-width: 768px) {
+  /* 1. 让地图高宽随屏宽自适应，避免横向滚动条 */
+  #map {
+    width: 100%;          /* 占满屏宽 */
+    height: 50vh;         /* 占可视高度一半，约 375×0.5≈188px，信息+表单一屏可见 */
+    max-height: 320px;    /* 极限上限，防止超长手机出现“半屏都是图” */
+    border-radius: 0;     /* 通栏取消圆角，与手机系统地图体验一致 */
+  }
+
+  /* 2. 全屏提示文字缩小、居中，更精致 */
+  .map-box small {
+    font-size: 0.75rem;   /* 12px，比桌面端小一点 */
+    margin-top: 0.4rem;
+    color: #666;
+  }
+
+  /* 3. 全屏后保持比例（可选） */
+  #map:fullscreen {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;   /* 若高德 API 内部有子层，可保持中心点 */
+  }
+}
