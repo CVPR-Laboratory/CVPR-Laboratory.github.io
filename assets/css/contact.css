@@ -248,4 +248,3 @@
     width: 100%;
     object-fit: cover;   /* 若高德 API 内部有子层，可保持中心点 */
   }
-}
