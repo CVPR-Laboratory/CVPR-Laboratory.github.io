@@ -1,67 +1,123 @@
----
-layout: default
----
-<section class="carousel">
-  <div class="item active" style="background-image:url(assets/img/index_slideshow_01.jpg)">
-    <div class="caption">
-      <h2 data-zh="三维视觉与机器人感知" data-en="3D Vision & Robotic Perception">三维视觉与机器人感知</h2>
-      <p data-zh="面向下一代智能机器人的前沿研究" data-en="Frontier research for next-gen intelligent robots">面向下一代智能机器人的前沿研究</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CVPR-Laboratory</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="shortcut icon" href="assets/img/logo.png">
+</head>
+<body>
+  <!-- ===== 导航栏 ===== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo.png" alt="Logo">
+        <span>CVPR-Laboratory</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="active">首页</a>
+        <a href="about.html">关于我们</a>
+        <a href="team.html">团队成员</a>
+        <a href="research.html">研究方向</a>
+        <a href="publication.html">研究成果</a>
+        <a href="news.html">新闻动态</a>
+        <a href="collaboration.html">合作交流</a>
+        <a href="contact.html">联系我们</a>
+      </nav>
+      <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
+        <span class="txt zh">中</span>
+        <span class="txt en">EN</span>
+      </button>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-  </div>
-  <div class="item" style="background-image:url(assets/img/index_slideshow_02.jpg)">
-    <div class="caption">
-      <h2 data-zh="CVPR 2024 最佳论文奖" data-en="CVPR 2024 Best Paper Award">CVPR 2024 最佳论文奖</h2>
-      <p data-zh="本实验室第一作者获奖" data-en="First-author award from our lab">本实验室第一作者获奖</p>
-    </div>
-  </div>
-  <div class="item" style="background-image:url(assets/img/index_slideshow_03.jpg)">
-    <div class="caption">
-      <h2 data-zh="开放数据集全球下载量 50W+" data-en="Open dataset: 500K+ global downloads">开放数据集全球下载量 50W+</h2>
-      <p data-zh="助力产学研共同体" data-en="Empowering academia-industry collaboration">助力产学研共同体</p>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section>
-  <h1 data-zh="欢迎来到 CVPR-Laboratory" data-en="Welcome to CVPR-Laboratory">欢迎来到 CVPR-Laboratory</h1>
-  <p data-zh="我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。"
-     data-en="We focus on fundamental research and industrial applications in computer vision, pattern recognition and machine learning. The lab has 2 professors, 4 associate professors, 3 post-docs and 60+ PhD/Master students, and has published 80+ papers in top-tier venues such as TPAMI, CVPR, ICCV and ECCCV in the past three years.">
-    我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。
-  </p>
-  <a class="btn" href="{{ '/about/' | relative_url }}" data-zh="了解更多" data-en="Learn More">了解更多</a>
-</section>
+  <!-- ===== 主内容 ===== -->
+  <main class="main">
+    <!-- 轮播图 -->
+    <section class="carousel">
+      <div class="item active" style="background-image:url(assets/img/index_slideshow_01.jpg)">
+        <div class="caption">
+          <h2 data-zh="三维视觉与机器人感知" data-en="3D Vision & Robotic Perception">三维视觉与机器人感知</h2>
+          <p data-zh="面向下一代智能机器人的前沿研究" data-en="Frontier research for next-gen intelligent robots">面向下一代智能机器人的前沿研究</p>
+        </div>
+      </div>
+      <div class="item" style="background-image:url(assets/img/index_slideshow_02.jpg)">
+        <div class="caption">
+          <h2 data-zh="CVPR 2024 最佳论文奖" data-en="CVPR 2024 Best Paper Award">CVPR 2024 最佳论文奖</h2>
+          <p data-zh="本实验室第一作者获奖" data-en="First-author award from our lab">本实验室第一作者获奖</p>
+        </div>
+      </div>
+      <div class="item" style="background-image:url(assets/img/index_slideshow_03.jpg)">
+        <div class="caption">
+          <h2 data-zh="开放数据集全球下载量 50W+" data-en="Open dataset: 500K+ global downloads">开放数据集全球下载量 50W+</h2>
+          <p data-zh="助力产学研共同体" data-en="Empowering academia-industry collaboration">助力产学研共同体</p>
+        </div>
+      </div>
+    </section>
 
-<section>
-  <h2 data-zh="快速入口" data-en="Quick Access">快速入口</h2>
-  <div class="cards">
-    <div class="card">
-      <img src="assets/img/ico-research.png" alt="">
-      <h3 data-zh="研究方向" data-en="Research Areas">研究方向</h3>
-      <p data-zh="三维视觉 / 医疗 AI / 多模态学习" data-en="3D Vision / Medical AI / Multimodal Learning">三维视觉 / 医疗 AI / 多模态学习</p>
-      <a href="{{ '/research/' | relative_url }}" data-zh="查看详情" data-en="Details">查看详情</a>
-    </div>
-    <div class="card">
-      <img src="assets/img/ico-pub.png" alt="">
-      <h3 data-zh="最新成果" data-en="Latest Achievements">最新成果</h3>
-      <p data-zh="2025 年已发表 12 篇 CCF-A 论文" data-en="12 CCF-A papers published in 2025">2025 年已发表 12 篇 CCF-A 论文</p>
-      <a href="{{ '/publication/' | relative_url }}" data-zh="阅读论文" data-en="Read Papers">阅读论文</a>
-    </div>
-    <div class="card">
-      <img src="assets/img/ico-news.png" alt="">
-      <h3 data-zh="新闻动态" data-en="News">新闻动态</h3>
-      <p data-zh="招生 / 获奖 / 学术报告" data-en="Admission / Awards / Seminars">招生 / 获奖 / 学术报告</p>
-      <a href="{{ '/news/' | relative_url }}" data-zh="立即浏览" data-en="Browse Now">立即浏览</a>
-    </div>
-  </div>
-</section>
+    <!-- 欢迎 -->
+    <section>
+      <h1 data-zh="欢迎来到 CVPR-Laboratory" data-en="Welcome to CVPR-Laboratory">欢迎来到 CVPR-Laboratory</h1>
+      <p data-zh="我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。"
+         data-en="We focus on fundamental research and industrial applications in computer vision, pattern recognition and machine learning. The lab has 2 professors, 4 associate professors, 3 post-docs and 60+ PhD/Master students, and has published 80+ papers in top-tier venues such as TPAMI, CVPR, ICCV and ECCCV in the past three years.">
+        我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。
+      </p>
+      <a class="btn" href="about.html" data-zh="了解更多" data-en="Learn More">了解更多</a>
+    </section>
 
-<script>
-  // 简易轮播，每 2 秒切一次
-  const items = document.querySelectorAll('.carousel .item');
-  let idx = 0;
-  setInterval(() => {
-    items[idx].classList.remove('active');
-    idx = (idx + 1) % items.length;
-    items[idx].classList.add('active');
-  }, 2000);
-</script>
+    <!-- 快速入口 -->
+    <section>
+      <h2 data-zh="快速入口" data-en="Quick Access">快速入口</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="assets/img/ico-research.png" alt="">
+          <h3 data-zh="研究方向" data-en="Research Areas">研究方向</h3>
+          <p data-zh="三维视觉 / 医疗 AI / 多模态学习" data-en="3D Vision / Medical AI / Multimodal Learning">三维视觉 / 医疗 AI / 多模态学习</p>
+          <a href="research.html" data-zh="查看详情" data-en="Details">查看详情</a>
+        </div>
+        <div class="card">
+          <img src="assets/img/ico-pub.png" alt="">
+          <h3 data-zh="最新成果" data-en="Latest Achievements">最新成果</h3>
+          <p data-zh="2025 年已发表 12 篇 CCF-A 论文" data-en="12 CCF-A papers published in 2025">2025 年已发表 12 篇 CCF-A 论文</p>
+          <a href="publication.html" data-zh="阅读论文" data-en="Read Papers">阅读论文</a>
+        </div>
+        <div class="card">
+          <img src="assets/img/ico-news.png" alt="">
+          <h3 data-zh="新闻动态" data-en="News">新闻动态</h3>
+          <p data-zh="招生 / 获奖 / 学术报告" data-en="Admission / Awards / Seminars">招生 / 获奖 / 学术报告</p>
+          <a href="news.html" data-zh="立即浏览" data-en="Browse Now">立即浏览</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
+      <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+    </div>
+  </footer>
+
+  <!-- ===== 返回顶部 ===== -->
+  <div id="scroll-top" title="返回顶部">▲</div>
+
+  <!-- ===== JS ===== -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    // 简易轮播，每 2 秒切一次
+    const items = document.querySelectorAll('.carousel .item');
+    let idx = 0;
+    setInterval(() => {
+      items[idx].classList.remove('active');
+      idx = (idx + 1) % items.length;
+      items[idx].classList.add('active');
+    }, 2000);
+  </script>
+</body>
+</html>
