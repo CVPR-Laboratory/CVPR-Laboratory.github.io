@@ -210,27 +210,3 @@
     .form-row{ grid-template-columns: 1fr; }
     .page-hero h1{ font-size: 1.75rem; }
 }
-
-
-
-
-
-
-
-
-/* ===== 强制修复招生信息不显示 ===== */
-.admission-section{
-    display:block!important;          /* 防止被任何规则隐藏 */
-    visibility:visible!important;
-    position:relative;                /* 新建层叠上下文 */
-    z-index:10;                       /* 提到上层 */
-    margin-top:6rem!important;        /* 避开负 margin 遮挡 */
-    padding-top:2rem;                 /* 视觉留白 */
-}
-.admission-section .container{
-    overflow:visible;                 /* 防止意外裁剪 */
-}
-.admission-cards{
-    opacity:1!important;
-    transform:none!important;
-}
