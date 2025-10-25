@@ -508,3 +508,20 @@ p {
 
     /* 段间距从 3rem → 2rem */
 }
+
+
+/* 语言切换按钮 */
+#lang-toggle {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+#lang-toggle:hover {
+  background: #fff;
+  color: #036;
+}

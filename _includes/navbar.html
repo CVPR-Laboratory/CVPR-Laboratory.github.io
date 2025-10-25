@@ -18,6 +18,8 @@
         <a href="{{ item.link | relative_url }}" {% if page.url=item.link %}class="active"{%- endif -%}>{{ item.name }}</a>
       {%- endfor -%}
     </nav>
+    <!-- 语言切换按钮 -->
+    <button id="lang-toggle" title="切换语言">EN</button>
     
     <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
     <div class="hamburger">
