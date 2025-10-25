@@ -47,3 +47,9 @@ function translatePage(lang) {
     el.textContent = el.getAttribute(`data-${lang}`);
   });
 }
+
+
+/* 新增：切换语言后整页跳转 */
+const base = '{{ site.baseurl }}';
+const target = (lang === 'en') ? base + '/en/' : base + '/';
+if (location.pathname !== target) location.href = target;

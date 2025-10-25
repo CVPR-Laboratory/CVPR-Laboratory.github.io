@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 研究方向
+lang: zh
 permalink: /research/
 ---
 
