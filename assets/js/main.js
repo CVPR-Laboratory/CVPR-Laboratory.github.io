@@ -41,3 +41,9 @@ langBtn.addEventListener('click', () => {
   const next = html.lang === 'zh' ? 'en' : 'zh';
   applyLang(next);
 });
+// 双语翻译
+function translatePage(lang) {
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+}
