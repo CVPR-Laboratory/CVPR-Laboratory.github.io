@@ -1,69 +1,258 @@
-/* ===== 变量保持原样 ===== */
-:root{
-    --primary  : #036;
-    --accent   : #09c;
-    --gray     : #f5f7fa;
-    --radius   : 8px;
+/* ===== 变量 ===== */
+:root {
+    --primary: #036;
+    --accent: #09c;
+    --gray: #f5f7fa;
+    --radius: 8px;
     --max-width: 1200px;
-    --gap      : 1.5rem;
+    --gap: 1.5rem;
+    --divider: #e0e6ed;
 }
 
-.contact-wrapper{
+.contact-wrapper {
     background: var(--gray);
-    padding-bottom: 4rem;
+    padding-bottom: 4rem
 }
 
 /* ---- 页头 ---- */
-.page-hero{
+.page-hero {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
     color: #fff;
     padding: 4rem 0 3rem;
-    text-align: center;
+    text-align: center
 }
-.page-hero h1{ font-size: 2.25rem; margin-bottom: .5rem; }
-.page-hero p{ font-size: 1.1rem; opacity: .9; }
 
-/* ===== 第一行：信息 + 表单 ===== */
-.contact-top{
+.page-hero h1 {
+    font-size: 2.25rem;
+    margin-bottom: .5rem
+}
+
+.page-hero p {
+    font-size: 1.1rem;
+    opacity: .9
+}
+
+/* ===== 第一行：40% / 60% 固定比例 ===== */
+.contact-top {
     max-width: var(--max-width);
     margin: -2rem auto 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--gap);
+    grid-template-columns: 30% 70%;
+    /* 关键：写死比例 */
+    gap: 0;
     padding: 0 1rem;
+    position: relative;
 }
-/* 两个子块通用样式 */
+
+/* ===== 40% / 60% 固定比例、卡片限高已保留 ===== */
+.form-group textarea{
+    height:120px;               /* 固定高度 */
+    resize:none;                /* 禁止拖拽 */
+    overflow-y:auto;            /* 自身出现滚动条 */
+    padding:.75rem 1rem;
+    border:1px solid #dcdfe6;
+    border-radius:var(--radius);
+    font-size:1rem;
+    line-height:1.5;
+    transition:border-color .3s;
+}
+.form-group textarea:focus{border-color:var(--accent);outline:none}
+
+/* 垂直分隔线 */
+.contact-top::before {
+
+    position: absolute;
+    left: 40%;
+    top: 8%;
+    bottom: 8%;
+    width: 1px;
+    background: var(--divider);
+}
+
+/* 两栏卡片：同高 + 内部滚动 */
 .contact-top .info-box,
-.contact-top .form-box{
+.contact-top .form-box {
     background: #fff;
+    border: 1px solid #fff;
     border-radius: var(--radius);
-    padding: 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    padding: 2rem 2.5rem;
+    margin: 0 .75rem;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, .06), 0 2px 8px rgba(0, 0, 0, .04);
+    height: 100%;
+    /* 让子元素能继承高度 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 内部滚动容器：超出出现滚动条，卡片本身不再被撑开 */
+.scroll-inner {
+    flex: 1;
+    overflow-y: auto;
+    /* 内部滚动 */
+    padding-right: .5rem;
+    /* 预留滚动条不压文字 */
+}
+
+.scroll-inner::-webkit-scrollbar {
+    width: 6px
+}
+
+.scroll-inner::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px
+}
+
+/* ---- 信息块 ---- */
+.info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem
+}
+
+.info-item i {
+    color: var(--accent);
+    font-size: 1.25rem;
+    margin-top: 4px
+}
+
+.info-item h3 {
+    font-size: 1rem;
+    margin-bottom: .25rem
+}
+
+.info-item p {
+    margin: 0;
+    line-height: 1.5
+}
+
+.info-item a {
+    color: var(--accent);
+    text-decoration: none
+}
+
+.info-item a:hover {
+    text-decoration: underline
+}
+
+/* ---- 表单 ---- */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap)
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem
+}
+
+.form-group label {
+    margin-bottom: .5rem;
+    font-weight: 600;
+    font-size: .95rem
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: .75rem 1rem;
+    border: 1px solid #dcdfe6;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: border-color .3s
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--accent);
+    outline: none
+}
+
+.btn-submit {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: .8rem 2rem;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .3s
+}
+
+.btn-submit:hover {
+    background: var(--primary)
+}
+
+.form-tip {
+    margin-top: .75rem;
+    font-size: .8rem;
+    color: #999
 }
 
 /* ===== 第二行：地图 ===== */
-.contact-map{
+.contact-map {
     max-width: var(--max-width);
-    margin: var(--gap) auto 0;
+    margin: calc(var(--gap) + 1rem) auto 0;
     padding: 0 1rem;
+    position: relative;
 }
-.map-box #map{
+
+.contact-map::before {
+    /* 渐变分隔带 */
+    content: '';
+    display: block;
+    height: 12px;
+    background: linear-gradient(180deg, var(--gray) 0%, rgba(245, 247, 250, 0) 100%);
+    margin: -12px 0 12px;
+}
+
+#map {
     width: 100%;
     height: 450px;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: transform .3s;
+    transition: transform .3s
 }
-.map-box #map:hover{ transform: scale(1.01); }
-.map-box small{
+
+#map:hover {
+    transform: scale(1.01)
+}
+
+.map-box small {
     display: block;
     text-align: center;
     margin-top: .5rem;
-    color: #666;
+    color: #666
 }
 
-/* ===== 移动端：信息 + 表单堆叠 ===== */
-@media (max-width: 768px){
-    .contact-top{ grid-template-columns: 1fr; }
-    .map-box #map{ height: 320px; }
+/* ===== 移动端：单栏 + 去掉分隔线/滚动 ===== */
+@media (max-width:768px) {
+    .contact-top {
+        grid-template-columns: 1fr
+    }
+
+    .contact-top::before {
+        display: none
+    }
+
+    .contact-top .info-box,
+    .contact-top .form-box {
+        height: auto
+    }
+
+    /* 高度自由，无需滚动 */
+    .scroll-inner {
+        overflow: visible;
+        padding-right: 0
+    }
+
+    #map {
+        height: 320px
+    }
+
+    .form-row {
+        grid-template-columns: 1fr
+    }
 }
