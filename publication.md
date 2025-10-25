@@ -56,8 +56,7 @@ permalink: /publication/
                         <!-- 数据集下载链接 -->
                         <a href="#" class="cta-button small secondary">数据集</a>
                     </div>
-                </div>
-                
+                </div>               
             </div>
         </div>
     </div>

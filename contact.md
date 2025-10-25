@@ -15,8 +15,7 @@ permalink: /contact/
     <div class="container">
         <div class="contact-content">
             <div class="contact-info">
-                <h2>联系信息</h2>
-                
+                <h2>联系信息</h2>                
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
@@ -25,8 +24,7 @@ permalink: /contact/
                         <p>XX大学计算机学院科研楼A座301室</p>
                         <p>邮编: 100190</p>
                     </div>
-                </div>
-                
+                </div>                
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
@@ -35,8 +33,7 @@ permalink: /contact/
                         <p>张教授邮箱: <a href="mailto:prof.zhang@cvpr-lab.edu">prof.zhang@cvpr-lab.edu</a></p>
                         <p>李副教授邮箱: <a href="mailto:associate.li@cvpr-lab.edu">associate.li@cvpr-lab.edu</a></p>
                     </div>
-                </div>
-                
+                </div>                
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
@@ -44,8 +41,7 @@ permalink: /contact/
                         <p>实验室办公室: +86-10-6278XXXX</p>
                         <p>张教授: +86-10-6278XXXX</p>
                     </div>
-                </div>
-                
+                </div>                
                 <div class="contact-item">
                     <i class="fas fa-clock"></i>
                     <div>
@@ -54,31 +50,26 @@ permalink: /contact/
                         <p>周末: 预约访问</p>
                     </div>
                 </div>
-            </div>
-            
+            </div>            
             <div class="contact-form">
                 <h2>发送消息</h2>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">姓名 *</label>
                         <input type="text" id="name" name="name" required>
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
                         <label for="email">邮箱 *</label>
                         <input type="email" id="email" name="email" required>
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
                         <label for="subject">主题 *</label>
                         <input type="text" id="subject" name="subject" required>
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
                         <label for="message">消息内容 *</label>
                         <textarea id="message" name="message" rows="6" required></textarea>
-                    </div>
-                    
+                    </div>                    
                     <div class="form-group">
                         <label for="purpose">联系目的</label>
                         <select id="purpose" name="purpose">
@@ -88,8 +79,7 @@ permalink: /contact/
                             <option value="visit">访问交流</option>
                             <option value="other">其他</option>
                         </select>
-                    </div>
-                    
+                    </div>                    
                     <button type="submit" class="cta-button">发送消息</button>
                 </form>
             </div>
@@ -124,8 +114,7 @@ permalink: /contact/
                     <li>要求: 相关专业硕士学位</li>
                     <li>联系方式: prof.zhang@cvpr-lab.edu</li>
                 </ul>
-            </div>
-            
+            </div>            
             <div class="admission-item">
                 <h3>硕士研究生</h3>
                 <p>招收计算机科学、电子信息等相关专业的硕士研究生。</p>
@@ -134,8 +123,7 @@ permalink: /contact/
                     <li>要求: 相关专业本科学位</li>
                     <li>联系方式: associate.li@cvpr-lab.edu</li>
                 </ul>
-            </div>
-            
+            </div>            
             <div class="admission-item">
                 <h3>访问学生/学者</h3>
                 <p>欢迎国内外访问学者和交换学生来实验室交流学习。</p>
