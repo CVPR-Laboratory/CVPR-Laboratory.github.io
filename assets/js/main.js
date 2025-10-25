@@ -11,6 +11,10 @@ window.addEventListener('scroll', () => {
 topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 
+
+
+/* =========================================================中英文切效果实现========================================================= */
+
 // 语言切换
 const langToggle = document.getElementById('lang-toggle');
 const html = document.documentElement; // <html lang="zh-CN">
