@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <!-- 继承原导航 -->
+    <!-- 导航 -->
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -54,100 +54,102 @@
             </div>
         </section>
 
-        <!-- 联系信息 -->
-        <div class="info-box">
-            <h2 data-zh="联系信息" data-en="Contact Information">联系信息</h2>
+        <!-- 第一行：联系信息 + 发送消息 -->
+        <section class="contact-top">
+            <!-- 联系信息 -->
+            <div class="info-box">
+                <h2 data-zh="联系信息" data-en="Contact Information">联系信息</h2>
 
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                    <h3 data-zh="地址" data-en="Address">地址</h3>
-                    <p data-zh="山东省日照市烟台北路80号" data-en="No. 80, Yantai North Road, Rizhao City, Shandong Province">
-                        山东省日照市烟台北路80号</p>
-                    <p data-zh="曲阜师范大学计算机学院JS526"
-                        data-en="Qufu Normal University College of Computer Science JS526, Postcode: 276826">
-                        曲阜师范大学计算机学院JS526</p>
-                    <p data-zh="邮编: 276826" data-en="Postcode: 276826">邮编: 276826</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                    <h3 data-zh="邮箱" data-en="Email">邮箱</h3>
-                    <p>Lab Email: <a href="mailto:wnb_915@163.com">wnb_915@163.com</a></p>
-                    <p>Prof. Wang: <a href="mailto:wnb_915@163.com">wnb_915@163.com</a></p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-phone"></i>
-                <div>
-                    <h3 data-zh="电话" data-en="Phone">电话</h3>
-                    <p>Lab Office: 18663318575</p>
-                    <p>Prof. Wang: 18663318575</p>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <h3 data-zh="办公时间" data-en="Office Hours">办公时间</h3>
-                    <p data-zh="周一至周五: 9:00 - 17:00" data-en="Mon-Fri: 9:00 - 17:00">周一至周五: 9:00 - 17:00</p>
-                    <p data-zh="周末: 预约访问" data-en="Weekend: by appointment">周末: 预约访问</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 表单 -->
-        <div class="form-box">
-            <h2 data-zh="发送消息" data-en="Send a Message">发送消息</h2>
-            <form id="contactForm" autocomplete="on">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label data-zh="姓名 *" data-en="Name *">姓名 *</label>
-                        <input type="text" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-zh="邮箱 *" data-en="Email *">邮箱 *</label>
-                        <input type="email" name="email" required>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3 data-zh="地址" data-en="Address">地址</h3>
+                        <p data-zh="山东省日照市烟台北路80号" data-en="No. 80, Yantai North Road, Rizhao City, Shandong Province">
+                            山东省日照市烟台北路80号</p>
+                        <p data-zh="曲阜师范大学计算机学院JS526"
+                            data-en="Qufu Normal University College of Computer Science JS526, Postcode: 276826">
+                            曲阜师范大学计算机学院JS526</p>
+                        <p data-zh="邮编: 276826" data-en="Postcode: 276826">邮编: 276826</p>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label data-zh="主题 *" data-en="Subject *">主题 *</label>
-                    <input type="text" name="subject" required>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3 data-zh="邮箱" data-en="Email">邮箱</h3>
+                        <p>Lab Email: <a href="mailto:wnb_915@163.com">wnb_915@163.com</a></p>
+                        <p>Prof. Wang: <a href="mailto:wnb_915@163.com">wnb_915@163.com</a></p>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label data-zh="消息内容 *" data-en="Message *">消息内容 *</label>
-                    <textarea name="message" rows="5" required></textarea>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3 data-zh="电话" data-en="Phone">电话</h3>
+                        <p>Lab Office: 18663318575</p>
+                        <p>Prof. Wang: 18663318575</p>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label data-zh="联系目的" data-en="Purpose">联系目的</label>
-                    <select name="purpose">
-                        <option value="" data-zh="请选择..." data-en="Please select...">请选择...</option>
-                        <option value="collaboration" data-zh="科研合作" data-en="Research Collaboration">科研合作</option>
-                        <option value="admission" data-zh="招生咨询" data-en="Admission Inquiry">招生咨询</option>
-                        <option value="visit" data-zh="访问交流" data-en="Academic Visit">访问交流</option>
-                        <option value="other" data-zh="其他" data-en="Other">其他</option>
-                    </select>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3 data-zh="办公时间" data-en="Office Hours">办公时间</h3>
+                        <p data-zh="周一至周五: 9:00 - 17:00" data-en="Mon-Fri: 9:00 - 17:00">周一至周五: 9:00 - 17:00</p>
+                        <p data-zh="周末: 预约访问" data-en="Weekend: by appointment">周末: 预约访问</p>
+                    </div>
                 </div>
+            </div>
 
-                <button type="submit" class="btn-submit" data-zh="发送消息" data-en="Send Message">发送消息</button>
-                <p class="form-tip" data-zh="提示：带 * 为必填项" data-en="Tip: * fields are required">提示：带 * 为必填项</p>
-            </form>
-        </div>
+            <!-- 表单 -->
+            <div class="form-box">
+                <h2 data-zh="发送消息" data-en="Send a Message">发送消息</h2>
+                <form id="contactForm" autocomplete="on">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-zh="姓名 *" data-en="Name *">姓名 *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-zh="邮箱 *" data-en="Email *">邮箱 *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-zh="主题 *" data-en="Subject *">主题 *</label>
+                        <input type="text" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-zh="消息内容 *" data-en="Message *">消息内容 *</label>
+                        <textarea name="message" rows="5" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label data-zh="联系目的" data-en="Purpose">联系目的</label>
+                        <select name="purpose">
+                            <option value="" data-zh="请选择..." data-en="Please select...">请选择...</option>
+                            <option value="collaboration" data-zh="科研合作" data-en="Research Collaboration">科研合作</option>
+                            <option value="admission" data-zh="招生咨询" data-en="Admission Inquiry">招生咨询</option>
+                            <option value="visit" data-zh="访问交流" data-en="Academic Visit">访问交流</option>
+                            <option value="other" data-zh="其他" data-en="Other">其他</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit" data-zh="发送消息" data-en="Send Message">发送消息</button>
+                    <p class="form-tip" data-zh="提示：带 * 为必填项" data-en="Tip: * fields are required">提示：带 * 为必填项</p>
+                </form>
+            </div>
         </section>
 
-        <!-- 地图+信息+表单 三栏 -->
-        <section class="contact-grid container">
-            <!-- 地图 -->
+        <!-- 第二行：地图 -->
+        <section class="contact-map">
             <div class="map-box">
                 <div id="map"></div>
                 <small data-zh="点击地图可全屏查看" data-en="Click map to view fullscreen">点击地图可全屏查看</small>
             </div>
+        </section>
     </main>
 
     <footer class="footer">
