@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +19,12 @@
       --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       --transition: all 0.3s ease;
     }
-    .news-filters { text-align: center; margin-bottom: 3rem; }
+
+    .news-filters {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
     .filter-btn {
       background: var(--white);
       border: 2px solid var(--medium-gray);
@@ -29,19 +35,30 @@
       transition: var(--transition);
       font-weight: 500;
     }
-    .filter-btn.active, .filter-btn:hover {
+
+    .filter-btn.active,
+    .filter-btn:hover {
       background: var(--secondary-color);
       color: var(--white);
       border-color: var(--secondary-color);
     }
-    .news-timeline { max-width: 800px; margin: 0 auto; }
-    .timeline-year { margin-bottom: 3rem; }
+
+    .news-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-year {
+      margin-bottom: 3rem;
+    }
+
     .timeline-year h2 {
       color: var(--primary-color);
       border-bottom: 3px solid var(--secondary-color);
       padding-bottom: 0.5rem;
       margin-bottom: 1.5rem;
     }
+
     .news-item {
       display: flex;
       margin-bottom: 2rem;
@@ -51,7 +68,12 @@
       overflow: hidden;
       transition: var(--transition);
     }
-    .news-item:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+
+    .news-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
     .news-date {
       background: var(--secondary-color);
       color: var(--white);
@@ -62,25 +84,89 @@
       flex-direction: column;
       justify-content: center;
     }
-    .date-day { font-size: 2rem; font-weight: bold; }
-    .date-month { font-size: 1rem; margin-top: 0.25rem; }
-    .news-content { padding: 1.5rem; flex: 1; }
-    .news-meta { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.9rem; color: var(--dark-gray); }
+
+    .date-day {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .date-month {
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .news-content {
+      padding: 1.5rem;
+      flex: 1;
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+    }
+
     .category {
       padding: 0.2rem 0.8rem;
       border-radius: 15px;
       font-size: 0.8rem;
       font-weight: 600;
     }
-    .category.research { background: #e3f2fd; color: #1976d2; }
-    .category.award { background: #f3e5f5; color: #7b1fa2; }
-    .category.event { background: #e8f5e8; color: #388e3c; }
-    .category.team { background: #fff3e0; color: #f57c00; }
-    .news-links { margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-    .news-link { color: var(--secondary-color); text-decoration: none; font-size: 0.9rem; }
-    .news-link:hover { color: var(--primary-color); }
-    .news-archive { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--medium-gray); }
-    .archive-years { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+
+    .category.research {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .category.award {
+      background: #f3e5f5;
+      color: #7b1fa2;
+    }
+
+    .category.event {
+      background: #e8f5e8;
+      color: #388e3c;
+    }
+
+    .category.team {
+      background: #fff3e0;
+      color: #f57c00;
+    }
+
+    .news-links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .news-link {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .news-link:hover {
+      color: var(--primary-color);
+    }
+
+    .news-archive {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--medium-gray);
+    }
+
+    .archive-years {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
     .archive-year {
       padding: 0.5rem 1.5rem;
       border-radius: 20px;
@@ -89,14 +175,31 @@
       color: inherit;
       transition: var(--transition);
     }
-    .archive-year:hover { border-color: var(--secondary-color); color: var(--secondary-color); }
+
+    .archive-year:hover {
+      border-color: var(--secondary-color);
+      color: var(--secondary-color);
+    }
+
     @media (max-width: 768px) {
-      .news-item { flex-direction: column; }
-      .news-date { flex-direction: row; gap: 0.5rem; min-width: auto; }
-      .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+      .news-item {
+        flex-direction: column;
+      }
+
+      .news-date {
+        flex-direction: row;
+        gap: 0.5rem;
+        min-width: auto;
+      }
+
+      .filter-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
+
 <body>
   <header class="navbar">
     <div class="nav-container">
@@ -105,14 +208,14 @@
         <span>CVPR-Laboratory</span>
       </a>
       <nav class="nav-menu">
-        <a href="index.html">首页</a>
-        <a href="about.html">关于我们</a>
-        <a href="team.html">团队成员</a>
-        <a href="research.html">研究方向</a>
-        <a href="publication.html">研究成果</a>
-        <a href="news.html" class="active">新闻动态</a>
-        <a href="collaboration.html">合作交流</a>
-        <a href="contact.html">联系我们</a>
+        <a href="index.html" data-zh="首页" data-en="Home">首页</a>
+        <a href="about.html" data-zh="关于我们" data-en="About Us">关于我们</a>
+        <a href="team.html" class="active" data-zh="团队成员" data-en="Team Members">团队成员</a>
+        <a href="research.html" data-zh="研究方向" data-en="Research">研究方向</a>
+        <a href="publication.html" data-zh="研究成果" data-en="Publications">研究成果</a>
+        <a href="news.html" data-zh="新闻动态" data-en="News">新闻动态</a>
+        <a href="collaboration.html" data-zh="合作交流" data-en="Collaboration">合作交流</a>
+        <a href="contact.html" data-zh="联系我们" data-en="Contact">联系我们</a>
       </nav>
       <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
         <span class="txt zh">中</span>
@@ -158,8 +261,12 @@
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
-      <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+      <p data-zh="&copy; 2025 CVPR-Laboratory. 保留所有权利。" data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">
+        &copy; 2025 CVPR-Laboratory. All rights
+        reserved.</p>
+      <p data-zh="地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com"
+        data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">地址：曲阜师范大学 JS526室
+        &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
     </div>
   </footer>
 
@@ -218,12 +325,12 @@
             <div class="news-content">
               <h3>${item.title}</h3>
               <div class="news-meta">
-                <span class="category ${item.category}">${({research:'科研进展',award:'获奖荣誉',event:'学术活动',team:'团队动态'}[item.category])}</span>
+                <span class="category ${item.category}">${({ research: '科研进展', award: '获奖荣誉', event: '学术活动', team: '团队动态' }[item.category])}</span>
                 <span class="author">作者: ${item.author}</span>
               </div>
               <p>${item.summary}</p>
               ${item.image ? `<div class="news-images"><img src="${item.image}" alt="新闻图片" /></div>` : ''}
-              ${item.links ? `<div class="news-links">${item.links.map(l=>`<a href="${l.href}" class="news-link"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}</div>` : ''}
+              ${item.links ? `<div class="news-links">${item.links.map(l => `<a href="${l.href}" class="news-link"><i class="${l.icon}"></i> ${l.label}</a>`).join('')}</div>` : ''}
             </div>
           `;
           section.appendChild(div);
@@ -244,4 +351,5 @@
     });
   </script>
 </body>
+
 </html>

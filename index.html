@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="shortcut icon" href="assets/img/logo.png">
 </head>
+
 <body>
   <!-- ===== 导航栏 ===== -->
   <header class="navbar">
@@ -17,14 +19,14 @@
         <span>CVPR-Laboratory</span>
       </a>
       <nav class="nav-menu">
-        <a href="index.html" class="active">首页</a>
-        <a href="about.html">关于我们</a>
-        <a href="team.html">团队成员</a>
-        <a href="research.html">研究方向</a>
-        <a href="publication.html">研究成果</a>
-        <a href="news.html">新闻动态</a>
-        <a href="collaboration.html">合作交流</a>
-        <a href="contact.html">联系我们</a>
+        <a href="index.html" data-zh="首页" data-en="Home">首页</a>
+        <a href="about.html" data-zh="关于我们" data-en="About Us">关于我们</a>
+        <a href="team.html" class="active" data-zh="团队成员" data-en="Team Members">团队成员</a>
+        <a href="research.html" data-zh="研究方向" data-en="Research">研究方向</a>
+        <a href="publication.html" data-zh="研究成果" data-en="Publications">研究成果</a>
+        <a href="news.html" data-zh="新闻动态" data-en="News">新闻动态</a>
+        <a href="collaboration.html" data-zh="合作交流" data-en="Collaboration">合作交流</a>
+        <a href="contact.html" data-zh="联系我们" data-en="Contact">联系我们</a>
       </nav>
       <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
         <span class="txt zh">中</span>
@@ -64,8 +66,9 @@
     <section>
       <h1 data-zh="欢迎来到 CVPR-Laboratory" data-en="Welcome to CVPR-Laboratory">欢迎来到 CVPR-Laboratory</h1>
       <p data-zh="我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。"
-         data-en="We focus on fundamental research and industrial applications in computer vision, pattern recognition and machine learning. The lab has 2 professors, 4 associate professors, 3 post-docs and 60+ PhD/Master students, and has published 80+ papers in top-tier venues such as TPAMI, CVPR, ICCV and ECCCV in the past three years.">
-        我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A 类期刊会议发表论文 80 余篇。
+        data-en="We focus on fundamental research and industrial applications in computer vision, pattern recognition and machine learning. The lab has 2 professors, 4 associate professors, 3 post-docs and 60+ PhD/Master students, and has published 80+ papers in top-tier venues such as TPAMI, CVPR, ICCV and ECCCV in the past three years.">
+        我们致力于计算机视觉、模式识别与机器学习的基础研究与产业落地。实验室现有教授 2 人、副教授 4 人、博士后 3 人、博士 / 硕士 60 余人，近三年在 TPAMI、CVPR、ICCV、ECCV 等 CCF-A
+        类期刊会议发表论文 80 余篇。
       </p>
       <a class="btn" href="about.html" data-zh="了解更多" data-en="Learn More">了解更多</a>
     </section>
@@ -77,7 +80,8 @@
         <div class="card">
           <img src="assets/img/ico-research.png" alt="">
           <h3 data-zh="研究方向" data-en="Research Areas">研究方向</h3>
-          <p data-zh="三维视觉 / 医疗 AI / 多模态学习" data-en="3D Vision / Medical AI / Multimodal Learning">三维视觉 / 医疗 AI / 多模态学习</p>
+          <p data-zh="三维视觉 / 医疗 AI / 多模态学习" data-en="3D Vision / Medical AI / Multimodal Learning">三维视觉 / 医疗 AI / 多模态学习
+          </p>
           <a href="research.html" data-zh="查看详情" data-en="Details">查看详情</a>
         </div>
         <div class="card">
@@ -99,8 +103,12 @@
   <!-- ===== 页脚 ===== -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
-      <p>地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+      <p data-zh="&copy; 2025 CVPR-Laboratory. 保留所有权利。" data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">
+        &copy; 2025 CVPR-Laboratory. All rights
+        reserved.</p>
+      <p data-zh="地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com"
+        data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">地址：曲阜师范大学 JS526室
+        &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
     </div>
   </footer>
 
@@ -120,4 +128,5 @@
     }, 2000);
   </script>
 </body>
+
 </html>
