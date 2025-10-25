@@ -58,7 +58,6 @@
     width: 100%;
     height: 380px;
     border-radius: var(--radius);
-    background: url("../img/map-placeholder.jpg") center/cover no-repeat; /* 占位图 */
     cursor: pointer;
     transition: transform .3s;
 }
