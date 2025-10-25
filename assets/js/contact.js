@@ -3,25 +3,28 @@
  * =========================================================*/
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. 等高德脚本加载完会自动回调 window.initAMap ------------- */
+    /* 1. 等高德主脚本加载完 + DOM 渲染完再初始化 ------------- */
     window.initAMap = () => {
-        // 实验室经纬度（示例：北京)，换成自己的
-        const center = [119.53763, 35.44084];
-        const map = new AMap.Map('map', {
-            zoom: 16,
-            center: center,
-            scrollWheel: false, // 禁滚轮缩放，更简洁
+        // 等待浏览器把 #map 渲染出来
+        requestAnimationFrame(() => {
+            const center = [119.53763, 35.44084];          // 日照校区
+            const map = new AMap.Map('map', {
+                zoom: 16,
+                center: center,
+                scrollWheel: false
+            });
+            new AMap.Marker({
+                position: center,
+                title: 'CVPR-Laboratory'
+            }).setMap(map);
+            window.amapInstance = map;
         });
-        // 标记
-        new AMap.Marker({
-            position: center,
-            title: 'CVPR-Laboratory'
-        }).setMap(map);
-
-        // 保存实例，供全屏或其他交互
-        window.amapInstance = map;
     };
 
+    /* 2. 如果高德脚本先加载完，手动触发 initAMap ---------- */
+    if (typeof AMap !== 'undefined') {
+        initAMap();
+    }
     /* 2. 点击地图容器 → 原生全屏 ------------------------------------ */
     document.getElementById('map').addEventListener('click', function () {
         const el = this;
