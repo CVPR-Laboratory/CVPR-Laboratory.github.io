@@ -1,13 +1,13 @@
 # ========== 站点信息 ==========
 title: CVPR-Laboratory
-email: cvpr@xxx.edu.cn
+email: wnb_915@163.com
 description: 计算机视觉与模式识别实验室 | 三维视觉 · 医疗AI · 多模态学习
 baseurl: ""                       # 子路径，自定义域名可留空
 url: "https://cvpr-laboratory.github.io"
 
 # ========== 导航栏（中文） ==========
 nav:
-  - name: 首页
+  - name:   首页
     link: /
   - name: 关于我们
     link: /about/
