@@ -581,23 +581,23 @@ p {
 
 /* 中文文字定位 */
 .lang-switch .txt.zh{
-  left:-7px;  /* 距离左侧7像素 */
+  left:-27px;  /* 距离左侧7像素 */
 }
 
 /* 英文文字定位 */
 .lang-switch .txt.en{
-  right:-7px;  /* 距离右侧7像素 */
+  right:-27px;  /* 距离右侧7像素 */
 }
 
 /* 移动端响应式调整 - 在屏幕宽度小于768px时生效 */
 @media (max-width:768px){
   .lang-switch{
     /* 调整移动端的尺寸变量 */
-    --h:24px;    /* 增加高度便于触摸操作 */
-    --w:48px;    /* 稍微减小宽度 */
-    --thumb:18px;  /* 稍微减小滑块大小 */
+    --h:20px;    /* 增加高度便于触摸操作 */
+    --w:40px;    /* 稍微减小宽度 */
+    --thumb:14px;  /* 稍微减小滑块大小 */
     --offset:3px;  /* 调整偏移量 */
   }
   /* 移动端减小字体大小 */
-  .lang-switch .txt{font-size:10px;}
+  .lang-switch .txt{font-size:6px;}
 }
