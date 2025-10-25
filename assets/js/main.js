@@ -15,20 +15,35 @@ topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
 
 /* =========================================================中英文切效果实现========================================================= */
 
-// 滑动开关语言切换
-const langCheck = document.getElementById('lang-check');
-langCheck.addEventListener('change', e => {
-  const next = e.target.checked ? 'en' : 'zh';
-  document.documentElement.lang = next;
-  localStorage.setItem('lang', next);
-  translatePage(next);   // 沿用之前的翻译函数
+// 语言切换：高级版
+const langBtn = document.getElementById('lang-toggle');
+const html = document.documentElement;
+
+const langMap = { zh: { txt: 'EN',  aria: 'Switch to English' },
+                  en: { txt: '中',  aria: '切换到中文' } };
+
+function applyLang(lang) {
+  html.lang = lang;
+  localStorage.setItem('lang', lang);
+  // 按钮文字 & 无障碍标签
+  langBtn.textContent = langMap[lang].txt;
+  langBtn.setAttribute('aria-label', langMap[lang].aria);
+  // 高亮当前语言
+  langBtn.classList.toggle('on', lang === 'en');
+  // 执行翻译
+  translatePage(lang);
+}
+
+// 初始加载
+applyLang(localStorage.getItem('lang') || 'zh');
+
+langBtn.addEventListener('click', () => {
+  const next = html.lang === 'zh' ? 'en' : 'zh';
+  applyLang(next);
 });
-
-// 页面加载时恢复开关位置
-langCheck.checked = (localStorage.getItem('lang') === 'en');
-
-function translatePage(lang){
-  document.querySelectorAll('[data-zh][data-en]').forEach(el=>{
+// 双语翻译
+function translatePage(lang) {
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
   });
 }

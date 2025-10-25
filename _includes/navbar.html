@@ -20,13 +20,11 @@
       {%- endfor -%}
     </nav>
     <!-- 语言切换按钮 -->
-    <!-- 滑动式语言开关 -->
-    <label class="lang-switch" title="切换语言">
-      <input type="checkbox" id="lang-check">
-      <span class="slider"></span>
-      <span class="label-text">中</span>
-      <span class="label-text">EN</span>
-    </label>
+    <!-- 语言胶囊滑块 -->
+    <button id="lang-toggle" class="lang-switch on" aria-label="Switch to English">
+      <span class="txt zh">中</span>
+      <span class="txt en">EN</span>
+    </button>
 
     <!-- 移动端汉堡按钮（三条横线），点击后展开/收起移动端菜单；内部三个空 span 用于 CSS 画出三条线 -->
     <div class="hamburger">
