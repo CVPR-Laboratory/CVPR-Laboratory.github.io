@@ -1,0 +1,211 @@
+/* 本页独有样式 – 官方/简洁/易维护
+   变量命名语义化，方便后续换肤或响应式微调
+--------------------------------------------------*/
+:root{
+    --primary  : #036;          /* 品牌主色 */
+    --accent   : #09c;          /* 高亮色 */
+    --gray     : #f5f7fa;       /* 背景灰 */
+    --radius   : 8px;           /* 统一圆角 */
+    --max-width: 1200px;        /* 页面最大宽 */
+    --gap      : 1.5rem;        /* 全局间距 */
+}
+
+.contact-wrapper{
+    background: var(--gray);
+    padding-bottom: 4rem;
+}
+
+/* ---- 页头 ---- */
+.page-hero{
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: #fff;
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+.page-hero h1{
+    font-size: 2.25rem;
+    margin-bottom: .5rem;
+}
+.page-hero p{
+    font-size: 1.1rem;
+    opacity: .9;
+}
+
+/* ---- 三栏网格：地图 | 信息 | 表单 ---- */
+.contact-grid{
+    display: grid;
+    gap: var(--gap);
+    grid-template-areas:
+        "map"
+        "info"
+        "form";
+    margin-top: -2rem;          /* 与 hero 重叠一点，更立体 */
+}
+.map-box   { grid-area: map; }
+.info-box  { grid-area: info; }
+.form-box  { grid-area: form; }
+
+/* >1200 三栏并排 */
+@media (min-width: 1200px){
+    .contact-grid{
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-template-areas: "map info form";
+    }
+}
+
+/* ---- 地图 ---- */
+#map{
+    width: 100%;
+    height: 380px;
+    border-radius: var(--radius);
+    background: url("../img/map-placeholder.jpg") center/cover no-repeat; /* 占位图 */
+    cursor: pointer;
+    transition: transform .3s;
+}
+#map:hover{ transform: scale(1.01); }
+.map-box small{
+    display: block;
+    text-align: center;
+    margin-top: .5rem;
+    color: #666;
+}
+
+/* ---- 信息块 ---- */
+.info-box{
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.info-box h2{
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+.info-item{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.info-item i{
+    color: var(--accent);
+    font-size: 1.25rem;
+    margin-top: 4px;
+}
+.info-item h3{
+    font-size: 1rem;
+    margin-bottom: .25rem;
+}
+.info-item p{
+    margin: 0;
+    line-height: 1.5;
+}
+.info-item a{
+    color: var(--accent);
+    text-decoration: none;
+}
+.info-item a:hover{ text-decoration: underline; }
+
+/* ---- 表单 ---- */
+.form-box{
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.form-box h2{
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+.form-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+.form-group label{
+    margin-bottom: .5rem;
+    font-weight: 600;
+    font-size: .95rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+    padding: .75rem 1rem;
+    border: 1px solid #dcdfe6;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: border-color .3s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color: var(--accent);
+    outline: none;
+}
+.btn-submit{
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: .8rem 2rem;
+    font-size: 1rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background .3s;
+}
+.btn-submit:hover{ background: var(--primary); }
+.form-tip{
+    margin-top: .75rem;
+    font-size: .8rem;
+    color: #999;
+}
+
+/* ---- 招生信息卡片 ---- */
+.admission-section{
+    margin-top: 4rem;
+}
+.admission-section h2{
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.75rem;
+    color: var(--primary);
+}
+.admission-cards{
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.ad-card{
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+    transition: transform .3s, box-shadow .3s;
+}
+.ad-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+.ad-card h3{
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+.ad-card ul{
+    margin: 1rem 0 0 1.2rem;
+    padding: 0;
+}
+.ad-card li{
+    margin-bottom: .5rem;
+    line-height: 1.5;
+}
+
+/* ---- 移动端微调 ---- */
+@media (max-width: 768px){
+    .form-row{ grid-template-columns: 1fr; }
+    .page-hero h1{ font-size: 1.75rem; }
+}
