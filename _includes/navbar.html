@@ -13,13 +13,16 @@
 
     <!-- 桌面端水平菜单：通过 Liquid 循环读取 _config.yml 中定义的 site.nav 数组，动态生成导航链接 -->
     <!-- 导航链接 -->
-    <nav class="nav-menu">
-      {%- for item in site.nav -%}
-      {%- assign nav_name = item.name[page.lang] -%} <!-- 关键行 -->
-      <a href="{{ item.link | relative_url }}" {%- if page.url == item.link -%}class="active"{%- endif -%}>
-        {{ nav_name }}
-      </a>
-      {%- endfor -%}
+    <nav id="navbar" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        {% for item in site.data.nav %}
+        {% assign link = item.link %}
+        {% assign txt = item.name[page.lang] %}
+        <li class="nav-item">
+          <a class="nav-link {% if page.url == link %}active{% endif %}" href="{{ link | relative_url }}">{{ txt }}</a>
+        </li>
+        {% endfor %}
+      </ul>
     </nav>
     <!-- 语言切换按钮 -->
     <!-- 语言胶囊滑块 -->
