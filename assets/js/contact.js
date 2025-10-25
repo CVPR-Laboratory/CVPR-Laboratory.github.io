@@ -3,11 +3,10 @@
  * =========================================================*/
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1. 加载百度地图 --------------------------------------------------- */
-    // 把【您的百度AK】换成上一步拿到的 24 位字符串
-    const AK = 'afOVminbVEtBMP7pkHnYa3ZxgNC1fPlb';
+    /* 1. 加载百度地图 2.0（无 document.write）------------- */
+    const AK = 'afOVminbVEtBMP7pkHnYa3ZxgNC1fPlb';   // 你的 AK
     const script = document.createElement('script');
-    script.src = `https://api.map.baidu.com/api?v=3.0&ak=${AK}&callback=initBmap`;
+    script.src = `https://api.map.baidu.com/api?v=2.0&ak=${AK}&callback=initBmap`;
     document.head.appendChild(script);
 
     /* 2. 初始化地图 ------------------------------------------------------ */
