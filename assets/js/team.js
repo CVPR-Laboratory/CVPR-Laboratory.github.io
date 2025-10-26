@@ -1,8 +1,14 @@
 // team.js - 团队页面交互功能
 
+// 将teamMembers移到全局作用域，方便导出函数访问
+let teamMembers = {};
+
+// 中文字体支持
+let chineseFontAdded = false;
+
 document.addEventListener('DOMContentLoaded', function() {
     // 团队成员数据
-    const teamMembers = {
+    teamMembers = {
         faculty: [
             {
                 id: 1,
@@ -247,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 创建成员卡片 - 添加导出按钮
+    // 创建成员卡片 - 移除导出按钮
     function createMemberCard(member) {
         const memberDiv = document.createElement('div');
         memberDiv.className = 'team-member';
@@ -284,21 +290,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                     `).join('')}
                 </div>
-                <div class="member-export">
-                    <button class="export-btn" onclick="exportMemberToPDF(${member.id})">
-                        <i class="fas fa-file-pdf"></i>
-                        <span data-zh="导出信息" data-en="Export Info">导出信息</span>
-                    </button>
-                </div>
             </div>
         `;
         
-        // 添加点击事件打开模态框（点击卡片其他区域）
-        memberDiv.addEventListener('click', (e) => {
-            // 如果点击的是导出按钮，不打开模态框
-            if (!e.target.closest('.export-btn')) {
-                openMemberModal(member);
-            }
+        // 添加点击事件打开模态框
+        memberDiv.addEventListener('click', () => {
+            openMemberModal(member);
         });
         
         return memberDiv;
@@ -497,10 +494,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${isChinese ? member.bio : member.bioEn}</p>
             </div>
             <div class="modal-actions">
-                <button class="pdf-btn" onclick="exportMemberToPDF(${member.id})">
+                <button class="pdf-btn" onclick="exportMemberToPDF(${member.id}, event)">
                     <i class="fas fa-file-pdf"></i> ${isChinese ? '导出为PDF' : 'Export to PDF'}
                 </button>
-                <button class="pdf-btn screenshot-btn" onclick="exportToPDFWithScreenshot()">
+                <button class="pdf-btn screenshot-btn" onclick="exportToPDFWithScreenshot(event)">
                     <i class="fas fa-camera"></i> ${isChinese ? '截图导出' : 'Screenshot Export'}
                 </button>
             </div>
@@ -512,210 +509,328 @@ document.addEventListener('DOMContentLoaded', function() {
     // 设置语言切换监听
     function setupLanguageListener() {
         // 监听语言切换事件
-        document.addEventListener('languageChanged', function() {
-            // 更新搜索框占位符
-            updateSearchPlaceholder();
-            
-            // 更新过滤按钮文本
-            updateFilterButtons();
-            
-            // 重新渲染团队成员卡片
-            renderTeamMembers();
+        document.addEventListener('languageChanged', () => {
+            updatePageLanguage();
         });
     }
 
-    // 更新过滤按钮文本
-    function updateFilterButtons() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
+    // 更新页面语言
+    function updatePageLanguage() {
         const isChinese = document.documentElement.lang === 'zh';
         
-        filterButtons.forEach(button => {
-            const filter = button.getAttribute('data-filter');
-            const zhText = button.getAttribute('data-zh');
-            const enText = button.getAttribute('data-en');
+        // 更新搜索框占位符
+        updateSearchPlaceholder();
+        
+        // 更新过滤按钮文本
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            const text = isChinese ? 
+                btn.getAttribute('data-zh') : 
+                btn.getAttribute('data-en');
+            btn.textContent = text;
+        });
+        
+        // 更新成员卡片内容
+        document.querySelectorAll('.team-member').forEach(card => {
+            const nameElement = card.querySelector('h3');
+            const titleElement = card.querySelector('.member-title');
+            const researchElement = card.querySelector('.member-research');
             
-            button.textContent = isChinese ? zhText : enText;
+            if (nameElement) {
+                nameElement.textContent = isChinese ? 
+                    nameElement.getAttribute('data-zh') : 
+                    nameElement.getAttribute('data-en');
+            }
+            
+            if (titleElement) {
+                titleElement.textContent = isChinese ? 
+                    titleElement.getAttribute('data-zh') : 
+                    titleElement.getAttribute('data-en');
+            }
+            
+            if (researchElement) {
+                researchElement.textContent = isChinese ? 
+                    researchElement.getAttribute('data-zh') : 
+                    researchElement.getAttribute('data-en');
+            }
         });
     }
 });
 
-// 从成员卡片导出PDF
-function exportMemberToPDF(memberId) {
-    // 阻止事件冒泡，避免触发卡片点击事件
-    event.stopPropagation();
+// 根据ID获取成员数据
+function getMemberById(id) {
+    const allMembers = [...teamMembers.faculty, ...teamMembers.master, ...teamMembers.alumni];
+    return allMembers.find(member => member.id === id);
+}
+
+// 添加中文字体到PDF
+async function addChineseFontToPDF(doc) {
+    if (chineseFontAdded) return doc;
+    
+    try {
+        // 使用jsPDF内置的中文字体支持
+        doc.setLanguage('zh-CN');
+        
+        // 设置支持中文的字体
+        doc.setFont('helvetica');
+        
+        chineseFontAdded = true;
+        return doc;
+    } catch (error) {
+        console.warn('中文字体设置失败，使用默认字体:', error);
+        return doc;
+    }
+}
+
+// 处理文本换行和分页
+function addTextWithPageBreak(doc, text, x, y, maxWidth, lineHeight = 6) {
+    const lines = doc.splitTextToSize(text, maxWidth);
+    let currentY = y;
+    
+    for (let i = 0; i < lines.length; i++) {
+        // 检查是否需要新页面
+        if (currentY > doc.internal.pageSize.getHeight() - 20) {
+            doc.addPage();
+            currentY = 20;
+        }
+        
+        doc.text(lines[i], x, currentY);
+        currentY += lineHeight;
+    }
+    
+    return currentY;
+}
+
+// 导出成员信息为PDF - 修复中文乱码问题
+async function exportMemberToPDF(memberId, event) {
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    
+    console.log('开始导出PDF，成员ID:', memberId);
     
     const member = getMemberById(memberId);
     if (!member) {
-        alert('无法获取成员信息');
+        alert('无法找到成员信息');
         return;
     }
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    const isChinese = document.documentElement.lang === 'zh';
-    
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const margin = 20;
-    let yPosition = margin;
-    
-    // 设置字体
-    doc.setFont('helvetica', 'normal');
-    
-    // 标题
-    doc.setFontSize(20);
-    doc.setFont('helvetica', 'bold');
-    doc.text(isChinese ? `${member.name} - 个人信息` : `${member.nameEn} - Profile`, pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 15;
-    
-    // 基本信息
-    doc.setFontSize(12);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`${isChinese ? '职位' : 'Position'}: ${isChinese ? member.title : member.titleEn}`, margin, yPosition);
-    yPosition += 8;
-    doc.text(`Email: ${member.email}`, margin, yPosition);
-    yPosition += 15;
-    
-    // 教育背景
-    doc.setFont('helvetica', 'bold');
-    doc.text(`${isChinese ? '教育背景' : 'Education'}`, margin, yPosition);
-    yPosition += 8;
-    doc.setFont('helvetica', 'normal');
-    const educationLines = doc.splitTextToSize(isChinese ? member.education : member.educationEn, pageWidth - 2 * margin);
-    educationLines.forEach(line => {
-        if (yPosition > 270) {
-            doc.addPage();
-            yPosition = margin;
-        }
-        doc.text(line, margin, yPosition);
-        yPosition += 6;
-    });
-    yPosition += 8;
-    
-    // 研究方向
-    doc.setFont('helvetica', 'bold');
-    doc.text(`${isChinese ? '研究方向' : 'Research Interests'}`, margin, yPosition);
-    yPosition += 8;
-    doc.setFont('helvetica', 'normal');
-    const researchList = isChinese ? member.researchInterests : member.researchInterestsEn;
-    researchList.forEach(item => {
-        if (yPosition > 270) {
-            doc.addPage();
-            yPosition = margin;
-        }
-        doc.text(`• ${item}`, margin, yPosition);
-        yPosition += 6;
-    });
-    yPosition += 8;
-    
-    // 代表性论文
-    if (member.publications && member.publications.length > 0) {
-        doc.setFont('helvetica', 'bold');
-        doc.text(`${isChinese ? '代表性论文' : 'Representative Publications'}`, margin, yPosition);
-        yPosition += 8;
-        doc.setFont('helvetica', 'normal');
+    // 检查jsPDF是否加载
+    if (typeof jspdf === 'undefined') {
+        alert('PDF导出库未正确加载，请刷新页面重试');
+        return;
+    }
+
+    try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const isChinese = document.documentElement.lang === 'zh';
         
-        member.publications.forEach((pub, index) => {
-            if (yPosition > 270) {
-                doc.addPage();
-                yPosition = margin;
-            }
-            
-            doc.setFont('helvetica', 'bold');
-            const title = isChinese ? pub.title : pub.titleEn;
-            const titleLines = doc.splitTextToSize(`${index + 1}. ${title}`, pageWidth - 2 * margin);
-            titleLines.forEach(line => {
-                if (yPosition > 270) {
-                    doc.addPage();
-                    yPosition = margin;
-                }
-                doc.text(line, margin, yPosition);
-                yPosition += 6;
-            });
-            
-            doc.setFont('helvetica', 'italic');
-            const authors = isChinese ? pub.authors : pub.authorsEn;
-            const authorLines = doc.splitTextToSize(authors, pageWidth - 2 * margin);
-            authorLines.forEach(line => {
-                if (yPosition > 270) {
-                    doc.addPage();
-                    yPosition = margin;
-                }
-                doc.text(line, margin, yPosition);
-                yPosition += 6;
-            });
-            
-            doc.setFont('helvetica', 'normal');
-            doc.text(pub.venue, margin, yPosition);
-            yPosition += 10;
-        });
-    }
-    
-    // 个人简介
-    doc.setFont('helvetica', 'bold');
-    if (yPosition > 250) {
-        doc.addPage();
-        yPosition = margin;
-    }
-    doc.text(`${isChinese ? '个人简介' : 'Biography'}`, margin, yPosition);
-    yPosition += 8;
-    doc.setFont('helvetica', 'normal');
-    const bioLines = doc.splitTextToSize(isChinese ? member.bio : member.bioEn, pageWidth - 2 * margin);
-    bioLines.forEach(line => {
-        if (yPosition > 270) {
-            doc.addPage();
-            yPosition = margin;
-        }
-        doc.text(line, margin, yPosition);
-        yPosition += 6;
-    });
-    
-    // 页脚
-    const totalPages = doc.internal.getNumberOfPages();
-    for (let i = 1; i <= totalPages; i++) {
-        doc.setPage(i);
+        // 添加中文字体支持
+        await addChineseFontToPDF(doc);
+        
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const margin = 20;
+        let yPosition = margin;
+        
+        // 设置字体 - 使用支持中文的字体
+        doc.setFont('helvetica');
+        
+        // 标题
+        doc.setFontSize(18);
+        doc.setFont(undefined, 'bold');
+        const title = isChinese ? `${member.name} - 个人信息` : `${member.nameEn} - Profile`;
+        doc.text(title, pageWidth / 2, yPosition, { align: 'center' });
+        yPosition += 15;
+        
+        // 基本信息
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'normal');
+        doc.text(`${isChinese ? '职位' : 'Position'}:`, margin, yPosition);
+        doc.text(isChinese ? member.title : member.titleEn, margin + 25, yPosition);
+        yPosition += 8;
+        
+        doc.text('Email:', margin, yPosition);
+        doc.text(member.email, margin + 20, yPosition);
+        yPosition += 15;
+        
+        // 添加分隔线
+        doc.setDrawColor(200, 200, 200);
+        doc.line(margin, yPosition, pageWidth - margin, yPosition);
+        yPosition += 10;
+        
+        // 教育背景
+        doc.setFontSize(12);
+        doc.setFont(undefined, 'bold');
+        doc.text(`${isChinese ? '教育背景' : 'Education'}`, margin, yPosition);
+        yPosition += 8;
+        
         doc.setFontSize(10);
-        doc.setTextColor(128);
-        doc.text(
-            `CVPR Laboratory - ${new Date().toLocaleDateString()}`,
-            pageWidth / 2,
-            doc.internal.pageSize.getHeight() - 10,
-            { align: 'center' }
-        );
-        doc.text(
-            `Page ${i} of ${totalPages}`,
-            pageWidth - margin,
-            doc.internal.pageSize.getHeight() - 10,
-            { align: 'right' }
-        );
+        doc.setFont(undefined, 'normal');
+        const educationText = isChinese ? member.education : member.educationEn;
+        yPosition = addTextWithPageBreak(doc, educationText, margin, yPosition, pageWidth - 2 * margin, 5);
+        yPosition += 8;
+        
+        // 研究方向
+        doc.setFontSize(12);
+        doc.setFont(undefined, 'bold');
+        doc.text(`${isChinese ? '研究方向' : 'Research Interests'}`, margin, yPosition);
+        yPosition += 8;
+        
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'normal');
+        const researchList = isChinese ? member.researchInterests : member.researchInterestsEn;
+        researchList.forEach(item => {
+            if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                doc.addPage();
+                yPosition = 20;
+            }
+            doc.text(`• ${item}`, margin, yPosition);
+            yPosition += 5;
+        });
+        yPosition += 8;
+        
+        // 代表性论文
+        if (member.publications && member.publications.length > 0) {
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'bold');
+            doc.text(`${isChinese ? '代表性论文' : 'Representative Publications'}`, margin, yPosition);
+            yPosition += 8;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            
+            member.publications.forEach((pub, index) => {
+                if (yPosition > doc.internal.pageSize.getHeight() - 30) {
+                    doc.addPage();
+                    yPosition = 20;
+                }
+                
+                // 论文标题
+                doc.setFont(undefined, 'bold');
+                const title = isChinese ? pub.title : pub.titleEn;
+                const titleText = `${index + 1}. ${title}`;
+                yPosition = addTextWithPageBreak(doc, titleText, margin, yPosition, pageWidth - 2 * margin, 5);
+                
+                // 作者
+                doc.setFont(undefined, 'italic');
+                const authors = isChinese ? pub.authors : pub.authorsEn;
+                yPosition = addTextWithPageBreak(doc, authors, margin + 5, yPosition, pageWidth - 2 * margin - 5, 5);
+                
+                // 期刊/会议
+                doc.setFont(undefined, 'normal');
+                yPosition = addTextWithPageBreak(doc, pub.venue, margin + 5, yPosition, pageWidth - 2 * margin - 5, 5);
+                
+                yPosition += 5;
+            });
+        }
+        
+        // 个人简介
+        doc.setFontSize(12);
+        doc.setFont(undefined, 'bold');
+        if (yPosition > doc.internal.pageSize.getHeight() - 30) {
+            doc.addPage();
+            yPosition = 20;
+        }
+        doc.text(`${isChinese ? '个人简介' : 'Biography'}`, margin, yPosition);
+        yPosition += 8;
+        
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'normal');
+        const bioText = isChinese ? member.bio : member.bioEn;
+        yPosition = addTextWithPageBreak(doc, bioText, margin, yPosition, pageWidth - 2 * margin, 5);
+        
+        // 页脚
+        const totalPages = doc.internal.getNumberOfPages();
+        const dateStr = new Date().toLocaleDateString('zh-CN');
+        
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            doc.setFontSize(8);
+            doc.setTextColor(128);
+            
+            // 左侧信息
+            doc.text(`CVPR Laboratory - ${dateStr}`, margin, doc.internal.pageSize.getHeight() - 10);
+            
+            // 右侧页码
+            doc.text(
+                `Page ${i} / ${totalPages}`,
+                pageWidth - margin,
+                doc.internal.pageSize.getHeight() - 10,
+                { align: 'right' }
+            );
+        }
+        
+        // 保存PDF
+        const fileName = isChinese ? 
+            `${member.name}_个人信息.pdf` : 
+            `${member.nameEn}_Profile.pdf`;
+        
+        doc.save(fileName);
+        console.log('PDF导出成功');
+        
+    } catch (error) {
+        console.error('PDF导出失败:', error);
+        alert('PDF导出失败: ' + error.message);
     }
-    
-    // 保存PDF
-    const fileName = isChinese ? 
-        `${member.name}_个人信息.pdf` : 
-        `${member.nameEn}_Profile.pdf`;
-    
-    doc.save(fileName);
 }
 
-// 截图格式PDF导出（用于模态框）
-function exportToPDFWithScreenshot() {
-    const modalContent = document.querySelector('.modal-content');
-    const { jsPDF } = window.jspdf;
+// 截图导出功能 - 优化版本
+function exportToPDFWithScreenshot(event) {
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
     
+    console.log('开始截图导出');
+    
+    const modalContent = document.querySelector('.modal-content');
+    
+    // 检查html2canvas是否加载
+    if (typeof html2canvas === 'undefined') {
+        alert('截图库未正确加载，请刷新页面重试');
+        return;
+    }
+
     // 显示加载提示
     const originalText = event.target.innerHTML;
-    event.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 生成中...';
+    const isChinese = document.documentElement.lang === 'zh';
+    event.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isChinese ? '生成中...' : 'Generating...');
     event.target.disabled = true;
+    
+    // 临时调整模态框样式以获得更好的截图效果
+    const originalBackground = modalContent.style.backgroundColor;
+    modalContent.style.backgroundColor = '#ffffff';
     
     // 使用html2canvas捕获模态框内容
     html2canvas(modalContent, {
         scale: 2,
         useCORS: true,
-        logging: false,
+        logging: true,
         backgroundColor: '#ffffff',
-        scrollY: -window.scrollY
+        windowWidth: modalContent.scrollWidth,
+        windowHeight: modalContent.scrollHeight,
+        onclone: function(clonedDoc) {
+            // 在克隆的文档中优化样式
+            const clonedModal = clonedDoc.querySelector('.modal-content');
+            if (clonedModal) {
+                clonedModal.style.boxShadow = 'none';
+                clonedModal.style.border = '1px solid #ddd';
+            }
+        }
     }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
+        // 恢复原始样式
+        modalContent.style.backgroundColor = originalBackground;
+        
+        const imgData = canvas.toDataURL('image/jpeg', 0.9);
+        
+        // 检查jsPDF是否加载
+        if (typeof jspdf === 'undefined') {
+            alert('PDF导出库未正确加载，请刷新页面重试');
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
         const doc = new jsPDF('p', 'mm', 'a4');
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
@@ -724,37 +839,48 @@ function exportToPDFWithScreenshot() {
         const imgWidth = canvas.width;
         const imgHeight = canvas.height;
         const ratio = imgWidth / imgHeight;
-        let pdfWidth = pageWidth - 20;
+        
+        // 设置图片在PDF中的尺寸，保留边距
+        const margin = 10;
+        let pdfWidth = pageWidth - 2 * margin;
         let pdfHeight = pdfWidth / ratio;
         
-        if (pdfHeight > pageHeight - 20) {
-            pdfHeight = pageHeight - 20;
+        // 如果图片高度超过页面，调整宽度
+        if (pdfHeight > pageHeight - 2 * margin) {
+            pdfHeight = pageHeight - 2 * margin;
             pdfWidth = pdfHeight * ratio;
         }
         
         const x = (pageWidth - pdfWidth) / 2;
         const y = (pageHeight - pdfHeight) / 2;
         
-        doc.addImage(imgData, 'PNG', x, y, pdfWidth, pdfHeight);
+        // 添加图片到PDF
+        doc.addImage(imgData, 'JPEG', x, y, pdfWidth, pdfHeight);
         
-        const fileName = '成员信息截图.pdf';
+        // 添加页脚信息
+        doc.setFontSize(10);
+        doc.setTextColor(128);
+        doc.text(
+            `CVPR Laboratory - ${new Date().toLocaleDateString('zh-CN')}`,
+            pageWidth / 2,
+            pageHeight - 5,
+            { align: 'center' }
+        );
+        
+        const fileName = isChinese ? 
+            '成员信息截图.pdf' : 
+            'Member_Info_Screenshot.pdf';
+        
         doc.save(fileName);
+        console.log('截图导出成功');
         
-        // 恢复按钮状态
-        event.target.innerHTML = originalText;
-        event.target.disabled = false;
     }).catch(error => {
-        console.error('导出PDF失败:', error);
-        alert('导出PDF时出现错误，请重试');
-        
-        // 恢复按钮状态
+        console.error('截图导出失败:', error);
+        alert('截图导出失败: ' + error.message);
+    }).finally(() => {
+        // 恢复按钮状态和原始样式
+        modalContent.style.backgroundColor = originalBackground;
         event.target.innerHTML = originalText;
         event.target.disabled = false;
     });
-}
-
-// 根据ID获取成员数据
-function getMemberById(id) {
-    const allMembers = [...teamMembers.faculty, ...teamMembers.master, ...teamMembers.alumni];
-    return allMembers.find(member => member.id === id);
 }

@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/team.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 添加这两行 用于导出pdf-->
-    <!-- 确保这2行在head部分 -->
+    
+
+        <!-- 确保这2行在head部分，且顺序正确 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 </head>
 
 <body>
+    <!-- 页面内容保持不变 -->
     <header class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -74,14 +75,11 @@
             </div>
         </section>
 
-        <!-- 在team.html中找到团队网格部分，在每个团队成员卡片中添加导出按钮 -->
-
         <section class="team-section" id="faculty-section">
             <div class="container">
                 <h2 class="section-title" data-zh="导师团队" data-en="Faculty">导师团队</h2>
                 <div class="team-grid">
                     <!-- 这里是通过JS动态生成的成员卡片 -->
-                    <!-- 不需要手动添加，JS会自动生成包含导出按钮的卡片 -->
                 </div>
             </div>
         </section>
@@ -105,16 +103,12 @@
         </section>
     </main>
 
-
-    <!-- 在team.html中找到模态框部分，在模态框底部添加导出按钮 -->
-
     <!-- 成员详情模态框 -->
     <div id="member-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-body">
                 <!-- 模态框内容将通过JS动态生成 -->
-                <!-- 这里JS会自动生成包含导出按钮的模态框内容 -->
             </div>
         </div>
     </div>
@@ -135,7 +129,6 @@
     <div id="scroll-top" title="返回顶部">▲</div>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/team.js"></script>
-
 </body>
 
 </html>

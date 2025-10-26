@@ -88,6 +88,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-right: 20px; /* 新增：距离右侧边界 */
 }
 
 .filter-btn {
@@ -167,11 +168,16 @@
     position: relative;
 }
 
+/* 修改：头像改为圆形 */
 .member-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s;
+    border-radius: 50%; /* 新增：圆形头像 */
+    margin: 10px; /* 新增：添加边距 */
+    width: calc(100% - 20px); /* 新增：调整宽度 */
+    height: calc(100% - 20px); /* 新增：调整高度 */
 }
 
 .team-member:hover .member-image img {
@@ -179,13 +185,15 @@
 }
 
 .member-image .placeholder-icon {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 20px); /* 修改：调整宽度 */
+    height: calc(100% - 20px); /* 修改：调整高度 */
+    margin: 10px; /* 新增：添加边距 */
     display: flex;
     align-items: center;
     justify-content: center;
     background: #e9ecef;
     color: #6c757d;
+    border-radius: 50%; /* 新增：圆形占位符 */
 }
 
 .member-info {
@@ -242,38 +250,9 @@
     color: white;
 }
 
-/* 成员卡片导出按钮 */
+/* 删除：成员卡片导出按钮相关样式 */
 .member-export {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
-}
-
-.export-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 8px 16px;
-    background: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.export-btn:hover {
-    background: #c82333;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
-}
-
-.export-btn:active {
-    transform: translateY(0);
+    display: none; /* 隐藏卡片底部的导出按钮 */
 }
 
 /* ========== 成员详情模态框 ========== */
@@ -342,9 +321,10 @@
     flex: 0 0 200px;
 }
 
+/* 修改：模态框头像也改为圆形 */
 .modal-image img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 50%; /* 修改：圆形头像 */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -356,7 +336,7 @@
     justify-content: center;
     background: #e9ecef;
     color: #6c757d;
-    border-radius: 10px;
+    border-radius: 50%; /* 修改：圆形占位符 */
 }
 
 .modal-basic-info {
@@ -527,6 +507,8 @@
     
     .filter-buttons {
         justify-content: center;
+        margin-right: 0; /* 移动端取消右边距 */
+        width: 100%;
     }
     
     .team-grid {
@@ -550,6 +532,19 @@
         flex-direction: column;
         align-items: center;
     }
+
+    /* 移动端头像调整 */
+    .member-image img {
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        margin: 15px;
+    }
+
+    .member-image .placeholder-icon {
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        margin: 15px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -569,5 +564,14 @@
     .pdf-btn, .screenshot-btn {
         width: 100%;
         max-width: 200px;
+    }
+
+    .filter-buttons {
+        gap: 0.3rem;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
     }
 }
