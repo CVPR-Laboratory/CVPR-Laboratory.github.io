@@ -1,0 +1,401 @@
+/* ========== 关于我们页面专用样式 ========== */
+
+/* 页面标题区域 */
+.page-header {
+    background: linear-gradient(135deg, #036 0%, #09c 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* 内容区域通用样式 */
+.content-section {
+    margin-bottom: 4rem;
+}
+
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2rem;
+    color: #036;
+    position: relative;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #09c;
+    border-radius: 2px;
+}
+
+/* 实验室简介区域 */
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.intro-text h3 {
+    color: #09c;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro-image {
+    display: flex;
+    justify-content: center;
+}
+
+.intro-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.intro-img:hover {
+    transform: scale(1.02);
+}
+
+/* 时间线区域 */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #09c;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-year {
+    flex: 0 0 120px;
+    height: 120px;
+    background: #036;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    z-index: 1;
+    box-shadow: 0 0 0 4px white, 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content {
+    flex: 1;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin: 0 2rem;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    left: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    right: -10px;
+}
+
+.timeline-content h3 {
+    color: #036;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-image {
+    margin-top: 1rem;
+}
+
+.timeline-image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 价值观区域 */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.value-card h3 {
+    color: #036;
+    margin-bottom: 1rem;
+}
+
+/* 成就区域 */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.achievement-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #036, #09c);
+}
+
+.achievement-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #09c;
+    margin-bottom: 0.5rem;
+}
+
+.achievement-text {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.achievement-image {
+    margin-top: 1rem;
+}
+
+.achievement-image img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-item:hover .achievement-image img {
+    opacity: 1;
+}
+
+/* 实验室环境区域 */
+.environment-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.environment-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.environment-item.reverse {
+    direction: rtl;
+}
+
+.environment-item.reverse > * {
+    direction: ltr;
+}
+
+.environment-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.environment-img:hover {
+    transform: scale(1.02);
+}
+
+.environment-text h3 {
+    color: #036;
+    margin-bottom: 1rem;
+}
+
+/* 团队合影区域 */
+.team-photo-section {
+    text-align: center;
+}
+
+.team-photo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.team-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 2.5rem 0;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .timeline-year {
+        flex: 0 0 80px;
+        height: 80px;
+        font-size: 1rem;
+    }
+    
+    .timeline-content {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+    
+    .timeline-content::before {
+        left: -10px !important;
+        right: auto !important;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .environment-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .environment-item.reverse {
+        direction: ltr;
+    }
+    
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .intro-img,
+    .environment-img {
+        height: 250px;
+    }
+    
+    .timeline-image img {
+        height: 150px;
+    }
+    
+    .achievement-image img {
+        height: 100px;
+    }
+}
