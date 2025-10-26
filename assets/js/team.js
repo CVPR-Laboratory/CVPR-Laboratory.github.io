@@ -3,24 +3,21 @@
 // 将teamMembers移到全局作用域，方便导出函数访问
 let teamMembers = {};
 
-// 中文字体支持
-let chineseFontAdded = false;
-
 document.addEventListener('DOMContentLoaded', function () {
     // 团队成员数据
     teamMembers = {
         faculty: [
             {
                 id: 1,
-                name: '张教授',
-                nameEn: 'Prof. Zhang',
-                title: '实验室主任、博士生导师',
-                titleEn: 'Lab Director & Ph.D. Supervisor',
+                name: '王瀚祥老师',
+                nameEn: 'Prof. Wang',
+                title: '海外归国博士、博士生导师',
+                titleEn: 'Overseas-returned doctorate holder & postgraduate tutor',
                 research: '计算机视觉、深度学习、图像处理',
                 researchEn: 'Computer Vision, Deep Learning, Image Processing',
                 email: 'prof.zhang@cvpr-lab.edu',
-                image: 'assets/img/members/zhang.jpg',
-                bio: '张教授是CVPR实验室的创始人，在计算机视觉领域有超过15年的研究经验。他在顶级期刊和会议上发表了80多篇论文，并担任多个国际期刊的编委。主持国家自然科学基金重点项目3项，获得省部级科技进步奖2项。',
+                image: 'assets/img/wanghanxiang.jpg',
+                bio: '王老师是CVPR实验室的创始人，在计算机视觉领域有超过15年的研究经验。他在顶级期刊和会议上发表了80多篇论文，并担任多个国际期刊的编委。主持国家自然科学基金重点项目3项，获得省部级科技进步奖2项。',
                 bioEn: 'Prof. Zhang is the founder of CVPR Laboratory with over 15 years of research experience in computer vision. He has published more than 80 papers in top-tier journals and conferences, and serves as an editorial board member for several international journals. He has led 3 key projects of the National Natural Science Foundation of China and won 2 provincial and ministerial science and technology progress awards.',
                 education: '2005年 清华大学 计算机科学与技术 博士\n2002年 北京大学 计算机科学与技术 硕士\n1999年 南京大学 计算机科学与技术 学士',
                 educationEn: '2005 Ph.D. in Computer Science and Technology, Tsinghua University\n2002 M.S. in Computer Science and Technology, Peking University\n1999 B.S. in Computer Science and Technology, Nanjing University',
@@ -60,14 +57,14 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             {
                 id: 2,
-                name: '李教授',
+                name: '厉彦芬老师',
                 nameEn: 'Prof. Li',
-                title: '副教授、硕士生导师',
+                title: '海外归国博士、博士生导师',
                 titleEn: 'Associate Professor & Master Supervisor',
                 research: '图像处理、模式识别、机器学习',
                 researchEn: 'Image Processing, Pattern Recognition, Machine Learning',
                 email: 'prof.li@cvpr-lab.edu',
-                image: 'assets/img/members/li.jpg',
+                image: 'assets/img/liyanfen.jpg',
                 bio: '李教授专注于图像处理与模式识别研究，主持多项国家级科研项目，在相关领域取得了重要研究成果。在国际知名期刊发表论文40余篇，获得国家发明专利5项。',
                 bioEn: 'Prof. Li focuses on image processing and pattern recognition research, leading several national-level research projects and achieving significant research results in related fields. He has published more than 40 papers in internationally renowned journals and obtained 5 national invention patents.',
                 education: '2008年 上海交通大学 计算机应用技术 博士\n2005年 浙江大学 计算机科学与技术 硕士\n2002年 武汉大学 计算机科学与技术 学士',
@@ -109,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '图像分类、迁移学习、小样本学习',
                 researchEn: 'Image Classification, Transfer Learning, Few-shot Learning',
                 email: 'chen.hua@cvpr-lab.edu',
-                image: 'assets/img/members/chen.jpg',
+                image: 'assets/img/b2.jpg',
                 bio: '陈华硕士研究生研究图像分类与迁移学习，致力于提高模型在小样本场景下的性能。已在国际会议发表论文2篇，参与国家自然科学基金项目1项。',
                 bioEn: 'Chen Hua researches image classification and transfer learning, focusing on improving model performance in few-shot scenarios. He has published 2 papers in international conferences and participated in 1 National Natural Science Foundation project.',
                 education: '2021年 曲阜师范大学 计算机科学与技术 学士',
@@ -149,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/members/zhao.jpg',
+                image: 'assets/img/b3.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -183,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '计算机视觉、机器学习、目标检测',
                 researchEn: 'Computer Vision, Machine Learning, Object Detection',
                 email: 'wu.wei@alumni.cvpr-lab.edu',
-                image: 'assets/img/members/wu.jpg',
+                image: 'assets/img/b4.jpg',
                 bio: '吴伟博士毕业后加入某知名科技公司，担任高级研究员，继续从事计算机视觉相关研究。在学期间发表高水平论文10余篇，获得国家奖学金2次。',
                 bioEn: 'After graduating with a PhD, Wu Wei joined a well-known technology company as a senior researcher, continuing to work on computer vision-related research. During his studies, he published more than 10 high-level papers and won the National Scholarship twice.',
                 education: '2022年 曲阜师范大学 计算机科学与技术 博士\n2017年 曲阜师范大学 计算机科学与技术 硕士\n2014年 曲阜师范大学 计算机科学与技术 学士',
@@ -562,45 +559,7 @@ function getMemberById(id) {
     return allMembers.find(member => member.id === id);
 }
 
-// 添加中文字体到PDF
-async function addChineseFontToPDF(doc) {
-    if (chineseFontAdded) return doc;
-
-    try {
-        // 使用jsPDF内置的中文字体支持
-        doc.setLanguage('zh-CN');
-
-        // 设置支持中文的字体
-        doc.setFont('helvetica');
-
-        chineseFontAdded = true;
-        return doc;
-    } catch (error) {
-        console.warn('中文字体设置失败，使用默认字体:', error);
-        return doc;
-    }
-}
-
-// 处理文本换行和分页
-function addTextWithPageBreak(doc, text, x, y, maxWidth, lineHeight = 6) {
-    const lines = doc.splitTextToSize(text, maxWidth);
-    let currentY = y;
-
-    for (let i = 0; i < lines.length; i++) {
-        // 检查是否需要新页面
-        if (currentY > doc.internal.pageSize.getHeight() - 20) {
-            doc.addPage();
-            currentY = 20;
-        }
-
-        doc.text(lines[i], x, currentY);
-        currentY += lineHeight;
-    }
-
-    return currentY;
-}
-
-// 导出成员信息为PDF - 修复中文乱码问题
+// 导出成员信息为PDF - 使用更简单可靠的方法
 async function exportMemberToPDF(memberId, event) {
     if (event) {
         event.stopPropagation();
@@ -626,16 +585,13 @@ async function exportMemberToPDF(memberId, event) {
         const doc = new jsPDF();
         const isChinese = document.documentElement.lang === 'zh';
 
-        // 添加中文字体支持
-        await addChineseFontToPDF(doc);
-
         const pageWidth = doc.internal.pageSize.getWidth();
         const margin = 20;
         let yPosition = margin;
 
-        // 设置字体 - 使用支持中文的字体
+        // 使用简单的字体设置
         doc.setFont('helvetica');
-
+        
         // 标题
         doc.setFontSize(18);
         doc.setFont(undefined, 'bold');
@@ -643,59 +599,76 @@ async function exportMemberToPDF(memberId, event) {
         doc.text(title, pageWidth / 2, yPosition, { align: 'center' });
         yPosition += 15;
 
-        // 基本信息
+        // 基本信息 - 使用英文标签避免中文问题
         doc.setFontSize(11);
         doc.setFont(undefined, 'normal');
-        doc.text(`${isChinese ? '职位' : 'Position'}:`, margin, yPosition);
-        doc.text(isChinese ? member.title : member.titleEn, margin + 25, yPosition);
+        
+        // Position
+        doc.text('Position:', margin, yPosition);
+        const positionText = isChinese ? member.title : member.titleEn;
+        doc.text(positionText, margin + 25, yPosition);
         yPosition += 8;
 
+        // Email
         doc.text('Email:', margin, yPosition);
         doc.text(member.email, margin + 20, yPosition);
         yPosition += 15;
 
-        // 添加分隔线
+        // 分隔线
         doc.setDrawColor(200, 200, 200);
         doc.line(margin, yPosition, pageWidth - margin, yPosition);
-        yPosition += 10;
+        yPosition += 15;
 
-        // 教育背景
+        // Education - 使用英文标签
         doc.setFontSize(12);
         doc.setFont(undefined, 'bold');
-        doc.text(`${isChinese ? '教育背景' : 'Education'}`, margin, yPosition);
-        yPosition += 8;
+        doc.text('Education', margin, yPosition);
+        yPosition += 10;
 
         doc.setFontSize(10);
         doc.setFont(undefined, 'normal');
         const educationText = isChinese ? member.education : member.educationEn;
-        yPosition = addTextWithPageBreak(doc, educationText, margin, yPosition, pageWidth - 2 * margin, 5);
+        
+        // 处理教育背景文本，避免中文问题
+        const educationLines = educationText.split('\n');
+        educationLines.forEach(line => {
+            if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                doc.addPage();
+                yPosition = 20;
+            }
+            doc.text(line, margin, yPosition);
+            yPosition += 6;
+        });
+        
         yPosition += 8;
 
-        // 研究方向
+        // Research Interests - 使用英文标签
         doc.setFontSize(12);
         doc.setFont(undefined, 'bold');
-        doc.text(`${isChinese ? '研究方向' : 'Research Interests'}`, margin, yPosition);
-        yPosition += 8;
+        doc.text('Research Interests', margin, yPosition);
+        yPosition += 10;
 
         doc.setFontSize(10);
         doc.setFont(undefined, 'normal');
         const researchList = isChinese ? member.researchInterests : member.researchInterestsEn;
+        
         researchList.forEach(item => {
             if (yPosition > doc.internal.pageSize.getHeight() - 20) {
                 doc.addPage();
                 yPosition = 20;
             }
-            doc.text(`• ${item}`, margin, yPosition);
-            yPosition += 5;
+            doc.text('• ' + item, margin, yPosition);
+            yPosition += 6;
         });
+        
         yPosition += 8;
 
-        // 代表性论文
+        // Publications - 使用英文标签
         if (member.publications && member.publications.length > 0) {
             doc.setFontSize(12);
             doc.setFont(undefined, 'bold');
-            doc.text(`${isChinese ? '代表性论文' : 'Representative Publications'}`, margin, yPosition);
-            yPosition += 8;
+            doc.text('Publications', margin, yPosition);
+            yPosition += 10;
 
             doc.setFontSize(10);
             doc.setFont(undefined, 'normal');
@@ -710,39 +683,77 @@ async function exportMemberToPDF(memberId, event) {
                 doc.setFont(undefined, 'bold');
                 const title = isChinese ? pub.title : pub.titleEn;
                 const titleText = `${index + 1}. ${title}`;
-                yPosition = addTextWithPageBreak(doc, titleText, margin, yPosition, pageWidth - 2 * margin, 5);
+                
+                // 处理长标题
+                const titleLines = doc.splitTextToSize(titleText, pageWidth - 2 * margin);
+                titleLines.forEach(line => {
+                    if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                        doc.addPage();
+                        yPosition = 20;
+                    }
+                    doc.text(line, margin, yPosition);
+                    yPosition += 5;
+                });
 
                 // 作者
                 doc.setFont(undefined, 'italic');
                 const authors = isChinese ? pub.authors : pub.authorsEn;
-                yPosition = addTextWithPageBreak(doc, authors, margin + 5, yPosition, pageWidth - 2 * margin - 5, 5);
+                const authorLines = doc.splitTextToSize(authors, pageWidth - 2 * margin - 5);
+                
+                authorLines.forEach(line => {
+                    if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                        doc.addPage();
+                        yPosition = 20;
+                    }
+                    doc.text(line, margin + 5, yPosition);
+                    yPosition += 5;
+                });
 
                 // 期刊/会议
                 doc.setFont(undefined, 'normal');
-                yPosition = addTextWithPageBreak(doc, pub.venue, margin + 5, yPosition, pageWidth - 2 * margin - 5, 5);
+                const venueLines = doc.splitTextToSize(pub.venue, pageWidth - 2 * margin - 5);
+                
+                venueLines.forEach(line => {
+                    if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                        doc.addPage();
+                        yPosition = 20;
+                    }
+                    doc.text(line, margin + 5, yPosition);
+                    yPosition += 5;
+                });
 
                 yPosition += 5;
             });
         }
 
-        // 个人简介
+        // Biography - 使用英文标签
         doc.setFontSize(12);
         doc.setFont(undefined, 'bold');
         if (yPosition > doc.internal.pageSize.getHeight() - 30) {
             doc.addPage();
             yPosition = 20;
         }
-        doc.text(`${isChinese ? '个人简介' : 'Biography'}`, margin, yPosition);
-        yPosition += 8;
+        
+        doc.text('Biography', margin, yPosition);
+        yPosition += 10;
 
         doc.setFontSize(10);
         doc.setFont(undefined, 'normal');
         const bioText = isChinese ? member.bio : member.bioEn;
-        yPosition = addTextWithPageBreak(doc, bioText, margin, yPosition, pageWidth - 2 * margin, 5);
+        const bioLines = doc.splitTextToSize(bioText, pageWidth - 2 * margin);
+        
+        bioLines.forEach(line => {
+            if (yPosition > doc.internal.pageSize.getHeight() - 20) {
+                doc.addPage();
+                yPosition = 20;
+            }
+            doc.text(line, margin, yPosition);
+            yPosition += 5;
+        });
 
-        // 页脚
+        // 页脚 - 使用英文
         const totalPages = doc.internal.getNumberOfPages();
-        const dateStr = new Date().toLocaleDateString('zh-CN');
+        const dateStr = new Date().toLocaleDateString();
 
         for (let i = 1; i <= totalPages; i++) {
             doc.setPage(i);
@@ -763,8 +774,8 @@ async function exportMemberToPDF(memberId, event) {
 
         // 保存PDF
         const fileName = isChinese ?
-            `${member.name}_个人信息.pdf` :
-            `${member.nameEn}_Profile.pdf`;
+            `${member.name}_profile.pdf` :
+            `${member.nameEn}_profile.pdf`;
 
         doc.save(fileName);
         console.log('PDF导出成功');
@@ -775,7 +786,7 @@ async function exportMemberToPDF(memberId, event) {
     }
 }
 
-// 截图导出功能 - 优化版本
+// 截图导出功能
 function exportToPDFWithScreenshot(event) {
     if (event) {
         event.stopPropagation();
@@ -806,18 +817,8 @@ function exportToPDFWithScreenshot(event) {
     html2canvas(modalContent, {
         scale: 2,
         useCORS: true,
-        logging: true,
-        backgroundColor: '#ffffff',
-        windowWidth: modalContent.scrollWidth,
-        windowHeight: modalContent.scrollHeight,
-        onclone: function (clonedDoc) {
-            // 在克隆的文档中优化样式
-            const clonedModal = clonedDoc.querySelector('.modal-content');
-            if (clonedModal) {
-                clonedModal.style.boxShadow = 'none';
-                clonedModal.style.border = '1px solid #ddd';
-            }
-        }
+        logging: false,
+        backgroundColor: '#ffffff'
     }).then(canvas => {
         // 恢复原始样式
         modalContent.style.backgroundColor = originalBackground;
@@ -861,14 +862,14 @@ function exportToPDFWithScreenshot(event) {
         doc.setFontSize(10);
         doc.setTextColor(128);
         doc.text(
-            `CVPR Laboratory - ${new Date().toLocaleDateString('zh-CN')}`,
+            `CVPR Laboratory - ${new Date().toLocaleDateString()}`,
             pageWidth / 2,
             pageHeight - 5,
             { align: 'center' }
         );
 
         const fileName = isChinese ?
-            '成员信息截图.pdf' :
+            'member_info_screenshot.pdf' :
             'Member_Info_Screenshot.pdf';
 
         doc.save(fileName);
