@@ -3,11 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>团队成员 | CVPR-Laboratory</title>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="shortcut icon" href="assets/img/logo.png">
+    <link rel="stylesheet" href="assets/css/team.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -39,52 +38,91 @@
     </header>
 
     <main class="main">
-        <section class="page-header">
+        <section class="team-intro">
             <div class="container">
-                <h1 data-zh="团队成员" data-en="Team Members">团队成员</h1>
-                <p data-zh="认识我们优秀的研究团队" data-en="Meet our outstanding research team">认识我们优秀的研究团队</p>
+                <div class="intro-content">
+                    <h2 data-zh="我们的团队" data-en="Our Team">我们的团队</h2>
+                    <p data-zh="CVPR实验室汇聚了一批在计算机视觉与模式识别领域具有丰富研究经验和创新能力的优秀人才。我们致力于推动前沿技术发展，培养高水平科研人才。"
+                        data-en="CVPR Laboratory brings together outstanding talents with extensive research experience and innovative capabilities in the field of computer vision and pattern recognition. We are committed to advancing cutting-edge technologies and cultivating high-level research talents.">
+                        CVPR实验室汇聚了一批在计算机视觉与模式识别领域具有丰富研究经验和创新能力的优秀人才。我们致力于推动前沿技术发展，培养高水平科研人才。
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section class="content-section">
+        <section class="team-controls">
             <div class="container">
-                <h2 data-zh="导师团队" data-en="Faculty">导师团队</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-image">
-                            <div
-                                style="width:200px;height:200px;background:#e9ecef;display:flex;align-items:center;justify-content:center;border-radius:8px;margin:0 auto;">
-                                <i class="fas fa-user" style="font-size:48px;color:#6c757d;"></i>
-                            </div>
-                        </div>
-                        <div class="member-info">
-                            <h3 data-zh="张教授" data-en="Prof. Zhang">张教授</h3>
-                            <p class="member-title" data-zh="实验室主任、博士生导师" data-en="Lab Director & Ph.D. Supervisor">
-                                实验室主任、博士生导师</p>
-                            <p class="member-research" data-zh="研究方向: 计算机视觉、深度学习"
-                                data-en="Research: Computer Vision, Deep Learning">研究方向: 计算机视觉、深度学习</p>
-                            <p class="member-email" data-zh="邮箱: prof.zhang@cvpr-lab.edu"
-                                data-en="Email: prof.zhang@cvpr-lab.edu">邮箱: prof.zhang@cvpr-lab.edu</p>
-                        </div>
+                <div class="controls-wrapper">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="member-search" placeholder="搜索团队成员..." data-zh-placeholder="搜索团队成员..."
+                            data-en-placeholder="Search team members...">
                     </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" data-zh="全部" data-en="All">全部</button>
+                        <button class="filter-btn" data-filter="faculty" data-zh="导师团队" data-en="Faculty">导师团队</button>
+                        <button class="filter-btn" data-filter="master" data-zh="硕士生"
+                            data-en="Master Students">硕士生</button>
+                        <button class="filter-btn" data-filter="alumni" data-zh="已毕业" data-en="Alumni">已毕业</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section" id="faculty-section">
+            <div class="container">
+                <h2 class="section-title" data-zh="导师团队" data-en="Faculty">导师团队</h2>
+                <div class="team-grid">
+                    <!-- 导师团队成员将通过JS动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section" id="master-section">
+            <div class="container">
+                <h2 class="section-title" data-zh="硕士研究生" data-en="Master Students">硕士研究生</h2>
+                <div class="team-grid">
+                    <!-- 硕士生成员将通过JS动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section" id="alumni-section">
+            <div class="container">
+                <h2 class="section-title" data-zh="已毕业成员" data-en="Alumni">已毕业成员</h2>
+                <div class="team-grid">
+                    <!-- 已毕业成员将通过JS动态生成 -->
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- 成员详情模态框 -->
+    <div id="member-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- 模态框内容将通过JS动态生成 -->
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <p data-zh="&copy; 2025 CVPR-Laboratory. 保留所有权利。"
-                data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">&copy; 2025 CVPR-Laboratory. All rights
-                reserved.</p>
+                data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">
+                &copy; 2025 CVPR-Laboratory. All rights reserved.
+            </p>
             <p data-zh="地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com"
-                data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">地址：曲阜师范大学 JS526室
-                &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+                data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">
+                地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com
+            </p>
         </div>
     </footer>
 
     <div id="scroll-top" title="返回顶部">▲</div>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/team.js"></script>
 </body>
 
 </html>
