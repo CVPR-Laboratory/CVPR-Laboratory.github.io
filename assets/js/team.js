@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 research: '计算机视觉、深度学习、图像处理',
                 researchEn: 'Computer Vision, Deep Learning, Image Processing',
                 email: 'prof.zhang@cvpr-lab.edu',
-                image: 'assets/img/b1.jpg',
+                image: 'assets/img/members/zhang.jpg',
                 bio: '张教授是CVPR实验室的创始人，在计算机视觉领域有超过15年的研究经验。他在顶级期刊和会议上发表了80多篇论文，并担任多个国际期刊的编委。主持国家自然科学基金重点项目3项，获得省部级科技进步奖2项。',
                 bioEn: 'Prof. Zhang is the founder of CVPR Laboratory with over 15 years of research experience in computer vision. He has published more than 80 papers in top-tier journals and conferences, and serves as an editorial board member for several international journals. He has led 3 key projects of the National Natural Science Foundation of China and won 2 provincial and ministerial science and technology progress awards.',
                 education: '2005年 清华大学 计算机科学与技术 博士\n2002年 北京大学 计算机科学与技术 硕士\n1999年 南京大学 计算机科学与技术 学士',
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 research: '图像处理、模式识别、机器学习',
                 researchEn: 'Image Processing, Pattern Recognition, Machine Learning',
                 email: 'prof.li@cvpr-lab.edu',
-                image: 'assets/img/b2.jpg',
+                image: 'assets/img/members/li.jpg',
                 bio: '李教授专注于图像处理与模式识别研究，主持多项国家级科研项目，在相关领域取得了重要研究成果。在国际知名期刊发表论文40余篇，获得国家发明专利5项。',
                 bioEn: 'Prof. Li focuses on image processing and pattern recognition research, leading several national-level research projects and achieving significant research results in related fields. He has published more than 40 papers in internationally renowned journals and obtained 5 national invention patents.',
                 education: '2008年 上海交通大学 计算机应用技术 博士\n2005年 浙江大学 计算机科学与技术 硕士\n2002年 武汉大学 计算机科学与技术 学士',
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 research: '图像分类、迁移学习、小样本学习',
                 researchEn: 'Image Classification, Transfer Learning, Few-shot Learning',
                 email: 'chen.hua@cvpr-lab.edu',
-                image: 'assets/img/b3.jpg',
+                image: 'assets/img/members/chen.jpg',
                 bio: '陈华硕士研究生研究图像分类与迁移学习，致力于提高模型在小样本场景下的性能。已在国际会议发表论文2篇，参与国家自然科学基金项目1项。',
                 bioEn: 'Chen Hua researches image classification and transfer learning, focusing on improving model performance in few-shot scenarios. He has published 2 papers in international conferences and participated in 1 National Natural Science Foundation project.',
                 education: '2021年 曲阜师范大学 计算机科学与技术 学士',
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/b8.jpg',
+                image: 'assets/img/members/zhao.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 research: '计算机视觉、机器学习、目标检测',
                 researchEn: 'Computer Vision, Machine Learning, Object Detection',
                 email: 'wu.wei@alumni.cvpr-lab.edu',
-                image: 'assets/img/b5.jpg',
+                image: 'assets/img/members/wu.jpg',
                 bio: '吴伟博士毕业后加入某知名科技公司，担任高级研究员，继续从事计算机视觉相关研究。在学期间发表高水平论文10余篇，获得国家奖学金2次。',
                 bioEn: 'After graduating with a PhD, Wu Wei joined a well-known technology company as a senior researcher, continuing to work on computer vision-related research. During his studies, he published more than 10 high-level papers and won the National Scholarship twice.',
                 education: '2022年 曲阜师范大学 计算机科学与技术 博士\n2017年 曲阜师范大学 计算机科学与技术 硕士\n2014年 曲阜师范大学 计算机科学与技术 学士',
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 创建成员卡片
+    // 创建成员卡片 - 添加导出按钮
     function createMemberCard(member) {
         const memberDiv = document.createElement('div');
         memberDiv.className = 'team-member';
@@ -284,12 +284,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         </a>
                     `).join('')}
                 </div>
+                <div class="member-export">
+                    <button class="export-btn" onclick="exportMemberToPDF(${member.id})">
+                        <i class="fas fa-file-pdf"></i>
+                        <span data-zh="导出信息" data-en="Export Info">导出信息</span>
+                    </button>
+                </div>
             </div>
         `;
         
-        // 添加点击事件打开模态框
-        memberDiv.addEventListener('click', () => {
-            openMemberModal(member);
+        // 添加点击事件打开模态框（点击卡片其他区域）
+        memberDiv.addEventListener('click', (e) => {
+            // 如果点击的是导出按钮，不打开模态框
+            if (!e.target.closest('.export-btn')) {
+                openMemberModal(member);
+            }
         });
         
         return memberDiv;
@@ -488,8 +497,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>${isChinese ? member.bio : member.bioEn}</p>
             </div>
             <div class="modal-actions">
-                <button class="pdf-btn" onclick="exportToPDF(${member.id})">
-                    <i class="fas fa-file-pdf"></i> ${isChinese ? '导出信息为PDF' : 'Export to PDF'}
+                <button class="pdf-btn" onclick="exportMemberToPDF(${member.id})">
+                    <i class="fas fa-file-pdf"></i> ${isChinese ? '导出为PDF' : 'Export to PDF'}
+                </button>
+                <button class="pdf-btn screenshot-btn" onclick="exportToPDFWithScreenshot()">
+                    <i class="fas fa-camera"></i> ${isChinese ? '截图导出' : 'Screenshot Export'}
                 </button>
             </div>
         `;
@@ -527,38 +539,222 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 导出为PDF功能
-function exportToPDF(memberId) {
-    // 这里应该调用PDF生成库，这里仅作示例
-    alert('PDF导出功能需要集成PDF生成库（如jsPDF）来实现。在实际项目中，这里会生成包含成员详细信息的PDF文件。');
+// 从成员卡片导出PDF
+function exportMemberToPDF(memberId) {
+    // 阻止事件冒泡，避免触发卡片点击事件
+    event.stopPropagation();
     
-    // 实际实现示例（需要引入jsPDF库）：
-    /*
+    const member = getMemberById(memberId);
+    if (!member) {
+        alert('无法获取成员信息');
+        return;
+    }
+
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-    
-    // 获取成员数据
-    const member = getMemberById(memberId);
     const isChinese = document.documentElement.lang === 'zh';
     
-    // 设置PDF内容
-    doc.setFontSize(20);
-    doc.text(isChinese ? member.name : member.nameEn, 20, 20);
-    doc.setFontSize(12);
-    doc.text(isChinese ? member.title : member.titleEn, 20, 30);
-    doc.text(`Email: ${member.email}`, 20, 40);
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    let yPosition = margin;
     
-    // 添加更多内容...
+    // 设置字体
+    doc.setFont('helvetica', 'normal');
+    
+    // 标题
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.text(isChinese ? `${member.name} - 个人信息` : `${member.nameEn} - Profile`, pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 15;
+    
+    // 基本信息
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.text(`${isChinese ? '职位' : 'Position'}: ${isChinese ? member.title : member.titleEn}`, margin, yPosition);
+    yPosition += 8;
+    doc.text(`Email: ${member.email}`, margin, yPosition);
+    yPosition += 15;
+    
+    // 教育背景
+    doc.setFont('helvetica', 'bold');
+    doc.text(`${isChinese ? '教育背景' : 'Education'}`, margin, yPosition);
+    yPosition += 8;
+    doc.setFont('helvetica', 'normal');
+    const educationLines = doc.splitTextToSize(isChinese ? member.education : member.educationEn, pageWidth - 2 * margin);
+    educationLines.forEach(line => {
+        if (yPosition > 270) {
+            doc.addPage();
+            yPosition = margin;
+        }
+        doc.text(line, margin, yPosition);
+        yPosition += 6;
+    });
+    yPosition += 8;
+    
+    // 研究方向
+    doc.setFont('helvetica', 'bold');
+    doc.text(`${isChinese ? '研究方向' : 'Research Interests'}`, margin, yPosition);
+    yPosition += 8;
+    doc.setFont('helvetica', 'normal');
+    const researchList = isChinese ? member.researchInterests : member.researchInterestsEn;
+    researchList.forEach(item => {
+        if (yPosition > 270) {
+            doc.addPage();
+            yPosition = margin;
+        }
+        doc.text(`• ${item}`, margin, yPosition);
+        yPosition += 6;
+    });
+    yPosition += 8;
+    
+    // 代表性论文
+    if (member.publications && member.publications.length > 0) {
+        doc.setFont('helvetica', 'bold');
+        doc.text(`${isChinese ? '代表性论文' : 'Representative Publications'}`, margin, yPosition);
+        yPosition += 8;
+        doc.setFont('helvetica', 'normal');
+        
+        member.publications.forEach((pub, index) => {
+            if (yPosition > 270) {
+                doc.addPage();
+                yPosition = margin;
+            }
+            
+            doc.setFont('helvetica', 'bold');
+            const title = isChinese ? pub.title : pub.titleEn;
+            const titleLines = doc.splitTextToSize(`${index + 1}. ${title}`, pageWidth - 2 * margin);
+            titleLines.forEach(line => {
+                if (yPosition > 270) {
+                    doc.addPage();
+                    yPosition = margin;
+                }
+                doc.text(line, margin, yPosition);
+                yPosition += 6;
+            });
+            
+            doc.setFont('helvetica', 'italic');
+            const authors = isChinese ? pub.authors : pub.authorsEn;
+            const authorLines = doc.splitTextToSize(authors, pageWidth - 2 * margin);
+            authorLines.forEach(line => {
+                if (yPosition > 270) {
+                    doc.addPage();
+                    yPosition = margin;
+                }
+                doc.text(line, margin, yPosition);
+                yPosition += 6;
+            });
+            
+            doc.setFont('helvetica', 'normal');
+            doc.text(pub.venue, margin, yPosition);
+            yPosition += 10;
+        });
+    }
+    
+    // 个人简介
+    doc.setFont('helvetica', 'bold');
+    if (yPosition > 250) {
+        doc.addPage();
+        yPosition = margin;
+    }
+    doc.text(`${isChinese ? '个人简介' : 'Biography'}`, margin, yPosition);
+    yPosition += 8;
+    doc.setFont('helvetica', 'normal');
+    const bioLines = doc.splitTextToSize(isChinese ? member.bio : member.bioEn, pageWidth - 2 * margin);
+    bioLines.forEach(line => {
+        if (yPosition > 270) {
+            doc.addPage();
+            yPosition = margin;
+        }
+        doc.text(line, margin, yPosition);
+        yPosition += 6;
+    });
+    
+    // 页脚
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(10);
+        doc.setTextColor(128);
+        doc.text(
+            `CVPR Laboratory - ${new Date().toLocaleDateString()}`,
+            pageWidth / 2,
+            doc.internal.pageSize.getHeight() - 10,
+            { align: 'center' }
+        );
+        doc.text(
+            `Page ${i} of ${totalPages}`,
+            pageWidth - margin,
+            doc.internal.pageSize.getHeight() - 10,
+            { align: 'right' }
+        );
+    }
     
     // 保存PDF
-    doc.save(`${isChinese ? member.name : member.nameEn}_CV.pdf`);
-    */
+    const fileName = isChinese ? 
+        `${member.name}_个人信息.pdf` : 
+        `${member.nameEn}_Profile.pdf`;
+    
+    doc.save(fileName);
 }
 
-// 根据ID获取成员数据（辅助函数）
+// 截图格式PDF导出（用于模态框）
+function exportToPDFWithScreenshot() {
+    const modalContent = document.querySelector('.modal-content');
+    const { jsPDF } = window.jspdf;
+    
+    // 显示加载提示
+    const originalText = event.target.innerHTML;
+    event.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 生成中...';
+    event.target.disabled = true;
+    
+    // 使用html2canvas捕获模态框内容
+    html2canvas(modalContent, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        scrollY: -window.scrollY
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        
+        // 计算图片尺寸以适应PDF页面
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        const ratio = imgWidth / imgHeight;
+        let pdfWidth = pageWidth - 20;
+        let pdfHeight = pdfWidth / ratio;
+        
+        if (pdfHeight > pageHeight - 20) {
+            pdfHeight = pageHeight - 20;
+            pdfWidth = pdfHeight * ratio;
+        }
+        
+        const x = (pageWidth - pdfWidth) / 2;
+        const y = (pageHeight - pdfHeight) / 2;
+        
+        doc.addImage(imgData, 'PNG', x, y, pdfWidth, pdfHeight);
+        
+        const fileName = '成员信息截图.pdf';
+        doc.save(fileName);
+        
+        // 恢复按钮状态
+        event.target.innerHTML = originalText;
+        event.target.disabled = false;
+    }).catch(error => {
+        console.error('导出PDF失败:', error);
+        alert('导出PDF时出现错误，请重试');
+        
+        // 恢复按钮状态
+        event.target.innerHTML = originalText;
+        event.target.disabled = false;
+    });
+}
+
+// 根据ID获取成员数据
 function getMemberById(id) {
-    // 在实际项目中，这里应该从数据源中查找成员
-    // 这里仅作示例，返回第一个成员
     const allMembers = [...teamMembers.faculty, ...teamMembers.master, ...teamMembers.alumni];
-    return allMembers.find(member => member.id === id) || allMembers[0];
+    return allMembers.find(member => member.id === id);
 }

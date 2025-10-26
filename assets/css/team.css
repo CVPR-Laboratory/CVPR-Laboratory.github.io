@@ -242,6 +242,40 @@
     color: white;
 }
 
+/* 成员卡片导出按钮 */
+.member-export {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.export-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 8px 16px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.export-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
 /* ========== 成员详情模态框 ========== */
 .modal {
     display: none;
@@ -267,15 +301,8 @@
 }
 
 @keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .close-modal {
@@ -384,6 +411,7 @@
     color: #495057;
 }
 
+/* 模态框中的导出按钮 */
 .modal-actions {
     display: flex;
     justify-content: center;
@@ -391,6 +419,7 @@
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #e9ecef;
+    flex-wrap: wrap;
 }
 
 .pdf-btn {
@@ -411,6 +440,14 @@
     background: #c82333;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.screenshot-btn {
+    background: #28a745 !important;
+}
+
+.screenshot-btn:hover {
+    background: #218838 !important;
 }
 
 .research-list {
@@ -474,43 +511,44 @@
     .team-intro {
         padding: 2rem 0;
     }
-
+    
     .team-intro h2 {
         font-size: 1.8rem;
     }
-
+    
     .controls-wrapper {
         flex-direction: column;
         align-items: stretch;
     }
-
+    
     .search-box {
         max-width: 100%;
     }
-
+    
     .filter-buttons {
         justify-content: center;
     }
-
+    
     .team-grid {
         gap: 1rem;
     }
-
+    
     .modal-header {
         flex-direction: column;
         text-align: center;
     }
-
+    
     .modal-image {
         margin: 0 auto 1.5rem;
     }
-
+    
     .modal-links {
         justify-content: center;
     }
-
+    
     .modal-actions {
         flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -519,13 +557,17 @@
         width: 100%;
         max-width: 300px;
     }
-
+    
     .modal-content {
         margin: 1rem auto;
     }
-
+    
     .modal-body {
         padding: 1.5rem;
     }
+    
+    .pdf-btn, .screenshot-btn {
+        width: 100%;
+        max-width: 200px;
+    }
 }
-
