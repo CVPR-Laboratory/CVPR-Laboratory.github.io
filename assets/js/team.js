@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function () {
         master: [
             {
                 id: 3,
-                name: '陈华',
-                nameEn: 'Chen Hua',
+                name: '曹继培',
+                nameEn: 'Jipei Cao',
                 title: '硕士研究生',
                 titleEn: 'Master Student',
                 research: '图像分类、迁移学习、小样本学习',
@@ -139,8 +139,104 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             {
                 id: 4,
-                name: '赵强',
-                nameEn: 'Zhao Qiang',
+                name: '马梦瑶',
+                nameEn: 'Mengyao Ma',
+                title: '硕士研究生',
+                titleEn: 'Master Student',
+                research: '三维重建、点云处理、自动驾驶',
+                researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
+                email: 'zhao.qiang@cvpr-lab.edu',
+                image: 'assets/img/b3.jpg',
+                bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
+                bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
+                education: '2021年 山东大学 计算机科学与技术 学士',
+                educationEn: '2021 B.S. in Computer Science and Technology, Shandong University',
+                researchInterests: [
+                    '点云语义分割',
+                    '三维目标检测',
+                    'SLAM技术',
+                    '自动驾驶感知'
+                ],
+                researchInterestsEn: [
+                    'Point Cloud Semantic Segmentation',
+                    '3D Object Detection',
+                    'SLAM Technology',
+                    'Autonomous Driving Perception'
+                ],
+                publications: [],
+                links: [
+                    { icon: 'fas fa-envelope', url: 'mailto:zhao.qiang@cvpr-lab.edu', label: '发送邮件' },
+                    { icon: 'fab fa-github', url: '#', label: 'GitHub' }
+                ]
+            },
+            {
+                id: 5,
+                name: '贾中豪',
+                nameEn: 'Zhonghao Jia',
+                title: '硕士研究生',
+                titleEn: 'Master Student',
+                research: '三维重建、点云处理、自动驾驶',
+                researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
+                email: 'zhao.qiang@cvpr-lab.edu',
+                image: 'assets/img/b3.jpg',
+                bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
+                bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
+                education: '2021年 山东大学 计算机科学与技术 学士',
+                educationEn: '2021 B.S. in Computer Science and Technology, Shandong University',
+                researchInterests: [
+                    '点云语义分割',
+                    '三维目标检测',
+                    'SLAM技术',
+                    '自动驾驶感知'
+                ],
+                researchInterestsEn: [
+                    'Point Cloud Semantic Segmentation',
+                    '3D Object Detection',
+                    'SLAM Technology',
+                    'Autonomous Driving Perception'
+                ],
+                publications: [],
+                links: [
+                    { icon: 'fas fa-envelope', url: 'mailto:zhao.qiang@cvpr-lab.edu', label: '发送邮件' },
+                    { icon: 'fab fa-github', url: '#', label: 'GitHub' }
+                ]
+            },
+            {
+                id: 6,
+                name: '王乃奔',
+                nameEn: 'Naiben Wang',
+                title: '硕士研究生',
+                titleEn: 'Master Student',
+                research: '三维重建、点云处理、自动驾驶',
+                researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
+                email: 'zhao.qiang@cvpr-lab.edu',
+                image: 'assets/img/b3.jpg',
+                bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
+                bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
+                education: '2021年 山东大学 计算机科学与技术 学士',
+                educationEn: '2021 B.S. in Computer Science and Technology, Shandong University',
+                researchInterests: [
+                    '点云语义分割',
+                    '三维目标检测',
+                    'SLAM技术',
+                    '自动驾驶感知'
+                ],
+                researchInterestsEn: [
+                    'Point Cloud Semantic Segmentation',
+                    '3D Object Detection',
+                    'SLAM Technology',
+                    'Autonomous Driving Perception'
+                ],
+                publications: [],
+                links: [
+                    { icon: 'fas fa-envelope', url: 'mailto:zhao.qiang@cvpr-lab.edu', label: '发送邮件' },
+                    { icon: 'fab fa-github', url: '#', label: 'GitHub' }
+                ]
+            },
+            {
+                id: 7,
+                name: '万换换',
+                nameEn: 'Huanhuan Wan',
                 title: '硕士研究生',
                 titleEn: 'Master Student',
                 research: '三维重建、点云处理、自动驾驶',
@@ -170,9 +266,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]
             }
         ],
+        
         alumni: [
             {
-                id: 5,
+                id: 8,
                 name: '吴伟',
                 nameEn: 'Wu Wei',
                 title: '博士毕业生',
