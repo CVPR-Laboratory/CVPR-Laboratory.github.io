@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>研究成果 | CVPR-Laboratory</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/publication.css">
     <link rel="shortcut icon" href="assets/img/logo.png">
 </head>
 
@@ -48,35 +49,125 @@
 
         <section class="content-section">
             <div class="container">
+                <!-- 研究成果统计 -->
+                <div class="publication-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="156">0</span>
+                        <span class="stat-label" data-zh="发表论文" data-en="Published Papers">发表论文</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="23">0</span>
+                        <span class="stat-label" data-zh="授权专利" data-en="Granted Patents">授权专利</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="12">0</span>
+                        <span class="stat-label" data-zh="科研项目" data-en="Research Projects">科研项目</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" data-target="3250">0</span>
+                        <span class="stat-label" data-zh="论文引用" data-en="Citations">论文引用</span>
+                    </div>
+                </div>
+
+                <!-- 筛选工具栏 -->
+                <div class="filter-toolbar">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="搜索论文标题或摘要..." data-zh="搜索论文标题或摘要..." data-en="Search paper titles or abstracts...">
+                    </div>
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all" data-zh="全部" data-en="All">全部</button>
+                        <button class="filter-btn" data-filter="conference" data-zh="会议论文" data-en="Conference">会议论文</button>
+                        <button class="filter-btn" data-filter="journal" data-zh="期刊论文" data-en="Journal">期刊论文</button>
+                        <button class="filter-btn" data-filter="patent" data-zh="专利" data-en="Patents">专利</button>
+                    </div>
+                    <select class="sort-select">
+                        <option value="date-desc" data-zh="按日期降序" data-en="Date (Newest)">按日期降序</option>
+                        <option value="date-asc" data-zh="按日期升序" data-en="Date (Oldest)">按日期升序</option>
+                        <option value="title" data-zh="按标题" data-en="Title">按标题</option>
+                    </select>
+                </div>
+
                 <h2 data-zh="发表论文" data-en="Published Papers">发表论文</h2>
                 <div class="publication-year">
                     <h3>2025</h3>
                     <div class="publication-list">
-                        <div class="publication-item">
+                        <div class="publication-item" data-category="conference" data-date="2025-03-15">
                             <h4>RegFormer: Real-time Registration Transformer for Large-scale LiDAR Scenes</h4>
-                            <p><strong>CVPR 2025</strong></p>
-                            <p data-zh="作者: 张教授, 王明, 陈静" data-en="Authors: Prof. Zhang, Wang Ming, Chen Jing">作者: 张教授,
-                                王明, 陈静</p>
+                            <div class="publication-meta">
+                                <p><strong>CVPR 2025</strong></p>
+                                <p data-zh="作者: 张教授, 王明, 陈静" data-en="Authors: Prof. Zhang, Wang Ming, Chen Jing">作者: 张教授, 王明, 陈静</p>
+                                <p data-zh="引用: 42" data-en="Citations: 42">引用: 42</p>
+                            </div>
+                            <div class="publication-abstract" data-zh="本文提出了一种基于Transformer的大规模LiDAR场景实时配准方法，显著提高了配准精度和效率，在多个公开数据集上达到了最先进的性能。" data-en="This paper proposes a Transformer-based real-time registration method for large-scale LiDAR scenes, significantly improving registration accuracy and efficiency, achieving state-of-the-art performance on multiple public datasets.">
+                                本文提出了一种基于Transformer的大规模LiDAR场景实时配准方法，显著提高了配准精度和效率，在多个公开数据集上达到了最先进的性能。
+                            </div>
                             <div class="publication-links">
-                                <a href="/papers/regformer.pdf" class="cta-button small" data-zh="PDF"
-                                    data-en="PDF">PDF</a>
-                                <a href="https://github.com/xxx/regformer" class="cta-button small secondary"
-                                    data-zh="代码" data-en="Code">代码</a>
+                                <a href="/papers/regformer.pdf" class="cta-button small" data-zh="PDF" data-en="PDF">PDF</a>
+                                <a href="https://github.com/xxx/regformer" class="cta-button small secondary" data-zh="代码" data-en="Code">代码</a>
+                                <a href="#" class="cta-button small secondary" data-zh="引用" data-en="Cite">引用</a>
                             </div>
                         </div>
-                        <div class="publication-item">
+                        <div class="publication-item" data-category="journal" data-date="2025-01-10">
                             <h4>Med-SAM 3D: Segment Anything in 3D Medical Images</h4>
-                            <p><strong>Nature Medicine, 2025</strong></p>
-                            <p data-zh="作者: 李副教授, 刘洋, 张伟" data-en="Authors: Associate Prof. Li, Liu Yang, Zhang Wei">作者:
-                                李副教授, 刘洋, 张伟</p>
+                            <div class="publication-meta">
+                                <p><strong>Nature Medicine, 2025</strong></p>
+                                <p data-zh="作者: 李副教授, 刘洋, 张伟" data-en="Authors: Associate Prof. Li, Liu Yang, Zhang Wei">作者: 李副教授, 刘洋, 张伟</p>
+                                <p data-zh="引用: 28" data-en="Citations: 28">引用: 28</p>
+                            </div>
+                            <div class="publication-abstract" data-zh="我们提出了Med-SAM 3D，一种能够在3D医学图像中分割任意解剖结构的新方法，无需特定训练即可适应各种医学成像模态。" data-en="We present Med-SAM 3D, a novel method capable of segmenting any anatomical structures in 3D medical images, adapting to various medical imaging modalities without specific training.">
+                                我们提出了Med-SAM 3D，一种能够在3D医学图像中分割任意解剖结构的新方法，无需特定训练即可适应各种医学成像模态。
+                            </div>
                             <div class="publication-links">
-                                <a href="/papers/med-sam-3d.pdf" class="cta-button small" data-zh="PDF"
-                                    data-en="PDF">PDF</a>
-                                <a href="https://example.com/dataset" class="cta-button small secondary" data-zh="数据集"
-                                    data-en="Dataset">数据集</a>
+                                <a href="/papers/med-sam-3d.pdf" class="cta-button small" data-zh="PDF" data-en="PDF">PDF</a>
+                                <a href="https://example.com/dataset" class="cta-button small secondary" data-zh="数据集" data-en="Dataset">数据集</a>
+                                <a href="#" class="cta-button small secondary" data-zh="引用" data-en="Cite">引用</a>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="publication-year">
+                    <h3>2024</h3>
+                    <div class="publication-list">
+                        <div class="publication-item" data-category="conference" data-date="2024-06-20">
+                            <h4>Vision-Language Navigation with Dynamic Environment Modeling</h4>
+                            <div class="publication-meta">
+                                <p><strong>ECCV 2024</strong></p>
+                                <p data-zh="作者: 王明, 张教授, 陈静" data-en="Authors: Wang Ming, Prof. Zhang, Chen Jing">作者: 王明, 张教授, 陈静</p>
+                                <p data-zh="引用: 35" data-en="Citations: 35">引用: 35</p>
+                            </div>
+                            <div class="publication-abstract" data-zh="本文提出了一种结合动态环境建模的视觉语言导航方法，能够更好地理解环境变化并做出准确导航决策。" data-en="This paper proposes a vision-language navigation method with dynamic environment modeling, enabling better understanding of environmental changes and making accurate navigation decisions.">
+                                本文提出了一种结合动态环境建模的视觉语言导航方法，能够更好地理解环境变化并做出准确导航决策。
+                            </div>
+                            <div class="publication-links">
+                                <a href="/papers/vln-dynamic.pdf" class="cta-button small" data-zh="PDF" data-en="PDF">PDF</a>
+                                <a href="https://github.com/xxx/vln-dynamic" class="cta-button small secondary" data-zh="代码" data-en="Code">代码</a>
+                                <a href="#" class="cta-button small secondary" data-zh="引用" data-en="Cite">引用</a>
+                            </div>
+                        </div>
+                        <div class="publication-item" data-category="journal" data-date="2024-03-05">
+                            <h4>Efficient Neural Architecture Search for Edge Devices</h4>
+                            <div class="publication-meta">
+                                <p><strong>IEEE TPAMI, 2024</strong></p>
+                                <p data-zh="作者: 陈静, 李副教授, 张伟" data-en="Authors: Chen Jing, Associate Prof. Li, Zhang Wei">作者: 陈静, 李副教授, 张伟</p>
+                                <p data-zh="引用: 22" data-en="Citations: 22">引用: 22</p>
+                            </div>
+                            <div class="publication-abstract" data-zh="我们提出了一种高效的神经架构搜索方法，专为边缘设备设计，在保持高性能的同时大幅降低了计算资源需求。" data-en="We propose an efficient neural architecture search method specifically designed for edge devices, significantly reducing computational resource requirements while maintaining high performance.">
+                                我们提出了一种高效的神经架构搜索方法，专为边缘设备设计，在保持高性能的同时大幅降低了计算资源需求。
+                            </div>
+                            <div class="publication-links">
+                                <a href="/papers/efficient-nas.pdf" class="cta-button small" data-zh="PDF" data-en="PDF">PDF</a>
+                                <a href="https://github.com/xxx/efficient-nas" class="cta-button small secondary" data-zh="代码" data-en="Code">代码</a>
+                                <a href="#" class="cta-button small secondary" data-zh="引用" data-en="Cite">引用</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 加载更多按钮 -->
+                <div class="load-more">
+                    <button class="load-more-btn" data-zh="加载更多" data-en="Load More">加载更多</button>
                 </div>
             </div>
         </section>
@@ -86,13 +177,16 @@
                 <h2 data-zh="专利" data-en="Patents">专利</h2>
                 <div class="patent-list">
                     <div class="patent-item">
-                        <h4 data-zh="一种基于 Transformer 的点云配准方法"
-                            data-en="Transformer-based Point Cloud Registration Method">一种基于 Transformer 的点云配准方法</h4>
-                        <p data-zh="专利号: ZL202510123456.7" data-en="Patent No.: ZL202510123456.7">专利号: ZL202510123456.7
-                        </p>
+                        <h4 data-zh="一种基于 Transformer 的点云配准方法" data-en="Transformer-based Point Cloud Registration Method">一种基于 Transformer 的点云配准方法</h4>
+                        <p data-zh="专利号: ZL202510123456.7" data-en="Patent No.: ZL202510123456.7">专利号: ZL202510123456.7</p>
                         <p data-zh="授权日期: 2025-06-15" data-en="Granted: 2025-06-15">授权日期: 2025-06-15</p>
-                        <p data-zh="发明人: 张教授, 王明, 李副教授" data-en="Inventors: Prof. Zhang, Wang Ming, Associate Prof. Li">
-                            发明人: 张教授, 王明, 李副教授</p>
+                        <p data-zh="发明人: 张教授, 王明, 李副教授" data-en="Inventors: Prof. Zhang, Wang Ming, Associate Prof. Li">发明人: 张教授, 王明, 李副教授</p>
+                    </div>
+                    <div class="patent-item">
+                        <h4 data-zh="一种医学图像三维分割系统及方法" data-en="3D Medical Image Segmentation System and Method">一种医学图像三维分割系统及方法</h4>
+                        <p data-zh="专利号: ZL202410987654.3" data-en="Patent No.: ZL202410987654.3">专利号: ZL202410987654.3</p>
+                        <p data-zh="授权日期: 2024-11-20" data-en="Granted: 2024-11-20">授权日期: 2024-11-20</p>
+                        <p data-zh="发明人: 李副教授, 刘洋, 张伟" data-en="Inventors: Associate Prof. Li, Liu Yang, Zhang Wei">发明人: 李副教授, 刘洋, 张伟</p>
                     </div>
                 </div>
             </div>
@@ -101,17 +195,14 @@
 
     <footer class="footer">
         <div class="container">
-            <p data-zh="&copy; 2025 CVPR-Laboratory. 保留所有权利。"
-                data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">&copy; 2025 CVPR-Laboratory. All rights
-                reserved.</p>
-            <p data-zh="地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com"
-                data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">地址：曲阜师范大学 JS526室
-                &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
+            <p data-zh="&copy; 2025 CVPR-Laboratory. 保留所有权利。" data-en="&copy; 2025 CVPR-Laboratory. All rights reserved.">&copy; 2025 CVPR-Laboratory. All rights reserved.</p>
+            <p data-zh="地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com" data-en="Address: Qufu Normal University, JS526 &nbsp;|&nbsp; Email: wnb_915@163.com">地址：曲阜师范大学 JS526室 &nbsp;|&nbsp; 邮箱：wnb_915@163.com</p>
         </div>
     </footer>
 
     <div id="scroll-top" title="返回顶部">▲</div>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/publication.js"></script>
 </body>
 
 </html>
