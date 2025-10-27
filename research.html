@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>研究方向 | CVPR-Laboratory</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <!-- 新增研究方向专用样式 -->
+    <link rel="stylesheet" href="assets/css/research.css">
     <link rel="shortcut icon" href="assets/img/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -39,7 +41,8 @@
     </header>
 
     <main class="main">
-        <section class="page-header">
+        <!-- 页面头部横幅 -->
+        <section class="page-header research-banner">
             <div class="container">
                 <h1 data-zh="研究方向" data-en="Research Directions">研究方向</h1>
                 <p data-zh="探索计算机视觉与模式识别的前沿领域" data-en="Exploring frontiers in computer vision and pattern recognition">
@@ -47,32 +50,254 @@
             </div>
         </section>
 
-        <section class="content-section">
+        <!-- 研究领域概览 -->
+        <section class="research-overview">
             <div class="container">
-                <h2 data-zh="主要研究方向" data-en="Key Research Areas">主要研究方向</h2>
+                <div class="section-header">
+                    <h2 data-zh="研究领域概览" data-en="Research Overview">研究领域概览</h2>
+                    <p data-zh="我们致力于计算机视觉、机器学习和人工智能领域的创新研究，推动技术前沿发展"
+                       data-en="We are committed to innovative research in computer vision, machine learning and artificial intelligence, advancing the frontiers of technology">
+                        我们致力于计算机视觉、机器学习和人工智能领域的创新研究，推动技术前沿发展
+                    </p>
+                </div>
+                
                 <div class="research-grid">
                     <div class="research-item">
-                        <i class="fas fa-eye"></i>
+                        <div class="research-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
                         <h3 data-zh="计算机视觉" data-en="Computer Vision">计算机视觉</h3>
                         <p data-zh="图像识别、目标检测、语义分割、三维视觉重建等前沿研究。"
                             data-en="Cutting-edge research on image recognition, object detection, semantic segmentation, and 3D visual reconstruction.">
                             图像识别、目标检测、语义分割、三维视觉重建等前沿研究。
                         </p>
+                        <div class="research-details">
+                            <h4 data-zh="重点方向" data-en="Key Areas">重点方向</h4>
+                            <ul>
+                                <li data-zh="图像分类与识别" data-en="Image Classification & Recognition">图像分类与识别</li>
+                                <li data-zh="目标检测与跟踪" data-en="Object Detection & Tracking">目标检测与跟踪</li>
+                                <li data-zh="语义与实例分割" data-en="Semantic & Instance Segmentation">语义与实例分割</li>
+                                <li data-zh="三维视觉与重建" data-en="3D Vision & Reconstruction">三维视觉与重建</li>
+                                <li data-zh="视频分析与理解" data-en="Video Analysis & Understanding">视频分析与理解</li>
+                            </ul>
+                        </div>
                     </div>
+                    
                     <div class="research-item">
-                        <i class="fas fa-brain"></i>
+                        <div class="research-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
                         <h3 data-zh="机器学习" data-en="Machine Learning">机器学习</h3>
                         <p data-zh="深度学习、强化学习、迁移学习等先进机器学习方法。"
                             data-en="Advanced methods in deep learning, reinforcement learning, and transfer learning.">
                             深度学习、强化学习、迁移学习等先进机器学习方法。
                         </p>
+                        <div class="research-details">
+                            <h4 data-zh="重点方向" data-en="Key Areas">重点方向</h4>
+                            <ul>
+                                <li data-zh="深度学习与神经网络" data-en="Deep Learning & Neural Networks">深度学习与神经网络</li>
+                                <li data-zh="强化学习与决策" data-en="Reinforcement Learning & Decision Making">强化学习与决策</li>
+                                <li data-zh="迁移学习与领域自适应" data-en="Transfer Learning & Domain Adaptation">迁移学习与领域自适应</li>
+                                <li data-zh="生成模型与对抗网络" data-en="Generative Models & Adversarial Networks">生成模型与对抗网络</li>
+                                <li data-zh="可解释AI与模型分析" data-en="Explainable AI & Model Analysis">可解释AI与模型分析</li>
+                            </ul>
+                        </div>
                     </div>
+                    
                     <div class="research-item">
-                        <i class="fas fa-robot"></i>
+                        <div class="research-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
                         <h3 data-zh="人工智能" data-en="Artificial Intelligence">人工智能</h3>
                         <p data-zh="智能系统、自主决策、人机交互等人工智能应用。"
                             data-en="Applications of intelligent systems, autonomous decision-making, and human-computer interaction.">
                             智能系统、自主决策、人机交互等人工智能应用。
+                        </p>
+                        <div class="research-details">
+                            <h4 data-zh="重点方向" data-en="Key Areas">重点方向</h4>
+                            <ul>
+                                <li data-zh="智能系统与自主决策" data-en="Intelligent Systems & Autonomous Decision">智能系统与自主决策</li>
+                                <li data-zh="自然语言处理" data-en="Natural Language Processing">自然语言处理</li>
+                                <li data-zh="人机交互与智能接口" data-en="Human-Computer Interaction & Smart Interfaces">人机交互与智能接口</li>
+                                <li data-zh="多模态智能融合" data-en="Multimodal Intelligence Fusion">多模态智能融合</li>
+                                <li data-zh="AI伦理与可信AI" data-en="AI Ethics & Trustworthy AI">AI伦理与可信AI</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究项目展示 -->
+        <section class="research-projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-zh="重点项目" data-en="Key Projects">重点项目</h2>
+                    <p data-zh="我们正在进行的代表性研究项目" data-en="Representative research projects we are currently working on">
+                        我们正在进行的代表性研究项目
+                    </p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="医学图像分析">
+                            <div class="project-overlay">
+                                <a href="#" class="view-details" data-zh="查看详情" data-en="View Details">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 data-zh="基于深度学习的医学图像分析" data-en="Deep Learning-based Medical Image Analysis">基于深度学习的医学图像分析</h3>
+                            <p data-zh="开发先进的深度学习算法，用于医学影像的自动诊断和疾病检测，提高诊断准确性和效率。"
+                               data-en="Developing advanced deep learning algorithms for automatic diagnosis and disease detection in medical imaging, improving diagnostic accuracy and efficiency.">
+                                开发先进的深度学习算法，用于医学影像的自动诊断和疾病检测，提高诊断准确性和效率。
+                            </p>
+                            <div class="project-meta">
+                                <span class="project-duration" data-zh="2023-2025" data-en="2023-2025">2023-2025</span>
+                                <span class="project-status ongoing" data-zh="进行中" data-en="Ongoing">进行中</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="自动驾驶环境感知">
+                            <div class="project-overlay">
+                                <a href="#" class="view-details" data-zh="查看详情" data-en="View Details">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 data-zh="自动驾驶环境感知系统" data-en="Autonomous Driving Environment Perception System">自动驾驶环境感知系统</h3>
+                            <p data-zh="研究多传感器融合的环境感知技术，为自动驾驶车辆提供准确、实时的环境理解和决策支持。"
+                               data-en="Researching multi-sensor fusion environment perception technology to provide accurate, real-time environmental understanding and decision support for autonomous vehicles.">
+                                研究多传感器融合的环境感知技术，为自动驾驶车辆提供准确、实时的环境理解和决策支持。
+                            </p>
+                            <div class="project-meta">
+                                <span class="project-duration" data-zh="2022-2024" data-en="2022-2024">2022-2024</span>
+                                <span class="project-status ongoing" data-zh="进行中" data-en="Ongoing">进行中</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="跨模态内容生成">
+                            <div class="project-overlay">
+                                <a href="#" class="view-details" data-zh="查看详情" data-en="View Details">查看详情</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 data-zh="跨模态内容生成与编辑" data-en="Cross-modal Content Generation & Editing">跨模态内容生成与编辑</h3>
+                            <p data-zh="探索文本、图像、音频等多模态内容的相互生成与编辑技术，推动创意内容生成领域的发展。"
+                               data-en="Exploring mutual generation and editing techniques for multimodal content such as text, images, and audio, promoting development in the field of creative content generation.">
+                                探索文本、图像、音频等多模态内容的相互生成与编辑技术，推动创意内容生成领域的发展。
+                            </p>
+                            <div class="project-meta">
+                                <span class="project-duration" data-zh="2024-2026" data-en="2024-2026">2024-2026</span>
+                                <span class="project-status planning" data-zh="规划中" data-en="Planning">规划中</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究成果与影响 -->
+        <section class="research-impact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-zh="研究成果与影响" data-en="Research Impact">研究成果与影响</h2>
+                    <p data-zh="我们的研究成果在学术界和工业界产生的广泛影响" data-en="The broad impact of our research results in academia and industry">
+                        我们的研究成果在学术界和工业界产生的广泛影响
+                    </p>
+                </div>
+                
+                <div class="impact-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label" data-zh="顶级期刊论文" data-en="Top Journal Papers">顶级期刊论文</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label" data-zh="国际会议论文" data-en="International Conference Papers">国际会议论文</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label" data-zh="授权专利" data-en="Authorized Patents">授权专利</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label" data-zh="科研项目" data-en="Research Projects">科研项目</div>
+                    </div>
+                </div>
+                
+                <div class="impact-highlights">
+                    <div class="highlight-card">
+                        <h3 data-zh="学术贡献" data-en="Academic Contributions">学术贡献</h3>
+                        <ul>
+                            <li data-zh="在CVPR、ICCV、ECCV等顶级会议发表多篇论文" data-en="Published multiple papers in top conferences such as CVPR, ICCV, ECCV">在CVPR、ICCV、ECCV等顶级会议发表多篇论文</li>
+                            <li data-zh="TPAMI、IJCV、TIP等期刊发表研究成果" data-en="Published research results in journals such as TPAMI, IJCV, TIP">TPAMI、IJCV、TIP等期刊发表研究成果</li>
+                            <li data-zh="开源多个计算机视觉工具库和数据集" data-en="Open sourced multiple computer vision toolkits and datasets">开源多个计算机视觉工具库和数据集</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3 data-zh="工业应用" data-en="Industrial Applications">工业应用</h3>
+                        <ul>
+                            <li data-zh="与多家知名企业建立产学研合作" data-en="Established industry-university-research cooperation with several well-known enterprises">与多家知名企业建立产学研合作</li>
+                            <li data-zh="技术成果应用于智能安防、自动驾驶等领域" data-en="Technical achievements applied in intelligent security, autonomous driving and other fields">技术成果应用于智能安防、自动驾驶等领域</li>
+                            <li data-zh="多项专利技术实现产业化转化" data-en="Multiple patented technologies achieved industrialization transformation">多项专利技术实现产业化转化</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究设施与资源 -->
+        <section class="research-facilities">
+            <div class="container">
+                <div class="section-header">
+                    <h2 data-zh="研究设施与资源" data-en="Research Facilities & Resources">研究设施与资源</h2>
+                    <p data-zh="我们拥有先进的研究设施和丰富的计算资源，为高质量研究提供保障"
+                       data-en="We have advanced research facilities and rich computing resources to ensure high-quality research">
+                        我们拥有先进的研究设施和丰富的计算资源，为高质量研究提供保障
+                    </p>
+                </div>
+                
+                <div class="facilities-grid">
+                    <div class="facility-item">
+                        <i class="fas fa-server"></i>
+                        <h3 data-zh="高性能计算集群" data-en="High Performance Computing Cluster">高性能计算集群</h3>
+                        <p data-zh="配备多台GPU服务器，提供强大的并行计算能力，支持大规模深度学习模型训练。"
+                           data-en="Equipped with multiple GPU servers, providing powerful parallel computing capabilities to support large-scale deep learning model training.">
+                            配备多台GPU服务器，提供强大的并行计算能力，支持大规模深度学习模型训练。
+                        </p>
+                    </div>
+                    
+                    <div class="facility-item">
+                        <i class="fas fa-database"></i>
+                        <h3 data-zh="专用数据集" data-en="Specialized Datasets">专用数据集</h3>
+                        <p data-zh="收集和标注了多个领域的专用数据集，包括医学影像、自动驾驶、工业检测等。"
+                           data-en="Collected and annotated specialized datasets in multiple fields, including medical imaging, autonomous driving, industrial inspection, etc.">
+                            收集和标注了多个领域的专用数据集，包括医学影像、自动驾驶、工业检测等。
+                        </p>
+                    </div>
+                    
+                    <div class="facility-item">
+                        <i class="fas fa-vr-cardboard"></i>
+                        <h3 data-zh="VR/AR实验平台" data-en="VR/AR Experimental Platform">VR/AR实验平台</h3>
+                        <p data-zh="配备先进的虚拟现实和增强现实设备，支持沉浸式人机交互和三维可视化研究。"
+                           data-en="Equipped with advanced virtual reality and augmented reality devices, supporting immersive human-computer interaction and 3D visualization research.">
+                            配备先进的虚拟现实和增强现实设备，支持沉浸式人机交互和三维可视化研究。
+                        </p>
+                    </div>
+                    
+                    <div class="facility-item">
+                        <i class="fas fa-robot"></i>
+                        <h3 data-zh="机器人实验平台" data-en="Robotics Experimental Platform">机器人实验平台</h3>
+                        <p data-zh="拥有多种类型的机器人平台，用于视觉导航、物体抓取和人机协作等研究。"
+                           data-en="Has various types of robot platforms for research on visual navigation, object grasping, and human-robot collaboration.">
+                            拥有多种类型的机器人平台，用于视觉导航、物体抓取和人机协作等研究。
                         </p>
                     </div>
                 </div>
@@ -93,6 +318,8 @@
 
     <div id="scroll-top" title="返回顶部">▲</div>
     <script src="assets/js/main.js"></script>
+    <!-- 新增研究方向专用脚本 -->
+    <script src="assets/js/research.js"></script>
 </body>
 
 </html>

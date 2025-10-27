@@ -1,0 +1,393 @@
+/* =========================================================
+   研究方向页面专用样式
+   ========================================================= */
+
+/* ========== 研究方向页面横幅 ========== */
+.research-banner {
+    background: linear-gradient(135deg, #036 0%, #09c 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.research-banner h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.research-banner p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========== 通用区块样式 ========== */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #036;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #09c;
+}
+
+.section-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* ========== 研究领域概览 ========== */
+.research-overview {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.research-item {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.research-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.research-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #036;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.research-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #036;
+}
+
+.research-item > p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.research-details {
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+}
+
+.research-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #036;
+}
+
+.research-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.research-details li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    color: #555;
+}
+
+.research-details li::before {
+    content: '•';
+    color: #09c;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* ========== 研究项目展示 ========== */
+.research-projects {
+    padding: 4rem 0;
+    background: white;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+    height: 180px;
+    overflow: hidden;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.project-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #036;
+}
+
+.project-content p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-duration {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.project-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.project-status.ongoing {
+    background: #e7f4e4;
+    color: #2e7d32;
+}
+
+.project-status.planning {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+/* ========== 研究成果与影响 ========== */
+.research-impact {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #036;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.impact-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #036;
+    text-align: center;
+}
+
+.highlight-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.highlight-card li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.highlight-card li:last-child {
+    border-bottom: none;
+}
+
+.highlight-card li::before {
+    content: '✓';
+    color: #09c;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* ========== 研究设施与资源 ========== */
+.research-facilities {
+    padding: 4rem 0;
+    background: white;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.facility-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.facility-item:hover {
+    transform: translateY(-5px);
+    background: #e9ecef;
+}
+
+.facility-item i {
+    font-size: 2.5rem;
+    color: #036;
+    margin-bottom: 1.5rem;
+}
+
+.facility-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #036;
+}
+
+.facility-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ========== 移动端响应式设计 ========== */
+@media (max-width: 768px) {
+    .research-banner {
+        padding: 3rem 0;
+    }
+    
+    .research-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.7rem;
+    }
+    
+    .research-grid,
+    .projects-grid,
+    .impact-stats,
+    .impact-highlights,
+    .facilities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .research-item,
+    .project-card,
+    .highlight-card,
+    .facility-item {
+        padding: 1.5rem;
+    }
+    
+    .impact-stats {
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}

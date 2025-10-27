@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '计算机视觉、机器学习、目标检测',
                 researchEn: 'Computer Vision, Machine Learning, Object Detection',
                 email: 'wu.wei@alumni.cvpr-lab.edu',
-                image: 'assets/img/b4.jpg',
+                image: 'assets/img/team/team_alumni_liuhaocun.jpg',
                 bio: '吴伟博士毕业后加入某知名科技公司，担任高级研究员，继续从事计算机视觉相关研究。在学期间发表高水平论文10余篇，获得国家奖学金2次。',
                 bioEn: 'After graduating with a PhD, Wu Wei joined a well-known technology company as a senior researcher, continuing to work on computer vision-related research. During his studies, he published more than 10 high-level papers and won the National Scholarship twice.',
                 education: '2022年 曲阜师范大学 计算机科学与技术 博士\n2017年 曲阜师范大学 计算机科学与技术 硕士\n2014年 曲阜师范大学 计算机科学与技术 学士',
