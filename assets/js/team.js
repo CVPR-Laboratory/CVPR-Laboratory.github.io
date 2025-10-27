@@ -11,47 +11,70 @@ document.addEventListener('DOMContentLoaded', function () {
                 id: 1,
                 name: '王瀚祥老师',
                 nameEn: 'Prof. Wang',
-                title: '海外归国博士、博士生导师',
-                titleEn: 'Overseas-returned doctorate holder & postgraduate tutor',
-                research: '计算机视觉、深度学习、图像处理',
-                researchEn: 'Computer Vision, Deep Learning, Image Processing',
-                email: 'prof.zhang@cvpr-lab.edu',
-                image: 'assets/img/wanghanxiang.jpg',
-                bio: '王老师是CVPR实验室的创始人，在计算机视觉领域有超过15年的研究经验。他在顶级期刊和会议上发表了80多篇论文，并担任多个国际期刊的编委。主持国家自然科学基金重点项目3项，获得省部级科技进步奖2项。',
-                bioEn: 'Prof. Zhang is the founder of CVPR Laboratory with over 15 years of research experience in computer vision. He has published more than 80 papers in top-tier journals and conferences, and serves as an editorial board member for several international journals. He has led 3 key projects of the National Natural Science Foundation of China and won 2 provincial and ministerial science and technology progress awards.',
-                education: '2005年 清华大学 计算机科学与技术 博士\n2002年 北京大学 计算机科学与技术 硕士\n1999年 南京大学 计算机科学与技术 学士',
-                educationEn: '2005 Ph.D. in Computer Science and Technology, Tsinghua University\n2002 M.S. in Computer Science and Technology, Peking University\n1999 B.S. in Computer Science and Technology, Nanjing University',
+                title: '海外归国博士、硕士生导师',
+                titleEn: 'Overseas PhD & M.S. Supervisor',
+                research: '计算机视觉、深度学习、图像处理、智慧城市、人工智能',
+                researchEn: 'Computer Vision, Deep Learning, Image Processing, Smart City, Artificial Intelligence',
+                email: 'hanxiang@qfnu.edu.cn',
+                image: 'assets/img/team/team_faculty_wanghanxiang.jpg',
+                bio: '王老师作为CVPR实验室创始人，深耕计算机视觉与农业科学交叉研究，2023年8月于韩国世宗大学获工学博士学位，次年即入选国家博士后人才支持计划并摘得“国家青年储备人才”称号；此前曾获批“国家建设高水平大学公派研究生项目”。他迄今已在顶刊/顶会累计发表SCI论文25篇（其中中科院一区TOP 13篇），总引用逾2300次。',
+                bioEn: 'Founder of the CVPR Laboratory, Prof. Wang has long focused on the intersection of computer vision and agricultural science. He earned his Ph.D. in engineering from Sejong University, South Korea, in August 2023, and in 2024 was selected for the National Postdoctoral Talent Support Program while receiving the title of “National Young Reserve Talent.” Earlier, he was granted funding under the “National Construction of High-Level University Public-Sent Graduate Student Program.” To date, he has published 25 SCI papers in top journals and conferences—13 of them in CAS Zone-1 TOP journals—with total citations exceeding 2,300.',
+                education: '2020年 韩国世宗大学 计算机视觉 博士 <br> 2017年 韩国世宗大学 人工智能 硕士<br>2014年 临沂大学 计算机科学与技术 学士',
+                educationEn: 'Ph.D. in Computer Vision, Sejong University, South Korea, 2020<br>M.S. in Artificial Intelligence, Sejong University, South Korea, 2017<br>B.S. in Computer Science and Technology, Linyi University, China, 2014',
                 researchInterests: [
-                    '深度学习模型优化',
-                    '图像语义分割',
-                    '目标检测与跟踪',
-                    '三维视觉重建'
+                    '计算机视觉：图像理解与分析',
+                    '深度学习：模型优化与应用',
+                    '图像处理：去噪、增强与重建',
+                    '智慧城市：智能监控与管理',
+                    '人工智能：赋予机器感知、推理与决策能力'
                 ],
                 researchInterestsEn: [
-                    'Deep Learning Model Optimization',
-                    'Image Semantic Segmentation',
-                    'Object Detection and Tracking',
-                    '3D Visual Reconstruction'
+                    'Computer Vision: image understanding and analysis',
+                    'Deep Learning: model optimization and applications',
+                    'Image Processing: denoising, enhancement and reconstruction',
+                    'Smart City: intelligent surveillance and management',
+                    'Artificial Intelligence: endowing machines with perception, reasoning and decision-making',
                 ],
                 publications: [
                     {
-                        title: '基于深度学习的多尺度目标检测算法研究',
-                        titleEn: 'Research on Multi-scale Object Detection Algorithm Based on Deep Learning',
-                        authors: '张教授, 李研究员, 王明',
-                        authorsEn: 'Prof. Zhang, Researcher Li, Wang Ming',
+                        title: '老师的代表性论文',
+                        titleEn: '老师的代表性论文',
+                        authors: '王瀚祥老师, 二作, 三作',
+                        authorsEn: 'Prof. Wang, 二作, 三作',
                         venue: '计算机学报, 2023'
                     },
                     {
-                        title: '面向复杂场景的图像语义分割方法',
-                        titleEn: 'Image Semantic Segmentation Method for Complex Scenes',
-                        authors: '张教授, 刘芳',
-                        authorsEn: 'Prof. Zhang, Liu Fang',
-                        venue: 'CVPR 2022'
+                        title: '老师的代表性论文',
+                        titleEn: '老师的代表性论文',
+                        authors: '王瀚祥老师, 二作, 三作',
+                        authorsEn: 'Prof. Wang, 二作, 三作',
+                        venue: '计算机学报, 2023'
+                    },
+                    {
+                        title: '老师的代表性论文',
+                        titleEn: '老师的代表性论文',
+                        authors: '王瀚祥老师, 二作, 三作',
+                        authorsEn: 'Prof. Wang, 二作, 三作',
+                        venue: '计算机学报, 2023'
+                    },
+                    {
+                        title: '老师的代表性论文',
+                        titleEn: '老师的代表性论文',
+                        authors: '王瀚祥老师, 二作, 三作',
+                        authorsEn: 'Prof. Wang, 二作, 三作',
+                        venue: '计算机学报, 2023'
+                    },
+                    {
+                        title: '老师的代表性论文',
+                        titleEn: '老师的代表性论文',
+                        authors: '王瀚祥老师, 二作, 三作',
+                        authorsEn: 'Prof. Wang, 二作, 三作',
+                        venue: '计算机学报, 2023'
                     }
                 ],
                 links: [
                     { icon: 'fas fa-graduation-cap', url: '#', label: '个人主页' },
-                    { icon: 'fas fa-envelope', url: 'mailto:prof.zhang@cvpr-lab.edu', label: '发送邮件' },
+                    { icon: 'fas fa-envelope', url: 'mailto:hanxiang@qfnu.edu.cn', label: '发送邮件' },
                     { icon: 'fab fa-google-scholar', url: '#', label: 'Google Scholar' }
                 ]
             },
@@ -64,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '图像处理、模式识别、机器学习',
                 researchEn: 'Image Processing, Pattern Recognition, Machine Learning',
                 email: 'prof.li@cvpr-lab.edu',
-                image: 'assets/img/liyanfen.jpg',
+                image: 'assets/img/team/team_faculty_liyanfen.jpg',
                 bio: '李教授专注于图像处理与模式识别研究，主持多项国家级科研项目，在相关领域取得了重要研究成果。在国际知名期刊发表论文40余篇，获得国家发明专利5项。',
                 bioEn: 'Prof. Li focuses on image processing and pattern recognition research, leading several national-level research projects and achieving significant research results in related fields. He has published more than 40 papers in internationally renowned journals and obtained 5 national invention patents.',
                 education: '2008年 上海交通大学 计算机应用技术 博士\n2005年 浙江大学 计算机科学与技术 硕士\n2002年 武汉大学 计算机科学与技术 学士',
@@ -106,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '图像分类、迁移学习、小样本学习',
                 researchEn: 'Image Classification, Transfer Learning, Few-shot Learning',
                 email: 'chen.hua@cvpr-lab.edu',
-                image: 'assets/img/b2.jpg',
-                bio: '陈华硕士研究生研究图像分类与迁移学习，致力于提高模型在小样本场景下的性能。已在国际会议发表论文2篇，参与国家自然科学基金项目1项。',
+                image: 'assets/img/team/team_master_caojipei.jpg',
+                bio: '曹继培硕士研究生研究图像分类与迁移学习，致力于提高模型在小样本场景下的性能。已在国际会议发表论文2篇，参与国家自然科学基金项目1项。',
                 bioEn: 'Chen Hua researches image classification and transfer learning, focusing on improving model performance in few-shot scenarios. He has published 2 papers in international conferences and participated in 1 National Natural Science Foundation project.',
                 education: '2021年 曲阜师范大学 计算机科学与技术 学士',
                 educationEn: '2021 B.S. in Computer Science and Technology, Qufu Normal University',
@@ -146,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/b3.jpg',
+                image: 'assets/img/team/team_master_mamengyao.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -178,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/b3.jpg',
+                image: 'assets/img/team/team_master_jiazhonghao.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -210,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/b3.jpg',
+                image: 'assets/img/team/team_master_wangnaiben.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -242,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 research: '三维重建、点云处理、自动驾驶',
                 researchEn: '3D Reconstruction, Point Cloud Processing, Autonomous Driving',
                 email: 'zhao.qiang@cvpr-lab.edu',
-                image: 'assets/img/b3.jpg',
+                image: 'assets/img/team/team_master_wanhuanhuan.jpg',
                 bio: '赵强硕士研究生专注于三维重建与点云处理技术，探索其在自动驾驶等领域的应用。已发表国际会议论文1篇，申请发明专利1项。',
                 bioEn: 'Zhao Qiang focuses on 3D reconstruction and point cloud processing technologies, exploring their applications in fields such as autonomous driving. He has published 1 paper in an international conference and applied for 1 invention patent.',
                 education: '2021年 山东大学 计算机科学与技术 学士',
@@ -266,11 +289,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 ]
             }
         ],
-        
+
         alumni: [
             {
                 id: 8,
-                name: '吴伟',
+                name: '毕业生',
                 nameEn: 'Wu Wei',
                 title: '博士毕业生',
                 titleEn: 'PhD Graduate',
@@ -688,7 +711,7 @@ async function exportMemberToPDF(memberId, event) {
 
         // 使用简单的字体设置
         doc.setFont('helvetica');
-        
+
         // 标题
         doc.setFontSize(18);
         doc.setFont(undefined, 'bold');
@@ -699,7 +722,7 @@ async function exportMemberToPDF(memberId, event) {
         // 基本信息 - 使用英文标签避免中文问题
         doc.setFontSize(11);
         doc.setFont(undefined, 'normal');
-        
+
         // Position
         doc.text('Position:', margin, yPosition);
         const positionText = isChinese ? member.title : member.titleEn;
@@ -725,7 +748,7 @@ async function exportMemberToPDF(memberId, event) {
         doc.setFontSize(10);
         doc.setFont(undefined, 'normal');
         const educationText = isChinese ? member.education : member.educationEn;
-        
+
         // 处理教育背景文本，避免中文问题
         const educationLines = educationText.split('\n');
         educationLines.forEach(line => {
@@ -736,7 +759,7 @@ async function exportMemberToPDF(memberId, event) {
             doc.text(line, margin, yPosition);
             yPosition += 6;
         });
-        
+
         yPosition += 8;
 
         // Research Interests - 使用英文标签
@@ -748,7 +771,7 @@ async function exportMemberToPDF(memberId, event) {
         doc.setFontSize(10);
         doc.setFont(undefined, 'normal');
         const researchList = isChinese ? member.researchInterests : member.researchInterestsEn;
-        
+
         researchList.forEach(item => {
             if (yPosition > doc.internal.pageSize.getHeight() - 20) {
                 doc.addPage();
@@ -757,7 +780,7 @@ async function exportMemberToPDF(memberId, event) {
             doc.text('• ' + item, margin, yPosition);
             yPosition += 6;
         });
-        
+
         yPosition += 8;
 
         // Publications - 使用英文标签
@@ -780,7 +803,7 @@ async function exportMemberToPDF(memberId, event) {
                 doc.setFont(undefined, 'bold');
                 const title = isChinese ? pub.title : pub.titleEn;
                 const titleText = `${index + 1}. ${title}`;
-                
+
                 // 处理长标题
                 const titleLines = doc.splitTextToSize(titleText, pageWidth - 2 * margin);
                 titleLines.forEach(line => {
@@ -796,7 +819,7 @@ async function exportMemberToPDF(memberId, event) {
                 doc.setFont(undefined, 'italic');
                 const authors = isChinese ? pub.authors : pub.authorsEn;
                 const authorLines = doc.splitTextToSize(authors, pageWidth - 2 * margin - 5);
-                
+
                 authorLines.forEach(line => {
                     if (yPosition > doc.internal.pageSize.getHeight() - 20) {
                         doc.addPage();
@@ -809,7 +832,7 @@ async function exportMemberToPDF(memberId, event) {
                 // 期刊/会议
                 doc.setFont(undefined, 'normal');
                 const venueLines = doc.splitTextToSize(pub.venue, pageWidth - 2 * margin - 5);
-                
+
                 venueLines.forEach(line => {
                     if (yPosition > doc.internal.pageSize.getHeight() - 20) {
                         doc.addPage();
@@ -830,7 +853,7 @@ async function exportMemberToPDF(memberId, event) {
             doc.addPage();
             yPosition = 20;
         }
-        
+
         doc.text('Biography', margin, yPosition);
         yPosition += 10;
 
@@ -838,7 +861,7 @@ async function exportMemberToPDF(memberId, event) {
         doc.setFont(undefined, 'normal');
         const bioText = isChinese ? member.bio : member.bioEn;
         const bioLines = doc.splitTextToSize(bioText, pageWidth - 2 * margin);
-        
+
         bioLines.forEach(line => {
             if (yPosition > doc.internal.pageSize.getHeight() - 20) {
                 doc.addPage();
