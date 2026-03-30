@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
+  <title>关于我们 - CVPR-Lab</title>
+  <meta name="keywords" content="实验室简介,实验室文化,发展历程,团队活动" />
+  <meta name="description" content="CVPR实验室简介、文化理念、发展历程及团队风采。" />
+  <meta name="viewport" content="width=1380" />
+  <link href="/package/css/style.css" rel="stylesheet" />
+  <link href="/package/css/aos.css" rel="stylesheet" />
+  <link href="/package/css/common.css" rel="stylesheet" />
+  <script src="/package/js/jquery.js"></script>
+  <script src="/package/js/jquery.SuperSlide.2.1.1.js"></script>
+  <script src="/package/js/common.js"></script>
+  <!-- 引入 Font Awesome 6 图标库，防止图标布局偏移 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* 关于我们页面额外样式 */
+    .about-content {
+      background: #fff;
+      padding: 20px 0;
+    }
+    .section-block {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1048a0;
+      border-left: 5px solid #1048a0;
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+    .about-text {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+      text-align: justify;
+    }
+    .culture-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .culture-card {
+      flex: 1;
+      background: #f9f9fc;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .culture-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .culture-card i {
+      font-size: 42px;
+      color: #1048a0;
+      margin-bottom: 15px;
+    }
+    .culture-card h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      position: relative;
+    }
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #1048a0;
+    }
+    .timeline li {
+      padding-left: 35px;
+      position: relative;
+      margin-bottom: 25px;
+    }
+    .timeline li:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      background: #1048a0;
+      border-radius: 50%;
+    }
+    .timeline .year {
+      font-weight: 600;
+      color: #1048a0;
+      margin-right: 15px;
+      display: inline-block;
+      width: 60px;
+    }
+    .activity-grid, .photos-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .activity-card, .photo-card {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      background: #f5f5f5;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .activity-card img, .photo-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .activity-card p, .photo-card p {
+      padding: 10px;
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .more-link {
+      text-align: right;
+      margin-top: 10px;
+    }
+    .more-link a {
+      color: #1048a0;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .more-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- 头部（完全保留原样式，修复导航锚点） -->
+  <div class="header_main">
+    <div class="w1200 clearfix">
+      <a class="logo fl" aos="fade-right" aos-delay="100" href="/package/html/index/index.html" title="CVPR-Laboratory">
+        <img src="/package/images/logo.png" alt="CVPR-Laboratory实验室logo" />
+      </a>
+      <div class="nav fr" id="nav" aos="fade-left" aos-delay="100">
+        <ul class="navlist">
+          <li><a href="/package/html/index/index.html" title="首页">首页速览<span>HOME</span></a></li>
+          <li>
+            <a href="/package/html/about/about_main.html" title="关于我们">关于我们<span>ABOUT US</span></a>
+            <div class="subnav">
+              <a href="/package/html/about/about_introduction.html">实验室简介</a>
+              <a href="/package/html/about/about_history.html">发展历程</a>
+              <a href="/package/html/about/about_culture.html">实验室文化</a>
+              <a href="/package/html/about/about_activities.html">团队活动</a>
+              <a href="/package/html/about/about_photos.html">团队合影</a>
+            </div>
+          </li>
+          <li>
+            <a href="/package/html/team/team_main.html" title="团队成员">团队成员<span>TEAM</span></a>
+            <div class="subnav">
+              <a href="/package/html/team/team_main.html#teacher-team">教师团队</a>
+              <a href="/package/html/team/team_main.html#postgraduate-team">研究生团队</a>
+              <a href="/package/html/team/team_main.html#alumni-team">已毕业学生</a>
+            </div>
+          </li>
+          <li>
+            <a href="/package/html/achievement/achievement_main.html" title="研究成果">研究成果<span>ACHIEVEMENT</span></a>
+            <div class="subnav">
+              <a href="/package/html/achievement/achievement_papers.html">发表论文</a>
+              <a href="/package/html/achievement/achievement_patents.html">发明专利</a>
+              <a href="/package/html/achievement/achievement_awards.html">竞赛获奖</a>
+              <a href="/package/html/achievement/achievement_projects.html">合作项目</a>
+            </div>
+          </li>
+          <li>
+            <a href="/package/html/news/news_main.html" title="新闻中心">新闻中心<span>NEWS</span></a>
+            <div class="subnav">
+              <a href="/package/html/news/news_laboratory.html">实验室新闻</a>
+              <a href="/package/html/news/news_frontiers.html">方向前沿</a>
+              <a href="/package/html/news/news_faq.html">常见问题</a>
+            </div>
+          </li>
+          <li>
+            <a href="/package/html/contact/contact_main.html" title="联系我们">联系我们<span>Contact</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 内页大图 -->
+  <div class="nybanner" style="background-image: url(/package/images/about/about_head_bg.png)"></div>
+
+  <!-- 搜索栏（修复defaultValue问题） -->
+  <div class="search_main">
+    <div class="w1200 clearfix">
+      <div class="skey" aos="fade-right">
+        <p>
+          热门关键词：<a href="/package/html/achievement/achievement_papers.html" title="发表论文">发表论文</a>
+          <a href="/package/html/achievement/achievement_patents.html" title="发明专利">发明专利</a>
+          <a href="/package/html/achievement/achievement_projects.html" title="研究项目">研究项目</a>
+          <a href="/package/html/achievement/achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
+          <a href="/package/html/news/news_frontiers.html" title="前沿动态">前沿动态</a>
+        </p>
+      </div>
+      <div class="search_form" aos="fade-left">
+        <form action="search/" method="get" onsubmit="return checksearch(this);">
+          <label for="search_keyword" style="display:none;">搜索关键词</label>
+          <input class="stxt" type="text" name="keyword" id="search_keyword" value="请输入关键字"
+                 onfocus="if (this.value == '请输入关键字') this.value = '';"
+                 onblur="if (this.value == '') this.value = '请输入关键字';" />
+          <input type="submit" value="" class="sbtn icon" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="submian">
+    <div class="w1200 clearfix">
+      <!-- 左侧边栏（保留原分类） -->
+      <div class="subleft fl">
+        <div class="lefta">
+          <div class="title">
+            <h2>
+              <p>—— 关于我们 ——</p>
+              <span>ABOUT US</span>
+            </h2>
+          </div>
+          <div class="comt">
+            <ul>
+              <li class="hover"><a href="/package/html/about/about_introduction.html">实验室简介</a></li>
+              <li><a href="/package/html/about/about_culture.html">实验室文化</a></li>
+              <li><a href="/package/html/about/about_history.html">发展历程</a></li>
+              <li><a href="/package/html/about/about_activities.html">团队活动</a></li>
+              <li><a href="/package/html/about/about_photos.html">团队合影</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 推荐内容（改为实验室亮点） -->
+        <div class="leftnews">
+          <div class="title">
+            <h2>
+              <p>—— 实验室亮点 ——</p>
+              <span>HIGHLIGHTS</span>
+            </h2>
+          </div>
+          <ul class="clearfix">
+            <li>
+              <a href="/package/html/achievement/achievement_papers.html" title="高水平论文">
+                <img src="/package/images/about/highlight_paper.png" alt="论文发表" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>高水平论文</p>
+              </a>
+            </li>
+            <li>
+              <a href="/package/html/team/team_main.html" title="优秀团队">
+                <img src="/package/images/about/highlight_team.png" alt="优秀团队" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>优秀团队</p>
+              </a>
+            </li>
+            <li>
+              <a href="/package/html/achievement/achievement_awards.html" title="竞赛获奖">
+                <img src="/package/images/about/highlight_award.png" alt="竞赛获奖" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>竞赛获奖</p>
+              </a>
+            </li>
+            <li>
+              <a href="/package/html/news/news_laboratory.html" title="最新动态">
+                <img src="/package/images/about/highlight_news.png" alt="最新动态" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>最新动态</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="leftcont">
+          — 慧眼识界 智算万物 —<br />
+          <b>RECOGNITION</b>
+        </div>
+      </div>
+
+      <!-- 右侧主要内容区域：关于实验室的综合展示 -->
+      <div class="subright fr">
+        <div class="sobtitle">
+          <span style="display:none;">当前位置图标</span>您的位置：<a href="/package/html/index/index.html">首页</a> &gt;&gt; <a href="/package/html/about/about_main.html">关于我们</a> &gt;&gt; 实验室简介
+        </div>
+
+        <div class="about-content">
+          <!-- 实验室简介 -->
+          <div class="section-block">
+            <div class="section-title">实验室简介</div>
+            <div class="about-text">
+              <p>CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。</p>
+              <p>目前实验室拥有教授2名，副教授3名，在读研究生12名，承担国家自然科学基金、山东省重点研发计划等多项科研项目，在IEEE T-PAMI、CVPR、ICCV等顶级期刊和会议发表论文30余篇，获授权发明专利10余项。</p>
+              <p>实验室秉持“开放、创新、务实、协作”的理念，与国内外多所高校和企业建立了长期合作关系，不断推动科研成果转化，为地方经济和社会发展贡献力量。</p>
+            </div>
+          </div>
+
+          <!-- 实验室文化 -->
+          <div class="section-block">
+            <div class="section-title">实验室文化</div>
+            <div class="culture-grid">
+              <div class="culture-card">
+                <i class="fas fa-lightbulb"></i>
+                <h4>创新</h4>
+                <p>鼓励探索未知，勇于挑战前沿难题，以创新驱动科研发展。</p>
+              </div>
+              <div class="culture-card">
+                <i class="fas fa-users"></i>
+                <h4>协作</h4>
+                <p>倡导团队合作，跨学科交流，实现1+1>2的协同效应。</p>
+              </div>
+              <div class="culture-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h4>求真</h4>
+                <p>崇尚科学精神，严谨治学，追求真理与卓越。</p>
+              </div>
+              <div class="culture-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h4>奉献</h4>
+                <p>服务社会，推动技术落地，践行科技报国使命。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 发展历程 -->
+          <div class="section-block">
+            <div class="section-title">发展历程</div>
+            <ul class="timeline">
+              <li><span class="year">2020年</span> 实验室正式成立，首批研究生入学。</li>
+              <li><span class="year">2021年</span> 获批国家自然科学基金青年项目，发表首篇中科院一区论文。</li>
+              <li><span class="year">2022年</span> 与韩国世宗大学建立合作，联合培养博士生。</li>
+              <li><span class="year">2023年</span> 实验室规模扩大至10人，获山东省自然科学基金资助。</li>
+              <li><span class="year">2024年</span> 承办第三届计算机视觉前沿研讨会，获多项国家级竞赛奖励。</li>
+              <li><span class="year">2025年</span> 获批山东省重点研发计划，与华为签订产学研合作项目。</li>
+            </ul>
+          </div>
+
+          <!-- 团队活动 -->
+          <div class="section-block">
+            <div class="section-title">团队活动</div>
+            <div class="activity-grid">
+              <div class="activity-card">
+                <img src="/package/images/about/activity_1.png" alt="学术研讨会" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>第三届CV前沿研讨会</p>
+              </div>
+              <div class="activity-card">
+                <img src="/package/images/about/activity_2.png" alt="户外拓展" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>秋季团队拓展活动</p>
+              </div>
+              <div class="activity-card">
+                <img src="/package/images/about/activity_3.png" alt="学术交流" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>与华为专家交流会</p>
+              </div>
+            </div>
+            <div class="more-link"><a href="/package/html/about/about_activities.html">查看更多活动 &gt;</a></div>
+          </div>
+
+          <!-- 团队合影 -->
+          <div class="section-block">
+            <div class="section-title">团队合影</div>
+            <div class="photos-grid">
+              <div class="photo-card">
+                <img src="/package/images/about/photo_2024.png" alt="2024年团队合影" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>2024年实验室成员合影</p>
+              </div>
+              <div class="photo-card">
+                <img src="/package/images/about/photo_2023.png" alt="2023年团队合影" onerror="this.onerror=null;this.src='/package/images/default.png';" />
+                <p>2023年实验室年会合影</p>
+              </div>
+            </div>
+            <div class="more-link"><a href="/package/html/about/about_photos.html">查看全部合影 &gt;</a></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页尾（修复无效链接和邮件前缀） -->
+  <div class="footer_main">
+    <div class="footer w1200 clearfix">
+      <div class="links">
+        <span>友情链接：</span>
+        <a href="https://github.com/RIGCV" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      </div>
+      <ul class="botnavlist fl">
+        <li>
+          <a href="/package/html/about/about_main.html" title="关于我们">关于我们</a>
+          <div class="drop clearfix"><a href="/package/html/about/about_introduction.html" title="实验室简介">实验室简介</a></div>
+          <div class="drop clearfix"><a href="/package/html/about/about_culture.html" title="实验室文化">实验室文化</a></div>
+          <div class="drop clearfix"><a href="/package/html/about/about_history.html" title="发展历程">发展历程</a></div>
+        </li>
+        <li>
+          <a href="/package/html/achievement/achievement_main.html" title="研究成果">研究成果</a>
+          <div class="drop clearfix"><a href="/package/html/achievement/achievement_papers.html" title="发表论文">发表论文</a></div>
+          <div class="drop clearfix"><a href="/package/html/achievement/achievement_patents.html" title="发明专利">发明专利</a></div>
+          <div class="drop clearfix"><a href="/package/html/achievement/achievement_awards.html" title="竞赛获奖">竞赛获奖</a></div>
+          <div class="drop clearfix"><a href="/package/html/achievement/achievement_projects.html" title="合作项目">合作项目</a></div>
+        </li>
+        <li>
+          <a href="/package/html/news/news_main.html" title="新闻中心">新闻中心</a>
+          <div class="drop clearfix"><a href="/package/html/news/news_laboratory.html" title="实验室新闻">实验室新闻</a></div>
+          <div class="drop clearfix"><a href="/package/html/news/news_frontiers.html" title="方向前沿">方向前沿</a></div>
+          <div class="drop clearfix"><a href="/package/html/news/news_faq.html" title="常见问题">常见问题</a></div>
+        </li>
+        <li>
+          <a href="/package/html/team/team_main.html" title="团队成员">团队成员</a>
+          <div class="drop clearfix"><a href="/package/html/team/team_main.html#teacher-team" title="教师团队">教师团队</a></div>
+          <div class="drop clearfix"><a href="/package/html/team/team_main.html#postgraduate-team" title="研究生团队">研究生团队</a></div>
+          <div class="drop clearfix"><a href="/package/html/team/team_main.html#alumni-team" title="已毕业学生">已毕业学生</a></div>
+        </li>
+      </ul>
+      <div class="qcode fr">
+        <div class="btel fl">
+          <p class="p1">联系我们</p>
+          <p class="p2">137-9157-1602</p>
+          <p class="p3">联系人：王教授</p>
+          <p class="p3">邮　箱：hanxiang@qfnu.edu.cn</p>
+          <p class="p3">地　址：山东省日照市曲阜师范大学</p>
+        </div>
+        <img class="ewm fr" src="/package/images/index/index_footer_WeChat.png" alt="CVPR-Laboratory微信公众号二维码" />
+      </div>
+    </div>
+    <div class="copymain">
+      <div class="w1200 clearfix">
+        <p class="fl">
+          Copyright © 2025 CVPR-Laboratory
+          版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" title="ICP备496365245号">ICP备496365245号</a>　<a href="map.html">网站地图</a>（<a href="sitemap.xml" target="_blank">百度</a>）
+        </p>
+        <p class="fr"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 浮动客服（修复邮件链接） -->
+  <dl class="toolbar">
+    <dd class="qq"><a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a></dd>
+    <dd class="tel">
+      <i></i><span>联系我们</span>
+      <div class="box"><p>联系我们</p><h3>137-9157-1602</h3></div>
+    </dd>
+    <dd class="code">
+      <i></i><span>微信咨询</span>
+      <div class="box"><img src="/package/images/index/index_footer_WeChat.png" alt="微信咨询二维码" /></div>
+    </dd>
+    <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
+  </dl>
+
+  <script src="/package/js/aos.js"></script>
+  <script src="/package/js/app.js"></script>
+  <script type="text/javascript">
+    // 优化 AOS 配置，防止动画重复触发导致的跳动
+    AOS.init({
+      easing: "ease-out-back",
+      duration: 1000,
+      once: true,       // 动画只播放一次，避免滚动时重复触发
+      disable: 'mobile' // 移动端禁用，减少性能开销
+    });
+
+    if (typeof checksearch !== "function") {
+      window.checksearch = function (form) {
+        var kw = form.keyword.value.trim();
+        if (kw === "" || kw === "请输入关键字") {
+          alert("请输入搜索关键词");
+          return false;
+        }
+        return true;
+      };
+    }
+  </script>
+</body>
+</html>
