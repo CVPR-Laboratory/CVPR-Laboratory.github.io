@@ -111,5 +111,7 @@ function share(){
 			"bdSize" : 16
 		}],
 	}
-	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/apijs/share.js?cdnversion='+~(-new Date()/36e5)];
+    var script = document.createElement('script');
+    script.src = 'https://bdimg.share.baidu.com/static/apijs/share.js?cdnversion=' + ~(-new Date() / 36e5);
+    (document.getElementsByTagName('head')[0] || document.body).appendChild(script);
 }
