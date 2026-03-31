@@ -782,7 +782,7 @@ no-repeat
 }
 /*关于我们*/
 .index .about {
-  background: url("/images/index/about_bg.png")
+  background: url("../images/about_bg.png")
  no-repeat
     center center;
   background-attachment: fixed;
@@ -822,7 +822,7 @@ no-repeat
   width: 443px;
   height: 394px;
   background: url("../images/bg.png")
-    /*tpa=http://060049.eycms.cn/theme/cms060049/images/bg.png*/ no-repeat left
+no-repeat left
     top;
 }
 .index .about .box .txt .img img {
