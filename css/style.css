@@ -782,7 +782,7 @@ no-repeat
 }
 /*关于我们*/
 .index .about {
-  background: url("../images/about_bg.png")
+  background: url("../images/index/about_bg.png")
  no-repeat
     center center;
   background-attachment: fixed;
