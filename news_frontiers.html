@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
+    <title>方向前沿 - CVPR-Lab</title>
+    <meta name="keywords" content="计算机视觉前沿,人工智能趋势,CVPR最新动态" />
+    <meta name="description" content="CVPR实验室聚焦计算机视觉与人工智能前沿研究方向，分享最新技术动态与学术洞察。" />
+    <meta name="viewport" content="width=1380" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/aos1.css" rel="stylesheet" />
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="js/common.js"></script>
+  </head>
+  <body>
+    <!-- 顶部开始 (已注释，保留原样) -->
+    <!-- <div class="top_main">...</div> -->
+    <!--头部开始-->
+    <div class="header_main">
+      <div class="w1200 clearfix">
+        <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
+          <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
+        </a>
+        <!--导航开始-->
+        <div class="nav fr" id="nav" aos="fade-left" aos-delay="100">
+          <ul class="navlist">
+            <li><a href="index.html" title="首页">首页速览<span>HOME</span></a></li>
+            <li>
+              <a href="about_main.html" title="关于我们">关于我们<span>ABOUT US</span></a>
+              <div class="subnav">
+                <a href="about_introduction.html">实验室简介</a>
+                <a href="about_history.html">发展历程</a>
+                <a href="about_culture.html">实验室文化</a>
+                <a href="about_activities.html">团队活动</a>
+                <a href="about_photos.html">团队合影</a>
+              </div>
+            </li>
+            <li>
+              <a href="team_main.html" title="团队成员">团队成员<span>TEAM</span></a>
+              <div class="subnav">
+                <a href="team_main.html#teacher-team">教师团队</a>
+                <a href="team_main.html#postgraduate-team">研究生团队</a>
+                <a href="team_main.html#alumni-team">已毕业学生</a>
+              </div>
+            </li>
+            <li>
+              <a href="achievement_main.html" title="研究成果">研究成果<span>ACHIEVEMENT</span></a>
+              <div class="subnav">
+                <a href="achievement_papers.html">发表论文</a>
+                <a href="achievement_patents.html">发明专利</a>
+                <a href="achievement_awards.html">竞赛获奖</a>
+                <a href="achievement_projects.html">合作项目</a>
+              </div>
+            </li>
+            <li>
+              <a href="news_main.html" title="新闻中心">新闻中心<span>NEWS</span></a>
+              <div class="subnav">
+                <a href="news_laboratory.html">实验室新闻</a>
+                <a href="news_frontiers.html">方向前沿</a>
+                <a href="news_faq.html">常见问题</a>
+              </div>
+            </li>
+            <li>
+              <a href="contact_main.html" title="联系我们">联系我们<span>Contact</span></a>
+            </li>
+          </ul>
+        </div>
+        <!--导航结束-->
+      </div>
+    </div>
+    <!--头部结束-->
+    <!--内页大图开始-->
+    <div class="nybanner" style="background-image: url(/images/news/news_head_bg.png)"></div>
+    <!--内页大图结束-->
+    <!--搜索栏开始-->
+    <div class="search_main">
+      <div class="w1200 clearfix">
+        <!--热搜词开始-->
+        <div class="skey" aos="fade-right">
+          <p>
+            热门关键词：<a href="achievement_papers.html" title="发表论文">发表论文</a>
+            <a href="achievement_patents.html" title="发明专利">发明专利</a>
+            <a href="achievement_projects.html" title="研究项目">研究项目</a>
+            <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
+            <a href="news_frontiers.html" title="前沿动态">前沿动态</a>
+          </p>
+        </div>
+        <!--热搜词结束-->
+        <!--搜索框开始-->
+        <div class="search_form" aos="fade-left">
+          <form action="search/" method="get" onsubmit="return checksearch(this);">
+            <label for="search_keyword" style="display:none;">搜索关键词</label>
+            <input class="stxt" type="text" name="keyword" id="search_keyword" value="请输入关键字"
+                   onfocus="if (this.value == '请输入关键字') this.value = '';"
+                   onblur="if (this.value == '') this.value = '请输入关键字';" />
+            <input type="submit" value="" class="sbtn icon" />
+          </form>
+        </div>
+        <!--搜索框结束-->
+      </div>
+    </div>
+    <!--搜索栏结束-->
+    <div class="submian">
+      <div class="w1200 clearfix">
+        <div class="subleft fl">
+          <!--栏目分类开始-->
+          <div class="lefta">
+            <div class="title">
+              <h2>
+                <p>—— 新闻中心 ——</p>
+                <span>NEWS</span>
+              </h2>
+            </div>
+            <div class="comt">
+              <ul>
+                <li><a href="news_laboratory.html">实验室新闻</a></li>
+                <li><a href="news_frontiers.html">方向前沿</a></li>
+                <li><a href="news_faq.html">常见问题</a></li>
+              </ul>
+            </div>
+          </div>
+          <!--栏目分类结束-->
+          <!--热门推荐开始-->
+          <div class="leftnews">
+            <div class="title">
+              <h2>
+                <p>—— 热门推荐 ——</p>
+                <span>HOT</span>
+              </h2>
+            </div>
+            <ul class="clearfix">
+              <li>
+                <a href="/html/news/frontiers_detail_1.html" title="多模态大模型引领计算机视觉新范式">
+                  <img src="images/news/hot_1.png" alt="多模态大模型" />
+                  <p>多模态大模型引领CV新范式</p>
+                </a>
+              </li>
+              <li>
+                <a href="/html/news/frontiers_detail_2.html" title="扩散模型在图像生成中的最新突破">
+                  <img src="images/news/hot_2.png" alt="扩散模型" />
+                  <p>扩散模型最新突破</p>
+                </a>
+              </li>
+              <li>
+                <a href="/html/news/frontiers_detail_3.html" title="神经渲染与三维重建技术前沿">
+                  <img src="images/news/hot_3.png" alt="神经渲染" />
+                  <p>神经渲染与三维重建</p>
+                </a>
+              </li>
+              <li>
+                <a href="/html/news/frontiers_detail_4.html" title="轻量化视觉Transformer研究进展">
+                  <img src="images/news/hot_4.png" alt="轻量化ViT" />
+                  <p>轻量化视觉Transformer</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!--热门推荐结束-->
+          <!--联系我们开始-->
+          <div class="leftcont">
+            — 慧眼识界 智算万物 —<br />
+            <b>RECOGNITION</b>
+          </div>
+          <!--联系我们结束-->
+        </div>
+        <div class="subright fr">
+          <div class="sobtitle">
+            <span style="display:none;">当前位置图标</span>您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="news_main.html">新闻中心</a> &gt;&gt; <a href="news_frontiers.html">方向前沿</a>
+          </div>
+          <!--文章列表开始-->
+          <div class="Newslist">
+            <ul class="list clearfix">
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_5.html" title="生成式AI在智慧农业中的应用前景">
+                  <div class="txt fr">
+                    <h3>生成式AI在智慧农业中的应用前景</h3>
+                    <div class="mark"><span>浏览量：452</span><span> | 2025-03-20</span></div>
+                    <p class="desc">
+                      生成式人工智能正加速渗透农业领域，从作物生长模拟、病虫害合成到智能农事决策，为精准农业提供全新解决方案。本文探讨生成式模型在农业数据集扩充、农情预测等方面的潜力与挑战。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">20</span><span class="year">2025-03</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_6.html" title="CVPR 2025 亮点回顾：视觉基础模型新进展">
+                  <div class="txt fr">
+                    <h3>CVPR 2025 亮点回顾：视觉基础模型新进展</h3>
+                    <div class="mark"><span>浏览量：589</span><span> | 2025-02-28</span></div>
+                    <p class="desc">
+                      国际计算机视觉与模式识别会议（CVPR 2025）刚刚落幕，多模态基础模型、自监督学习、视频生成等方向成为焦点。本文梳理了实验室关注的多项前沿工作，为后续研究提供参考。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">28</span><span class="year">2025-02</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_7.html" title="轻量化视觉Transformer：从模型压缩到边缘部署">
+                  <div class="txt fr">
+                    <h3>轻量化视觉Transformer：从模型压缩到边缘部署</h3>
+                    <div class="mark"><span>浏览量：376</span><span> | 2025-01-15</span></div>
+                    <p class="desc">
+                      视觉Transformer（ViT）在各类任务中表现优异，但其高计算成本限制了在边缘设备上的应用。本文综述了近年来知识蒸馏、剪枝、量化等技术在ViT轻量化方面的进展，并展望未来研究方向。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">15</span><span class="year">2025-01</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_8.html" title="神经辐射场（NeRF）与3D生成技术前沿">
+                  <div class="txt fr">
+                    <h3>神经辐射场（NeRF）与3D生成技术前沿</h3>
+                    <div class="mark"><span>浏览量：423</span><span> | 2024-12-10</span></div>
+                    <p class="desc">
+                      神经辐射场（NeRF）已成为三维重建与新视角合成的核心技术，近期结合生成模型的工作使得可控三维内容生成成为可能。本文解读了最新的3D生成方法及其在数字孪生、虚拟现实中的潜在应用。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">10</span><span class="year">2024-12</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_9.html" title="多模态大模型：从对齐到推理的演进">
+                  <div class="txt fr">
+                    <h3>多模态大模型：从对齐到推理的演进</h3>
+                    <div class="mark"><span>浏览量：501</span><span> | 2024-11-05</span></div>
+                    <p class="desc">
+                      以GPT-4V为代表的多模态大模型正在重塑人机交互方式。本文从视觉-语言对齐、指令微调、复杂推理等角度分析了当前技术瓶颈与未来趋势，为研究提供方向指引。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">05</span><span class="year">2024-11</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a class="clearfix" href="/html/news/frontiers_detail_10.html" title="自监督学习在遥感图像分析中的最新突破">
+                  <div class="txt fr">
+                    <h3>自监督学习在遥感图像分析中的最新突破</h3>
+                    <div class="mark"><span>浏览量：298</span><span> | 2024-10-18</span></div>
+                    <p class="desc">
+                      自监督学习通过设计巧妙的预训练任务，能够从海量无标注遥感数据中提取通用特征，大幅提升下游分类、分割、变化检测等任务的性能。本文梳理了该领域近两年的关键进展。
+                    </p>
+                  </div>
+                  <div class="time">
+                    <span class="day">18</span><span class="year">2024-10</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="clear"></div>
+            <!--分页样式-->
+            <div class="pglist">
+              <span class="page-status">共12条 当前1/2页</span>
+              <span class="page-index"><a href="javascript:;">首页</a></span>
+              <span class="page-pre"><a href="javascript:;">前一页</a></span>
+              <span class="page-numbar">
+                <a href="javascript:;" class="page-num page-num-current">1</a>
+                <a href="javascript:;" class="page-num">2</a>
+              </span>
+              <span class="page-next"><a href="javascript:;">后一页</a></span>
+              <span class="page-last"><a href="javascript:;">尾页</a></span>
+            </div>
+          </div>
+          <!--文章列表结束-->
+        </div>
+      </div>
+    </div>
+    <!--页尾开始-->
+    <div class="footer_main">
+      <div class="footer w1200 clearfix">
+        <!--友情链接开始-->
+        <div class="links">
+          <span>友情链接：</span>
+          <a href="https://github.com/RIGCV" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        </div>
+        <!--友情链接结束-->
+        <!--底部导航开始-->
+        <ul class="botnavlist fl">
+          <li>
+            <a href="about_main.html" title="关于我们">关于我们</a>
+            <div class="drop clearfix">
+              <a href="about_introduction.html" title="实验室简介">实验室简介</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="about_culture.html" title="实验室文化">实验室文化</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="about_history.html" title="发展历程">发展历程</a>
+            </div>
+          </li>
+          <li>
+            <a href="achievement_main.html" title="研究成果">研究成果</a>
+            <div class="drop clearfix">
+              <a href="achievement_papers.html" title="发表论文">发表论文</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="achievement_patents.html" title="发明专利">发明专利</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="achievement_projects.html" title="合作项目">合作项目</a>
+            </div>
+          </li>
+          <li>
+            <a href="news_main.html" title="新闻中心">新闻中心</a>
+            <div class="drop clearfix">
+              <a href="news_laboratory.html" title="实验室新闻">实验室新闻</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="news_frontiers.html" title="方向前沿">方向前沿</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="news_faq.html" title="常见问题">常见问题</a>
+            </div>
+          </li>
+          <li>
+            <a href="team_main.html" title="团队成员">团队成员</a>
+            <div class="drop clearfix">
+              <a href="team_main.html#teacher-team" title="教师团队">教师团队</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="team_main.html#postgraduate-team" title="研究生团队">研究生团队</a>
+            </div>
+            <div class="drop clearfix">
+              <a href="team_main.html#alumni-team" title="已毕业学生">已毕业学生</a>
+            </div>
+          </li>
+        </ul>
+        <!--底部导航结束-->
+        <!--联系方式开始-->
+        <div class="qcode fr">
+          <div class="btel fl">
+            <p class="p1">联系我们</p>
+            <p class="p2">137-9157-1602</p>
+            <p class="p3">联系人：王教授</p>
+            <p class="p3">邮　箱：hanxiang@qfnu.edu.cn</p>
+            <p class="p3">地　址：山东省日照市曲阜师范大学</p>
+          </div>
+          <img class="ewm fr" src="images/index/index_footer_WeChat.png" alt="CVPR-Laboratory微信公众号二维码" />
+        </div>
+        <!--联系方式结束-->
+      </div>
+      <!--版权开始-->
+      <div class="copymain">
+        <div class="w1200 clearfix">
+          <p class="fl">
+            Copyright © 2025 CVPR-Laboratory
+            版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" title="ICP备496365245号">ICP备496365245号</a>　<a href="map.html">网站地图</a>（<a href="sitemap.xml" target="_blank">百度</a>）
+          </p>
+          <p class="fr"></p>
+        </div>
+      </div>
+      <!--版权结束-->
+    </div>
+    <!--页尾结束-->
+    <!--浮动客服开始-->
+    <dl class="toolbar">
+      <dd class="qq">
+        <a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a>
+      </dd>
+      <dd class="tel">
+        <i></i><span>联系我们</span>
+        <div class="box">
+          <p>联系我们</p>
+          <h3>137-9157-1602</h3>
+        </div>
+      </dd>
+      <dd class="code">
+        <i></i><span>微信咨询</span>
+        <div class="box">
+          <img src="images/index/index_footer_WeChat.png" alt="微信咨询二维码" />
+        </div>
+      </dd>
+      <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
+    </dl>
+    <!--浮动客服结束-->
+    <script src="js/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script type="text/javascript">
+      AOS.init({ easing: "ease-out-back", duration: 1000 });
+
+      if (typeof checksearch !== "function") {
+        window.checksearch = function (form) {
+          var kw = form.keyword.value.trim();
+          if (kw === "" || kw === "请输入关键字") {
+            alert("请输入搜索关键词");
+            return false;
+          }
+          return true;
+        };
+      }
+    </script>
+  </body>
+</html>
