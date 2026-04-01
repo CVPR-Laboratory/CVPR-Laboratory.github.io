@@ -1248,9 +1248,9 @@ textarea::-webkit-input-placeholder {
 .submian .sobtitle a:hover {
   color: #1048a0;
 }
-/* 内页左侧栏 */
+/* 内页左侧栏 - 宽度统一为260px，与首页一致 */
 .submian .subleft {
-  width: 250px;
+  width: 260px;
 }
 .submian .subleft .title {
   height: 120px;
@@ -1275,19 +1275,20 @@ textarea::-webkit-input-placeholder {
   padding: 6px 6px;
   overflow: hidden;
 }
+/* 左侧列表项样式统一：字体18px，行高72px，左内边距50px（与首页一致） */
 .submian .subleft .lefta .comt ul li a {
   position: relative;
   display: block;
   color: #333;
-  font-size: 14px;
-  line-height: 44px;
+  font-size: 18px;
+  line-height: 72px;
   border-bottom: 1px dashed #ccc;
-  padding-left: 20px;
+  padding-left: 50px;
 }
 .submian .subleft .lefta .comt ul li:last-child a {
   border: 0;
 }
-/* 栏目右侧箭头效果 */
+/* 栏目右侧箭头效果（与首页一致） */
 .submian .subleft .lefta .comt ul li a:after {
   content: ">";
   position: absolute;
@@ -1384,9 +1385,9 @@ textarea::-webkit-input-placeholder {
 .submian .subleft .leftcont b {
   font-size: 18px;
 }
-/* 内页右侧内容区 */
+/* 内页右侧内容区 - 宽度调整为920px，与左侧260px保持总宽1180px，留出20px间距 */
 .submian .subright {
-  width: 930px;
+  width: 920px;
 }
 /* 默认单页内容样式 */
 .submian .Aboutpage {
