@@ -221,11 +221,16 @@
       }
     </style>
   </head>
-  <body>
-    <!-- 顶部开始 (已注释，保留原样) -->
-    <!-- <div class="top_main">...</div> -->
-    <!--头部开始-->
-    <div class="header_main">
+<body>
+
+  <!-- 导航栏触发区域：鼠标移到此处显示导航栏 -->
+  <div class="nav_trigger_area"></div>
+
+  <!-- 导航栏占位元素，防止页面跳动 -->
+  <div class="header_placeholder"></div>
+
+  <!-- 头部（添加 id="header" 以便 JS 控制） -->
+  <div class="header_main" id="header">
       <div class="w1200 clearfix">
         <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
           <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
@@ -607,8 +612,11 @@
       <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
     </dl>
     <!--浮动客服结束-->
-    <script src="js/aos.js"></script>
-    <script src="js/app.js"></script>
+<!-- 引入导航栏控制脚本（与首页一致） -->
+<script src="js/nav-control.js"></script>
+
+<script src="js/aos.js"></script>
+<script src="js/app.js"></script>
     <script type="text/javascript">
       AOS.init({ easing: "ease-out-back", duration: 1000 });
 

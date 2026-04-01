@@ -15,8 +15,15 @@
   <script src="js/common.js"></script>
 </head>
 <body>
-  <!-- 头部（完全保留原样式，修复导航锚点） -->
-  <div class="header_main">
+
+  <!-- 导航栏触发区域：鼠标移到此处显示导航栏 -->
+  <div class="nav_trigger_area"></div>
+
+  <!-- 导航栏占位元素，防止页面跳动 -->
+  <div class="header_placeholder"></div>
+
+  <!-- 头部（添加 id="header" 以便 JS 控制） -->
+  <div class="header_main" id="header">
     <div class="w1200 clearfix">
       <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
         <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
@@ -67,7 +74,7 @@
     </div>
   </div>
 
-  <!-- 幻灯片大图开始（保留原图片） -->
+  <!-- 幻灯片大图开始 -->
   <div id="banner_main">
     <div id="banner" class="banner">
       <ul class="list clearfix">
@@ -82,7 +89,7 @@
     </div>
   </div>
 
-  <!-- 搜索栏（修复defaultValue问题） -->
+  <!-- 搜索栏 -->
   <div class="search_main">
     <div class="w1200 clearfix">
       <div class="skey" aos="fade-right">
@@ -114,7 +121,6 @@
           <h3>研究亮点</h3>
           <p>探索计算机视觉与模式识别的前沿领域</p>
         </div>
-        <!-- 左侧研究方向列表 -->
         <div class="pro_l" aos="fade-up" aos-delay="300">
           <div class="pro_tit">
             <h3>—— 我们的研究 ——</h3>
@@ -133,7 +139,6 @@
             <span>INNOVATION</span>
           </div>
         </div>
-        <!-- 中间研究亮点卡片 -->
         <ul class="pro_list" aos="fade-up" aos-delay="300">
           <li>
             <a href="index_precision_agriculture.html" title="精准智慧农业">
@@ -272,7 +277,6 @@
     <!-- 新闻资讯：实验室新闻 & 方向前沿 -->
     <div class="inews">
       <div class="w1200 clearfix">
-        <!-- 左侧：实验室新闻 -->
         <div class="inews1" aos="fade-right" aos-delay="100">
           <div class="title">
             <a class="more fr" href="news_laboratory.html" title="更多+">更多+</a>
@@ -292,7 +296,6 @@
             <li><a href="news_detail.html" title="实验室获批山东省重点研发计划项目"><span class="time">2024-09-18</span>实验室获批山东省重点研发计划项目</a></li>
           </ul>
         </div>
-        <!-- 右侧：方向前沿 -->
         <div class="inews2" aos="fade-right" aos-delay="100">
           <div class="title">
             <a class="more fr" href="news_frontiers.html" title="更多+">更多+</a>
@@ -316,7 +319,7 @@
     </div>
   </div>
 
-  <!-- 页尾（修复无效链接和邮件前缀） -->
+  <!-- 页尾 -->
   <div class="footer_main">
     <div class="footer w1200 clearfix">
       <div class="links">
@@ -373,7 +376,7 @@
     </div>
   </div>
 
-  <!-- 浮动客服（修复邮件链接） -->
+  <!-- 浮动客服 -->
   <dl class="toolbar">
     <dd class="qq"><a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a></dd>
     <dd class="tel">
@@ -387,10 +390,12 @@
     <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
   </dl>
 
+  <!-- 外部 JS 文件：控制导航栏隐藏/显示 -->
+  <script src="js/nav-control.js"></script>
+
   <script src="js/aos.js"></script>
   <script src="js/app.js"></script>
   <script type="text/javascript">
-    // 优化 AOS 配置，防止动画重复触发
     AOS.init({
       easing: "ease-out-back",
       duration: 1000,

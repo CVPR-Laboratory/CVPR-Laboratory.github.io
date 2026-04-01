@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
   <title>团队活动 - CVPR-Lab</title>
@@ -15,7 +14,7 @@
   <script src="js/jquery.SuperSlide.2.1.1.js"></script>
   <script src="js/common.js"></script>
   <!-- 引入 Font Awesome 6 图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* 团队活动页面额外样式 */
     .activities-content {
@@ -93,8 +92,15 @@
   </style>
 </head>
 <body>
-  <!-- 头部（完全保留原样式，修复导航锚点） -->
-  <div class="header_main">
+
+  <!-- 导航栏触发区域：鼠标移到此处显示导航栏 -->
+  <div class="nav_trigger_area"></div>
+
+  <!-- 导航栏占位元素，防止页面跳动 -->
+  <div class="header_placeholder"></div>
+
+  <!-- 头部（添加 id="header" 以便 JS 控制） -->
+  <div class="header_main" id="header">
     <div class="w1200 clearfix">
       <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
         <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
@@ -373,6 +379,9 @@
     </dd>
     <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
   </dl>
+
+  <!-- 引入导航栏控制脚本（与首页一致） -->
+  <script src="js/nav-control.js"></script>
 
   <script src="js/aos.js"></script>
   <script src="js/app.js"></script>
