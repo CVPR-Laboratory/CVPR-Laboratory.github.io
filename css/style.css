@@ -1169,60 +1169,129 @@ textarea::-webkit-input-placeholder {
   left: 0;
   right: auto;
 }
-/* ========== 工程案例模块 ========== */
+/* ========== 快速了解模块（横向滚动 + 完整显示 + 不竖排） ========== */
 .index .case {
   background-color: #f6f6f6;
   padding: 45px 0 25px;
-  height: 400px;
+  height: auto;
+  min-height: auto;
+  overflow: hidden; /* 关键：横向滚动用 hidden */
 }
+
 .index .case .w1200 {
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
+
 .index .case .bd {
   padding-top: 30px;
+  width: 100%;
   overflow: hidden;
 }
-/* 案例列表布局（与产品列表类似） */
-.index .case .pro_list li {
-  float: left;
-  margin-bottom: 20px;
-  margin-right: 20px;
+
+/* 横向滚动容器：不换行，一行排开 */
+.index .case .pro_list {
+  display: flex;
+  flex-wrap: nowrap !important; /* 不换行，横向滚动 */
+  justify-content: flex-start;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
 }
+
+/* 卡片：固定宽度，4个并排，高度自适应 */
+.index .case .pro_list li {
+  width: 270px !important; /* 固定宽度，4个刚好一行 */
+  margin: 0 10px 20px 10px;
+  flex-shrink: 0; /* 不压缩 */
+  box-sizing: border-box;
+  background: #fff;
+  padding: px;
+  transition: all 0.5s;
+  overflow: visible;
+  height: auto;
+  float: none;
+  border: none;
+}
+
 .index .case .pro_list li a {
   display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
 }
+
+/* 图片：固定高度 */
 .index .case .pro_list li a .img {
-  width: 283px;
-  height: 212px;
+  width: 100%;
+  height: 200px;
   border: 1px solid #f0f0f0;
   overflow: hidden;
+  background-color: #f9f9f9;
 }
+
 .index .case .pro_list li a .img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
   transition: all 0.5s;
 }
+
+/* 标题：修复换行 + 完整显示 */
 .index .case .pro_list li a h3 {
   color: #666;
-  font-size: 16px;
-  line-height: 40px;
+  font-size: 18px;
   text-align: center;
+  margin: 0;
+  padding: 12px 8px;
+  line-height: 1.4;
+  min-height: 44px; /* 保证标题区域高度一致 */
+  
+  /* 关键修复：允许换行、不截断、不隐藏 */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  height: auto;
+  word-break: break-word;
 }
-.index .case .pro_list li:hover img {
+
+/* 悬浮效果 */
+.index .case .pro_list li:hover {
+  background: #1048a0;
+}
+.index .case .pro_list li:hover .img img {
   transform: scale(1.2);
 }
-/* 左右切换按钮（用于滚动更多案例） */
+.index .case .pro_list li:hover h3 {
+  color: #fff;
+}
+
+/* 左右箭头 */
 .index .case .hd {
   position: absolute;
   width: 100%;
+  top: 40%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
 }
 .index .case .hd span {
   width: 20px;
   height: 145px;
   cursor: pointer;
   position: absolute;
-  top: -240px;
+  top: 0;
   background: url("../images/btn-scroll.png") no-repeat;
+  pointer-events: auto;
 }
 .index .case .hd .prev {
   background-position: left center;
@@ -1231,6 +1300,28 @@ textarea::-webkit-input-placeholder {
 .index .case .hd .next {
   background-position: right center;
   right: -35px;
+}
+
+/* 响应式：小屏幕自动竖排 */
+@media (max-width: 1260px) {
+  .index .case .hd .prev { left: 0; }
+  .index .case .hd .next { right: 0; }
+}
+@media (max-width: 992px) {
+  .index .case .pro_list li {
+    width: calc(50% - 20px);
+  }
+}
+@media (max-width: 768px) {
+  .index .case {
+    padding: 30px 0;
+  }
+  .index .case .pro_list li {
+    width: calc(100% - 20px);
+  }
+  .index .case .hd {
+    display: none;
+  }
 }
 /* ========== 新闻中心模块 ========== */
 .index .inews {
