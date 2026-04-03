@@ -1,13 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
-    <title>曹继培 - CVPR-Lab</title>
-    <meta name="keywords" content="曹继培,曲阜师范大学,计算机视觉,深度学习,研究生" />
-    <meta name="description" content="曹继培，曲阜师范大学CVPR实验室研究生，主要研究方向为计算机视觉、目标检测与图像分割。" />
-    <meta name="viewport" content="width=1380" />
+    <title>「曹继培」CVPR-Lab</title>
+    <meta name="keywords" content="曹继培,曲阜师范大学学生,计算机视觉,人工智能" />
+    <meta name="description" content="曹继培，曲阜师范大学学生，主要研究方向为计算机视觉、深度学习、智慧农业等。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/aos1.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
@@ -15,651 +14,513 @@
     <script src="js/jquery.SuperSlide.2.1.1.js"></script>
     <script src="js/common.js"></script>
     <style>
-      /* 个人详情页样式 —— 延续官网风格，不破坏原有结构 */
-      .profile-detail {
-        background: #fff;
-        padding: 10px 0 30px 0;
-      }
-      .profile-header {
-        display: flex;
-        gap: 40px;
-        margin-bottom: 40px;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #eee;
-        flex-wrap: wrap;
-      }
-      .profile-avatar {
-    width: 200px;
-    height: 280px;               /* 200 ÷ 5 × 7 = 280 */
-    background: #f5f5f5;
-    border: 1px solid #e5e5e5;
-    overflow: hidden;
-    border-radius: 0;
-    box-shadow: none;
-}
-
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-      .profile-info {
-        flex: 1;
-      }
-      .profile-info h1 {
-        font-size: 32px;
-        font-weight: bold;
-        color: #1048a0;
-        margin: 0 0 12px 0;
-        line-height: 1.2;
-      }
-      .profile-info .en-name {
-        font-size: 16px;
-        color: #777;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-        border-left: 3px solid #1048a0;
-        padding-left: 12px;
-      }
-      .profile-info .contact-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 25px;
-        margin: 15px 0;
-        background: #f9f9fc;
-        padding: 12px 18px;
-        border-radius: 8px;
-      }
-      .profile-info .contact-item {
-        display: flex;
-        align-items: center;
-        font-size: 15px;
-        color: #333;
-      }
-      .profile-info .contact-item i {
-        display: inline-block;
-        width: 24px;
-        margin-right: 8px;
-        font-weight: normal;
-        color: #1048a0;
-      }
-      .profile-info .contact-item a {
-        color: #1048a0;
-      }
-      .profile-info .contact-item a:hover {
-        text-decoration: underline;
-      }
-      .btn-download {
-        display: inline-flex;
-        align-items: center;
-        background: #1048a0;
-        color: #fff;
-        padding: 10px 28px;
-        border-radius: 40px;
-        font-size: 16px;
-        font-weight: 500;
-        margin-top: 15px;
-        transition: 0.3s;
-        border: none;
-        cursor: pointer;
-        text-decoration: none;
-        gap: 8px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-      .btn-download:hover {
-        background: #0c3a82;
-        transform: translateY(-2px);
-        color: #fff;
-      }
-      .profile-section {
-        margin-bottom: 35px;
-      }
-      .profile-section h3 {
-        font-size: 22px;
-        font-weight: 600;
-        color: #1048a0;
-        margin-bottom: 18px;
-        padding-left: 12px;
-        border-left: 5px solid #1048a0;
-        line-height: 1.3;
-      }
-      .section-content {
-        color: #444;
-        font-size: 15px;
-        line-height: 1.65;
-        text-align: justify;
-      }
-      .section-content p {
-        margin: 0 0 12px 0;
-      }
-      .edu-list,
-      .work-list,
-      .project-list,
-      .award-list {
-        list-style: none;
-        padding-left: 0;
-      }
-      .edu-list li,
-      .work-list li,
-      .project-list li,
-      .award-list li {
-        margin-bottom: 18px;
-        border-bottom: 1px dashed #f0f0f0;
-        padding-bottom: 12px;
-      }
-      .edu-list strong,
-      .work-list strong,
-      .project-list strong {
-        color: #1048a0;
-        font-weight: 600;
-        display: inline-block;
-        min-width: 100px;
-      }
-      .date-badge {
-        color: #888;
-        font-size: 14px;
-        margin-left: 15px;
-        font-weight: normal;
-      }
-      .pub-list {
-        list-style: none;
-        padding-left: 0;
-      }
-      .pub-list li {
-        margin-bottom: 18px;
-        padding-left: 20px;
-        position: relative;
-        line-height: 1.55;
-      }
-      .pub-list li:before {
-        content: "●";
-        color: #1048a0;
-        position: absolute;
-        left: 0;
-        font-size: 14px;
-      }
-      .pub-title {
-        font-weight: 600;
-        color: #222;
-      }
-      .pub-journal {
-        color: #1048a0;
-        font-style: normal;
-        margin: 0 5px;
-      }
-      .pub-meta {
-        color: #666;
-        font-size: 13px;
-        margin-left: 8px;
-      }
-      .honor-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 12px;
-      }
-      .honor-tags span {
-        background: #eef3fc;
-        padding: 5px 16px;
-        border-radius: 30px;
-        font-size: 13px;
-        color: #1048a0;
-      }
-      .scholar-link {
-        display: inline-block;
-        margin-top: 8px;
-        background: #f5f5f5;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 13px;
-        color: #1048a0;
-        text-decoration: none;
-      }
-      .scholar-link:hover {
-        background: #e0e8f0;
-      }
-    </style>
-  </head>
-<body>
-
-  <!-- 导航栏触发区域：鼠标移到此处显示导航栏 -->
-  <div class="nav_trigger_area"></div>
-
-  <!-- 导航栏占位元素，防止页面跳动 -->
-  <div class="header_placeholder"></div>
-
-  <!-- 头部（添加 id="header" 以便 JS 控制） -->
-  <div class="header_main" id="header">
-      <div class="w1200 clearfix">
-        <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
-          <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
-        </a>
-        <!--导航开始-->
-        <div class="nav fr" id="nav" aos="fade-left" aos-delay="100">
-          <ul class="navlist">
-            <li><a href="index.html" title="首页">首页速览<span>HOME</span></a></li>
-            <li>
-              <a href="about_main.html" title="关于我们">关于我们<span>ABOUT US</span></a>
-              <div class="subnav">
-                <a href="about_introduction.html">实验室简介</a>
-                <a href="about_history.html">发展历程</a>
-                <a href="about_culture.html">实验室文化</a>
-                <a href="about_activities.html">团队活动</a>
-                <a href="about_photos.html">团队合影</a>
-              </div>
-            </li>
-            <li>
-              <a href="team_main.html" title="团队成员">团队成员<span>TEAM</span></a>
-              <div class="subnav">
-                <a href="team_main.html#teacher-team">教师团队</a>
-                <a href="team_main.html#postgraduate-team">研究生团队</a>
-                <a href="team_main.html#alumni-team">已毕业学生</a>
-              </div>
-            </li>
-            <li>
-              <a href="achievement_main.html" title="研究成果">研究成果<span>ACHIEVEMENT</span></a>
-              <div class="subnav">
-                <a href="achievement_papers.html">发表论文</a>
-                <a href="achievement_patents.html">发明专利</a>
-                <a href="achievement_awards.html">竞赛获奖</a>
-                <a href="achievement_projects.html">合作项目</a>
-              </div>
-            </li>
-            <li>
-              <a href="news_main.html" title="新闻中心">新闻中心<span>NEWS</span></a>
-              <div class="subnav">
-                <a href="news_laboratory.html">实验室新闻</a>
-                <a href="news_frontiers.html">方向前沿</a>
-                <a href="news_faq.html">常见问题</a>
-              </div>
-            </li>
-            <li>
-              <a href="contact_main.html" title="联系我们">联系我们<span>Contact</span></a>
-            </li>
-          </ul>
-        </div>
-        <!--导航结束-->
-      </div>
-    </div>
-    <!--头部结束-->
-    <!--内页大图开始-->
-    <div class="nybanner" style="background-image: url(/images/team/team_head_bg.png)"></div>
-    <!--内页大图结束-->
-    <!--搜索栏开始-->
-    <div class="search_main">
-      <div class="w1200 clearfix">
-        <div class="skey" aos="fade-right">
-          <p>
-            热门关键词：<a href="achievement_papers.html" title="发表论文">发表论文</a>
-            <a href="achievement_patents.html" title="发明专利">发明专利</a>
-            <a href="achievement_projects.html" title="研究项目">研究项目</a>
-            <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
-            <a href="news_frontiers.html" title="前沿动态">前沿动态</a>
-          </p>
-        </div>
-        <div class="search_form" aos="fade-left">
-          <form action="search/" method="get" onsubmit="return checksearch(this);">
-            <label for="search_keyword" style="display:none;">搜索关键词</label>
-            <input class="stxt" type="text" name="keyword" id="search_keyword" value="请输入关键字"
-                   onfocus="if (this.value == '请输入关键字') this.value = '';"
-                   onblur="if (this.value == '') this.value = '请输入关键字';" />
-            <input type="submit" value="" class="sbtn icon" />
-          </form>
-        </div>
-      </div>
-    </div>
-    <!--搜索栏结束-->
-    <div class="submian">
-      <div class="w1200 clearfix">
-        <div class="subleft fl">
-          <!--栏目分类开始-->
-          <div class="lefta">
-            <div class="title">
-              <h2>
-                <p>—— 实验室成员 ——</p>
-                <span>TEAM</span>
-              </h2>
-            </div>
-            <div class="comt">
-              <ul>
-                <li><a href="team_main.html#teacher-team">教师团队</a></li>
-                <li><a href="team_main.html#postgraduate-team">研究生团队</a></li>
-                <li><a href="team_main.html#alumni-team">已毕业学生</a></li>
-              </ul>
-            </div>
-          </div>
-          <!--栏目分类结束-->
-          <!--推荐产品开始 (核心成员)-->
-          <div class="leftnews">
-            <div class="title">
-              <h2>
-                <p>—— 核心成员 ——</p>
-                <span>MEMBER</span>
-              </h2>
-            </div>
-            <ul class="clearfix">
-              <li>
-                <a href="team_teacher_wanghanxiang.html" title="王瀚祥老师详细信息">
-                  <img src="images/team/team_core_wanghanxiang.png" alt="王瀚祥老师个人照片" />
-                  <p>王瀚祥老师</p>
-                </a>
-              </li>
-              <li>
-                <a href="team_teacher_liyanfen.html" title="厉彦芬老师详细信息">
-                  <img src="images/team/team_core_liyanfen.png" alt="厉彦芬老师个人照片" />
-                  <p>厉彦芬老师</p>
-                </a>
-              </li>
-              <li>
-                <a href="team_master_caojipei.html" title="曹继培详细信息">
-                  <img src="images/team/team_core_caojipei.png" alt="曹继培个人照片" />
-                  <p>曹继培</p>
-                </a>
-              </li>
-              <li>
-                <a href="team_master_mamengyao.html" title="马梦瑶详细信息">
-                  <img src="images/team/team_core_mamengyao.png" alt="马梦瑶个人照片" />
-                  <p>马梦瑶</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!--推荐产品结束-->
-          <!--联系我们开始-->
-          <div class="leftcont">
-            — 慧眼识界 智算万物 —<br /><b>RECOGNITION</b>
-          </div>
-          <!--联系我们结束-->
-        </div>
-        <div class="subright fr">
-          <div class="sobtitle">
-            <span style="display:none;">当前位置图标</span>您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="team_main.html">团队成员</a> &gt;&gt; <a href="team_main.html#postgraduate-team">研究生团队</a> &gt;&gt; 曹继培
-          </div>
-
-          <!-- 曹继培个人详细介绍模块 -->
-          <div class="profile-detail">
-            <div class="profile-header">
-              <div class="profile-avatar">
-                <img src="images/team/team_core_caojipei.png" alt="曹继培个人照片"
-                     onerror="this.src = '/images/default-avatar.png'" />
-              </div>
-              <div class="profile-info">
-                <h1>
-                  曹继培
-                  <span style="font-size: 20px; color: #666">硕士研究生</span>
-                </h1>
-                <div class="en-name">Jipei Cao | Master Candidate</div>
-                <div class="contact-row">
-                  <div class="contact-item"><i>📞</i> 178-XXXX-XXXX</div>
-                  <div class="contact-item">
-                    <i>✉️</i>
-                    <a href="mailto:caojipei@qfnu.edu.cn">caojipei@qfnu.edu.cn</a>
-                  </div>
-                  <div class="contact-item">
-                    <i>🎓</i> GitHub ·
-                    <a href="https://github.com/caojipei" target="_blank" rel="noopener noreferrer">@caojipei</a>
-                  </div>
-                </div>
-                <div class="section-content" style="margin-bottom: 10px">
-                  <p>
-                    曲阜师范大学CVPR实验室2023级硕士研究生，导师为王瀚祥教授。主要研究方向为计算机视觉、目标检测与图像分割，专注于轻量化模型设计与农业场景下的智能感知。目前已在<span style="color:#1048a0; font-weight:500">Computers and Electronics in Agriculture</span>等期刊发表SCI论文2篇，申请发明专利1项。
-                  </p>
-                </div>
-                <!-- 简历下载按钮（如暂无PDF可注释或保留占位） -->
-                <a id="downloadCVBtn" class="btn-download" href="javascript:void(0);" onclick="downloadResume()">
-                  📄 下载简历 (PDF)
-                </a>
-              </div>
-            </div>
-
-            <!-- 教育经历 -->
-            <div class="profile-section">
-              <h3>教育经历</h3>
-              <div class="section-content">
-                <ul class="edu-list">
-                  <li>
-                    <strong>曲阜师范大学</strong> 计算机技术 硕士（在读）
-                    <span class="date-badge">2023.09 – 至今</span>
-                  </li>
-                  <li>
-                    <strong>山东科技大学</strong> 计算机科学与技术 学士
-                    <span class="date-badge">2019.09 – 2023.06</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 研究方向 -->
-            <div class="profile-section">
-              <h3>研究方向</h3>
-              <div class="section-content">
-                <ul class="work-list">
-                  <li>计算机视觉：目标检测、图像分割、弱监督学习</li>
-                  <li>智慧农业：农作物病害识别、无人机遥感图像分析</li>
-                  <li>模型轻量化：知识蒸馏、网络剪枝、边缘端部署</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 代表性论文 -->
-            <div class="profile-section">
-              <h3>代表性论文</h3>
-              <div class="section-content">
-                <ul class="pub-list">
-                  <li>
-                    <span class="pub-title">PD-TR: End-to-end plant diseases detection using a transformer</span>,
-                    <span class="pub-journal">Computers and Electronics in Agriculture</span>, 224, 109123, 2024.
-                    <span class="pub-meta">(中科院一区TOP, IF=8.9, 共同一作)</span>
-                  </li>
-                  <li>
-                    <span class="pub-title">Lightweight attention-guided network for real-time rice disease detection</span>,
-                    <span class="pub-journal">Frontiers in Plant Science</span>, 15, 1428956, 2024.
-                    <span class="pub-meta">(中科院二区, IF=5.6, 第二作者)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 参与科研项目 -->
-            <div class="profile-section">
-              <h3>参与科研项目</h3>
-              <div class="section-content">
-                <ul class="project-list">
-                  <li>
-                    <strong>国家自然科学基金青年项目 (62502271)</strong> —— 基于仿生物视觉动态感知的农作物病害检测方法研究与应用
-                    <span class="date-badge">2026.01-2028.12</span>
-                    <span class="pub-meta">(参与算法设计与实验)</span>
-                  </li>
-                  <li>
-                    <strong>山东省自然科学基金C类 (ZR2025QC630)</strong> —— 仿生感知驱动的果蔬类作物病害早期识别关键技术研究
-                    <span class="date-badge">2025.10-2028.10</span>
-                    <span class="pub-meta">(核心成员)</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- 荣誉奖励 -->
-            <div class="profile-section">
-              <h3>荣誉奖励</h3>
-              <div class="section-content">
-                <div class="honor-tags">
-                  <span>🏅 研究生国家奖学金 (2024)</span>
-                  <span>🏆 中国计算机视觉大会最佳学生论文提名 (2024)</span>
-                  <span>📊 全国研究生数学建模竞赛二等奖 (2023)</span>
-                  <span>🎓 曲阜师范大学“优秀研究生” (2024)</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 学术服务 -->
-            <div class="profile-section">
-              <h3>学术服务</h3>
-              <div class="section-content">
-                <p>
-                  IEEE Student Member，CCF学生会员。担任 <span class="pub-journal">Computers and Electronics in Agriculture</span>、<span class="pub-journal">IEEE TCSVT</span> 等期刊审稿人。
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="clear"></div>
-        </div>
-      </div>
-    </div>
-
-    <!--页尾开始-->
-    <div class="footer_main">
-      <div class="footer w1200 clearfix">
-        <div class="links">
-          <span>友情链接：</span>
-          <a href="https://github.com/RIGCV" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-        </div>
-        <ul class="botnavlist fl">
-          <li>
-            <a href="about_main.html" title="关于我们">关于我们</a>
-            <div class="drop clearfix">
-              <a href="about_introduction.html" title="实验室简介">实验室简介</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="about_culture.html" title="实验室文化">实验室文化</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="about_history.html" title="发展历程">发展历程</a>
-            </div>
-          </li>
-          <li>
-            <a href="achievement_main.html" title="研究成果">研究成果</a>
-            <div class="drop clearfix">
-              <a href="achievement_papers.html" title="发表论文">发表论文</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_patents.html" title="发明专利">发明专利</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_projects.html" title="合作项目">合作项目</a>
-            </div>
-          </li>
-          <li>
-            <a href="news_main.html" title="新闻中心">新闻中心</a>
-            <div class="drop clearfix">
-              <a href="news_laboratory.html" title="实验室新闻">实验室新闻</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="news_frontiers.html" title="方向前沿">方向前沿</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="news_faq.html" title="常见问题">常见问题</a>
-            </div>
-          </li>
-          <li>
-            <a href="team_main.html" title="团队成员">团队成员</a>
-            <div class="drop clearfix">
-              <a href="team_main.html#teacher-team" title="教师团队">教师团队</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="team_main.html#postgraduate-team" title="研究生团队">研究生团队</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="team_main.html#alumni-team" title="已毕业学生">已毕业学生</a>
-            </div>
-          </li>
-        </ul>
-        <div class="qcode fr">
-          <div class="btel fl">
-            <p class="p1">联系我们</p>
-            <p class="p2">137-9157-1602</p>
-            <p class="p3">联系人：王教授</p>
-            <p class="p3">邮　箱：hanxiang@qfnu.edu.cn</p>
-            <p class="p3">地　址：山东省日照市曲阜师范大学</p>
-          </div>
-          <img class="ewm fr" src="images/index/index_footer_WeChat.png" alt="CVPR-Laboratory微信公众号二维码" />
-        </div>
-      </div>
-      <div class="copymain">
-        <div class="w1200 clearfix">
-          <p class="fl">
-            Copyright © 2025 CVPR-Laboratory
-            版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" title="ICP备496365245号">ICP备496365245号</a>　<a href="map.html">网站地图</a>（<a href="sitemap.xml" target="_blank">百度</a>）
-          </p>
-          <p class="fr"></p>
-        </div>
-      </div>
-    </div>
-    <!--页尾结束-->
-    <!--浮动客服开始-->
-    <dl class="toolbar">
-      <dd class="qq">
-        <a href="mailto:caojipei@qfnu.edu.cn"><i></i><span>发送邮件</span></a>
-      </dd>
-      <dd class="tel">
-        <i></i><span>联系我们</span>
-        <div class="box">
-          <p>联系我们</p>
-          <h3>137-9157-1602</h3>
-        </div>
-      </dd>
-      <dd class="code">
-        <i></i><span>微信咨询</span>
-        <div class="box">
-          <img src="images/index/index_footer_WeChat.png" alt="微信咨询二维码" />
-        </div>
-      </dd>
-      <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
-    </dl>
-    <!--浮动客服结束-->
-<!-- 引入导航栏控制脚本（与首页一致） -->
-<script src="js/nav-control.js"></script>
-
-<script src="js/aos.js"></script>
-<script src="js/app.js"></script>
-    <script type="text/javascript">
-      AOS.init({ easing: "ease-out-back", duration: 1000 });
-
-      if (typeof checksearch !== "function") {
-        window.checksearch = function (form) {
-          var kw = form.keyword.value.trim();
-          if (kw === "" || kw === "请输入关键字") {
-            alert("请输入搜索关键词");
-            return false;
-          }
-          return true;
-        };
-      }
-
-      // PDF下载函数（如需实际文件，请替换路径）
-      function downloadResume() {
-        const pdfUrl = "/package/data/曹继培简历.pdf";
-        const link = document.createElement("a");
-        link.href = pdfUrl;
-        link.download = "曹继培_简历.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        // 若文件不存在，可给出友好提示
-        setTimeout(() => {
-          console.log("如果下载失败，请联系管理员获取简历");
-        }, 500);
-      }
-
-      // 页面加载时锚点处理（若有）
-      (function () {
-        if (window.location.hash) {
-          const targetId = window.location.hash.substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            setTimeout(function () {
-              const headerHeight = 130;
-              const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }, 300);
-          }
+        /* ========== 优化版个人详情页样式（圆角克制、字体略大、布局紧凑） ========== */
+        :root {
+            --primary: #1048a0;
+            --primary-dark: #0c3a82;
+            --gray-bg: #f8f9fc;
+            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --border-radius-card: 6px;    /* 小圆角 */
         }
-      })();
+
+        body {
+            font-size: 15px;  /* 基础字体增大 */
+            line-height: 1.55;
+        }
+
+        /* 覆盖原.profile-detail样式 */
+        .profile-detail {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        /* 个人信息卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: var(--border-radius-card);
+            padding: 28px 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #eef2f5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .hero-avatar {
+            flex-shrink: 0;
+            width: 160px;
+            height: 224px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #e0e6ed;
+        }
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-info {
+            flex: 1;
+        }
+        .hero-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 6px 0;
+            line-height: 1.2;
+        }
+        .hero-title {
+            font-size: 18px;
+            color: #5a6e8a;
+            margin-bottom: 8px;
+        }
+        .hero-en {
+            font-size: 14px;
+            color: #7c8ba0;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+            margin-bottom: 16px;
+        }
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            background: #f5f7fb;
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin: 16px 0;
+        }
+        .hero-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #2c3e5c;
+        }
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cv:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* 学术统计卡片 */
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: var(--border-radius-card);
+            padding: 16px 12px;
+            text-align: center;
+            border: 1px solid #eef2f5;
+            box-shadow: var(--card-shadow);
+        }
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #6c7a91;
+            margin-top: 6px;
+        }
+
+        /* 通用卡片样式 */
+        .section-card {
+            background: white;
+            border-radius: var(--border-radius-card);
+            border: 1px solid #eef2f5;
+            box-shadow: var(--card-shadow);
+            padding: 24px 28px;
+            margin-bottom: 30px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eef2f5;
+        }
+        .section-header .icon {
+            font-size: 24px;
+        }
+        .section-header h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        /* 教育+工作双列紧凑布局 */
+        .edu-work-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .edu-col, .work-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        .sub-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 14px;
+            padding-left: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        .compact-item {
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eef2f5;
+        }
+        .compact-item:last-child {
+            border-bottom: none;
+        }
+        .compact-title {
+            font-weight: 700;
+            color: #1a2c44;
+            font-size: 16px;
+        }
+        .compact-sub {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+            margin: 4px 0;
+        }
+        .compact-date {
+            display: inline-block;
+            background: #f0f4fa;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--primary);
+        }
+
+        /* 项目列表（紧凑） */
+        .project-item {
+            background: #fafcff;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin-bottom: 14px;
+            border: 1px solid #eef2f5;
+        }
+        .project-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+        }
+        .project-detail {
+            color: #4a5b7a;
+            font-size: 14px;
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .project-fund {
+            color: #2c7a4d;
+            background: #e0f3e8;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* 论文卡片 */
+        .paper-item {
+            background: #ffffff;
+            border: 1px solid #eef2f5;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            transition: 0.1s;
+        }
+        .paper-title {
+            font-weight: 800;
+            font-size: 16px;
+            color: #0a2a4a;
+            margin-bottom: 6px;
+        }
+        .paper-journal {
+            display: inline-block;
+            background: #eef3fc;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 8px;
+        }
+        .paper-meta {
+            display: inline-block;
+            font-size: 12px;
+            color: #6f7d98;
+        }
+
+        /* 荣誉标签 */
+        .honor-tag {
+            display: inline-block;
+            background: #f0f4fa;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin: 0 8px 12px 0;
+            border: 1px solid #e0e8f0;
+        }
+
+        /* 学术兼职 */
+        .duty-text {
+            background: #f8fafd;
+            padding: 16px 22px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary);
+            line-height: 1.65;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .hero-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-contact {
+                justify-content: center;
+            }
+            .edu-work-grid {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .section-card {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 28px;
+            }
+            .stats-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航触发区 & 占位符（与原站一致） -->
+    <div class="nav_trigger_area"></div>
+    <div class="header_placeholder"></div>
+    <div class="header_main" id="header">
+        <div class="w1200 clearfix">
+            <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
+                <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
+            </a>
+            <div class="nav fr" id="nav" aos="fade-left" aos-delay="100">
+                <ul class="navlist">
+                    <li><a href="index.html" title="首页">首页速览<span>HOME</span></a></li>
+                    <li><a href="about_main.html" title="关于我们">关于我们<span>ABOUT US</span></a>
+                        <div class="subnav"><a href="about_introduction.html">实验室简介</a><a href="about_history.html">发展历程</a><a href="about_culture.html">实验室文化</a><a href="about_activities.html">团队活动</a><a href="about_photos.html">团队合影</a></div>
+                    </li>
+                    <li><a href="team_main.html" title="团队成员">团队成员<span>TEAM</span></a>
+                        <div class="subnav"><a href="team_main.html#teacher-team">教师团队</a><a href="team_main.html#postgraduate-team">研究生团队</a><a href="team_main.html#alumni-team">已毕业学生</a></div>
+                    </li>
+                    <li><a href="achievement_main.html" title="研究成果">研究成果<span>ACHIEVEMENT</span></a>
+                        <div class="subnav"><a href="achievement_papers.html">发表论文</a><a href="achievement_patents.html">发明专利</a><a href="achievement_awards.html">竞赛获奖</a><a href="achievement_projects.html">合作项目</a></div>
+                    </li>
+                    <li><a href="news_main.html" title="新闻中心">新闻中心<span>NEWS</span></a>
+                        <div class="subnav"><a href="news_laboratory.html">实验室新闻</a><a href="news_frontiers.html">方向前沿</a><a href="news_faq.html">常见问题</a></div>
+                    </li>
+                    <li><a href="contact_main.html" title="联系我们">联系我们<span>Contact</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--内页大图-->
+    <div class="nybanner" style="background-image: url(/images/team/team_head_bg.png)"></div>
+    <!--搜索栏-->
+    <div class="search_main">
+        <div class="w1200 clearfix">
+            <div class="skey" aos="fade-right"><p>热门关键词：<a href="achievement_papers.html" title="发表论文">发表论文</a> <a href="achievement_patents.html" title="发明专利">发明专利</a> <a href="achievement_projects.html" title="研究项目">研究项目</a> <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a> <a href="news_frontiers.html" title="前沿动态">前沿动态</a></p></div>
+            <div class="search_form" aos="fade-left"><form action="search/" method="get" onsubmit="return checksearch(this);"><label for="search_keyword" style="display: none">搜索关键词</label><input class="stxt" type="text" name="keyword" id="search_keyword" value="请输入关键字" onfocus="if (this.value == '请输入关键字') this.value = '';" onblur="if (this.value == '') this.value = '请输入关键字';" /><input type="submit" value="" class="sbtn icon" /></form></div>
+        </div>
+    </div>
+    <!-- 主体区域（左右结构，左侧栏保持原样） -->
+    <div class="submian">
+        <div class="w1200 clearfix">
+            <div class="subleft fl">
+                <div class="lefta"><div class="title"><h2><p>—— 实验室成员 ——</p><span>TEAM</span></h2></div><div class="comt"><ul><li><a href="team_main.html#teacher-team">教师团队</a></li><li><a href="team_main.html#postgraduate-team">研究生团队</a></li><li><a href="team_main.html#alumni-team">已毕业学生</a></li></ul></div></div>
+                <div class="leftnews"><div class="title"><h2><p>—— 核心成员 ——</p><span>MEMBER</span></h2></div><ul class="clearfix"><li><a href="team_teacher_wanghanxiang.html" title="王瀚祥老师详细信息"><img src="images/team/team_core_wanghanxiang.png" alt="王瀚祥老师个人照片" /><p>王瀚祥老师</p></a></li><li><a href="team_teacher_liyanfen.html" title="厉彦芬老师详细信息"><img src="images/team/team_core_liyanfen.png" alt="厉彦芬老师个人照片" /><p>厉彦芬老师</p></a></li><li><a href="team_master_caojipei.html" title="曹继培详细信息"><img src="images/team/team_core_caojipei.png" alt="曹继培个人照片" /><p>曹继培</p></a></li><li><a href="team_master_mamengyao.html" title="马梦瑶详细信息"><img src="images/team/team_core_mamengyao.png" alt="马梦瑶个人照片" /><p>马梦瑶</p></a></li></ul></div>
+                <div class="leftcont">— 慧眼识界 智算万物 —<br /><b>RECOGNITION</b></div>
+            </div>
+            <div class="subright fr">
+                <div class="sobtitle">您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="team_main.html">团队成员</a> &gt;&gt; <a href="team_main.html#teacher-team">教师团队</a> &gt;&gt; 曹继培同学</div>
+                
+                <!-- ========= 重构的个人详情内容（紧凑、大字体、小圆角、边界清晰） ========= -->
+                <div class="profile-detail">
+                    <!-- 1. 个人信息 -->
+                    <div class="hero-card">
+                        <div class="hero-avatar"><img src="images/team/team_core_caojipei.png" alt="曹继培" onerror="this.src='/images/default-avatar.png'" /></div>
+                        <div class="hero-info">
+                            <div class="hero-name">曹继培</div>
+                            <div class="hero-title">研究生</div>
+                            <div class="hero-en">Jipei Cao | Postgraduate</div>
+                            <div class="hero-contact"><span>📞 137-9157-1602</span><span>✉️ <a href="mailto:caojipei@qfnu.edu.cn">caojipei@qfnu.edu.cn</a></span><span>🎓 <a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank">Google Scholar</a></span></div>
+                            <button id="downloadCVBtn" class="btn-cv" onclick="downloadResume()">📄 下载完整简历 (PDF)</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. 学术统计 -->
+                    <div class="stats-grid">
+                        <div class="stat-card"><div class="stat-number">一个亿</div><div class="stat-label">SCI论文</div></div>
+                        <div class="stat-card"><div class="stat-number">17</div><div class="stat-label">中科院一区TOP</div></div>
+                        <div class="stat-card"><div class="stat-number">3500+</div><div class="stat-label">总引用量</div></div>
+                        <div class="stat-card"><div class="stat-number">21</div><div class="stat-label">H-index</div></div>
+                    </div>
+
+                    <!-- 3. 教育经历 + 工作经历（双列紧凑布局，减少留白） -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">📚</span><h3>教育 & 工作经历</h3></div>
+                        <div class="edu-work-grid">
+                            <div class="edu-col">
+                                <div class="sub-section-title">教育经历</div>
+                                <div class="compact-item"><div class="compact-title">曲阜师范大学 学士</div><div class="compact-sub">计算机视觉与智慧农业</div><div class="compact-date">2023.09 – 2026.12</div></div>
+                            </div>
+                            <div class="work-col">
+                                <div class="sub-section-title">工作经历</div>
+                                <div class="compact-item"><div class="compact-title">曲阜师范大学 副教授</div><div class="compact-date">2026.01 – 至今</div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. 主持科研项目 -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">📌</span><h3>主持科研项目</h3></div>
+                        <div class="project-item"><div class="project-name">国家自然科学基金青年项目 (62502271)</div><div class="project-detail">基于仿生物视觉动态感知的农作物病害检测方法研究与应用 <span class="project-fund">30万元 | 2026-2028</span></div></div>
+                        <div class="project-item"><div class="project-name">国家海外博士后引才专项（涉密）</div><div class="project-detail">基于多模态数据的农作物生长预测方法研究 <span class="project-fund">90万元 | 2025-2027</span></div></div>
+                        <div class="project-item"><div class="project-name">山东省自然科学基金C类 (ZR2025QC630)</div><div class="project-detail">仿生感知驱动的果蔬类作物病害早期识别关键技术研究 <span class="project-fund">13万元 | 2025-2028</span></div></div>
+                        <div class="project-item"><div class="project-name">国家建设高水平大学公派研究生项目</div><div class="project-detail">202108260006 <span class="project-fund">24万元 | 2021-2023</span></div></div>
+                    </div>
+
+                    <!-- 5. 参与科研项目 -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">🤝</span><h3>参与科研项目</h3></div>
+                        <div class="project-item"><div class="project-name">韩国国家研究基金会重点研发项目</div><div class="project-detail">基于大数据的育种预测模型技术开发 (322063-03-1-SB010) <span class="project-fund">65万元 | 2022-2023</span></div></div>
+                        <div class="project-item"><div class="project-name">韩国国家研究基金会重点研发项目</div><div class="project-detail">下一代人工智能无人飞行器核心技术开发 (2020R1A6A1A03038540) <span class="project-fund">170万元 | 2021-2023</span></div></div>
+                    </div>
+
+                    <!-- 6. 代表性论文 -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">📄</span><h3>代表性论文</h3></div>
+                        <div class="paper-item"><div class="paper-title">Residual-like Multi-Kernel Block and Dynamic Attention for Deep Neural Networks</div><div><span class="paper-journal">Engineering Applications of Artificial Intelligence</span><span class="paper-meta">148, 110456 (2025) 中科院一区TOP, IF=8.0</span></div></div>
+                        <div class="paper-item"><div class="paper-title">PD-TR: End-to-end plant diseases detection using a transformer</div><div><span class="paper-journal">Computers and Electronics in Agriculture</span><span class="paper-meta">224, 109123 (2024) 中科院一区TOP, IF=8.9</span></div></div>
+                        <div class="paper-item"><div class="paper-title">Pixel-level tunnel crack segmentation using a weakly supervised annotation approach</div><div><span class="paper-journal">Computers in Industry</span><span class="paper-meta">133, 103545 (2021) 中科院一区TOP, IF=9.1</span></div></div>
+                        <div class="paper-item"><div class="paper-title">An efficient attention module for instance segmentation network in pest monitoring</div><div><span class="paper-journal">Computers and Electronics in Agriculture</span><span class="paper-meta">195, 106853 (2022) 中科院一区TOP, IF=8.9</span></div></div>
+                        <div class="paper-item"><div class="paper-title">Drone-Based High-Precision Object Detection in Remote Sensing with Attention-Guided Feature Fusion</div><div><span class="paper-journal">Tsinghua Science and Technology</span><span class="paper-meta">31(2), 1263-1281 (2026) 中科院一区TOP</span></div></div>
+                        <div class="paper-item"><div class="paper-title">Transformer-based detection of abnormal rice growth using drone-based multispectral imaging (通讯作者)</div><div><span class="paper-journal">Computers and Electronics in Agriculture</span><span class="paper-meta">239, 111055 (2025) 中科院一区TOP</span></div></div>
+                        <div style="margin-top: 16px;"><a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" style="background: var(--primary); color:white; padding: 6px 18px; border-radius: 6px; text-decoration: none; font-size: 14px;">📚 查看更多论文 (Google Scholar)</a></div>
+                    </div>
+
+                    <!-- 7. 发明专利与荣誉 -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">🏆</span><h3>发明专利 & 荣誉奖励</h3></div>
+                        <div class="project-item"><div class="project-name">发明专利</div><div class="project-detail">基于感知损失函数与轻量化自适应的农作物病害检测方法，2025-10-29，中国，202511559089.X</div></div>
+                        <div class="project-item"><div class="project-name">发明专利</div><div class="project-detail">基于细粒度线索的田间小规模作物病害检测方法，2025-10-29，中国，202511560616.9</div></div>
+                        <div class="project-item"><div class="project-name">韩国专利</div><div class="project-detail">基于深度学习的下水道缺陷检测方法及其装置，2023-02-17，10-2023-0023263</div></div>
+                        <div class="project-item"><div class="project-name">国家级青年储备人才 (2024)</div></div>
+                        <div class="project-item"><div class="project-name">国家建设高水平大学公派研究生项目资助 (2021)</div></div>
+                        <div class="project-item"><div class="project-name">Computers and Electronics in Agriculture, EAAI等顶刊审稿人</div></div>
+                        <div class="project-item"><div class="project-name">中国计算机学会(CCF)会员 / IEEE会员 / 中国人工智能学会会员</div></div>
+                       
+                    </div>
+
+                    <!-- 8. 学术兼职 -->
+                    <div class="section-card">
+                        <div class="section-header"><span class="icon">🔗</span><h3>学术兼职</h3></div>
+                        <div class="duty-text">
+                            国际权威期刊审稿人：Computers and Electronics in Agriculture、Engineering Applications of Artificial Intelligence、Computers in Industry、Construction and Building Materials 等。<br />
+                            中国计算机学会（CCF）会员、IEEE会员、中国人工智能学会会员、山东省青年科学家委员会会员。
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页尾 -->
+    <div class="footer_main">
+        <div class="footer w1200 clearfix">
+            <div class="links"><span>友情链接：</span><a href="https://github.com/RIGCV" target="_blank">GitHub</a><a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank">Google Scholar</a></div>
+            <ul class="botnavlist fl">
+                <li><a href="about_main.html" title="关于我们">关于我们</a><div class="drop clearfix"><a href="about_introduction.html" title="实验室简介">实验室简介</a></div><div class="drop clearfix"><a href="about_culture.html" title="实验室文化">实验室文化</a></div><div class="drop clearfix"><a href="about_history.html" title="发展历程">发展历程</a></div></li>
+                <li><a href="achievement_main.html" title="研究成果">研究成果</a><div class="drop clearfix"><a href="achievement_papers.html" title="发表论文">发表论文</a></div><div class="drop clearfix"><a href="achievement_patents.html" title="发明专利">发明专利</a></div><div class="drop clearfix"><a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a></div><div class="drop clearfix"><a href="achievement_projects.html" title="合作项目">合作项目</a></div></li>
+                <li><a href="news_main.html" title="新闻中心">新闻中心</a><div class="drop clearfix"><a href="news_laboratory.html" title="实验室新闻">实验室新闻</a></div><div class="drop clearfix"><a href="news_frontiers.html" title="方向前沿">方向前沿</a></div><div class="drop clearfix"><a href="news_faq.html" title="常见问题">常见问题</a></div></li>
+                <li><a href="team_main.html" title="团队成员">团队成员</a><div class="drop clearfix"><a href="team_main.html#teacher-team" title="教师团队">教师团队</a></div><div class="drop clearfix"><a href="team_main.html#postgraduate-team" title="研究生团队">研究生团队</a></div><div class="drop clearfix"><a href="team_main.html#alumni-team" title="已毕业学生">已毕业学生</a></div></li>
+            </ul>
+            <div class="qcode fr"><div class="btel fl"><p class="p1">联系我们</p><p class="p2">137-9157-1602</p><p class="p3">联系人：王教授</p><p class="p3">邮　箱：hanxiang@qfnu.edu.cn</p><p class="p3">地　址：山东省日照市曲阜师范大学</p></div><img class="ewm fr" src="images/index/index_footer_WeChat.png" alt="CVPR-Laboratory微信公众号二维码" /></div>
+        </div>
+        <div class="copymain"><div class="w1200 clearfix"><p class="fl">Copyright © 2025 CVPR-Laboratory 版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" title="ICP备496365245号">ICP备496365245号</a>　<a href="map.html">网站地图</a>（<a href="sitemap.xml" target="_blank">百度</a>）</p><p class="fr"></p></div></div>
+    </div>
+    <!--浮动客服-->
+    <dl class="toolbar"><dd class="qq"><a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a></dd><dd class="tel"><i></i><span>联系我们</span><div class="box"><p>联系我们</p><h3>137-9157-1602</h3></div></dd><dd class="code"><i></i><span>微信咨询</span><div class="box"><img src="images/index/index_footer_WeChat.png" alt="微信咨询二维码" /></div></dd><dd class="top" id="top"><i></i><span>返回顶部</span></dd></dl>
+    <script src="js/nav-control.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script type="text/javascript">
+        AOS.init({ easing: "ease-out-back", duration: 1000 });
+        if (typeof checksearch !== "function") {
+            window.checksearch = function (form) {
+                var kw = form.keyword.value.trim();
+                if (kw === "" || kw === "请输入关键字") { alert("请输入搜索关键词"); return false; }
+                return true;
+            };
+        }
+        function downloadResume() {
+            const pdfUrl = "data/曹继培简历.pdf";
+            const link = document.createElement("a");
+            link.href = pdfUrl;
+            link.download = "曹继培简历.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => { console.log("如果下载失败，请联系管理员获取简历"); }, 500);
+        }
+        (function () {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(function () {
+                        const headerHeight = 130;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                    }, 300);
+                }
+            }
+        })();
     </script>
-  </body>
+</body>
 </html>
