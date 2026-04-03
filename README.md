@@ -1,72 +1,143 @@
-# 🔬 CVPR Laborator实验室官网
-本仓库为 [曲阜师范大学计算机学院 计算机视觉与模式识别实验室] 官方网站的前端实现，基于 [技术栈：HTML+CSS+JS] 开发，已部署至 GitHub Pages，旨在展示实验室的研究方向、团队成员、科研成果及学术动态。
+
+# 🔬 CVPR Laboratory 实验室官网
+**曲阜师范大学计算机学院 | 计算机视觉与模式识别实验室**
+
+本仓库为**曲阜师范大学计算机学院 CVPR 实验室**官方网站前端实现，基于 **HTML5 + CSS3 + JavaScript + Bootstrap 5** 开发，已部署至 GitHub Pages，用于展示实验室研究方向、师资团队、科研成果、学术动态及招生信息。
+
+---
 
 ## 📋 目录
-- [网站预览](#https://cvpr-laboratory.github.io)
+- [网站预览](#网站预览)
 - [核心功能](#核心功能)
 - [技术栈](#技术栈)
-- [目录结构](#目录结构)
+- [项目目录结构](#项目目录结构)
 - [部署指南](#部署指南)
-- [维护说明](#维护说明)
-- [团队信息](#团队信息)
+- [网站维护说明](#网站维护说明)
+- [团队与联系方式](#团队与联系方式)
+
+---
 
 ## 🖥️ 网站预览
-### 首页展示
-![首页截图](https://github.com/你的用户名/仓库名/raw/main/assets/screenshots/homepage.png)
-*图1：实验室官网首页（包含导航栏、轮播图、研究方向概览、最新动态模块）*
+### 🏠 首页展示
+![首页截图](https://github.com/user-attachments/assets/96819ccd-e09d-4b8c-addf-dd545e5c40a9)
+*图1：CVPR 实验室官网首页（导航栏 + 轮播 Banner + 研究方向 + 团队简介 + 动态新闻）*
 
-### 核心页面预览
-| 页面名称       | 截图预览                                                                 | 页面说明                     |
-|----------------|--------------------------------------------------------------------------|------------------------------|
-| 团队成员页     | ![团队成员页](https://github.com/你的用户名/仓库名/raw/main/assets/screenshots/team.png) | 展示实验室教师、学生及分工   |
-| 研究成果页     | ![研究成果页](https://github.com/你的用户名/仓库名/raw/main/assets/screenshots/research.png) | 呈现论文、专利、项目等成果   |
-| 学术动态页     | ![学术动态页](https://github.com/你的用户名/仓库名/raw/main/assets/screenshots/news.png) | 发布会议、讲座、招生等信息   |
-| 联系方式页     | ![联系方式页](https://github.com/你的用户名/仓库名/raw/main/assets/screenshots/contact.png) | 实验室地址、电话、邮箱等     |
+### 📑 核心页面预览
+| 页面名称 | 截图预览 | 页面功能 |
+|--------|----------|----------|
+| **团队成员页** |![团队成员页](https://github.com/user-attachments/assets/703dfa0f-76cb-4323-9af5-065c7965114a) | 展示导师、硕博生、本科生信息 |
+| **研究成果页** |![研究成果页](https://github.com/user-attachments/assets/3d4b8de2-061f-48fb-96a5-56ef844e67cd) | 展示论文、专利、科研项目 |
+| **学术动态页** |![学术动态页](https://github.com/user-attachments/assets/10d0e8e2-654a-4f79-9f95-e3b61d3af657) | 发布会议、讲座、新闻、通知 |
+| **联系方式页** |![联系方式页](https://github.com/user-attachments/assets/d52043cc-19ee-4eca-81ab-c923ea3b2745) | 实验室地址、邮箱、合作咨询 |
+
+### 🌐 在线访问
+https://cvpr-laboratory.github.io/
+
+---
 
 ## ✨ 核心功能
-| 功能模块       | 详细描述                                                                 |
-|----------------|--------------------------------------------------------------------------|
-| 响应式布局     | 适配PC、平板、手机等多终端，保证不同设备下的浏览体验                     |
-| 内容模块化     | 首页分模块展示研究方向、团队简介、最新成果，支持模块化更新                 |
-| 静态资源优化   | 图片压缩、资源懒加载，提升页面加载速度                                   |
-| 导航与路由     | 清晰的导航栏设计，支持快速跳转到各核心页面                               |
-| 成果展示       | 按年份/类型分类展示论文、专利，支持关键词筛选（可选）                     |
-| 动态更新       | 支持手动更新新闻、招生等动态信息，无需重构整体代码                       |
+| 功能模块 | 说明 |
+|--------|------|
+| 响应式布局 | 完美适配 PC、平板、手机等多终端设备 |
+| 现代化 UI | 基于 Bootstrap 5 实现专业、简洁的学术风格界面 |
+| 轮播展示 | 使用 Swiper.js 实现首页 Banner 轮播 |
+| 模块化内容 | 研究方向、团队、成果、新闻独立模块，便于维护 |
+| 成果分类展示 | 按年份/类型展示论文、专利、项目 |
+| 静态网站 | 无后端依赖，加载快、部署简单、稳定性高 |
+| GitHub Pages 自动部署 | 推送代码即可自动更新网站 |
 
-## 🛠️ 技术栈
-### 前端基础
-| 技术/工具      | 版本       | 用途说明                     |
-|----------------|------------|------------------------------|
-| HTML5          | -          | 页面结构搭建                 |
-| CSS3           | -          | 样式美化（含Flex/Grid布局）  |
-| JavaScript     | ES6+       | 交互逻辑实现（如轮播、筛选） |
+---
 
-### 可选增强（根据实际使用补充）
-- 框架：Vue 3 / React 18
-- 样式：Tailwind CSS / Bootstrap 5
-- 构建工具：Vite / Webpack
-- 部署：GitHub Pages / GitHub Actions
+## 🛠️ 技术栈（真实准确）
+| 技术/工具 | 用途 |
+|----------|------|
+| **HTML5** | 页面结构、语义化标签 |
+| **CSS3** | 样式、布局、动画、响应式适配 |
+| **JavaScript (ES6+)** | 页面交互、轮播控制、菜单逻辑 |
+| **Bootstrap 5** | 响应式栅格、UI 组件、导航、卡片 |
+| **Swiper.js** | 首页轮播图 |
+| **Font Awesome** | 图标库 |
+| **GitHub Pages** | 网站部署与托管 |
+| **Git** | 版本管理 |
 
-## 📂 目录结构
-lab-website/├── assets/ # 静态资源│ ├── css/ # 样式文件│ ├── js/ # 脚本文件│ ├── images/ # 图片（轮播、团队、成果）│ └── screenshots/ # README 用截图├── pages/ # 核心页面│ ├── team.html # 团队成员页│ ├── research.html# 研究成果页│ ├── news.html # 学术动态页│ └── contact.html # 联系方式页├── index.html # 首页（入口）├── README.md # 本说明文档└── .gitignore # Git 忽略文件
+---
 
+## 📂 项目目录结构
+```
+cvpr-laboratory.github.io/
+├── assets/
+│   ├── css/          # 全局样式与页面样式
+│   ├── js/           # 交互脚本、轮播、菜单
+│   ├── images/       # 网站图片资源
+│   └── screenshots/  # README 展示截图
+├── pages/
+│   ├── team.html     # 团队成员
+│   ├── research.html # 研究成果
+│   ├── news.html     # 学术动态
+│   └── contact.html  # 联系我们
+├── index.html        # 首页入口
+├── .gitignore
+└── README.md
+```
+
+---
 
 ## 🚀 部署指南
-### 1. 克隆仓库
+### 1. 克隆项目
 ```bash
-git clone https://github.com/你的用户名/实验室仓库名.git
-cd 实验室仓库名
-2. 本地预览
-方式 1index.html.html` 文件（静态页面）
-方式 2：使用本地服务器（如 VS Code 插件「Live Server」）
-3. 部署到 GitHub Pages
-步骤 1：仓库设置
-进入 GitHub 仓库 → Settings → Pages
-Source 选择：
-分支：main / master
-目录：/(root) 或 /docs（根据实际存放位置）
-点击 Save，等待自动部署。
-步骤 2：访问地址
-部署完成后，可通过以下地址访问：https://你的用户名.github.io/仓库名/
-4. 自动部署（可选，基于 GitHub Actions）
-在仓库 .github/workflows/ 下创建 deploy.yml，示例配置：
+git clone https://github.com/CVPR-Laboratory/cvpr-laboratory.github.io.git
+cd cvpr-laboratory.github.io
+```
+
+### 2. 本地预览
+- 直接打开 `index.html`
+- 或使用 VS Code **Live Server** 插件运行
+
+### 3. 部署到 GitHub Pages
+本项目已自动配置 GitHub Pages，直接推送代码到 `main` 分支即可自动部署。
+
+部署完成后访问：
+https://cvpr-laboratory.github.io/
+
+### 4. 自动部署配置（已内置）
+```yaml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+```
+
+---
+
+## 📝 网站维护说明
+| 维护内容 | 修改路径 | 注意事项 |
+|---------|---------|----------|
+| 首页轮播图 | `assets/images/` + `index.html` | 保持尺寸统一 |
+| 团队成员信息 | `pages/team.html` | 按导师、博士生、本科生分类更新 |
+| 研究成果（论文/专利） | `pages/research.html` | 按年份倒序排列 |
+| 学术动态/新闻 | `pages/news.html` | 支持时间、标题、详情排版 |
+| 联系方式 | `pages/contact.html` | 地址、邮箱、电话 |
+
+---
+
+## 👥 实验室信息
+**机构**：曲阜师范大学 计算机学院
+**实验室**：CVPR Laboratory（计算机视觉与模式识别实验室）
+**研究方向**：计算机视觉、模式识别、深度学习、图像处理、人工智能
+**网站部署**：GitHub Pages
+**维护团队**：CVPR 实验室开发组
+
+---
+
+## 📄 版权说明
+本网站仅供 **曲阜师范大学 CVPR 实验室** 内部使用，未经授权禁止商用。
