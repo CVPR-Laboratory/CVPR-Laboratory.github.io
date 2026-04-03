@@ -25,7 +25,7 @@
 ### 📑 核心页面预览
 | 页面名称 | 截图预览 | 页面功能 |
 |--------|----------|----------|
-| **团队成员页** |![团队成员页](https://github.com/user-attachments/assets/703dfa0f-76cb-4323-9af5-065c7965114a) | 展示导师、硕博生、本科生信息 |
+| **团队成员页** |![团队成员页](https://github.com/user-attachments/assets/703dfa0f-76cb-4323-9af5-065c7965114a) | 展示导师、硕士生信息 |
 | **研究成果页** |![研究成果页](https://github.com/user-attachments/assets/3d4b8de2-061f-48fb-96a5-56ef844e67cd) | 展示论文、专利、科研项目 |
 | **学术动态页** |![学术动态页](https://github.com/user-attachments/assets/10d0e8e2-654a-4f79-9f95-e3b61d3af657) | 发布会议、讲座、新闻、通知 |
 | **联系方式页** |![联系方式页](https://github.com/user-attachments/assets/d52043cc-19ee-4eca-81ab-c923ea3b2745) | 实验室地址、邮箱、合作咨询 |
