@@ -1669,14 +1669,17 @@ textarea::-webkit-input-placeholder {
   text-align: center;
   width: 110px;
   margin-left: 9px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .submian .leftnews ul li img {
-  width: 108px;
-  height: 81px;
+  width: 90px;                     /* 固定宽度，适合左侧栏尺寸 */
+  aspect-ratio: 5 / 7;             /* 一寸照比例 */
+  object-fit: cover;               /* 图片填充不变形 */
   border: 1px solid #ddd;
   transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;                  /* 水平居中 */
 }
 
 .submian .leftnews ul li:hover img {
@@ -2259,7 +2262,7 @@ textarea::-webkit-input-placeholder {
 }
 /* 单个成员卡片，与产品列表卡片风格一致，便于复用 */
 .team-card {
-  width: 283px;              /* 与产品列表宽度一致 */
+  width: 160px;              /* 与产品列表宽度一致 */
   background: #fff;
   border: 1px solid #e5e5e5;
   padding: 4px;
@@ -2276,7 +2279,7 @@ textarea::-webkit-input-placeholder {
 /* 成员照片区域 */
 .team-card .img {
   width: 100%;
-  height: 212px;
+  aspect-ratio: 5 / 7; 
   overflow: hidden;
   background-color: #f5f5f5;
 }
