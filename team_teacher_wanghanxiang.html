@@ -6,7 +6,7 @@
     <title>王瀚祥教授 - CVPR-Lab</title>
     <meta name="keywords" content="王瀚祥,曲阜师范大学,计算机视觉,人工智能" />
     <meta name="description" content="王瀚祥，曲阜师范大学副教授，硕士生导师，主要研究方向为计算机视觉、深度学习、智慧农业等。" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <!-- 已移除移动端响应式 viewport 设置 -->
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/aos1.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
     <script src="js/jquery.SuperSlide.2.1.1.js"></script>
     <script src="js/common.js"></script>
     <style>
-        /* ========== 优化版个人详情页样式（圆角克制、字体略大、布局紧凑） ========== */
+        /* ========== 优化版个人详情页样式（圆角克制、字体略大、布局紧凑，桌面优先） ========== */
         :root {
             --primary: #1048a0;
             --primary-dark: #0c3a82;
@@ -175,7 +175,7 @@
             margin: 0;
         }
 
-        /* 教育+工作双列紧凑布局 */
+        /* 教育+工作双列紧凑布局（桌面固定双列） */
         .edu-work-grid {
             display: flex;
             flex-wrap: wrap;
@@ -302,31 +302,7 @@
             font-size: 14px;
         }
 
-        /* 响应式 */
-        @media (max-width: 992px) {
-            .hero-card {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-contact {
-                justify-content: center;
-            }
-            .edu-work-grid {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .section-card {
-                padding: 20px;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero-name {
-                font-size: 28px;
-            }
-            .stats-grid {
-                flex-direction: column;
-            }
-        }
+        /* 完全移除移动端媒体查询，保留桌面布局稳定 */
     </style>
 </head>
 <body>
@@ -378,7 +354,7 @@
             <div class="subright fr">
                 <div class="sobtitle">您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="team_main.html">团队成员</a> &gt;&gt; <a href="team_main.html#teacher-team">教师团队</a> &gt;&gt; 王瀚祥老师</div>
                 
-                <!-- ========= 重构的个人详情内容（紧凑、大字体、小圆角、边界清晰） ========= -->
+                <!-- 重构的个人详情内容（紧凑、大字体、小圆角、边界清晰，移除移动端响应布局） -->
                 <div class="profile-detail">
                     <!-- 1. 个人信息 -->
                     <div class="hero-card">
@@ -400,7 +376,7 @@
                         <div class="stat-card"><div class="stat-number">21</div><div class="stat-label">H-index</div></div>
                     </div>
 
-                    <!-- 3. 教育经历 + 工作经历（双列紧凑布局，减少留白） -->
+                    <!-- 3. 教育经历 + 工作经历（双列紧凑布局，桌面稳定） -->
                     <div class="section-card">
                         <div class="section-header"><span class="icon">📚</span><h3>教育 & 工作经历</h3></div>
                         <div class="edu-work-grid">
@@ -448,7 +424,7 @@
                         <div style="margin-top: 16px;"><a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" style="background: var(--primary); color:white; padding: 6px 18px; border-radius: 6px; text-decoration: none; font-size: 14px;">📚 查看更多论文 (Google Scholar)</a></div>
                     </div>
 
-                    <!-- 7. 发明专利与荣誉 -->
+                    <!-- 7. 发明专利 & 荣誉奖励 -->
                     <div class="section-card">
                         <div class="section-header"><span class="icon">🏆</span><h3>发明专利 & 荣誉奖励</h3></div>
                         <div class="project-item"><div class="project-name">发明专利</div><div class="project-detail">基于感知损失函数与轻量化自适应的农作物病害检测方法，2025-10-29，中国，202511559089.X</div></div>
