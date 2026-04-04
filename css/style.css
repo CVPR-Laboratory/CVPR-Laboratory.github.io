@@ -3,7 +3,6 @@
 
 /* 页面主体：隐藏水平滚动条，垂直滚动条自动出现 */
 body {
-  overflow-x: hidden;
   overflow-y: auto;
 }
 
