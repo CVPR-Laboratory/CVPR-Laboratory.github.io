@@ -383,73 +383,6 @@ textarea::-webkit-input-placeholder {
   background: #fff;
 }
 
-/* ========== 响应式适配 ========== */
-@media (max-width: 1400px) {
-  .header_main .w1200 {
-    max-width: 1200px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .header_main .w1200 {
-    padding: 0 20px;
-  }
-  
-  #nav li a {
-    padding: 0 15px;
-    padding-top: 33px;
-    padding-bottom: 24px;
-    font-size: 16px;
-  }
-  
-  #nav li {
-    min-width: 85px;
-  }
-}
-
-@media (max-width: 992px) {
-  .header_main {
-    height: 90px;                  /* 小屏幕降低导航栏高度 */
-  }
-  
-  .header_main .logo img {
-    max-height: 60px;
-  }
-  
-  #nav li a {
-    height: 90px;
-    padding: 0 12px;
-    padding-top: 28px;
-    padding-bottom: 20px;
-    font-size: 15px;
-  }
-  
-  #nav li a span {
-    font-size: 10px;
-  }
-  
-  #nav li {
-    min-width: 75px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header_main .w1200 {
-    padding: 0 15px;
-  }
-  
-  #nav li a {
-    padding: 0 8px;
-    padding-top: 28px;
-    padding-bottom: 20px;
-    font-size: 14px;
-  }
-  
-  #nav li {
-    min-width: 65px;
-  }
-}
-
 /* ========== 轮播图响应式全屏样式调整 ========== */
 /* 主要修改：将固定高度改为视口高度，图片宽度改为100%自适应，移除固定宽度的居中偏移 */
 
@@ -554,52 +487,6 @@ textarea::-webkit-input-placeholder {
 #banner #btn_next {
   right: 2%;
   background-position: right;
-}
-
-/* 响应式适配：针对不同屏幕尺寸优化高度和按钮大小 */
-@media (max-width: 1200px) {
-  #banner_main .banner {
-    min-height: 450px;   /* 平板设备适当降低最小高度 */
-  }
-  #banner #btn_prev,
-  #banner #btn_next {
-    width: 40px;
-    height: 56px;
-    margin-top: -28px;
-    background-size: 80px 56px;
-  }
-}
-
-@media (max-width: 768px) {
-  #banner_main .banner {
-    min-height: 350px;   /* 手机设备进一步降低最小高度 */
-  }
-  #banner #btn_prev,
-  #banner #btn_next {
-    width: 32px;
-    height: 45px;
-    margin-top: -22px;
-    background-size: 64px 45px;
-    opacity: 0.6;        /* 手机端稍微降低透明度，减少视觉干扰 */
-  }
-  #banner .tip span {
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
-  }
-}
-
-@media (max-width: 480px) {
-  #banner_main .banner {
-    min-height: 280px;   /* 小屏手机 */
-  }
-  #banner #btn_prev,
-  #banner #btn_next {
-    width: 28px;
-    height: 40px;
-    margin-top: -20px;
-    background-size: 56px 40px;
-  }
 }
 
 /* ========== 搜索栏 ========== */
@@ -1302,27 +1189,6 @@ textarea::-webkit-input-placeholder {
   right: -35px;
 }
 
-/* 响应式：小屏幕自动竖排 */
-@media (max-width: 1260px) {
-  .index .case .hd .prev { left: 0; }
-  .index .case .hd .next { right: 0; }
-}
-@media (max-width: 992px) {
-  .index .case .pro_list li {
-    width: calc(50% - 20px);
-  }
-}
-@media (max-width: 768px) {
-  .index .case {
-    padding: 30px 0;
-  }
-  .index .case .pro_list li {
-    width: calc(100% - 20px);
-  }
-  .index .case .hd {
-    display: none;
-  }
-}
 /* ========== 新闻中心模块 ========== */
 .index .inews {
   position: relative;
@@ -1718,41 +1584,6 @@ textarea::-webkit-input-placeholder {
   margin-top: 5px;
 }
 
-/* 响应式适配 - 小屏幕时调整间距 */
-@media (max-width: 1200px) {
-  .submian .w1200 {
-    gap: 20px;
-  }
-  
-  .submian .subleft {
-    margin-left: -10px;
-  }
-  
-  .submian .subright {
-    padding-left: 15px;
-  }
-}
-
-@media (max-width: 992px) {
-  .submian .w1200 {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .submian .subleft {
-    width: 100%;
-    margin-left: 0;
-  }
-  
-  .submian .subright {
-    width: 100%;
-    padding-left: 0;
-  }
-  
-  .submian .sobtitle {
-    padding-left: 0;
-  }
-}
 /* ========== 留言表单样式 ========== */
 .formData {
   padding-bottom: 20px;
@@ -2315,15 +2146,6 @@ textarea::-webkit-input-placeholder {
 /* 若网格内无意中使用浮动清除类，在此禁止其影响flex布局（无浮动则无影响） */
 .team-sections .clearfix:after {
   display: none;
-}
-/* 响应式：小于1200px时，卡片宽度适当缩小，但依然居中 */
-@media (max-width: 1200px) {
-  .team-grid {
-    justify-content: center;
-  }
-  .team-card {
-    width: 280px;
-  }
 }
 
 /* ========== 全局滚动与锚点优化 ========== */
