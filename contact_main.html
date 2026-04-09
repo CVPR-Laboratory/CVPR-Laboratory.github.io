@@ -16,152 +16,479 @@
   <script src="js/jquery.SuperSlide.2.1.1.js"></script>
   <script src="js/common.js"></script>
   <!-- 引入Font Awesome图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- 高德地图 JS API -->
   <script src="https://webapi.amap.com/maps?v=2.0&key=18de3d5d87f551c6e1e3e89117647519&callback=initAMap"></script>
   <style>
-    /* 为整合的联系信息、表单和地图添加样式，保持与官网风格一致 */
-    .contact-info-section {
-      background: #fff;
-      padding: 20px 0;
+    /* ========== 优化后的联系区域整体布局 ========== */
+    .contact-section-wrapper {
+      background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+      padding: 40px 0;
     }
-    .contact-row {
+    
+    .contact-main-container {
       display: flex;
-      gap: 30px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
+      gap: 40px;
+      align-items: stretch;
+      margin-bottom: 50px;
     }
-    .info-card, .form-card {
-      flex: 1;
-      background: #f9f9fc;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
+    
+    /* ========== 左侧联系信息区域 - 卡片式布局 ========== */
+    .contact-info-panel {
+      flex: 0 0 420px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(16, 72, 160, 0.08);
+      overflow: hidden;
+      border: 1px solid #e8eef7;
     }
-    .info-card:hover, .form-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-    .info-card h3, .form-card h3 {
-      font-size: 22px;
-      color: #1048a0;
-      border-left: 4px solid #1048a0;
-      padding-left: 12px;
-      margin-bottom: 25px;
-    }
-    .info-item {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 25px;
-      align-items: flex-start;
-    }
-    .info-item i {
-      font-size: 24px;
-      color: #1048a0;
-      width: 40px;
+    
+    .contact-info-header {
+      background: linear-gradient(135deg, #1048a0 0%, #1565c0 100%);
+      color: #fff;
+      padding: 30px;
       text-align: center;
-      margin-top: 4px;
+      position: relative;
     }
-    .info-item h4 {
-      font-size: 18px;
-      font-weight: 600;
+    
+    .contact-info-header::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: #1048a0;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .contact-info-header h3 {
+      font-size: 24px;
       margin-bottom: 8px;
-      color: #333;
+      font-weight: 600;
     }
-    .info-item p {
+    
+    .contact-info-header p {
+      font-size: 14px;
+      opacity: 0.9;
       margin: 0;
-      color: #555;
-      line-height: 1.5;
     }
-    .info-item a {
+    
+    .contact-info-body {
+      padding: 40px 30px 30px;
+    }
+    
+    /* 联系信息项 - 图标+内容横向布局 */
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #f0f4f8;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    
+    .contact-info-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .info-icon-wrap {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 18px;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-item:hover .info-icon-wrap {
+      background: linear-gradient(135deg, #1048a0 0%, #1565c0 100%);
+      box-shadow: 0 4px 12px rgba(16, 72, 160, 0.3);
+    }
+    
+    .info-icon-wrap i {
+      font-size: 20px;
+      color: #1048a0;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-info-item:hover .info-icon-wrap i {
+      color: #fff;
+    }
+    
+    .info-content h4 {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    
+    .info-content p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .info-content a {
       color: #1048a0;
       text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
     }
-    .info-item a:hover {
+    
+    .info-content a:hover {
+      color: #0c3a82;
       text-decoration: underline;
     }
-    .form-group {
+    
+    /* 快捷操作按钮 */
+    .contact-quick-actions {
+      margin-top: 25px;
+      padding-top: 25px;
+      border-top: 1px solid #f0f4f8;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .quick-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    
+    .quick-btn-primary {
+      background: #1048a0;
+      color: #fff;
+      border: 1px solid #1048a0;
+    }
+    
+    .quick-btn-primary:hover {
+      background: #0c3a82;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 72, 160, 0.3);
+    }
+    
+    .quick-btn-secondary {
+      background: #fff;
+      color: #1048a0;
+      border: 1px solid #1048a0;
+    }
+    
+    .quick-btn-secondary:hover {
+      background: #f0f7ff;
+    }
+    
+    /* ========== 右侧留言表单区域 ========== */
+    .contact-form-panel {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(16, 72, 160, 0.08);
+      overflow: hidden;
+      border: 1px solid #e8eef7;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .contact-form-header {
+      padding: 30px;
+      border-bottom: 1px solid #f0f4f8;
+      background: #fafbfc;
+    }
+    
+    .contact-form-header h3 {
+      font-size: 22px;
+      color: #1048a0;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .contact-form-header p {
+      color: #666;
+      font-size: 14px;
+      margin: 0;
+    }
+    
+    .contact-form-body {
+      padding: 30px;
+      flex: 1;
+    }
+    
+    /* 表单网格布局 */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
       margin-bottom: 20px;
     }
+    
+    .form-group {
+      margin-bottom: 0;
+    }
+    
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+    
     .form-group label {
       display: block;
       margin-bottom: 8px;
-      font-weight: 500;
-      color: #333;
-    }
-    .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
       font-size: 14px;
-      transition: 0.2s;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    .form-group label .required {
+      color: #e53935;
+      margin-left: 2px;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e0e6ed;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+      background: #fafbfc;
+      transition: all 0.3s;
       box-sizing: border-box;
+      font-family: "microsoft yahei", "宋体", Arial;
     }
-    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      border-color: #1048a0;
+    
+    .form-control:focus {
       outline: none;
-      box-shadow: 0 0 0 2px rgba(16,72,160,0.1);
+      border-color: #1048a0;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(16, 72, 160, 0.1);
     }
-    .form-row {
+    
+    .form-control::placeholder {
+      color: #aaa;
+    }
+    
+    /* 留言内容输入框 - 固定大小，禁止resize */
+    textarea.form-control {
+      resize: none;
+      height: 140px;
+      line-height: 1.6;
+    }
+    
+    select.form-control {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+    
+    /* ========== 表单底部操作区 - 垂直布局 ========== */
+    .form-footer {
       display: flex;
-      gap: 20px;
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #f0f4f8;
     }
-    .form-row .form-group {
-      flex: 1;
-    }
+    
+    /* 长条发送按钮 */
     .btn-submit {
-      background: #1048a0;
+      background: linear-gradient(135deg, #1048a0 0%, #1565c0 100%);
       color: #fff;
       border: none;
-      padding: 12px 28px;
-      border-radius: 40px;
+      padding: 16px 36px;
+      border-radius: 8px;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      transition: 0.3s;
-      margin-top: 10px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(16, 72, 160, 0.3);
       width: 100%;
     }
-    .btn-submit:hover {
-      background: #0c3a82;
+    
+    .btn-submit:hover:not(:disabled) {
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 72, 160, 0.4);
+      background: linear-gradient(135deg, #0c3a82 0%, #1048a0 100%);
     }
+    
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+    
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .btn-submit i {
+      font-size: 18px;
+    }
+    
+    /* 提示词移到按钮下方 */
     .form-tip {
-      font-size: 12px;
       color: #999;
-      margin-top: 12px;
+      font-size: 13px;
+      margin: 12px 0 0 0;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
+    
+    /* 成功/错误消息提示 */
+    .form-message {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .form-message.success {
+      background: #e8f5e9;
+      color: #2e7d32;
+      border: 1px solid #a5d6a7;
+      display: flex;
+    }
+    
+    .form-message.error {
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #ef9a9a;
+      display: flex;
+    }
+    
+    /* ========== 地图区域优化 ========== */
+    .map-section {
+      margin-top: 40px;
+    }
+    
+    .map-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    
+    .map-header h3 {
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .map-header p {
+      color: #666;
+      font-size: 14px;
+    }
+    
     .map-container {
-      margin-top: 20px;
-    }
-    .map-box {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #e8eef7;
     }
+    
     #map {
       width: 100%;
-      height: 420px;
+      height: 400px;
     }
-    .map-box small {
-      display: block;
-      text-align: center;
-      padding: 8px;
-      background: #f5f5f5;
-      font-size: 12px;
+    
+    .map-footer {
+      padding: 15px 20px;
+      background: #fafbfc;
+      border-top: 1px solid #f0f4f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .map-footer-info {
       color: #666;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    
+    .map-footer-info i {
+      color: #1048a0;
+    }
+    
+    .map-action {
+      color: #1048a0;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.3s;
+    }
+    
+    .map-action:hover {
+      gap: 8px;
+    }
+    
+    /* 响应式适配 */
+    @media (max-width: 1200px) {
+      .contact-main-container {
+        flex-direction: column;
+      }
+      .contact-info-panel {
+        flex: 1;
+        width: 100%;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     /* 调整右侧内容宽度 */
     .subright {
       width: 860px;
     }
     @media (max-width: 1200px) {
       .subright { width: 100%; }
-      .form-row { flex-direction: column; gap: 15px; }
     }
   </style>
 </head>
@@ -318,93 +645,181 @@
           <span style="display:none;">当前位置图标</span>您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="contact_main.html">联系我们</a>
         </div>
 
-        <!-- 联系信息 + 表单 -->
-        <div class="contact-info-section">
-          <div class="contact-row">
-            <!-- 联系信息卡片 -->
-            <div class="info-card" id="contact-info">
-              <h3><i class="fas fa-address-card"></i> 联系信息</h3>
-              <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                  <h4>地址</h4>
-                  <p>山东省日照市烟台北路80号</p>
-                  <p>曲阜师范大学计算机学院 JC1036室</p>
-                  <p>邮编：276826</p>
-                </div>
+        <!-- 优化后的联系区域 -->
+        <div class="contact-section-wrapper">
+          <div class="contact-main-container">
+            
+            <!-- 左侧联系信息面板 -->
+            <div class="contact-info-panel" id="contact-info">
+              <div class="contact-info-header">
+                <h3><i class="fas fa-headset" style="margin-right: 10px;"></i>联系信息</h3>
+                <p>期待与您的合作与交流</p>
               </div>
-              <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                  <h4>邮箱</h4>
-                  <p>实验室邮箱：<a href="mailto:cvprlab@qfnu.edu.cn">cvprlab@qfnu.edu.cn</a></p>
-                  <p>王教授：<a href="mailto:hanxiang@qfnu.edu.cn">hanxiang@qfnu.edu.cn</a></p>
+              
+              <div class="contact-info-body">
+                <!-- 地址 -->
+                <div class="contact-info-item">
+                  <div class="info-icon-wrap">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-content">
+                    <h4>实验室地址</h4>
+                    <p>山东省日照市烟台北路80号</p>
+                    <p>曲阜师范大学计算机学院 JC1036室</p>
+                    <p style="color: #999; font-size: 13px; margin-top: 4px;">邮编：276826</p>
+                  </div>
                 </div>
-              </div>
-              <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <div>
-                  <h4>电话</h4>
-                  <p>办公室：137-9157-1602</p>
-                  <p>王教授：137-9157-1602</p>
+                
+                <!-- 邮箱 -->
+                <div class="contact-info-item">
+                  <div class="info-icon-wrap">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="info-content">
+                    <h4>电子邮箱</h4>
+                    <p>实验室：<a href="mailto:cvprlab@qfnu.edu.cn">cvprlab@qfnu.edu.cn</a></p>
+                    <p>王教授：<a href="mailto:hanxiang@qfnu.edu.cn">hanxiang@qfnu.edu.cn</a></p>
+                  </div>
                 </div>
-              </div>
-              <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                  <h4>办公时间</h4>
-                  <p>周一至周五：9:00 - 17:00</p>
-                  <p>周末及节假日：预约访问</p>
+                
+                <!-- 电话 -->
+                <div class="contact-info-item">
+                  <div class="info-icon-wrap">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="info-content">
+                    <h4>联系电话</h4>
+                    <p>办公室：<a href="tel:137-9157-1602">137-9157-1602</a></p>
+                    <p>王教授：<a href="tel:137-9157-1602">137-9157-1602</a></p>
+                  </div>
+                </div>
+                
+                <!-- 办公时间 -->
+                <div class="contact-info-item">
+                  <div class="info-icon-wrap">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="info-content">
+                    <h4>办公时间</h4>
+                    <p>周一至周五：9:00 - 17:00</p>
+                    <p>周末及节假日：预约访问</p>
+                  </div>
+                </div>
+                
+                <!-- 快捷操作按钮 -->
+                <div class="contact-quick-actions">
+                  <a href="mailto:cvprlab@qfnu.edu.cn" class="quick-btn quick-btn-primary">
+                    <i class="fas fa-paper-plane"></i> 发送邮件
+                  </a>
+                  <a href="tel:137-9157-1602" class="quick-btn quick-btn-secondary">
+                    <i class="fas fa-phone"></i> 拨打电话
+                  </a>
                 </div>
               </div>
             </div>
 
-            <!-- 在线留言表单 -->
-            <div class="form-card" id="contact-form">
-              <h3><i class="fas fa-paper-plane"></i> 在线留言</h3>
-              <form id="contactForm" autocomplete="on">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>姓名 *</label>
-                    <input type="text" name="name" required />
+            <!-- 右侧在线留言表单面板 - Formspree集成 -->
+            <div class="contact-form-panel" id="contact-form">
+              <div class="contact-form-header">
+                <h3><i class="fas fa-edit"></i>在线留言</h3>
+                <p>请填写以下信息，我们会尽快与您取得联系</p>
+              </div>
+              
+              <div class="contact-form-body">
+                <!-- 成功/错误消息提示区域 -->
+                <div id="formMessage" class="form-message"></div>
+                
+                <!-- Formspree 表单 -->
+                <form id="contactForm" action="https://formspree.io/f/mbdpegkn" method="POST">
+                  <div class="form-grid">
+                    <!-- 姓名 -->
+                    <div class="form-group">
+                      <label for="name">您的姓名 <span class="required">*</span></label>
+                      <input type="text" id="name" name="name" class="form-control" placeholder="请输入您的姓名" required />
+                    </div>
+                    
+                    <!-- 邮箱 -->
+                    <div class="form-group">
+                      <label for="email">电子邮箱 <span class="required">*</span></label>
+                      <input type="email" id="email" name="email" class="form-control" placeholder="请输入您的邮箱地址" required />
+                    </div>
+                    
+                    <!-- 电话 -->
+                    <div class="form-group">
+                      <label for="phone">联系电话</label>
+                      <input type="tel" id="phone" name="phone" class="form-control" placeholder="请输入您的联系电话（选填）" />
+                    </div>
+                    
+                    <!-- 联系目的 -->
+                    <div class="form-group">
+                      <label for="purpose">联系目的</label>
+                      <select id="purpose" name="purpose" class="form-control">
+                        <option value="">请选择联系目的...</option>
+                        <option value="科研合作">科研合作</option>
+                        <option value="招生咨询">招生咨询</option>
+                        <option value="访问交流">访问交流</option>
+                        <option value="人才招聘">人才招聘</option>
+                        <option value="其他事项">其他事项</option>
+                      </select>
+                    </div>
+                    
+                    <!-- 主题 -->
+                    <div class="form-group full-width">
+                      <label for="subject">留言主题 <span class="required">*</span></label>
+                      <input type="text" id="subject" name="subject" class="form-control" placeholder="请输入留言主题" required />
+                    </div>
+                    
+                    <!-- 内容 - 固定大小，禁止resize -->
+                    <div class="form-group full-width">
+                      <label for="message">留言内容 <span class="required">*</span></label>
+                      <textarea id="message" name="message" class="form-control" placeholder="请详细描述您的需求或问题，我们会尽快回复..." required></textarea>
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label>邮箱 *</label>
-                    <input type="email" name="email" required />
+                  
+                  <!-- Formspree 隐藏配置字段 -->
+                  <!-- 设置邮件主题 -->
+                  <input type="hidden" name="_subject" value="【CVPR实验室官网】新的在线留言">
+                  <!-- 提交后跳转回感谢页面（可选） -->
+                  <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> -->
+                  <!-- 禁用验证码（不推荐，但方便测试） -->
+                  <!-- <input type="hidden" name="_captcha" value="false"> -->
+                  
+                  <!-- 表单底部：长条按钮 + 下方提示词 -->
+                  <div class="form-footer">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                      <i class="fas fa-paper-plane"></i> 发送消息
+                    </button>
+                    <p class="form-tip">
+                      <i class="fas fa-info-circle"></i>
+                      我们将在3个工作日内回复您的留言
+                    </p>
                   </div>
-                </div>
-                <div class="form-group">
-                  <label>主题 *</label>
-                  <input type="text" name="subject" required />
-                </div>
-                <div class="form-group">
-                  <label>消息内容 *</label>
-                  <textarea name="message" rows="5" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label>联系目的</label>
-                  <select name="purpose">
-                    <option value="">请选择...</option>
-                    <option value="collaboration">科研合作</option>
-                    <option value="admission">招生咨询</option>
-                    <option value="visit">访问交流</option>
-                    <option value="other">其他</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn-submit">发送消息</button>
-                <p class="form-tip">提示：带 * 为必填项，我们会在3个工作日内回复。</p>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
 
-          <!-- 地图 -->
-          <div class="map-container" id="contact-map">
-            <div class="map-box">
+          <!-- 地图区域 -->
+          <div class="map-section" id="contact-map">
+            <div class="map-header">
+              <h3><i class="fas fa-map-marked-alt"></i>地图导航</h3>
+              <p>CVPR实验室位于曲阜师范大学日照校区计算机学院</p>
+            </div>
+            <div class="map-container">
               <div id="map"></div>
-              <small>点击地图可全屏查看</small>
+              <div class="map-footer">
+                <span class="map-footer-info">
+                  <i class="fas fa-map-pin"></i>
+                  山东省日照市东港区烟台北路80号曲阜师范大学（日照校区）
+                </span>
+                <a href="https://map.baidu.com/search/曲阜师范大学日照校区" target="_blank" class="map-action">
+                  查看大图 <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
+        
         <div class="clear"></div>
       </div>
     </div>
@@ -520,34 +935,71 @@
       initAMap();
     }
 
-    // 表单提交处理
+    // ============================================
+    // Formspree 表单提交处理（AJAX方式，无刷新）
+    // ============================================
     document.addEventListener("DOMContentLoaded", function() {
       var form = document.getElementById("contactForm");
+      var submitBtn = document.getElementById("submitBtn");
+      var formMessage = document.getElementById("formMessage");
+      
       if (form) {
         form.addEventListener("submit", function(e) {
           e.preventDefault();
-          var data = {
-            name: form.name.value.trim(),
-            email: form.email.value.trim(),
-            subject: form.subject.value.trim(),
-            message: form.message.value.trim(),
-            purpose: form.purpose.value
-          };
-          if (!data.name || !data.email || !data.subject || !data.message) {
-            alert("请完整填写必填项。");
-            return;
-          }
-          var btn = form.querySelector(".btn-submit");
-          var origText = btn.textContent;
-          btn.disabled = true;
-          btn.textContent = "发送中…";
-          // 模拟发送（实际项目中应替换为真实AJAX请求）
-          setTimeout(function() {
-            alert("发送成功！我们将在3个工作日内回复。");
+          
+          // 显示加载状态
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 发送中...';
+          
+          // 隐藏之前的消息
+          formMessage.className = "form-message";
+          formMessage.style.display = "none";
+          
+          // 收集表单数据
+          var formData = new FormData(form);
+          
+          // 发送到 Formspree
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              "Accept": "application/json"
+            }
+          })
+          .then(function(response) {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("服务器响应错误");
+            }
+          })
+          .then(function(data) {
+            // 显示成功消息
+            formMessage.className = "form-message success";
+            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> 留言提交成功！我们会尽快通过邮件回复您。';
+            formMessage.style.display = "flex";
+            
+            // 重置表单
             form.reset();
-            btn.disabled = false;
-            btn.textContent = origText;
-          }, 800);
+            
+            // 3秒后隐藏成功消息
+            setTimeout(function() {
+              formMessage.style.display = "none";
+            }, 5000);
+          })
+          .catch(function(error) {
+            console.error("Error:", error);
+            
+            // 显示错误消息
+            formMessage.className = "form-message error";
+            formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> 提交失败，请检查网络后重试，或直接发送邮件至 cvprlab@qfnu.edu.cn';
+            formMessage.style.display = "flex";
+          })
+          .finally(function() {
+            // 恢复按钮状态
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 发送消息';
+          });
         });
       }
 
