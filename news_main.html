@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
     <title>「新闻中心」CVPR-Lab</title>
@@ -12,6 +11,391 @@
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="css/aos1.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
+    <style>
+      /* ========== 优化后的新闻列表样式 - 三栏布局设计 ========== */
+      .Newslist {
+        padding: 0;
+      }
+
+      .Newslist .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* 新闻卡片项 - 三栏布局：时间 | 内容 | 图片 */
+      .Newslist .list .item {
+        margin-bottom: 20px;
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        overflow: hidden;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .Newslist .list .item:hover {
+        border-color: #1048a0;
+        -webkit-box-shadow: 0 6px 20px rgba(16, 72, 160, 0.15);
+        -moz-box-shadow: 0 6px 20px rgba(16, 72, 160, 0.15);
+        box-shadow: 0 6px 20px rgba(16, 72, 160, 0.15);
+        -webkit-transform: translateY(-3px);
+        -moz-transform: translateY(-3px);
+        -ms-transform: translateY(-3px);
+        -o-transform: translateY(-3px);
+        transform: translateY(-3px);
+      }
+
+      .Newslist .list .item a {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0;
+        text-decoration: none;
+        color: inherit;
+        -webkit-box-align: stretch;
+        -webkit-align-items: stretch;
+        -moz-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+      }
+
+      /* 左侧日期区域 - 横排显示优化 */
+      .Newslist .list .item .time {
+        width: 100px;
+        min-width: 100px;
+        background: #1048a0;
+        background: -webkit-linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
+        background: -moz-linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
+        background: -o-linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
+        background: linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1048a0', endColorstr='#1a5bc5', GradientType=1);
+        color: #fff;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 15px 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* 第一行：月份+日期 */
+      .Newslist .list .item .time .date-md {
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.2;
+        display: block;
+        margin-bottom: 4px;
+        font-family: "Arial", "microsoft yahei", sans-serif;
+        letter-spacing: 1px;
+      }
+
+      /* 第二行：年份（稍小） */
+      .Newslist .list .item .time .date-year {
+        font-size: 14px;
+        opacity: 0.85;
+        line-height: 1.2;
+        font-weight: normal;
+      }
+
+      /* 中间内容区域 - 自适应宽度 */
+      .Newslist .list .item .txt {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding: 18px 25px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        min-width: 0; /* 防止flex子项溢出 */
+      }
+
+      /* 标题字体变大 */
+      .Newslist .list .item .txt h3 {
+        font-size: 20px;
+        color: #333;
+        margin: 0 0 10px 0;
+        line-height: 1.4;
+        font-weight: 600;
+        -webkit-transition: color 0.3s;
+        -moz-transition: color 0.3s;
+        -o-transition: color 0.3s;
+        transition: color 0.3s;
+      }
+
+      .Newslist .list .item:hover .txt h3 {
+        color: #1048a0;
+      }
+
+      /* 元信息行 */
+      .Newslist .list .item .txt .mark {
+        font-size: 12px;
+        color: #999;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: 15px;
+      }
+
+      .Newslist .list .item .txt .mark span {
+        display: -webkit-inline-box;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* 描述文字 - 单行截断，超出显示... */
+      .Newslist .list .item .txt .desc {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+        margin: 0;
+        /* 关键：单行截断，超出显示... */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        width: 100%;
+      }
+
+      /* 右侧图片占位区域 */
+      .Newslist .list .item .news-img {
+        width: 200px;
+        min-width: 200px;
+        height: 140px;
+        overflow: hidden;
+        background-color: #f5f5f5;
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -moz-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -moz-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        border-left: 1px solid #e8e8e8;
+      }
+
+      .Newslist .list .item .news-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+
+      /* 图片占位提示 */
+      .Newslist .list .item .news-img .img-placeholder {
+        color: #aaa;
+        font-size: 13px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .Newslist .list .item .news-img .img-placeholder::before {
+        content: "📷";
+        display: block;
+        font-size: 24px;
+        margin-bottom: 5px;
+        opacity: 0.5;
+      }
+
+      .Newslist .list .item:hover .news-img img {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        transform: scale(1.05);
+      }
+
+      /* 分页样式优化 */
+      .pglist {
+        margin-top: 30px;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #eee;
+      }
+
+      .pglist span {
+        display: inline-block;
+        margin: 0 3px;
+      }
+
+      .pglist a {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid #ddd;
+        color: #666;
+        text-decoration: none;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        font-size: 13px;
+      }
+
+      .pglist a:hover {
+        background: #1048a0;
+        color: #fff;
+        border-color: #1048a0;
+      }
+
+      .pglist .page-num-current {
+        background: #1048a0;
+        color: #fff;
+        border-color: #1048a0;
+      }
+
+      .pglist .page-status {
+        color: #999;
+        font-size: 13px;
+        margin-right: 15px;
+      }
+
+      /* 响应式调整 */
+      @media (max-width: 992px) {
+        .Newslist .list .item a {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+          -moz-box-orient: vertical;
+          -moz-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+
+        .Newslist .list .item .time {
+          width: 100%;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: row;
+          -moz-box-orient: horizontal;
+          -moz-box-direction: normal;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          padding: 12px 15px;
+          gap: 10px;
+        }
+
+        .Newslist .list .item .time .date-md {
+          font-size: 18px;
+          margin-bottom: 0;
+        }
+
+        .Newslist .list .item .time .date-year {
+          font-size: 13px;
+        }
+
+        .Newslist .list .item .txt {
+          padding: 15px;
+        }
+
+        .Newslist .list .item .txt h3 {
+          font-size: 17px;
+        }
+
+        .Newslist .list .item .news-img {
+          width: 100%;
+          height: 180px;
+          border-left: none;
+          border-top: 1px solid #e8e8e8;
+        }
+      }
+
+      /* IE9及以下浏览器降级处理 */
+      .no-flexbox .Newslist .list .item a {
+        display: block;
+        overflow: hidden;
+      }
+
+      .no-flexbox .Newslist .list .item .time {
+        float: left;
+        width: 100px;
+        height: 140px;
+      }
+
+      .no-flexbox .Newslist .list .item .txt {
+        overflow: hidden;
+        zoom: 1;
+        padding: 18px 25px;
+      }
+
+      .no-flexbox .Newslist .list .item .news-img {
+        float: right;
+        width: 200px;
+        height: 140px;
+      }
+    </style>
     <script src="js/jquery.js"></script>
     <script src="js/jquery.SuperSlide.2.1.1.js"></script>
     <script src="js/common.js"></script>
@@ -122,7 +506,7 @@
             </div>
             <div class="comt">
               <ul>
-                <li><a href="news_laboratory.html">实验室新闻</a></li>
+                <li class="hover"><a href="news_laboratory.html">实验室新闻</a></li>
                 <li><a href="news_frontiers.html">方向前沿</a></li>
                 <li><a href="news_faq.html">常见问题</a></li>
               </ul>
@@ -181,85 +565,115 @@
             <ul class="list clearfix">
               <li class="item">
                 <a class="clearfix" href="news_detail_5.html" title="实验室与华为签订产学研合作协议">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">03-15</span>
+                    <span class="date-year">2025</span>
+                  </div>
+                  <div class="txt">
                     <h3>实验室与华为签订产学研合作协议</h3>
-                    <div class="mark"><span>浏览量：328</span><span> | 2025-03-15</span></div>
+                    <div class="mark"><span>浏览量：328</span><span>2025-03-15</span></div>
                     <p class="desc">
                       3月15日，CVPR实验室与华为技术有限公司在曲阜师范大学举行产学研合作签约仪式。双方将在计算机视觉、智慧农业等领域开展深度合作，共同推动人工智能技术的产业化应用。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">15</span><span class="year">2025-03</span>
+                  <div class="news-img">
+                    <!-- 图片占位：有图片时取消注释下方代码，删除placeholder -->
+                    <img src="images/index/index_quick_entrance_05.png" alt="实验室与华为签订产学研合作协议" />
                   </div>
                 </a>
               </li>
               <li class="item">
                 <a class="clearfix" href="news_detail_6.html" title="实验室厉彦芬老师荣获山东省青年科技奖">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">02-28</span>
+                    <span class="date-year">2025</span>
+                  </div>
+                  <div class="txt">
                     <h3>实验室厉彦芬老师荣获山东省青年科技奖</h3>
-                    <div class="mark"><span>浏览量：256</span><span> | 2025-02-28</span></div>
+                    <div class="mark"><span>浏览量：256</span><span>2025-02-28</span></div>
                     <p class="desc">
                       2月28日，第十二届山东省青年科技奖颁奖仪式在济南举行，我实验室厉彦芬副教授因其在模式识别与医学影像分析领域的突出贡献获此殊荣。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">28</span><span class="year">2025-02</span>
+                  <div class="news-img">
+                    <img src="images/index/index_quick_entrance_03.png" alt="实验室厉彦芬老师荣获山东省青年科技奖" />
+
                   </div>
                 </a>
               </li>
               <li class="item">
                 <a class="clearfix" href="news_detail_7.html" title="实验室成功举办第三届计算机视觉前沿研讨会">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">01-10</span>
+                    <span class="date-year">2025</span>
+                  </div>
+                  <div class="txt">
                     <h3>实验室成功举办第三届计算机视觉前沿研讨会</h3>
-                    <div class="mark"><span>浏览量：412</span><span> | 2025-01-10</span></div>
+                    <div class="mark"><span>浏览量：412</span><span>2025-01-10</span></div>
                     <p class="desc">
                       1月8-10日，由CVPR实验室主办的第三届计算机视觉前沿研讨会在日照召开，来自清华大学、上海交通大学等高校的200余名专家学者参会，围绕多模态学习、生成式AI等前沿话题展开深入交流。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">10</span><span class="year">2025-01</span>
+                  <div class="news-img">
+                    <!-- <img src="images/news/news_7.jpg" alt="实验室成功举办第三届计算机视觉前沿研讨会" /> -->
+                    <div class="img-placeholder">新闻图片占位</div>
                   </div>
                 </a>
               </li>
               <li class="item">
                 <a class="clearfix" href="news_detail_8.html" title="实验室在T-PAMI发表最新研究成果">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">12-20</span>
+                    <span class="date-year">2024</span>
+                  </div>
+                  <div class="txt">
                     <h3>实验室在T-PAMI发表最新研究成果</h3>
-                    <div class="mark"><span>浏览量：189</span><span> | 2024-12-20</span></div>
+                    <div class="mark"><span>浏览量：189</span><span>2024-12-20</span></div>
                     <p class="desc">
-                      实验室王瀚祥教授团队在人工智能顶级期刊IEEE Transactions on Pattern Analysis and Machine Intelligence（T-PAMI）发表论文“Dynamic Multi-Scale Attention for Visual Recognition”，提出了新型动态注意力机制，在多个视觉任务上取得SOTA结果。
+                      实验室王瀚祥教授团队在人工智能顶级期刊IEEE Transactions on Pattern Analysis and Machine Intelligence（T-PAMI）发表论文，提出了新型动态注意力机制，在多个视觉任务上取得SOTA结果。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">20</span><span class="year">2024-12</span>
+                  <div class="news-img">
+                    <!-- <img src="images/news/news_8.jpg" alt="实验室在T-PAMI发表最新研究成果" /> -->
+                    <div class="img-placeholder">新闻图片占位</div>
                   </div>
                 </a>
               </li>
               <li class="item">
                 <a class="clearfix" href="news_detail_9.html" title="研究生万换换在国际会议ICCV做口头报告">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">10-05</span>
+                    <span class="date-year">2024</span>
+                  </div>
+                  <div class="txt">
                     <h3>研究生万换换在国际会议ICCV做口头报告</h3>
-                    <div class="mark"><span>浏览量：143</span><span> | 2024-10-05</span></div>
+                    <div class="mark"><span>浏览量：143</span><span>2024-10-05</span></div>
                     <p class="desc">
-                      10月5日，实验室2024级研究生万换换在米兰举行的国际计算机视觉大会（ICCV）上做题为“Weakly-Supervised Semantic Segmentation with Self-Adaptive Prototypes”的口头报告，获得与会专家高度评价。
+                      10月5日，实验室2024级研究生万换换在米兰举行的国际计算机视觉大会（ICCV）上做题为"Weakly-Supervised Semantic Segmentation with Self-Adaptive Prototypes"的口头报告，获得与会专家高度评价。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">05</span><span class="year">2024-10</span>
+                  <div class="news-img">
+                    <!-- <img src="images/news/news_9.jpg" alt="研究生万换换在国际会议ICCV做口头报告" /> -->
+                    <div class="img-placeholder">新闻图片占位</div>
                   </div>
                 </a>
               </li>
               <li class="item">
                 <a class="clearfix" href="news_detail_10.html" title="实验室获批山东省重点研发计划项目">
-                  <div class="txt fr">
+                  <div class="time">
+                    <span class="date-md">09-18</span>
+                    <span class="date-year">2024</span>
+                  </div>
+                  <div class="txt">
                     <h3>实验室获批山东省重点研发计划项目</h3>
-                    <div class="mark"><span>浏览量：234</span><span> | 2024-09-18</span></div>
+                    <div class="mark"><span>浏览量：234</span><span>2024-09-18</span></div>
                     <p class="desc">
-                      实验室牵头申报的“基于多模态大模型的智慧农业感知决策系统”项目获山东省重点研发计划立项，资助经费200万元，将推动农业智能化技术落地应用。
+                      实验室牵头申报的"基于多模态大模型的智慧农业感知决策系统"项目获山东省重点研发计划立项，资助经费200万元，将推动农业智能化技术落地应用。
                     </p>
                   </div>
-                  <div class="time">
-                    <span class="day">18</span><span class="year">2024-09</span>
+                  <div class="news-img">
+                    <!-- <img src="images/news/news_10.jpg" alt="实验室获批山东省重点研发计划项目" /> -->
+                    <div class="img-placeholder">新闻图片占位</div>
                   </div>
                 </a>
               </li>
