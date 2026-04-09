@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,noarchive" />
-    <title>「新闻中心」CVPR-Lab</title>
+    <title id="page-title">「新闻中心」CVPR-Lab</title>
     <meta name="keywords" content="实验室新闻,前沿动态,学术交流" />
     <meta name="description" content="CVPR实验室最新动态、前沿研究成果及学术交流活动" />
     <meta name="viewport" content="width=1380" />
@@ -12,7 +12,7 @@
     <link href="css/aos1.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <style>
-      /* ========== 优化后的新闻列表样式 - 三栏布局设计 ========== */
+      /* ========== 新闻列表样式 ========== */
       .Newslist {
         padding: 0;
       }
@@ -23,7 +23,7 @@
         margin: 0;
       }
 
-      /* 新闻卡片项 - 三栏布局：时间 | 内容 | 图片 */
+      /* 新闻卡片项 */
       .Newslist .list .item {
         margin-bottom: 20px;
         background: #fff;
@@ -68,12 +68,13 @@
         -moz-box-align: stretch;
         -ms-flex-align: stretch;
         align-items: stretch;
+        cursor: pointer;
       }
 
-      /* 左侧日期区域 - 横排显示优化 */
+      /* 左侧日期区域 */
       .Newslist .list .item .time {
-        width: 100px;
-        min-width: 100px;
+        width: 120px;
+        min-width: 120px;
         background: #1048a0;
         background: -webkit-linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
         background: -moz-linear-gradient(135deg, #1048a0 0%, #1a5bc5 100%);
@@ -108,26 +109,24 @@
         overflow: hidden;
       }
 
-      /* 第一行：月份+日期 */
       .Newslist .list .item .time .date-md {
-        font-size: 22px;
+        font-size: 28px;
         font-weight: bold;
         line-height: 1.2;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
         font-family: "Arial", "microsoft yahei", sans-serif;
         letter-spacing: 1px;
       }
 
-      /* 第二行：年份（稍小） */
       .Newslist .list .item .time .date-year {
-        font-size: 14px;
+        font-size: 16px;
         opacity: 0.85;
         line-height: 1.2;
         font-weight: normal;
       }
 
-      /* 中间内容区域 - 自适应宽度 */
+      /* 中间内容区域 */
       .Newslist .list .item .txt {
         -webkit-box-flex: 1;
         -webkit-flex: 1;
@@ -152,10 +151,9 @@
         -moz-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        min-width: 0; /* 防止flex子项溢出 */
+        min-width: 0;
       }
 
-      /* 标题字体变大 */
       .Newslist .list .item .txt h3 {
         font-size: 20px;
         color: #333;
@@ -172,7 +170,6 @@
         color: #1048a0;
       }
 
-      /* 元信息行 */
       .Newslist .list .item .txt .mark {
         font-size: 12px;
         color: #999;
@@ -185,27 +182,11 @@
         gap: 15px;
       }
 
-      .Newslist .list .item .txt .mark span {
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -moz-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -moz-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        gap: 5px;
-      }
-
-      /* 描述文字 - 单行截断，超出显示... */
       .Newslist .list .item .txt .desc {
         font-size: 14px;
         color: #666;
         line-height: 1.6;
         margin: 0;
-        /* 关键：单行截断，超出显示... */
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -213,7 +194,7 @@
         width: 100%;
       }
 
-      /* 右侧图片占位区域 */
+      /* 右侧图片区域 */
       .Newslist .list .item .news-img {
         width: 200px;
         min-width: 200px;
@@ -236,7 +217,12 @@
         -moz-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
-        border-left: 1px solid #e8e8e8;
+        margin: 10px;
+        border: 3px solid #e8e8e8;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        box-sizing: border-box;
       }
 
       .Newslist .list .item .news-img img {
@@ -244,14 +230,11 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
       }
 
-      /* 图片占位提示 */
       .Newslist .list .item .news-img .img-placeholder {
         color: #aaa;
         font-size: 13px;
@@ -260,22 +243,18 @@
       }
 
       .Newslist .list .item .news-img .img-placeholder::before {
-        content: "📷";
+        content: "";
         display: block;
         font-size: 24px;
         margin-bottom: 5px;
         opacity: 0.5;
       }
 
-      .Newslist .list .item:hover .news-img img {
-        -webkit-transform: scale(1.05);
-        -moz-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-        -o-transform: scale(1.05);
-        transform: scale(1.05);
+      .Newslist .list .item:hover .news-img {
+        border-color: #1048a0;
       }
 
-      /* 分页样式优化 */
+      /* ========== 简洁分页样式 ========== */
       .pglist {
         margin-top: 30px;
         padding: 20px 0;
@@ -283,46 +262,278 @@
         border-top: 1px solid #eee;
       }
 
-      .pglist span {
-        display: inline-block;
-        margin: 0 3px;
-      }
-
       .pglist a {
         display: inline-block;
-        padding: 8px 14px;
+        padding: 6px 12px;
+        margin: 0 2px;
         border: 1px solid #ddd;
-        color: #666;
+        color: #333;
         text-decoration: none;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-        font-size: 13px;
+        font-size: 14px;
+        background: #fff;
       }
 
       .pglist a:hover {
-        background: #1048a0;
-        color: #fff;
         border-color: #1048a0;
+        color: #1048a0;
       }
 
-      .pglist .page-num-current {
+      .pglist .current {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 0 2px;
         background: #1048a0;
         color: #fff;
-        border-color: #1048a0;
+        border: 1px solid #1048a0;
+        font-size: 14px;
       }
 
-      .pglist .page-status {
+      .pglist .disabled {
+        display: inline-block;
+        padding: 6px 12px;
+        margin: 0 2px;
+        border: 1px solid #eee;
+        color: #ccc;
+        background: #f5f5f5;
+        font-size: 14px;
+      }
+
+      /* ========== 新闻详情页样式（优化版） ========== */
+      .news-detail-container {
+        display: none;
+        background: #fff;
+        padding: 40px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      }
+
+      .news-detail-container.active {
+        display: block;
+      }
+
+      /* 新闻头部区域 - 居中布局 */
+      .news-detail-header {
+        text-align: center;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #1048a0;
+      }
+
+      .news-detail-header h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+        line-height: 1.4;
+        font-weight: 600;
+      }
+
+      /* 元信息居中 */
+      .news-detail-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .news-detail-meta span {
+        display: inline-block;
+      }
+
+      /* 正文内容 */
+      .news-detail-content {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 30px;
+      }
+
+      .news-detail-content p {
+        margin-bottom: 20px;
+        text-align: justify;
+      }
+
+      /* 图片展示区域 */
+      .news-detail-gallery {
+        margin: 30px 0;
+        padding: 25px;
+        background: #f9f9f9;
+        border: 1px solid #e8e8e8;
+      }
+
+      .gallery-title {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        font-weight: 600;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .gallery-item {
+        border: 1px solid #ddd;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* 相关链接区域 */
+      .news-detail-links {
+        margin-top: 20px;
+        padding: 20px 25px;
+        background: #f5f8ff;
+        border-left: 3px solid #1048a0;
+      }
+
+      .links-title {
+        font-size: 15px;
+        color: #1048a0;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .links-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .link-btn {
+        display: inline-block;
+        padding: 8px 20px;
+        background: #1048a0;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+
+      .link-btn:hover {
+        background: #0d3a7d;
+        color: #fff;
+      }
+
+      /* 返回按钮区域 - 优化样式 */
+      .news-detail-back {
+        margin: 40px 0;
+        text-align: center;
+        padding: 30px 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 14px 50px;
+        background: #1048a0;
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+        border: none;
+      }
+
+      .back-btn:hover {
+        background: #0d3a7d;
+      }
+
+      /* 上下条导航区域 */
+      .news-detail-navigation {
+        margin-top: 30px;
+        padding-top: 20px;
+      }
+
+      .nav-title {
+        text-align: center;
+        font-size: 14px;
         color: #999;
-        font-size: 13px;
-        margin-right: 15px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
       }
 
-      /* 响应式调整 */
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .nav-btn {
+        flex: 1;
+        max-width: 48%;
+        padding: 20px;
+        background: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .nav-btn:hover {
+        border-color: #1048a0;
+        background: #fff;
+      }
+
+      .nav-btn.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .nav-btn.prev {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .nav-btn.next {
+        align-items: flex-end;
+        text-align: right;
+      }
+
+      .nav-label {
+        font-size: 13px;
+        color: #1048a0;
+        font-weight: 600;
+      }
+
+      /* 修改后的 line-clamp 语法 - 添加标准属性以实现兼容性 */
+      .nav-title-text {
+        font-size: 15px;
+        color: #333;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2; /* 标准属性，用于兼容性 */
+      }
+
+      .nav-btn:hover .nav-title-text {
+        color: #1048a0;
+      }
+
+      .Newslist.hidden {
+        display: none;
+      }
+
+      /* 响应式 */
       @media (max-width: 992px) {
         .Newslist .list .item a {
           -webkit-box-orient: vertical;
@@ -348,52 +559,42 @@
         }
 
         .Newslist .list .item .time .date-md {
-          font-size: 18px;
+          font-size: 22px;
           margin-bottom: 0;
         }
 
-        .Newslist .list .item .time .date-year {
-          font-size: 13px;
-        }
-
-        .Newslist .list .item .txt {
-          padding: 15px;
-        }
-
-        .Newslist .list .item .txt h3 {
-          font-size: 17px;
-        }
-
         .Newslist .list .item .news-img {
-          width: 100%;
+          width: calc(100% - 20px);
           height: 180px;
           border-left: none;
-          border-top: 1px solid #e8e8e8;
+          margin: 10px;
         }
-      }
 
-      /* IE9及以下浏览器降级处理 */
-      .no-flexbox .Newslist .list .item a {
-        display: block;
-        overflow: hidden;
-      }
+        .news-detail-container {
+          padding: 20px;
+        }
 
-      .no-flexbox .Newslist .list .item .time {
-        float: left;
-        width: 100px;
-        height: 140px;
-      }
+        .news-detail-header h1 {
+          font-size: 22px;
+        }
 
-      .no-flexbox .Newslist .list .item .txt {
-        overflow: hidden;
-        zoom: 1;
-        padding: 18px 25px;
-      }
+        .news-detail-meta {
+          flex-direction: column;
+          gap: 10px;
+        }
 
-      .no-flexbox .Newslist .list .item .news-img {
-        float: right;
-        width: 200px;
-        height: 140px;
+        .nav-buttons {
+          flex-direction: column;
+        }
+
+        .nav-btn {
+          max-width: 100%;
+        }
+
+        .nav-btn.next {
+          align-items: flex-start;
+          text-align: left;
+        }
       }
     </style>
     <script src="js/jquery.js"></script>
@@ -402,19 +603,16 @@
   </head>
 <body>
 
-  <!-- 导航栏触发区域：鼠标移到此处显示导航栏 -->
+  <!-- 导航栏触发区域 -->
   <div class="nav_trigger_area"></div>
-
-  <!-- 导航栏占位元素，防止页面跳动 -->
   <div class="header_placeholder"></div>
 
-  <!-- 头部（添加 id="header" 以便 JS 控制） -->
+  <!-- 头部 -->
   <div class="header_main" id="header">
       <div class="w1200 clearfix">
         <a class="logo fl" aos="fade-right" aos-delay="100" href="index.html" title="CVPR-Laboratory">
           <img src="images/logo.png" alt="CVPR-Laboratory实验室logo" />
         </a>
-        <!--导航开始-->
         <div class="nav fr" id="nav" aos="fade-left" aos-delay="100">
           <ul class="navlist">
             <li><a href="index.html" title="首页">首页速览<span>HOME</span></a></li>
@@ -458,28 +656,24 @@
             </li>
           </ul>
         </div>
-        <!--导航结束-->
       </div>
     </div>
-    <!--头部结束-->
-    <!--内页大图开始-->
+
+    <!--内页大图-->
     <div class="nybanner" style="background-image: url(images/news/news_main_head_bg.png)"></div>
-    <!--内页大图结束-->
-    <!--搜索栏开始-->
+
+    <!--搜索栏-->
     <div class="search_main">
       <div class="w1200 clearfix">
-        <!--热搜词开始-->
         <div class="skey" aos="fade-right">
           <p>
-            热门关键词：<a href="achievement_papers.html" title="发表论文">发表论文</a>
-            <a href="achievement_patents.html" title="发明专利">发明专利</a>
-            <a href="achievement_projects.html" title="研究项目">研究项目</a>
-            <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
-            <a href="news_frontiers.html" title="前沿动态">前沿动态</a>
+            热门关键词：<a href="achievement_papers.html">发表论文</a>
+            <a href="achievement_patents.html">发明专利</a>
+            <a href="achievement_projects.html">研究项目</a>
+            <a href="achievement_awards.html">竞赛获奖</a>
+            <a href="news_frontiers.html">前沿动态</a>
           </p>
         </div>
-        <!--热搜词结束-->
-        <!--搜索框开始-->
         <div class="search_form" aos="fade-left">
           <form action="search/" method="get" onsubmit="return checksearch(this);">
             <label for="search_keyword" style="display:none;">搜索关键词</label>
@@ -489,14 +683,12 @@
             <input type="submit" value="" class="sbtn icon" />
           </form>
         </div>
-        <!--搜索框结束-->
       </div>
     </div>
-    <!--搜索栏结束-->
+
     <div class="submian">
       <div class="w1200 clearfix">
         <div class="subleft fl">
-          <!--栏目分类开始-->
           <div class="lefta">
             <div class="title">
               <h2>
@@ -512,7 +704,6 @@
               </ul>
             </div>
           </div>
-          <!--栏目分类结束-->
           <!--热门推荐开始-->
           <div class="leftnews">
             <div class="title">
@@ -531,7 +722,7 @@
               <li>
                 <a href="news_detail_2.html" title="实验室在CVPR 2025发表3篇论文">
                   <img src="images/news/hot_2.png" alt="CVPR 2025论文" />
-                  <p>实验室CVPR 2025发表3篇论文</p>
+                  <p>实验室CVPR 2025发表论文</p>
                 </a>
               </li>
               <li>
@@ -558,210 +749,101 @@
         </div>
         <div class="subright fr">
           <div class="sobtitle">
-            <span style="display:none;">当前位置图标</span>您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="news_main.html">新闻中心</a>
+            <span style="display:none;">当前位置图标</span>您的位置：<a href="index.html">首页</a> &gt;&gt; <a href="news_main.html">新闻中心</a> <span id="news-detail-breadcrumb" style="display:none;"> &gt;&gt; <span>新闻详情</span></span>
           </div>
-          <!--文章列表开始-->
-          <div class="Newslist">
-            <ul class="list clearfix">
-              <li class="item">
-                <a class="clearfix" href="news_detail_5.html" title="实验室与华为签订产学研合作协议">
-                  <div class="time">
-                    <span class="date-md">03-15</span>
-                    <span class="date-year">2025</span>
-                  </div>
-                  <div class="txt">
-                    <h3>实验室与华为签订产学研合作协议</h3>
-                    <div class="mark"><span>浏览量：328</span><span>2025-03-15</span></div>
-                    <p class="desc">
-                      3月15日，CVPR实验室与华为技术有限公司在曲阜师范大学举行产学研合作签约仪式。双方将在计算机视觉、智慧农业等领域开展深度合作，共同推动人工智能技术的产业化应用。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <!-- 图片占位：有图片时取消注释下方代码，删除placeholder -->
-                    <img src="images/index/index_quick_entrance_05.png" alt="实验室与华为签订产学研合作协议" />
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a class="clearfix" href="news_detail_6.html" title="实验室厉彦芬老师荣获山东省青年科技奖">
-                  <div class="time">
-                    <span class="date-md">02-28</span>
-                    <span class="date-year">2025</span>
-                  </div>
-                  <div class="txt">
-                    <h3>实验室厉彦芬老师荣获山东省青年科技奖</h3>
-                    <div class="mark"><span>浏览量：256</span><span>2025-02-28</span></div>
-                    <p class="desc">
-                      2月28日，第十二届山东省青年科技奖颁奖仪式在济南举行，我实验室厉彦芬副教授因其在模式识别与医学影像分析领域的突出贡献获此殊荣。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <img src="images/index/index_quick_entrance_03.png" alt="实验室厉彦芬老师荣获山东省青年科技奖" />
-
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a class="clearfix" href="news_detail_7.html" title="实验室成功举办第三届计算机视觉前沿研讨会">
-                  <div class="time">
-                    <span class="date-md">01-10</span>
-                    <span class="date-year">2025</span>
-                  </div>
-                  <div class="txt">
-                    <h3>实验室成功举办第三届计算机视觉前沿研讨会</h3>
-                    <div class="mark"><span>浏览量：412</span><span>2025-01-10</span></div>
-                    <p class="desc">
-                      1月8-10日，由CVPR实验室主办的第三届计算机视觉前沿研讨会在日照召开，来自清华大学、上海交通大学等高校的200余名专家学者参会，围绕多模态学习、生成式AI等前沿话题展开深入交流。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <!-- <img src="images/news/news_7.jpg" alt="实验室成功举办第三届计算机视觉前沿研讨会" /> -->
-                    <div class="img-placeholder">新闻图片占位</div>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a class="clearfix" href="news_detail_8.html" title="实验室在T-PAMI发表最新研究成果">
-                  <div class="time">
-                    <span class="date-md">12-20</span>
-                    <span class="date-year">2024</span>
-                  </div>
-                  <div class="txt">
-                    <h3>实验室在T-PAMI发表最新研究成果</h3>
-                    <div class="mark"><span>浏览量：189</span><span>2024-12-20</span></div>
-                    <p class="desc">
-                      实验室王瀚祥教授团队在人工智能顶级期刊IEEE Transactions on Pattern Analysis and Machine Intelligence（T-PAMI）发表论文，提出了新型动态注意力机制，在多个视觉任务上取得SOTA结果。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <!-- <img src="images/news/news_8.jpg" alt="实验室在T-PAMI发表最新研究成果" /> -->
-                    <div class="img-placeholder">新闻图片占位</div>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a class="clearfix" href="news_detail_9.html" title="研究生万换换在国际会议ICCV做口头报告">
-                  <div class="time">
-                    <span class="date-md">10-05</span>
-                    <span class="date-year">2024</span>
-                  </div>
-                  <div class="txt">
-                    <h3>研究生万换换在国际会议ICCV做口头报告</h3>
-                    <div class="mark"><span>浏览量：143</span><span>2024-10-05</span></div>
-                    <p class="desc">
-                      10月5日，实验室2024级研究生万换换在米兰举行的国际计算机视觉大会（ICCV）上做题为"Weakly-Supervised Semantic Segmentation with Self-Adaptive Prototypes"的口头报告，获得与会专家高度评价。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <!-- <img src="images/news/news_9.jpg" alt="研究生万换换在国际会议ICCV做口头报告" /> -->
-                    <div class="img-placeholder">新闻图片占位</div>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a class="clearfix" href="news_detail_10.html" title="实验室获批山东省重点研发计划项目">
-                  <div class="time">
-                    <span class="date-md">09-18</span>
-                    <span class="date-year">2024</span>
-                  </div>
-                  <div class="txt">
-                    <h3>实验室获批山东省重点研发计划项目</h3>
-                    <div class="mark"><span>浏览量：234</span><span>2024-09-18</span></div>
-                    <p class="desc">
-                      实验室牵头申报的"基于多模态大模型的智慧农业感知决策系统"项目获山东省重点研发计划立项，资助经费200万元，将推动农业智能化技术落地应用。
-                    </p>
-                  </div>
-                  <div class="news-img">
-                    <!-- <img src="images/news/news_10.jpg" alt="实验室获批山东省重点研发计划项目" /> -->
-                    <div class="img-placeholder">新闻图片占位</div>
-                  </div>
-                </a>
-              </li>
-            </ul>
+          
+          <!--新闻列表-->
+          <div class="Newslist" id="news-list-container">
+            <ul class="list clearfix" id="news-list"></ul>
             <div class="clear"></div>
-            <!--分页样式-->
-            <div class="pglist">
-              <span class="page-status">共12条 当前1/2页</span>
-              <span class="page-index"><a href="javascript:;">首页</a></span>
-              <span class="page-pre"><a href="javascript:;">前一页</a></span>
-              <span class="page-numbar">
-                <a href="javascript:;" class="page-num page-num-current">1</a>
-                <a href="javascript:;" class="page-num">2</a>
-              </span>
-              <span class="page-next"><a href="javascript:;">后一页</a></span>
-              <span class="page-last"><a href="javascript:;">尾页</a></span>
+            <!--简洁分页-->
+            <div class="pglist" id="pagination"></div>
+          </div>
+
+          <!--新闻详情页（优化版）-->
+          <div class="news-detail-container" id="news-detail-container">
+            <div class="news-detail-header">
+              <h1 id="detail-title"></h1>
+              <div class="news-detail-meta">
+                <span id="detail-date"></span>
+                <span>|</span>
+                <span id="detail-views"></span>
+              </div>
+            </div>
+            
+            <div class="news-detail-content" id="detail-content"></div>
+            
+            <!-- 图片展示区域 -->
+            <div class="news-detail-gallery" id="detail-gallery" style="display: none;">
+              <div class="gallery-title">相关图片</div>
+              <div class="gallery-grid" id="gallery-grid"></div>
+            </div>
+            
+            <!-- 论文/专利链接区域 -->
+            <div class="news-detail-links" id="detail-links" style="display: none;">
+              <div class="links-title">相关资源链接</div>
+              <div class="links-list" id="links-list"></div>
+            </div>
+            
+            <!-- 返回按钮区域 -->
+            <div class="news-detail-back">
+              <button class="back-btn" onclick="showNewsList()">返回新闻列表</button>
+            </div>
+            
+            <!-- 上下条导航区域 -->
+            <div class="news-detail-navigation">
+              <div class="nav-title">继续阅读</div>
+              <div class="nav-buttons">
+                <a href="javascript:void(0);" class="nav-btn prev" id="prev-btn" onclick="goToPrevNews()">
+                  <span class="nav-label">上一条</span>
+                  <span class="nav-title-text" id="prev-title">已经是第一条了</span>
+                </a>
+                <a href="javascript:void(0);" class="nav-btn next" id="next-btn" onclick="goToNextNews()">
+                  <span class="nav-label">下一条</span>
+                  <span class="nav-title-text" id="next-title">已经是最后一条了</span>
+                </a>
+              </div>
             </div>
           </div>
-          <!--文章列表结束-->
         </div>
       </div>
     </div>
-    <!--页尾开始-->
+
+    <!--页尾-->
     <div class="footer_main">
       <div class="footer w1200 clearfix">
-        <!--友情链接开始-->
         <div class="links">
           <span>友情链接：</span>
           <a href="https://github.com/RIGCV" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href="https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
         </div>
-        <!--友情链接结束-->
-        <!--底部导航开始-->
         <ul class="botnavlist fl">
           <li>
-            <a href="about_main.html" title="关于我们">关于我们</a>
-            <div class="drop clearfix">
-              <a href="about_introduction.html" title="实验室简介">实验室简介</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="about_culture.html" title="实验室文化">实验室文化</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="about_history.html" title="发展历程">发展历程</a>
-            </div>
+            <a href="about_main.html">关于我们</a>
+            <div class="drop clearfix"><a href="about_introduction.html">实验室简介</a></div>
+            <div class="drop clearfix"><a href="about_culture.html">实验室文化</a></div>
+            <div class="drop clearfix"><a href="about_history.html">发展历程</a></div>
           </li>
           <li>
-            <a href="achievement_main.html" title="研究成果">研究成果</a>
-            <div class="drop clearfix">
-              <a href="achievement_papers.html" title="发表论文">发表论文</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_patents.html" title="发明专利">发明专利</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_awards.html" title="竞赛获奖">竞赛获奖</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="achievement_projects.html" title="合作项目">合作项目</a>
-            </div>
+            <a href="achievement_main.html">研究成果</a>
+            <div class="drop clearfix"><a href="achievement_papers.html">发表论文</a></div>
+            <div class="drop clearfix"><a href="achievement_patents.html">发明专利</a></div>
+            <div class="drop clearfix"><a href="achievement_awards.html">竞赛获奖</a></div>
+            <div class="drop clearfix"><a href="achievement_projects.html">合作项目</a></div>
           </li>
           <li>
-            <a href="news_main.html" title="新闻中心">新闻中心</a>
-            <div class="drop clearfix">
-              <a href="news_laboratory.html" title="实验室新闻">实验室新闻</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="news_frontiers.html" title="方向前沿">方向前沿</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="news_faq.html" title="常见问题">常见问题</a>
-            </div>
+            <a href="news_main.html">新闻中心</a>
+            <div class="drop clearfix"><a href="news_laboratory.html">实验室新闻</a></div>
+            <div class="drop clearfix"><a href="news_frontiers.html">方向前沿</a></div>
+            <div class="drop clearfix"><a href="news_faq.html">常见问题</a></div>
           </li>
           <li>
-            <a href="team_main.html" title="团队成员">团队成员</a>
-            <div class="drop clearfix">
-              <a href="team_main.html#teacher-team" title="教师团队">教师团队</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="team_main.html#postgraduate-team" title="研究生团队">研究生团队</a>
-            </div>
-            <div class="drop clearfix">
-              <a href="team_main.html#alumni-team" title="已毕业学生">已毕业学生</a>
-            </div>
+            <a href="team_main.html">团队成员</a>
+            <div class="drop clearfix"><a href="team_main.html#teacher-team">教师团队</a></div>
+            <div class="drop clearfix"><a href="team_main.html#postgraduate-team">研究生团队</a></div>
+            <div class="drop clearfix"><a href="team_main.html#alumni-team">已毕业学生</a></div>
           </li>
         </ul>
-        <!--底部导航结束-->
-        <!--联系方式开始-->
         <div class="qcode fr">
           <div class="btel fl">
             <p class="p1">联系我们</p>
@@ -772,60 +854,489 @@
           </div>
           <img class="ewm fr" src="images/index/index_footer_WeChat.png" alt="CVPR-Laboratory微信公众号二维码" />
         </div>
-        <!--联系方式结束-->
       </div>
-      <!--版权开始-->
       <div class="copymain">
         <div class="w1200 clearfix">
           <p class="fl">
             Copyright © 2025 CVPR-Laboratory
-            版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" title="ICP备496365245号">ICP备496365245号</a>　<a href="map.html">网站地图</a>（<a href="sitemap.xml" target="_blank">百度</a>）
+            版权所有　地址：曲阜师范大学（日照校区）　备案号：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">ICP备496365245号</a>　<a href="map.html">网站地图</a>
           </p>
           <p class="fr"></p>
         </div>
       </div>
-      <!--版权结束-->
     </div>
-    <!--页尾结束-->
-    <!--浮动客服开始-->
+
+    <!--浮动客服-->
     <dl class="toolbar">
-      <dd class="qq">
-        <a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a>
-      </dd>
-      <dd class="tel">
-        <i></i><span>联系我们</span>
-        <div class="box">
-          <p>联系我们</p>
-          <h3>137-9157-1602</h3>
-        </div>
-      </dd>
-      <dd class="code">
-        <i></i><span>微信咨询</span>
-        <div class="box">
-          <img src="images/index/index_footer_WeChat.png" alt="微信咨询二维码" />
-        </div>
-      </dd>
+      <dd class="qq"><a href="mailto:hanxiang@qfnu.edu.cn"><i></i><span>发送邮件</span></a></dd>
+      <dd class="tel"><i></i><span>联系我们</span><div class="box"><p>联系我们</p><h3>137-9157-1602</h3></div></dd>
+      <dd class="code"><i></i><span>微信咨询</span><div class="box"><img src="images/index/index_footer_WeChat.png" alt="微信咨询二维码" /></div></dd>
       <dd class="top" id="top"><i></i><span>返回顶部</span></dd>
     </dl>
-    <!--浮动客服结束-->
-<!-- 引入导航栏控制脚本（与首页一致） -->
-<script src="js/nav-control.js"></script>
 
+<!-- 新闻数据与脚本 -->
+<script>
+// 新闻数据（添加gallery和links字段）
+const newsData = [
+  {
+    id: 1,
+    title: "实验室王瀚祥教授获国家自然科学基金青年项目",
+    date: "2025-03-20",
+    monthDay: "03-20",
+    year: "2025",
+    views: 456,
+    image: "images/news/hot_1.png",
+    summary: "王瀚祥教授主持的「基于深度学习的医学影像智能分析」项目获批国家自然科学基金青年科学基金项目资助。",
+    content: "<p>3月20日，国家自然科学基金委员会公布2025年度青年科学基金项目评审结果，我实验室王瀚祥教授主持的「基于深度学习的医学影像智能分析」项目成功获批，资助经费30万元。</p><p>该项目针对当前医学影像分析中存在的标注数据稀缺、模型泛化能力不足等关键问题，提出基于自监督学习和领域自适应的新型算法框架。</p>",
+    gallery: ["images/news/hot_1.png", "images/news/project_1.png", "images/news/project_2.png"],
+    links: [
+      { text: "查看项目申请书", url: "#" },
+      { text: "相关开源代码", url: "#" }
+    ],
+    isHot: true
+  },
+  {
+    id: 2,
+    title: "实验室在CVPR 2025发表3篇论文",
+    date: "2025-03-15",
+    monthDay: "03-15",
+    year: "2025",
+    views: 328,
+    image: "images/index/index_quick_entrance_05.png",
+    summary: "实验室3篇论文被计算机视觉顶级会议CVPR 2025接收，涵盖目标检测、图像分割等方向。",
+    content: "<p>3月15日，计算机视觉与模式识别领域顶级会议CVPR 2025公布论文接收结果，我实验室共有3篇研究论文被接收，创下历史新高。</p><p>本次被接收的3篇论文分别聚焦于：1）基于Transformer的高分辨率遥感图像目标检测；2）弱监督语义分割中的自适应性原型学习；3）多模态大模型在农业病虫害识别中的应用。</p>",
+    gallery: ["images/index/index_quick_entrance_05.png", "images/news/cvpr_1.png"],
+    links: [
+      { text: "论文PDF下载", url: "#" },
+      { text: "GitHub开源代码", url: "https://github.com/RIGCV" }
+    ],
+    isHot: true
+  },
+  {
+    id: 3,
+    title: "智慧农业联合实验室揭牌成立",
+    date: "2025-03-10",
+    monthDay: "03-10",
+    year: "2025",
+    views: 289,
+    image: "images/news/hot_3.png",
+    summary: "实验室与日照市农业农村局共建智慧农业联合实验室，推动AI技术在农业领域的应用。",
+    content: "<p>3月10日，曲阜师范大学CVPR实验室与日照市农业农村局合作共建的「智慧农业联合实验室」正式揭牌成立。</p>",
+    gallery: ["images/news/hot_3.png"],
+    links: [],
+    isHot: true
+  },
+  {
+    id: 4,
+    title: "研究生曹继培获国家奖学金",
+    date: "2025-02-28",
+    monthDay: "02-28",
+    year: "2025",
+    views: 256,
+    image: "images/news/hot_4.png",
+    summary: "2023级硕士研究生曹继培凭借优异的科研成果获评国家奖学金。",
+    content: "<p>2月28日，教育部公布2024年度研究生国家奖学金获奖名单，我实验室2023级硕士研究生曹继培成功入选。</p>",
+    gallery: ["images/news/hot_4.png"],
+    links: [],
+    isHot: true
+  },
+  {
+    id: 5,
+    title: "实验室与华为签订产学研合作协议",
+    date: "2025-03-15",
+    monthDay: "03-15",
+    year: "2025",
+    views: 328,
+    image: "images/index/index_quick_entrance_05.png",
+    summary: "3月15日，CVPR实验室与华为技术有限公司在曲阜师范大学举行产学研合作签约仪式。",
+    content: "<p>3月15日，CVPR实验室与华为技术有限公司在曲阜师范大学举行产学研合作签约仪式。</p>",
+    gallery: ["images/index/index_quick_entrance_05.png"],
+    links: [],
+    isHot: false
+  },
+  {
+    id: 6,
+    title: "实验室厉彦芬老师荣获山东省青年科技奖",
+    date: "2025-02-28",
+    monthDay: "02-28",
+    year: "2025",
+    views: 256,
+    image: "images/index/index_quick_entrance_03.png",
+    summary: "2月28日，第十二届山东省青年科技奖颁奖仪式在济南举行。",
+    content: "<p>2月28日，第十二届山东省青年科技奖颁奖仪式在济南举行，我实验室厉彦芬副教授因其在模式识别与医学影像分析领域的突出贡献获此殊荣。</p>",
+    gallery: ["images/index/index_quick_entrance_03.png"],
+    links: [],
+    isHot: false
+  },
+  {
+    id: 7,
+    title: "实验室成功举办第三届计算机视觉前沿研讨会",
+    date: "2025-01-10",
+    monthDay: "01-10",
+    year: "2025",
+    views: 412,
+    image: null,
+    summary: "1月8-10日，由CVPR实验室主办的第三届计算机视觉前沿研讨会在日照召开。",
+    content: "<p>1月8-10日，由CVPR实验室主办的第三届计算机视觉前沿研讨会在日照召开，来自清华大学、上海交通大学等高校的200余名专家学者参会。</p>",
+    gallery: [],
+    links: [],
+    isHot: false
+  },
+  {
+    id: 8,
+    title: "实验室在T-PAMI发表最新研究成果",
+    date: "2024-12-20",
+    monthDay: "12-20",
+    year: "2024",
+    views: 189,
+    image: null,
+    summary: "实验室王瀚祥教授团队在人工智能顶级期刊IEEE T-PAMI发表论文。",
+    content: "<p>实验室王瀚祥教授团队在人工智能顶级期刊IEEE Transactions on Pattern Analysis and Machine Intelligence（T-PAMI）发表论文。</p>",
+    gallery: [],
+    links: [
+      { text: "论文PDF", url: "#" },
+      { text: "开源代码", url: "#" }
+    ],
+    isHot: false
+  },
+  {
+    id: 9,
+    title: "研究生万换换在国际会议ICCV做口头报告",
+    date: "2024-10-05",
+    monthDay: "10-05",
+    year: "2024",
+    views: 143,
+    image: null,
+    summary: "10月5日，实验室2024级研究生万换换在米兰举行的国际计算机视觉大会（ICCV）上做口头报告。",
+    content: "<p>10月5日，实验室2024级研究生万换换在米兰举行的国际计算机视觉大会（ICCV）上做题为「Weakly-Supervised Semantic Segmentation with Self-Adaptive Prototypes」的口头报告。</p>",
+    gallery: [],
+    links: [
+      { text: "会议论文集", url: "#" }
+    ],
+    isHot: false
+  },
+  {
+    id: 10,
+    title: "实验室获批山东省重点研发计划项目",
+    date: "2024-09-18",
+    monthDay: "09-18",
+    year: "2024",
+    views: 234,
+    image: null,
+    summary: "实验室牵头申报的「基于多模态大模型的智慧农业感知决策系统」项目获山东省重点研发计划立项。",
+    content: "<p>实验室牵头申报的「基于多模态大模型的智慧农业感知决策系统」项目获山东省重点研发计划立项，资助经费200万元。</p>",
+    gallery: [],
+    links: [],
+    isHot: false
+  },
+  {
+    id: 11,
+    title: "实验室承办全国人工智能教育研讨会",
+    date: "2024-08-15",
+    monthDay: "08-15",
+    year: "2024",
+    views: 178,
+    image: null,
+    summary: "8月15-17日，由中国计算机学会主办的全国人工智能教育研讨会在曲阜师范大学举行。",
+    content: "<p>8月15-17日，由中国计算机学会（CCF）主办，CVPR实验室承办的「全国人工智能教育研讨会」在曲阜师范大学日照校区举行。</p>",
+    gallery: [],
+    links: [],
+    isHot: false
+  },
+  {
+    id: 12,
+    title: "实验室研究生获中国研究生数学建模竞赛一等奖",
+    date: "2024-07-20",
+    monthDay: "07-20",
+    year: "2024",
+    views: 167,
+    image: null,
+    summary: "实验室3名研究生组成的参赛队获「华为杯」中国研究生数学建模竞赛全国一等奖。",
+    content: "<p>7月20日，「华为杯」第二十一届中国研究生数学建模竞赛成绩公布，由实验室2022级研究生张明、李婷、王强组成的参赛队荣获全国一等奖。</p>",
+    gallery: [],
+    links: [],
+    isHot: false
+  }
+];
+
+// 配置
+const CONFIG = {
+  itemsPerPage: 6
+};
+
+let currentPage = 1;
+let totalPages = Math.ceil(newsData.length / CONFIG.itemsPerPage);
+let currentNewsId = null;
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const newsId = urlParams.get('id');
+  
+  if (newsId) {
+    showNewsDetail(parseInt(newsId));
+  } else {
+    const page = urlParams.get('page');
+    currentPage = page ? parseInt(page) : 1;
+    renderNewsList();
+  }
+});
+
+// 渲染新闻列表
+function renderNewsList() {
+  const listContainer = document.getElementById('news-list');
+  const paginationContainer = document.getElementById('pagination');
+  
+  const startIndex = (currentPage - 1) * CONFIG.itemsPerPage;
+  const endIndex = startIndex + CONFIG.itemsPerPage;
+  const currentData = newsData.slice(startIndex, endIndex);
+  
+  let html = '';
+  currentData.forEach(news => {
+    html += `
+      <li class="item">
+        <a class="clearfix" href="javascript:void(0);" onclick="showNewsDetail(${news.id})" title="${news.title}">
+          <div class="time">
+            <span class="date-md">${news.monthDay}</span>
+            <span class="date-year">${news.year}</span>
+          </div>
+          <div class="txt">
+            <h3>${news.title}</h3>
+            <div class="mark"><span>浏览量：${news.views}</span><span>${news.date}</span></div>
+            <p class="desc">${news.summary}</p>
+          </div>
+          <div class="news-img">
+            ${news.image ? 
+              `<img src="${news.image}" alt="${news.title}" />` : 
+              `<div class="img-placeholder">新闻图片占位</div>`
+            }
+          </div>
+        </a>
+      </li>
+    `;
+  });
+  
+  listContainer.innerHTML = html;
+  renderPagination();
+}
+
+// 简洁分页渲染
+function renderPagination() {
+  const container = document.getElementById('pagination');
+  totalPages = Math.ceil(newsData.length / CONFIG.itemsPerPage);
+  
+  let html = '';
+  
+  // 上一页
+  if (currentPage === 1) {
+    html += '<span class="disabled">上一页</span>';
+  } else {
+    html += `<a href="javascript:void(0);" onclick="goToPage(${currentPage - 1})">上一页</a>`;
+  }
+  
+  // 页码
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === currentPage) {
+      html += `<span class="current">${i}</span>`;
+    } else {
+      html += `<a href="javascript:void(0);" onclick="goToPage(${i})">${i}</a>`;
+    }
+  }
+  
+  // 下一页
+  if (currentPage === totalPages) {
+    html += '<span class="disabled">下一页</span>';
+  } else {
+    html += `<a href="javascript:void(0);" onclick="goToPage(${currentPage + 1})">下一页</a>`;
+  }
+  
+  container.innerHTML = html;
+}
+
+// 跳转页面
+function goToPage(page) {
+  if (page < 1 || page > totalPages || page === currentPage) return;
+  
+  currentPage = page;
+  
+  const newUrl = new URL(window.location);
+  if (page === 1) {
+    newUrl.searchParams.delete('page');
+  } else {
+    newUrl.searchParams.set('page', page);
+  }
+  window.history.pushState({}, '', newUrl);
+  
+  renderNewsList();
+  document.getElementById('news-list-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// 显示新闻详情（优化版）
+function showNewsDetail(id) {
+  const news = newsData.find(n => n.id === id);
+  if (!news) return;
+  
+  currentNewsId = id;
+  
+  document.getElementById('news-list-container').classList.add('hidden');
+  document.getElementById('news-detail-container').classList.add('active');
+  document.getElementById('news-detail-breadcrumb').style.display = 'inline';
+  
+  document.getElementById('detail-title').textContent = news.title;
+  document.getElementById('detail-date').textContent = '发布时间：' + news.date;
+  document.getElementById('detail-views').textContent = '浏览量：' + news.views;
+  document.getElementById('detail-content').innerHTML = news.content;
+  
+  // 填充图片画廊
+  const galleryContainer = document.getElementById('detail-gallery');
+  const galleryGrid = document.getElementById('gallery-grid');
+  if (news.gallery && news.gallery.length > 0) {
+    galleryContainer.style.display = 'block';
+    let galleryHtml = '';
+    news.gallery.forEach((img, index) => {
+      galleryHtml += `
+        <div class="gallery-item">
+          <img src="${img}" alt="${news.title} - 图片${index + 1}" onerror="this.style.display='none'" />
+        </div>
+      `;
+    });
+    galleryGrid.innerHTML = galleryHtml;
+  } else {
+    galleryContainer.style.display = 'none';
+  }
+  
+  // 填充相关链接
+  const linksContainer = document.getElementById('detail-links');
+  const linksList = document.getElementById('links-list');
+  if (news.links && news.links.length > 0) {
+    linksContainer.style.display = 'block';
+    let linksHtml = '';
+    news.links.forEach(link => {
+      linksHtml += `
+        <a href="${link.url}" class="link-btn" target="_blank" rel="noopener noreferrer">
+          ${link.text}
+        </a>
+      `;
+    });
+    linksList.innerHTML = linksHtml;
+  } else {
+    linksContainer.style.display = 'none';
+  }
+  
+  // 更新上下条导航
+  updateNavigation(id);
+  
+  document.getElementById('page-title').textContent = news.title + ' - CVPR-Lab';
+  
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.set('id', id);
+  window.history.pushState({}, '', newUrl);
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  news.views++;
+}
+
+// 更新上下条导航
+function updateNavigation(currentId) {
+  const currentIndex = newsData.findIndex(n => n.id === currentId);
+  
+  // 上一条
+  const prevBtn = document.getElementById('prev-btn');
+  const prevTitle = document.getElementById('prev-title');
+  if (currentIndex > 0) {
+    const prevNews = newsData[currentIndex - 1];
+    prevBtn.classList.remove('disabled');
+    prevBtn.onclick = function() { goToPrevNews(); };
+    prevTitle.textContent = prevNews.title;
+  } else {
+    prevBtn.classList.add('disabled');
+    prevBtn.onclick = null;
+    prevTitle.textContent = '已经是第一条了';
+  }
+  
+  // 下一条
+  const nextBtn = document.getElementById('next-btn');
+  const nextTitle = document.getElementById('next-title');
+  if (currentIndex < newsData.length - 1) {
+    const nextNews = newsData[currentIndex + 1];
+    nextBtn.classList.remove('disabled');
+    nextBtn.onclick = function() { goToNextNews(); };
+    nextTitle.textContent = nextNews.title;
+  } else {
+    nextBtn.classList.add('disabled');
+    nextBtn.onclick = null;
+    nextTitle.textContent = '已经是最后一条了';
+  }
+}
+
+// 跳转到上一条
+function goToPrevNews() {
+  const currentIndex = newsData.findIndex(n => n.id === currentNewsId);
+  if (currentIndex > 0) {
+    showNewsDetail(newsData[currentIndex - 1].id);
+  }
+}
+
+// 跳转到下一条
+function goToNextNews() {
+  const currentIndex = newsData.findIndex(n => n.id === currentNewsId);
+  if (currentIndex < newsData.length - 1) {
+    showNewsDetail(newsData[currentIndex + 1].id);
+  }
+}
+
+// 返回列表
+function showNewsList() {
+  document.getElementById('news-list-container').classList.remove('hidden');
+  document.getElementById('news-detail-container').classList.remove('active');
+  document.getElementById('news-detail-breadcrumb').style.display = 'none';
+  
+  document.getElementById('page-title').textContent = '「新闻中心」CVPR-Lab';
+  
+  const newUrl = new URL(window.location);
+  newUrl.searchParams.delete('id');
+  if (currentPage > 1) {
+    newUrl.searchParams.set('page', currentPage);
+  } else {
+    newUrl.searchParams.delete('page');
+  }
+  window.history.pushState({}, '', newUrl);
+  
+  renderNewsList();
+  currentNewsId = null;
+}
+
+// 浏览器前进后退
+window.addEventListener('popstate', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const newsId = urlParams.get('id');
+  
+  if (newsId) {
+    showNewsDetail(parseInt(newsId));
+  } else {
+    const page = urlParams.get('page');
+    currentPage = page ? parseInt(page) : 1;
+    showNewsList();
+  }
+});
+</script>
+
+<script src="js/nav-control.js"></script>
 <script src="js/aos.js"></script>
 <script src="js/app.js"></script>
-    <script type="text/javascript">
-      AOS.init({ easing: "ease-out-back", duration: 1000 });
-
-      if (typeof checksearch !== "function") {
-        window.checksearch = function (form) {
-          var kw = form.keyword.value.trim();
-          if (kw === "" || kw === "请输入关键字") {
-            alert("请输入搜索关键词");
-            return false;
-          }
-          return true;
-        };
+<script>
+  AOS.init({ easing: "ease-out-back", duration: 1000 });
+  
+  if (typeof checksearch !== "function") {
+    window.checksearch = function (form) {
+      var kw = form.keyword.value.trim();
+      if (kw === "" || kw === "请输入关键字") {
+        alert("请输入搜索关键词");
+        return false;
       }
-    </script>
-  </body>
+      return true;
+    };
+  }
+</script>
+</body>
 </html>
