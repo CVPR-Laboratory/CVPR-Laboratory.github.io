@@ -2,15 +2,9 @@
 <html lang="zh" data-theme="dark">
   <head>
     <meta charset="utf-8">
-    <script>
-      (function () {
-        var theme = localStorage.getItem("theme") || "dark";
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
-    <title data-i18n-title="meta.home.title">CVPR-Lab | 计算机视觉与模式识别实验室</title>
-    <meta name="description" data-i18n-meta="meta.home.description" content="CVPR实验室专注于计算机视觉、模式识别、深度学习与智能感知研究。">
-    <meta name="keywords" content="计算机视觉,模式识别,深度学习,目标检测,智慧农业,遥感目标检测,医学图像分析,红外目标检测">
+    <script>(function(){document.documentElement.setAttribute("data-theme",localStorage.getItem("theme")||"dark");})();</script>
+    <title data-i18n-title="meta.news.title">新闻动态 | CVPR-Lab</title>
+    <meta name="description" data-i18n-meta="meta.news.description" content="CVPR实验室新闻动态、学术前沿、通知公告与常见问题。">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/base.css">
@@ -31,12 +25,12 @@
     <script defer src="assets/js/effects.js"></script>
     <script defer src="assets/js/site.js"></script>
   </head>
-  <body data-page="home">
+  <body data-page="news">
     <div class="site-loader" id="site-loader" aria-hidden="true"><span></span><b>CVPR-LAB</b></div>
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="page-scanline" aria-hidden="true"></div>
     <header id="site-header" class="site-header"></header>
-    <main id="page-root" class="page-root" data-page="home"></main>
+    <main id="page-root" class="page-root" data-page="news"></main>
     <footer id="site-footer" class="site-footer"></footer>
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
   </body>
