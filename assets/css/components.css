@@ -464,6 +464,20 @@
   background: rgba(0, 213, 255, 0.06);
 }
 
+.achievement-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 14px;
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.achievement-link:hover {
+  color: var(--color-accent);
+}
+
 .stat-card {
   min-height: 150px;
   display: grid;
@@ -558,6 +572,24 @@
   border-radius: var(--radius-sm);
   background: var(--color-surface);
   color: var(--color-muted);
+}
+
+.research-records {
+  display: grid;
+  gap: 6px;
+  margin-top: 18px;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.research-records b {
+  color: var(--color-text);
+}
+
+.research-caption {
+  margin-top: 12px;
+  color: var(--color-muted);
+  font-size: 13px;
 }
 
 .faq-item {

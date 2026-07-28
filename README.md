@@ -70,6 +70,16 @@ http://127.0.0.1:8787/index.html
 
 The site is fully static. Deploy the repository root with GitHub Pages. No build command is required.
 
+## Developer A Checks
+
+Run the static validation before publishing:
+
+```powershell
+node scripts/check-static.mjs
+```
+
+The release, rollback, preview, accessibility, and troubleshooting procedure is documented in `docs/developer-a-maintenance.md`.
+
 ## Maintenance
 
 Update content in the data files:
@@ -82,11 +92,27 @@ assets/js/data/news.js           News, article content, FAQ
 assets/js/data/images.js         Image path, size, fit, position, alt mapping
 ```
 
-Use real verified information only. If a fact is not yet confirmed, keep:
+Use real verified information only. If a fact is not yet confirmed, keep the public page conservative instead of inventing content. Internal data may still carry a review status, but user-facing copy should use wording such as:
 
 ```text
-TODO: 请补充真实信息
+真实信息待核验后公开
+Verified information will be published after review.
 ```
+
+## 2026-07-21 Developer A Update - LTQ
+
+- LTQ updated `assets/js/data/achievements.js` with five traceable achievement records from the provided faculty CV / information sheet instead of public TODO placeholders.
+- LTQ changed achievement statistics to be generated from structured achievement types, avoiding manual `--` numbers.
+- LTQ added DOI / official-link rendering for achievement records that provide a link.
+- LTQ replaced visible TODO wording in Developer A pages with conservative review-pending copy.
+- LTQ added static fallback content to `index.html`, `about.html`, `research.html`, and `achievements.html` so the pages are not empty when scripts are unavailable.
+
+## 2026-07-28 Developer A Update - LTQ
+
+- LTQ consolidated the two faculty publication lists into 44 de-duplicated, source-backed paper records; corrected seven inconsistent DOI entries against public Crossref title records.
+- LTQ completed the four research-direction data records with bilingual content, stable anchors, research fields, members, representative publications, captions, update dates, and source notes.
+- LTQ made homepage and achievement statistics count only verified records, added DOI rendering, image dimensions, a high-priority hero preload, and page-specific data loading for the four Developer A pages.
+- LTQ added keyboard skip navigation, visible focus states, mobile-menu ARIA state, Canvas visibility pause and resize throttling, `404.html`, editor attributes, static CI checks, and the Developer A maintenance guide.
 
 ## Image Rules
 

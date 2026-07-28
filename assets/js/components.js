@@ -24,16 +24,17 @@
     var header = document.getElementById("site-header");
     if (!header) return;
     header.innerHTML = [
+      '<a class="skip-link" href="#page-root">Skip to main content</a>',
       '<div class="header-shell">',
       '  <a class="brand" href="index.html" aria-label="CVPR-Lab home">',
-      '    <img src="images/logo.png" alt="CVPR-Laboratory 实验室标识" loading="eager">',
+      '    <img src="images/logo.png" alt="CVPR-Laboratory 实验室标识" width="420" height="90" loading="eager" fetchpriority="high">',
       '    <span class="brand-orbit" aria-hidden="true"></span>',
       '  </a>',
       '  <nav class="desktop-nav" aria-label="Primary navigation">' + navHtml(active) + '</nav>',
       '  <div class="header-controls">',
       '    <button class="control-pill lang-pill" type="button" data-lang-switch aria-label="Switch language">EN</button>',
       '    <button class="theme-switch" type="button" data-theme-toggle aria-label="Switch theme"><span></span></button>',
-      '    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu"><span></span><span></span><span></span></button>',
+      '    <button class="menu-toggle" type="button" data-menu-toggle aria-label="Open menu" aria-controls="mobile-panel" aria-expanded="false"><span></span><span></span><span></span></button>',
       '  </div>',
       '</div>',
       '<div class="mobile-panel" id="mobile-panel" aria-hidden="true">',
@@ -56,7 +57,7 @@
       '<div class="footer-data-stream" aria-hidden="true"></div>',
       '<div class="footer-shell">',
       '  <div class="footer-brand reveal">',
-      '    <img src="images/logo.png" alt="CVPR-Laboratory 实验室标识" loading="lazy">',
+      '    <img src="images/logo.png" alt="CVPR-Laboratory 实验室标识" width="420" height="90" loading="lazy">',
       '    <p data-i18n="footer.motto"></p>',
       '    <span data-i18n="footer.intro"></span>',
       '  </div>',

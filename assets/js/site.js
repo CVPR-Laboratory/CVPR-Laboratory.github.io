@@ -5,6 +5,12 @@
     document.body.classList.toggle("menu-open", open);
     var panel = document.getElementById("mobile-panel");
     if (panel) panel.setAttribute("aria-hidden", String(!open));
+    var toggle = document.querySelector("[data-menu-toggle]");
+    if (toggle) toggle.setAttribute("aria-expanded", String(open));
+    if (open) {
+      var close = document.querySelector("[data-menu-close]");
+      if (close) close.focus();
+    }
   }
 
   function bindInteractions() {

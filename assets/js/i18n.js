@@ -38,8 +38,8 @@
         backNews: "返回新闻列表",
         copy: "复制",
         copied: "已复制",
-        todo: "TODO: 请补充真实信息",
-        noData: "TODO: 请补充真实内容",
+        todo: "真实信息待核验后公开",
+        noData: "核验内容暂未公开",
         all: "全部",
         filterAll: "全部",
         publications: "论文",
@@ -59,9 +59,9 @@
         motto: "慧眼识界，智算万物",
         intro: "面向智能感知、计算机视觉与模式识别前沿问题的科研实验室网站。",
         contact: "联系信息",
-        address: "TODO: 请补充真实地址",
-        email: "TODO: 请补充真实邮箱",
-        phone: "TODO: 请补充真实电话",
+        address: "地址待内容负责人核验后公开",
+        email: "邮箱待内容负责人核验后公开",
+        phone: "电话待内容负责人核验后公开",
         copyright: "CVPR-Laboratory. 静态网站可部署于 GitHub Pages。"
       }
     },
@@ -99,8 +99,8 @@
         backNews: "Back to News",
         copy: "Copy",
         copied: "Copied",
-        todo: "TODO: Please add verified information.",
-        noData: "TODO: Please add verified content.",
+        todo: "Verified information will be published after review.",
+        noData: "Verified content is not yet public.",
         all: "All",
         filterAll: "All",
         publications: "Publications",
@@ -120,9 +120,9 @@
         motto: "Vision Intelligence for a Connected World",
         intro: "A static research laboratory website for intelligent perception, computer vision, and pattern recognition.",
         contact: "Contact",
-        address: "TODO: Please add verified address.",
-        email: "TODO: Please add verified email.",
-        phone: "TODO: Please add verified phone number.",
+        address: "Address pending content review.",
+        email: "Email pending content review.",
+        phone: "Phone pending content review.",
         copyright: "CVPR-Laboratory. Static website ready for GitHub Pages."
       }
     }

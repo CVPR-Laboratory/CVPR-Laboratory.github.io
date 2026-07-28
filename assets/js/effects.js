@@ -30,6 +30,8 @@
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var frame = 0;
       var stopped = false;
+      var isVisible = true;
+      var resizeFrame = 0;
       var particles = [];
       var mouse = { x: -9999, y: -9999 };
       var count = coarsePointer ? 44 : 86;
@@ -57,8 +59,11 @@
 
       function draw() {
         if (stopped) return;
+        if (document.hidden || !isVisible) {
+          frame = 0;
+          return;
+        }
         frame = requestAnimationFrame(draw);
-        if (document.hidden) return;
         ctx.clearRect(0, 0, width, height);
         var gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 420);
         gradient.addColorStop(0, "rgba(0, 213, 255, 0.18)");
@@ -119,15 +124,41 @@
         mouse.y = -9999;
       }
 
+      function scheduleResize() {
+        if (resizeFrame) return;
+        resizeFrame = requestAnimationFrame(function () {
+          resizeFrame = 0;
+          resize();
+        });
+      }
+
+      function resume() {
+        if (!stopped && !document.hidden && isVisible && !frame) draw();
+      }
+
+      function onVisibilityChange() {
+        resume();
+      }
+
+      var visibilityObserver = new IntersectionObserver(function (entries) {
+        isVisible = entries[0].isIntersecting;
+        resume();
+      }, { threshold: 0.01 });
+
       resize();
+      visibilityObserver.observe(canvas);
       draw();
-      window.addEventListener("resize", resize);
+      window.addEventListener("resize", scheduleResize, { passive: true });
+      document.addEventListener("visibilitychange", onVisibilityChange);
       canvas.addEventListener("pointermove", move);
       canvas.addEventListener("pointerleave", leave);
       particleStops.push(function () {
         stopped = true;
         cancelAnimationFrame(frame);
-        window.removeEventListener("resize", resize);
+        cancelAnimationFrame(resizeFrame);
+        visibilityObserver.disconnect();
+        window.removeEventListener("resize", scheduleResize);
+        document.removeEventListener("visibilitychange", onVisibilityChange);
         canvas.removeEventListener("pointermove", move);
         canvas.removeEventListener("pointerleave", leave);
       });

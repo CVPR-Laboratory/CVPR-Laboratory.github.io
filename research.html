@@ -13,13 +13,12 @@
     <link rel="stylesheet" href="assets/css/effects.css">
     <link rel="stylesheet" href="assets/css/pages.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <noscript><style>.site-loader,.cursor-glow,.page-scanline{display:none}.fallback-content{padding:120px 24px 72px;max-width:960px;margin:auto}.fallback-content h1{font-size:40px;line-height:1.12}.fallback-content p,.fallback-content li{color:var(--color-muted);font-size:17px}.fallback-content a{color:var(--color-primary)}</style></noscript>
     <script defer src="assets/js/theme.js"></script>
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/data/images.js"></script>
     <script defer src="assets/js/data/research.js"></script>
-    <script defer src="assets/js/data/people.js"></script>
     <script defer src="assets/js/data/achievements.js"></script>
-    <script defer src="assets/js/data/news.js"></script>
     <script defer src="assets/js/components.js"></script>
     <script defer src="assets/js/render.js"></script>
     <script defer src="assets/js/effects.js"></script>
@@ -30,7 +29,18 @@
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="page-scanline" aria-hidden="true"></div>
     <header id="site-header" class="site-header"></header>
-    <main id="page-root" class="page-root" data-page="research"></main>
+    <main id="page-root" class="page-root" data-page="research">
+      <section class="fallback-content">
+        <h1>研究方向</h1>
+        <p>实验室研究方向以计算机视觉和智能感知为核心，当前页面维护四个稳定入口。</p>
+        <ul>
+          <li>精准农业与植物病害检测</li>
+          <li>遥感目标检测</li>
+          <li>医学图像分析</li>
+          <li>红外目标检测</li>
+        </ul>
+      </section>
+    </main>
     <footer id="site-footer" class="site-footer"></footer>
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
   </body>

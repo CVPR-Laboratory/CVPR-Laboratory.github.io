@@ -13,12 +13,14 @@
     <meta name="keywords" content="计算机视觉,模式识别,深度学习,目标检测,智慧农业,遥感目标检测,医学图像分析,红外目标检测">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preload" as="image" href="images/index/index_slideshow_01.png" fetchpriority="high">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/layout.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/effects.css">
     <link rel="stylesheet" href="assets/css/pages.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <noscript><style>.site-loader,.cursor-glow,.page-scanline{display:none}.fallback-content{padding:120px 24px 72px;max-width:960px;margin:auto}.fallback-content h1{font-size:44px;line-height:1.08}.fallback-content p{color:var(--color-muted);font-size:18px}.fallback-content a{color:var(--color-primary)}</style></noscript>
     <script defer src="assets/js/theme.js"></script>
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/data/images.js"></script>
@@ -36,7 +38,13 @@
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="page-scanline" aria-hidden="true"></div>
     <header id="site-header" class="site-header"></header>
-    <main id="page-root" class="page-root" data-page="home"></main>
+    <main id="page-root" class="page-root" data-page="home">
+      <section class="fallback-content">
+        <h1>Computer Vision and Pattern Recognition Laboratory</h1>
+        <p>CVPR实验室聚焦计算机视觉、模式识别、深度学习、目标检测与智能感知研究。新版首页通过静态数据和本地脚本展示研究方向、科研成果、团队入口与新闻入口。</p>
+        <p><a href="research.html">进入研究方向</a> · <a href="achievements.html">查看科研成果</a> · <a href="about.html">了解实验室概况</a></p>
+      </section>
+    </main>
     <footer id="site-footer" class="site-footer"></footer>
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
   </body>

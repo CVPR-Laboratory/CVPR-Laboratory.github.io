@@ -13,13 +13,10 @@
     <link rel="stylesheet" href="assets/css/effects.css">
     <link rel="stylesheet" href="assets/css/pages.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <noscript><style>.site-loader,.cursor-glow,.page-scanline{display:none}.fallback-content{padding:120px 24px 72px;max-width:960px;margin:auto}.fallback-content h1{font-size:40px;line-height:1.12}.fallback-content p,.fallback-content li{color:var(--color-muted);font-size:17px}.fallback-content a{color:var(--color-primary)}</style></noscript>
     <script defer src="assets/js/theme.js"></script>
     <script defer src="assets/js/i18n.js"></script>
-    <script defer src="assets/js/data/images.js"></script>
-    <script defer src="assets/js/data/research.js"></script>
-    <script defer src="assets/js/data/people.js"></script>
     <script defer src="assets/js/data/achievements.js"></script>
-    <script defer src="assets/js/data/news.js"></script>
     <script defer src="assets/js/components.js"></script>
     <script defer src="assets/js/render.js"></script>
     <script defer src="assets/js/effects.js"></script>
@@ -30,7 +27,16 @@
     <div class="cursor-glow" aria-hidden="true"></div>
     <div class="page-scanline" aria-hidden="true"></div>
     <header id="site-header" class="site-header"></header>
-    <main id="page-root" class="page-root" data-page="achievements"></main>
+    <main id="page-root" class="page-root" data-page="achievements">
+      <section class="fallback-content">
+        <h1>科研成果</h1>
+        <p>成果数据中心统一维护论文、项目、知识产权与荣誉奖励记录。统计数字由结构化成果数据自动生成，公开条目以可追溯来源和核验状态展示。</p>
+        <ul>
+          <li>论文：包含 DOI 或官方链接时优先展示。</li>
+          <li>项目、专利、荣誉：保留来源说明和核验状态。</li>
+        </ul>
+      </section>
+    </main>
     <footer id="site-footer" class="site-footer"></footer>
     <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">↑</button>
   </body>

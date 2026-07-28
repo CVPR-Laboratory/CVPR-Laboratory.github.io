@@ -17,7 +17,26 @@
   }
 
   function L(value, fallback) {
-    return window.CVPR.i18n ? window.CVPR.i18n.localize(value, fallback) : fallback || "";
+    var localized = window.CVPR.i18n ? window.CVPR.i18n.localize(value, fallback) : fallback || "";
+    return cleanDisplayValue(localized);
+  }
+
+  function pendingText() {
+    return lang() === "zh" ? "待核验内容暂未公开" : "Verified content pending publication";
+  }
+
+  function cleanDisplayValue(value) {
+    if (Array.isArray(value)) {
+      return value.map(cleanDisplayValue).filter(Boolean);
+    }
+    if (value && typeof value === "object") {
+      return value;
+    }
+    var text = String(value == null ? "" : value);
+    if (/^\s*TODO\b/i.test(text)) return pendingText();
+    return text
+      .replace(/\s*TODO[:：][^。.!?]*(。|\.|!|\?)?/gi, "")
+      .trim();
   }
 
   function esc(value) {
@@ -31,20 +50,33 @@
 
   function list(items) {
     return (items || []).map(function (item) {
-      return "<li>" + esc(item) + "</li>";
+      return "<li>" + esc(cleanDisplayValue(item)) + "</li>";
     }).join("");
   }
 
   function chips(items) {
     return '<div class="chip-row">' + (items || []).map(function (item) {
-      return '<span class="neon-chip">' + esc(item) + "</span>";
+      return '<span class="neon-chip">' + esc(cleanDisplayValue(item)) + "</span>";
     }).join("") + "</div>";
+  }
+
+  function achievementTitles(ids) {
+    var records = data().ACHIEVEMENTS || [];
+    return (ids || []).map(function (id) {
+      var record = records.find(function (item) { return item.id === id; });
+      return record ? L(record.title) : id;
+    });
   }
 
   function imageTag(options) {
     var src = options.src || fallbackImage;
     var fallback = options.avatar ? fallbackAvatar : fallbackImage;
-    return '<img class="' + esc(options.className || "") + '" src="' + esc(src) + '" alt="' + esc(options.alt || "") + '" loading="' + (options.eager ? "eager" : "lazy") + '" style="--fit:' + esc(options.fit || "cover") + ';--pos:' + esc(options.position || "center") + ';" onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
+    var imageMeta = (data().IMAGES || []).find(function (item) { return item.src === src; });
+    var width = options.width || (imageMeta && imageMeta.width);
+    var height = options.height || (imageMeta && imageMeta.height);
+    var size = width && height ? ' width="' + esc(width) + '" height="' + esc(height) + '"' : "";
+    var priority = options.priority ? ' fetchpriority="high"' : "";
+    return '<img class="' + esc(options.className || "") + '" src="' + esc(src) + '" alt="' + esc(options.alt || "") + '"' + size + priority + ' loading="' + (options.eager ? "eager" : "lazy") + '" style="--fit:' + esc(options.fit || "cover") + ';--pos:' + esc(options.position || "center") + ';" onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
   }
 
   function pageHero(config) {
@@ -81,8 +113,13 @@
 
   function statCards() {
     var stats = data().ACHIEVEMENT_STATS || [];
-    return stats.map(function (item) {
-      var value = item.value || "--";
+    var achievements = (data().ACHIEVEMENTS || []).filter(function (record) {
+      return record.publicationStatus === "verified";
+    });
+    return stats.filter(function (item) {
+      return !item.type || achievements.some(function (record) { return record.type === item.type; });
+    }).map(function (item) {
+      var value = item.value || (item.type ? String(achievements.filter(function (record) { return record.type === item.type; }).length) : "0");
       var numeric = /^\d+$/.test(value);
       return [
         '<article class="stat-card glass-card reveal" data-tilt>',
@@ -130,14 +167,18 @@
   }
 
   function achievementItem(item, index) {
+    var link = item.link ? '<a class="achievement-link" href="' + esc(item.link) + '" target="_blank" rel="noopener">' + esc(lang() === "zh" ? "查看 DOI / 官方链接" : "View DOI / Official Link") + '</a>' : "";
+    var description = L(item.description);
+    var doi = item.doi ? '<span>DOI: ' + esc(item.doi) + '</span>' : "";
     return [
       '<article class="achievement-item glass-card reveal filter-item" data-category="' + esc(item.type) + '" data-tilt style="--delay:' + (index * 50) + 'ms">',
-      '  <div class="achievement-year">' + esc(item.year || "TODO") + '</div>',
+      '  <div class="achievement-year">' + esc(item.year || (lang() === "zh" ? "待核验" : "Pending")) + '</div>',
       '  <div class="achievement-body">',
       '    <span class="category-code">' + esc(t("common." + (item.type === "paper" ? "publications" : item.type + "s"), item.type)) + '</span>',
       '    <h3>' + esc(L(item.title)) + '</h3>',
-      '    <p>' + esc(L(item.description)) + '</p>',
-      '    <div class="achievement-meta"><span>' + esc(item.authors || "TODO") + '</span><span>' + esc(item.venue || "TODO") + '</span><span>' + esc(L(item.status)) + '</span></div>',
+      description ? '    <p>' + esc(description) + '</p>' : "",
+      '    <div class="achievement-meta"><span>' + esc(item.authors || (lang() === "zh" ? "待核验" : "Pending")) + '</span><span>' + esc(item.venue || (lang() === "zh" ? "待核验" : "Pending")) + '</span>' + doi + '<span>' + esc(L(item.status)) + '</span></div>',
+      link,
       '  </div>',
       '</article>'
     ].join("");
@@ -182,7 +223,7 @@
       '    </div>',
       '    <div class="hero-lab-panel reveal" data-tilt>',
       '      <div class="vision-window detection-frame">',
-      imageTag({ src: "images/index/index_slideshow_01.png", alt: lang() === "zh" ? "首页人工智能视觉横幅" : "AI vision homepage banner", fit: "cover", position: "center", eager: true }),
+      imageTag({ src: "images/index/index_slideshow_01.png", alt: lang() === "zh" ? "首页人工智能视觉横幅" : "AI vision homepage banner", fit: "cover", position: "center", width: 2730, height: 1535, eager: true, priority: true }),
       '        <span class="detect-box main-box"><b>vision-core 0.98</b></span>',
       '        <span class="detect-box sub-box"><b>feature-map</b></span>',
       '      </div>',
@@ -198,7 +239,7 @@
       '    <div class="glass-card large-copy reveal" data-tilt>',
       '      <span class="eyebrow">LAB PROFILE</span>',
       '      <h2 class="gradient-text">' + esc(lang() === "zh" ? "面向未来智能感知的视觉实验室" : "A Vision Lab for Future Intelligent Perception") + '</h2>',
-      '      <p>' + esc(lang() === "zh" ? "CVPR实验室聚焦计算机视觉、模式识别、深度学习及智慧农业等方向，旧站资料显示实验室依托曲阜师范大学计算机学院。TODO: 请补充并核验完整实验室介绍。" : "CVPR-Lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. Existing site data indicates affiliation with the School of Computer Science at Qufu Normal University. TODO: Please verify and add the full lab profile.") + '</p>',
+      '      <p>' + esc(lang() === "zh" ? "CVPR实验室聚焦计算机视觉、模式识别、深度学习及智慧农业等方向，旧站资料显示实验室依托曲阜师范大学计算机学院。完整介绍将在资料核验后继续补充。" : "CVPR-Lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. Existing site data indicates affiliation with the School of Computer Science at Qufu Normal University. The complete profile will be expanded after content review.") + '</p>',
       '    </div>',
       '    <div class="metric-grid">' + statCards() + '</div>',
       '  </div>',
@@ -211,7 +252,7 @@
       '</section>',
       '<section class="section section-dashboard">',
       '  <div class="container">',
-      sectionTitle("ACHIEVEMENT DATA CENTER", lang() === "zh" ? "科研成果动态仪表盘" : "Research Achievement Dashboard", lang() === "zh" ? "缺少核验数据时不编造数字，保留可维护的 TODO 数据入口。" : "Numbers remain unverified placeholders until real data is supplied."),
+      sectionTitle("ACHIEVEMENT DATA CENTER", lang() === "zh" ? "科研成果动态仪表盘" : "Research Achievement Dashboard", lang() === "zh" ? "统计从成果数据自动生成，未核验内容以审慎状态展示。" : "Statistics are generated from achievement records, with unverified content shown conservatively."),
       '    <div class="dashboard-grid">' + statCards() + '</div>',
       '    <div class="achievement-preview">' + (data().ACHIEVEMENTS || []).map(achievementItem).join("") + '</div>',
       '  </div>',
@@ -253,26 +294,26 @@
     ];
     var timeline = lang() === "zh" ? [
       ["2020", "旧站资料显示：实验室正式成立，首批研究生入学。"],
-      ["2021", "TODO: 请补充真实发展节点。"],
-      ["2022", "TODO: 请补充真实发展节点。"],
-      ["2023", "TODO: 请补充真实发展节点。"],
-      ["2024", "TODO: 请补充真实发展节点。"]
+      ["2021", "发展节点待资料核验后补充。"],
+      ["2022", "发展节点待资料核验后补充。"],
+      ["2023", "发展节点待资料核验后补充。"],
+      ["2024", "发展节点待资料核验后补充。"]
     ] : [
       ["2020", "Existing site data indicates the lab was established and the first postgraduate cohort joined."],
-      ["2021", "TODO: Please add verified milestone."],
-      ["2022", "TODO: Please add verified milestone."],
-      ["2023", "TODO: Please add verified milestone."],
-      ["2024", "TODO: Please add verified milestone."]
+      ["2021", "Milestone pending content review."],
+      ["2022", "Milestone pending content review."],
+      ["2023", "Milestone pending content review."],
+      ["2024", "Milestone pending content review."]
     ];
     root.innerHTML = [
       pageHero({ key: "about", eyebrow: "DIGITAL ARCHIVE", title: lang() === "zh" ? "实验室数字档案馆" : "Laboratory Digital Archive", subtitle: lang() === "zh" ? "从发展定位、研究特色到团队文化，构建可持续维护的科研档案。" : "A maintainable research archive for mission, research features, culture, and activities.", code: "ARCHIVE" }),
       '<section class="section"><div class="container archive-grid">',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">PROFILE</span><h2>' + esc(lang() === "zh" ? "实验室简介" : "Lab Profile") + '</h2><p>' + esc(lang() === "zh" ? "CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，旧站资料显示成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。TODO: 请补充并核验完整简介。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University according to existing site data, and the old page states that it was established in 2020. The lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. TODO: Please verify and add the complete profile.") + '</p></article>',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">POSITIONING</span><h2>' + esc(lang() === "zh" ? "发展定位" : "Mission") + '</h2><p>' + esc(lang() === "zh" ? "面向智能视觉、数字农业、遥感解译、医学影像和红外感知等交叉场景，建设具有科研创新、人才培养和技术转化能力的实验室。TODO: 请补充真实发展定位。" : "The lab aims to address intelligent vision, digital agriculture, remote-sensing interpretation, medical imaging, and infrared perception. TODO: Please add verified mission details.") + '</p></article>',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">FEATURES</span><h2>' + esc(lang() === "zh" ? "研究特色" : "Research Features") + '</h2><p>' + esc(lang() === "zh" ? "围绕小目标、细粒度、复杂背景、多尺度和跨模态等关键视觉问题，构建从算法设计到场景应用的研究链路。TODO: 请补充真实特色。" : "The research frame connects algorithm design with scenario applications around small objects, fine-grained cues, complex backgrounds, multi-scale features, and multimodal perception. TODO: Please add verified features.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">PROFILE</span><h2>' + esc(lang() === "zh" ? "实验室简介" : "Lab Profile") + '</h2><p>' + esc(lang() === "zh" ? "CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，旧站资料显示成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。完整简介待资料核验后补充。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University according to existing site data, and the old page states that it was established in 2020. The lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. The complete profile is pending content review.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">POSITIONING</span><h2>' + esc(lang() === "zh" ? "发展定位" : "Mission") + '</h2><p>' + esc(lang() === "zh" ? "面向智能视觉、数字农业、遥感解译、医学影像和红外感知等交叉场景，建设具有科研创新、人才培养和技术转化能力的实验室。具体表述待资料核验后完善。" : "The lab aims to address intelligent vision, digital agriculture, remote-sensing interpretation, medical imaging, and infrared perception. Detailed mission wording is pending content review.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">FEATURES</span><h2>' + esc(lang() === "zh" ? "研究特色" : "Research Features") + '</h2><p>' + esc(lang() === "zh" ? "围绕小目标、细粒度、复杂背景、多尺度和跨模态等关键视觉问题，构建从算法设计到场景应用的研究链路。具体特色待资料核验后完善。" : "The research frame connects algorithm design with scenario applications around small objects, fine-grained cues, complex backgrounds, multi-scale features, and multimodal perception. Detailed features are pending content review.") + '</p></article>',
       '</div></section>',
       '<section class="section"><div class="container">',
-      sectionTitle("TIMELINE", lang() === "zh" ? "发展历程" : "Development Timeline", lang() === "zh" ? "滚动时节点依次点亮，缺失节点以 TODO 标识。" : "Timeline nodes light up on scroll; missing verified milestones remain as TODO."),
+      sectionTitle("TIMELINE", lang() === "zh" ? "发展历程" : "Development Timeline", lang() === "zh" ? "滚动时节点依次点亮，待核验节点以审慎状态展示。" : "Timeline nodes light up on scroll, with pending milestones shown conservatively."),
       '  <div class="timeline">' + timeline.map(function (item) { return '<article class="timeline-item reveal"><span>' + esc(item[0]) + '</span><p>' + esc(item[1]) + '</p></article>'; }).join("") + '</div>',
       '</div></section>',
       '<section class="section"><div class="container">',
@@ -315,6 +356,8 @@
           '      <div><h3>' + esc(lang() === "zh" ? "方法" : "Methods") + '</h3><ul>' + list(L(item.topics)) + '</ul></div>',
           '      <div><h3>' + esc(lang() === "zh" ? "应用" : "Applications") + '</h3><ul>' + list(L(item.applications)) + '</ul></div>',
           '    </div>',
+          '    <div class="research-records"><p><b>' + esc(lang() === "zh" ? "成员：" : "Members: ") + '</b>' + esc((item.members || []).join(", ") || (lang() === "zh" ? "待公开核验" : "Pending public verification")) + '</p><p><b>' + esc(lang() === "zh" ? "代表成果：" : "Representative achievements: ") + '</b>' + esc(achievementTitles(item.representativeAchievements).join("; ") || (lang() === "zh" ? "待公开核验" : "Pending public verification")) + '</p><p><b>' + esc(lang() === "zh" ? "更新：" : "Updated: ") + '</b>' + esc(item.updatedAt || "") + '</p></div>',
+          '    <p class="research-caption">' + esc(L(item.caption)) + '</p>',
           '  </div>',
           '</article>'
         ].join("");
@@ -380,8 +423,10 @@
   }
 
   function renderAchievements(root) {
-    var items = data().ACHIEVEMENTS || [];
-    var filters = [["all", t("common.all")], ["paper", t("common.publications")], ["project", t("common.projects")], ["patent", t("common.patents")], ["award", t("common.awards")]];
+    var items = (data().ACHIEVEMENTS || []).filter(function (item) { return item.publicationStatus === "verified"; });
+    var filters = [["all", t("common.all")]].concat(["paper", "project", "patent", "award"].filter(function (type) {
+      return items.some(function (item) { return item.type === type; });
+    }).map(function (type) { return [type, t("common." + (type === "paper" ? "publications" : type + "s"))]; }));
     root.innerHTML = [
       pageHero({ key: "achievements", eyebrow: "RESEARCH DATA CENTER", title: lang() === "zh" ? "成果数据中心" : "Achievement Data Center", subtitle: lang() === "zh" ? "论文、项目、知识产权与获奖荣誉以数字档案形式统一管理。" : "Papers, projects, intellectual property, and awards are managed as digital records.", code: "DATA" }),
       '<section class="section"><div class="container">',
