@@ -444,7 +444,7 @@
   }
 
   function profileListSection(title, items) {
-    var confirmed = (items || []).map(sanitizeText).filter(function (item) {
+    var confirmed = (items || []).map(cleanDisplayValue).filter(function (item) {
       return item && !/(待补充|待核验|pending(?: verification)?)/i.test(item);
     });
     if (!confirmed.length) return "";

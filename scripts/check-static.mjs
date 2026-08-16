@@ -7,6 +7,10 @@ const corePages = ["index.html", "about.html", "research.html", "people.html", "
 const requiredDocs = ["content-maintenance.md", "media-register.md", "media-register.csv", "privacy-authorization.md", "url-migration.md", "test-report.md", "deployment.md", "todo.md", "known-issues.md"];
 const errors = [];
 
+if (/\bsanitizeText\b/.test(fs.readFileSync(path.join(root, "assets/js/render.js"), "utf8"))) {
+  errors.push("assets/js/render.js: obsolete undefined sanitizeText reference found");
+}
+
 function exactPath(relativePath) {
   const parts = relativePath.replaceAll("\\", "/").split("/").filter(Boolean);
   let current = root;
