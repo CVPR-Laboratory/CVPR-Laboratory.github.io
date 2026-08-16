@@ -250,20 +250,20 @@
       '</section>',
       '<section class="section">',
       '  <div class="container">',
-      sectionTitle("RESEARCH MATRIX", lang() === "zh" ? "四大智能视觉研究方向" : "Four Intelligent Vision Directions", lang() === "zh" ? "用检测框、特征图、热成像和遥感网格重塑科研入口。" : "Research entry points shaped by detection boxes, feature maps, thermal cues, and remote-sensing grids."),
+      sectionTitle("RESEARCH MATRIX", lang() === "zh" ? "四大智能视觉研究方向" : "Four Intelligent Vision Directions", lang() === "zh" ? "聚焦精准农业、遥感、医学图像与红外感知中的关键视觉问题。" : "Key vision problems in precision agriculture, remote sensing, medical imaging, and infrared perception."),
       '    <div class="research-grid">' + research.map(researchMiniCard).join("") + '</div>',
       '  </div>',
       '</section>',
       '<section class="section section-dashboard">',
       '  <div class="container">',
-      sectionTitle("ACHIEVEMENT DATA CENTER", lang() === "zh" ? "科研成果动态仪表盘" : "Research Achievement Dashboard", lang() === "zh" ? "统计从成果数据自动生成，未核验内容以审慎状态展示。" : "Statistics are generated from achievement records, with unverified content shown conservatively."),
+      sectionTitle("ACHIEVEMENT DATA CENTER", lang() === "zh" ? "科研成果" : "Research Achievements", lang() === "zh" ? "汇集实验室论文、科研项目、知识产权与获奖荣誉。" : "Laboratory papers, research projects, intellectual property, and awards."),
       '    <div class="dashboard-grid">' + statCards() + '</div>',
       '    <div class="achievement-preview">' + (data().ACHIEVEMENTS || []).map(achievementItem).join("") + '</div>',
       '  </div>',
       '</section>',
       '<section class="section">',
       '  <div class="container">',
-      sectionTitle("MEMBER GALAXY", lang() === "zh" ? "团队星图入口" : "Lab Members Galaxy", lang() === "zh" ? "成员头像使用真实竖图比例裁切，避免压扁和破图。" : "Portraits use real aspect-aware cropping and robust fallbacks."),
+      sectionTitle("MEMBER GALAXY", lang() === "zh" ? "团队成员" : "Lab Members", lang() === "zh" ? "汇聚实验室教师、研究生与毕业成员。" : "Faculty, postgraduate students, and alumni of the laboratory."),
       '    <div class="people-grid compact">' + people.map(memberCard).join("") + '</div>',
       '    <div class="section-actions reveal"><a class="btn btn-ghost" href="people.html">' + esc(t("common.viewAll")) + '</a></div>',
       '  </div>',
@@ -302,7 +302,7 @@
       ["2020", "Existing site data indicates the lab was established and the first postgraduate cohort joined."]
     ];
     root.innerHTML = [
-      pageHero({ key: "about", eyebrow: "DIGITAL ARCHIVE", title: lang() === "zh" ? "实验室数字档案馆" : "Laboratory Digital Archive", subtitle: lang() === "zh" ? "从发展定位、研究特色到团队文化，构建可持续维护的科研档案。" : "A maintainable research archive for mission, research features, culture, and activities.", code: "ARCHIVE" }),
+      pageHero({ key: "about", eyebrow: "ABOUT THE LAB", title: lang() === "zh" ? "实验室概况" : "About the Laboratory", subtitle: lang() === "zh" ? "了解实验室的发展定位、研究特色、团队文化与学术活动。" : "Mission, research strengths, team culture, and academic activities.", code: "ABOUT" }),
       '<section class="section"><div class="container archive-grid">',
       '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">PROFILE</span><h2>' + esc(lang() === "zh" ? "实验室简介" : "Lab Profile") + '</h2><p>' + esc(lang() === "zh" ? "CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，旧站资料显示成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University according to existing site data, and the old page states that it was established in 2020. The lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture.") + '</p></article>',
       '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">POSITIONING</span><h2>' + esc(lang() === "zh" ? "发展定位" : "Mission") + '</h2><p>' + esc(lang() === "zh" ? "面向智能视觉、数字农业、遥感解译、医学影像和红外感知等交叉场景，建设具有科研创新、人才培养和技术转化能力的实验室。" : "The lab aims to address intelligent vision, digital agriculture, remote-sensing interpretation, medical imaging, and infrared perception through research innovation, talent development, and technology transfer.") + '</p></article>',
@@ -321,7 +321,7 @@
       }).join(""),
       '  </div></div></section>',
       '<section class="section"><div class="container">',
-      sectionTitle("GALLERY", lang() === "zh" ? "学术活动与实验室相册" : "Activities and Gallery", lang() === "zh" ? "不同尺寸图片以 masonry-like 网格展示，竖图不会被强行压成横图。" : "Mixed image ratios use an adaptive gallery; portrait images are not forced into landscape crops."),
+      sectionTitle("GALLERY", lang() === "zh" ? "学术活动与实验室相册" : "Activities and Gallery", lang() === "zh" ? "记录实验室学术交流、团队活动与科研环境。" : "Academic exchanges, team activities, and the laboratory environment."),
       '  <div class="gallery-grid">' + gallery.map(function (item, index) {
         return '<figure class="gallery-item glass-card reveal" data-tilt style="--delay:' + (index * 60) + 'ms">' + imageTag({ src: item[0], alt: item[1], fit: item[2], position: item[3] }) + '<figcaption>' + esc(item[1]) + '</figcaption></figure>';
       }).join("") + '</div>',
@@ -332,7 +332,7 @@
   function renderResearch(root) {
     var research = data().RESEARCH || [];
     root.innerHTML = [
-      pageHero({ key: "research", eyebrow: "AI RESEARCH MATRIX", title: lang() === "zh" ? "AI Research Matrix / 研究矩阵" : "AI Research Matrix", subtitle: lang() === "zh" ? "四个方向以检测框、热图、卫星网格与医学扫描界面组织。" : "Four directions organized through detection boxes, heatmaps, satellite grids, and medical scan interfaces.", code: "MATRIX" }),
+      pageHero({ key: "research", eyebrow: "RESEARCH DIRECTIONS", title: lang() === "zh" ? "研究方向" : "Research Directions", subtitle: lang() === "zh" ? "面向农业、遥感、医学与红外场景开展计算机视觉研究。" : "Computer vision research for agriculture, remote sensing, medicine, and infrared sensing.", code: "RESEARCH" }),
       '<section class="section research-tabs-section"><div class="container">',
       '  <div class="anchor-tabs reveal">' + research.map(function (item) { return '<a href="#' + esc(item.anchor) + '">' + esc(L(item.title)) + '</a>'; }).join("") + '</div>',
       '  <div class="research-matrix">' + research.map(function (item, index) {
@@ -366,7 +366,7 @@
     var people = data().PEOPLE || [];
     var filters = ["all", "teacher", "postgraduate", "undergraduate", "alumni"];
     root.innerHTML = [
-      pageHero({ key: "people", eyebrow: "LAB MEMBERS GALAXY", title: lang() === "zh" ? "团队星图" : "Lab Members Galaxy", subtitle: lang() === "zh" ? "用成员卡片、发光头像环和筛选动效组织实验室人员。" : "Member cards, luminous avatar rings, and animated filters organize the lab team.", code: "GALAXY" }),
+      pageHero({ key: "people", eyebrow: "LAB MEMBERS", title: lang() === "zh" ? "团队成员" : "Lab Members", subtitle: lang() === "zh" ? "实验室教师、研究生、本科生与毕业成员。" : "Faculty, postgraduate students, undergraduates, and alumni.", code: "PEOPLE" }),
       '<section class="section"><div class="container">',
       '  <div class="filter-bar reveal" data-filter-scope="people-grid">' + filters.map(function (filter, index) {
         return '<button class="filter-chip' + (index === 0 ? " is-active" : "") + '" type="button" data-filter="' + esc(filter) + '">' + esc(filter === "all" ? t("common.all") : t("common." + filter)) + '</button>';
@@ -457,7 +457,7 @@
       return items.some(function (item) { return item.type === type; });
     }).map(function (type) { return [type, t("common." + (type === "paper" ? "publications" : type + "s"))]; }));
     root.innerHTML = [
-      pageHero({ key: "achievements", eyebrow: "RESEARCH DATA CENTER", title: lang() === "zh" ? "成果数据中心" : "Achievement Data Center", subtitle: lang() === "zh" ? "论文、项目、知识产权与获奖荣誉以数字档案形式统一管理。" : "Papers, projects, intellectual property, and awards are managed as digital records.", code: "DATA" }),
+      pageHero({ key: "achievements", eyebrow: "RESEARCH ACHIEVEMENTS", title: lang() === "zh" ? "科研成果" : "Research Achievements", subtitle: lang() === "zh" ? "实验室论文、科研项目、知识产权与获奖荣誉。" : "Laboratory papers, research projects, intellectual property, and awards.", code: "RESULTS" }),
       '<section class="section"><div class="container">',
       '  <div class="dashboard-grid">' + statCards() + '</div>',
       '  <div class="filter-bar reveal" data-filter-scope="achievement-list">' + filters.map(function (filter, index) {
@@ -472,7 +472,7 @@
     var items = data().NEWS || [];
     var filters = [["all", t("common.all")], ["lab-news", t("common.labNews")], ["frontiers", t("common.frontiers")], ["notice", t("common.notice")]];
     root.innerHTML = [
-      pageHero({ key: "news", eyebrow: "RESEARCH FEED", title: lang() === "zh" ? "实验室信息流" : "Research Feed", subtitle: lang() === "zh" ? "新闻、前沿、通知与 FAQ 统一为可筛选信息面板。" : "News, frontiers, notices, and FAQ are organized as filterable information panels.", code: "FEED" }),
+      pageHero({ key: "news", eyebrow: "LAB NEWS", title: lang() === "zh" ? "新闻动态" : "News", subtitle: lang() === "zh" ? "实验室动态、学术前沿、通知公告与常见问题。" : "Laboratory updates, research frontiers, notices, and frequently asked questions.", code: "NEWS" }),
       '<section class="section"><div class="container">',
       '  <div class="filter-bar reveal" data-filter-scope="news-grid">' + filters.map(function (filter, index) {
         return '<button class="filter-chip' + (index === 0 ? " is-active" : "") + '" type="button" data-filter="' + esc(filter[0]) + '">' + esc(filter[1]) + '</button>';

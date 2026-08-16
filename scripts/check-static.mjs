@@ -67,7 +67,15 @@ const obsoletePublicCopy = [
   "来源已登记，公开前待最终审批",
   "Verified information will be published after review.",
   "pending final publication approval",
-  "pending content review"
+  "pending content review",
+  "成员头像使用真实竖图比例裁切",
+  "筛选动效组织实验室人员",
+  "masonry-like 网格展示",
+  "静态数据和本地脚本展示",
+  "统计从成果数据自动生成",
+  "organized through detection boxes",
+  "aspect-aware cropping and robust fallbacks",
+  "Mixed image ratios use an adaptive gallery"
 ];
 for (const source of ["assets/js/i18n.js", "assets/js/render.js", "assets/js/data/achievements.js"]) {
   const content = fs.readFileSync(path.join(root, source), "utf8");
