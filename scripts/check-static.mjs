@@ -1,12 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 
 const root = process.cwd();
-const rootPages = fs.readdirSync(root).filter((name) => name.endsWith(".html"));
+const corePages = ["index.html", "about.html", "research.html", "people.html", "achievements.html", "news.html", "contact.html", "profile.html", "article.html"];
+const requiredDocs = ["content-maintenance.md", "media-register.md", "media-register.csv", "privacy-authorization.md", "url-migration.md", "test-report.md", "deployment.md", "todo.md", "known-issues.md"];
 const errors = [];
 
-function existsWithExactCase(relativePath) {
-  const parts = relativePath.split("/").filter(Boolean);
+function exactPath(relativePath) {
+  const parts = relativePath.replaceAll("\\", "/").split("/").filter(Boolean);
   let current = root;
   for (const part of parts) {
     if (!fs.existsSync(current)) return false;
@@ -17,29 +19,50 @@ function existsWithExactCase(relativePath) {
   return fs.existsSync(current);
 }
 
-function checkReference(page, reference) {
+function localReference(reference) {
   if (!reference || /^(https?:|mailto:|tel:|data:|#)/i.test(reference)) return;
   const clean = reference.split("#")[0].split("?")[0];
-  if (!clean) return;
-  if (!existsWithExactCase(clean)) errors.push(`${page}: missing or case-mismatched path ${reference}`);
+  if (clean && !exactPath(clean)) errors.push(`Missing or case-mismatched path: ${reference}`);
 }
 
-for (const page of rootPages) {
-  const content = fs.readFileSync(path.join(root, page), "utf8");
-  if (!/<title[^>]*>[^<]+<\/title>/i.test(content)) errors.push(`${page}: missing title`);
-  if (page !== "404.html" && !/<meta\s+name="description"/i.test(content)) errors.push(`${page}: missing description`);
-  if (page !== "404.html" && !/id="page-root"/i.test(content)) errors.push(`${page}: missing page root`);
-  for (const match of content.matchAll(/(?:src|href)="([^"]+)"/gi)) checkReference(page, match[1]);
+for (const page of fs.readdirSync(root).filter((name) => name.endsWith(".html"))) {
+  const html = fs.readFileSync(path.join(root, page), "utf8");
+  if (!/<title[^>]*>[^<]+<\/title>/i.test(html)) errors.push(`${page}: missing title`);
+  if (!/<meta\s+name="description"/i.test(html)) errors.push(`${page}: missing description`);
+  if (corePages.includes(page)) {
+    if (!/<link\s+rel="canonical"\s+href="https:\/\/cvpr-laboratory\.github\.io\//i.test(html)) errors.push(`${page}: missing absolute canonical URL`);
+    if (!/<meta\s+property="og:title"/i.test(html)) errors.push(`${page}: missing Open Graph metadata`);
+    if (!/id="page-root"/i.test(html)) errors.push(`${page}: missing page root`);
+  }
+  for (const match of html.matchAll(/(?:src|href)="([^"]+)"/gi)) localReference(match[1]);
 }
 
-for (const relativePath of ["assets/js/data/research.js", "assets/js/data/achievements.js"]) {
-  const content = fs.readFileSync(path.join(root, relativePath), "utf8");
-  if (/TODO[:：]/i.test(content)) errors.push(`${relativePath}: public TODO marker found`);
+const context = { window: {} };
+context.window.CVPR_DATA = {};
+vm.createContext(context);
+for (const file of fs.readdirSync(path.join(root, "assets/js/data")).filter((name) => name.endsWith(".js"))) {
+  vm.runInContext(fs.readFileSync(path.join(root, "assets/js/data", file), "utf8"), context, { filename: file });
+}
+const data = context.window.CVPR_DATA;
+for (const item of [...(data.RESEARCH || []), ...(data.PEOPLE || []), ...(data.NEWS || [])]) {
+  localReference(item.image || item.avatar);
+}
+for (const item of data.NEWS || []) {
+  for (const field of ["author", "source", "updatedAt", "status"]) if (!item[field]) errors.push(`NEWS ${item.id}: missing ${field}`);
+}
+for (const item of data.PEOPLE || []) {
+  for (const field of ["source", "status", "verification"]) if (!item[field]) errors.push(`PEOPLE ${item.id}: missing ${field}`);
+}
+
+const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+for (const loc of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) if (!loc[1].startsWith("https://cvpr-laboratory.github.io/")) errors.push(`sitemap.xml: non-absolute URL ${loc[1]}`);
+for (const doc of requiredDocs) if (!exactPath(`docs/${doc}`)) errors.push(`Missing maintenance document: docs/${doc}`);
+for (const source of ["assets/js/data/research.js", "assets/js/data/achievements.js"]) {
+  if (/TODO[:：]/i.test(fs.readFileSync(path.join(root, source), "utf8"))) errors.push(`${source}: public TODO marker found`);
 }
 
 if (errors.length) {
-  console.error(errors.join("\n"));
+  console.error([...new Set(errors)].join("\n"));
   process.exit(1);
 }
-
-console.log(`Static checks passed for ${rootPages.length} HTML pages.`);
+console.log(`Static checks passed for ${corePages.length} core pages, structured data, media paths, sitemap, and maintenance documents.`);

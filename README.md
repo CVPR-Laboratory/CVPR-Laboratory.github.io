@@ -44,6 +44,7 @@ assets/
       people.js
       achievements.js
       news.js
+      contact.js
   images/common/
     placeholder-tech.svg
     default-avatar.svg
@@ -70,15 +71,17 @@ http://127.0.0.1:8787/index.html
 
 The site is fully static. Deploy the repository root with GitHub Pages. No build command is required.
 
-## Developer A Checks
+## Release Checks
 
 Run the static validation before publishing:
 
 ```powershell
+python scripts/optimize-images.py
+node scripts/build-sitemap.mjs
 node scripts/check-static.mjs
 ```
 
-The release, rollback, preview, accessibility, and troubleshooting procedure is documented in `docs/developer-a-maintenance.md`.
+Release, rollback, content, media, privacy, URL migration, testing and known limitations are documented in `docs/`.
 
 ## Maintenance
 
@@ -89,6 +92,7 @@ assets/js/data/research.js       Research directions
 assets/js/data/people.js         Members and profile data
 assets/js/data/achievements.js   Papers, projects, patents, awards
 assets/js/data/news.js           News, article content, FAQ
+assets/js/data/contact.js        Contact, admissions, collaboration
 assets/js/data/images.js         Image path, size, fit, position, alt mapping
 ```
 
@@ -113,6 +117,12 @@ Verified information will be published after review.
 - LTQ completed the four research-direction data records with bilingual content, stable anchors, research fields, members, representative publications, captions, update dates, and source notes.
 - LTQ made homepage and achievement statistics count only verified records, added DOI rendering, image dimensions, a high-priority hero preload, and page-specific data loading for the four Developer A pages.
 - LTQ added keyboard skip navigation, visible focus states, mobile-menu ARIA state, Canvas visibility pause and resize throttling, `404.html`, editor attributes, static CI checks, and the Developer A maintenance guide.
+
+## 2026-08-17 Integrated Release - LTQ
+
+- LTQ integrated Developer Jia and Developer Yi deliveries while retaining the 44 faculty publications sourced from the two supplied paper lists.
+- LTQ repaired news media paths, centralized contact data, added source/review status to people, news and FAQ records, and kept unconfirmed profile fields unpublished.
+- LTQ completed canonical/Open Graph metadata, sitemap and robots configuration, full media inventory with WebP delivery, release checks, and the maintenance documentation set.
 
 ## Image Rules
 

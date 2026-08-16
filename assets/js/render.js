@@ -76,7 +76,11 @@
     var height = options.height || (imageMeta && imageMeta.height);
     var size = width && height ? ' width="' + esc(width) + '" height="' + esc(height) + '"' : "";
     var priority = options.priority ? ' fetchpriority="high"' : "";
-    return '<img class="' + esc(options.className || "") + '" src="' + esc(src) + '" alt="' + esc(options.alt || "") + '"' + size + priority + ' loading="' + (options.eager ? "eager" : "lazy") + '" style="--fit:' + esc(options.fit || "cover") + ';--pos:' + esc(options.position || "center") + ';" onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
+    var webp = /^(?:images|assets\/images)\/.+\.(?:png|jpe?g)$/i.test(src)
+      ? "assets/images/optimized/" + src.replace(/\.(?:png|jpe?g)$/i, ".webp")
+      : "";
+    var img = '<img class="' + esc(options.className || "") + '" src="' + esc(src) + '" alt="' + esc(options.alt || "") + '"' + size + priority + ' loading="' + (options.eager ? "eager" : "lazy") + '" decoding="async" style="--fit:' + esc(options.fit || "cover") + ';--pos:' + esc(options.position || "center") + ';" onerror="this.onerror=null;this.src=\'' + fallback + '\';">';
+    return webp ? '<picture><source srcset="' + esc(webp) + '" type="image/webp">' + img + '</picture>' : img;
   }
 
   function pageHero(config) {
@@ -383,12 +387,41 @@
   function renderProfile(root) {
     var id = new URLSearchParams(window.location.search).get("id");
     var people = data().PEOPLE || [];
-    var person = people.find(function (item) { return item.id === id; }) || people[0];
+    var person = id ? people.find(function (item) { return item.id === id; }) : null;
     if (!person) {
-      root.innerHTML = pageHero({ key: "profile", eyebrow: "PROFILE", title: t("common.noData"), subtitle: "", code: "404" });
+      root.innerHTML = [
+        pageHero({ key: "profile", eyebrow: "404", title: lang() === "zh" ? "未找到成员" : "Member Not Found", subtitle: lang() === "zh" ? "该成员不存在或已下线" : "This member does not exist or has been removed", code: "404" }),
+        '<section class="section"><div class="container" style="text-align:center">',
+        '<p>' + esc(lang() === "zh" ? "您访问的成员页面不存在。" : "The member page you are looking for does not exist.") + '</p>',
+        '<div class="section-actions reveal"><a class="btn btn-primary" href="people.html">' + esc(t("common.backPeople")) + '</a></div>',
+        '</div></section>'
+      ].join("");
+      document.title = "404 | CVPR-Lab";
       return;
     }
     document.title = L(person.name) + " | CVPR-Lab";
+    var profileDesc = lang() === "zh"
+      ? (L(person.name) + "，" + L(person.role) + "。" + L(person.bio).slice(0, 80))
+      : (L(person.name) + ", " + L(person.role) + ". " + L(person.bio).slice(0, 120));
+    var jsonLdProfile = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: L(person.name),
+      jobTitle: L(person.role),
+      url: window.location.href,
+      image: person.avatar,
+      email: person.email && person.email !== "TODO" ? "mailto:" + person.email : undefined,
+      sameAs: person.homepage ? [person.homepage] : [],
+      affiliation: { "@type": "CollegeOrUniversity", name: "Qufu Normal University" },
+      description: profileDesc
+    };
+    injectPageMeta({
+      title: document.title,
+      description: profileDesc,
+      image: person.avatar,
+      type: "profile",
+      jsonLd: jsonLdProfile
+    });
     root.innerHTML = [
       pageHero({ key: "profile", eyebrow: "RESEARCHER DIGITAL PROFILE", title: L(person.name), subtitle: L(person.role), code: "PROFILE" }),
       '<section class="section"><div class="container profile-layout">',
@@ -462,12 +495,39 @@
   function renderArticle(root) {
     var id = new URLSearchParams(window.location.search).get("id");
     var items = data().NEWS || [];
-    var item = items.find(function (entry) { return entry.id === id; }) || items[0];
+    var item = id ? items.find(function (entry) { return entry.id === id; }) : null;
     if (!item) {
-      root.innerHTML = pageHero({ key: "article", eyebrow: "ARTICLE", title: t("common.noData"), subtitle: "", code: "404" });
+      root.innerHTML = [
+        pageHero({ key: "article", eyebrow: "404", title: lang() === "zh" ? "未找到文章" : "Article Not Found", subtitle: lang() === "zh" ? "该文章不存在或已下线" : "This article does not exist or has been removed", code: "404" }),
+        '<section class="section"><div class="container" style="text-align:center">',
+        '<p>' + esc(lang() === "zh" ? "您访问的文章不存在。" : "The article you are looking for does not exist.") + '</p>',
+        '<div class="section-actions reveal"><a class="btn btn-primary" href="news.html">' + esc(t("common.backNews")) + '</a></div>',
+        '</div></section>'
+      ].join("");
+      document.title = "404 | CVPR-Lab";
       return;
     }
     document.title = L(item.title) + " | CVPR-Lab";
+    var articleDesc = L(item.summary);
+    var jsonLdArticle = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: L(item.title),
+      description: articleDesc,
+      datePublished: item.date,
+      url: window.location.href,
+      image: item.image,
+      keywords: (item.tags && item.tags[lang()]) ? item.tags[lang()].join(", ") : "",
+      publisher: { "@type": "Organization", name: "CVPR-Lab", url: window.location.origin },
+      mainEntityOfPage: { "@type": "WebPage", url: window.location.href }
+    };
+    injectPageMeta({
+      title: document.title,
+      description: articleDesc,
+      image: item.image,
+      type: "article",
+      jsonLd: jsonLdArticle
+    });
     root.innerHTML = [
       pageHero({ key: "article", eyebrow: L(item.category), title: L(item.title), subtitle: item.date, code: "READ" }),
       '<section class="section"><div class="container article-layout">',
@@ -482,17 +542,93 @@
   }
 
   function renderContact(root) {
-    var contactEmail = "hanxiang@qfnu.edu.cn";
+    var contact = data().CONTACT || {};
+    var contactEmail = contact.email || "";
+    var contactPhone = contact.phone || "";
+    var contactAddress = L(contact.address);
+    var admissionsDesc = L(contact.admissions);
+    var collabDesc = L(contact.collaboration);
+    var wechat = contact.wechat || {};
     root.innerHTML = [
-      pageHero({ key: "contact", eyebrow: "CONTACT CONSOLE", title: lang() === "zh" ? "通信控制台" : "Contact Console", subtitle: lang() === "zh" ? "招生、合作与学术交流入口，保留待核验信息占位。" : "Admissions, collaboration, and academic exchange entry points with verified-data placeholders.", code: "COMMS" }),
+      pageHero({ key: "contact", eyebrow: "CONTACT CONSOLE", title: lang() === "zh" ? "通信控制台" : "Contact Console", subtitle: lang() === "zh" ? "招生、合作与学术交流入口。" : "Entry point for admissions, collaboration, and academic exchange.", code: "COMMS" }),
       '<section class="section"><div class="container contact-grid">',
-      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-node"></span><h2>' + esc(lang() === "zh" ? "联系信息" : "Contact Information") + '</h2><p>' + esc(contactEmail) + '</p><button class="btn btn-ghost" type="button" data-copy-value="' + esc(contactEmail) + '">' + esc(t("common.copy")) + '</button><p class="muted">' + esc(lang() === "zh" ? "地址：曲阜师范大学（日照校区）（来自旧站页脚，建议核验）" : "Address: Qufu Normal University (Rizhao Campus), from the legacy footer and should be verified.") + '</p><p class="muted">' + esc(lang() === "zh" ? "电话：137-9157-1602（来自旧站页脚，建议核验）" : "Phone: 137-9157-1602, from the legacy footer and should be verified.") + '</p></article>',
-      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-satellite"></span><h2>' + esc(lang() === "zh" ? "招生方向" : "Admissions") + '</h2><p>' + esc(t("common.todo")) + '</p><div class="signal-bars"><i></i><i></i><i></i><i></i></div></article>',
-      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-scan"></span><h2>' + esc(lang() === "zh" ? "合作交流" : "Collaboration") + '</h2><p>' + esc(t("common.todo")) + '</p><div class="signal-bars"><i></i><i></i><i></i><i></i></div></article>',
-      '  <article class="map-console glass-card reveal" data-tilt><div class="radar"><span></span><span></span><span></span><b></b></div><h2>' + esc(lang() === "zh" ? "坐标网格" : "Coordinate Grid") + '</h2><p>' + esc(t("common.todo")) + '</p></article>',
-      '  <article class="qr-console glass-card reveal" data-tilt><div class="qr-frame">' + imageTag({ src: "images/index/index_footer_WeChat.png", alt: lang() === "zh" ? "微信公众号二维码，建议核验" : "WeChat QR code, should be verified", fit: "contain", position: "center" }) + '</div><h2>' + esc(lang() === "zh" ? "二维码通道" : "QR Channel") + '</h2><p>' + esc(lang() === "zh" ? "旧站已有二维码图片，建议核验后继续使用。" : "A QR image exists in the legacy site and should be verified before official use.") + '</p></article>',
+      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-node"></span><h2>' + esc(lang() === "zh" ? "联系信息" : "Contact Information") + '</h2><p>' + esc(contactEmail) + '</p><button class="btn btn-ghost" type="button" data-copy-value="' + esc(contactEmail) + '">' + esc(t("common.copy")) + '</button><p class="muted">' + esc(lang() === "zh" ? "电话：" : "Phone: ") + esc(contactPhone) + '</p><p class="muted">' + esc(lang() === "zh" ? "地址：" : "Address: ") + esc(contactAddress) + '</p></article>',
+      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-satellite"></span><h2>' + esc(lang() === "zh" ? "招生方向" : "Admissions") + '</h2><p>' + esc(admissionsDesc) + '</p><div class="signal-bars"><i></i><i></i><i></i><i></i></div></article>',
+      '  <article class="contact-card glass-card reveal" data-tilt><span class="tech-icon tech-icon-scan"></span><h2>' + esc(lang() === "zh" ? "合作交流" : "Collaboration") + '</h2><p>' + esc(collabDesc) + '</p><div class="signal-bars"><i></i><i></i><i></i><i></i></div></article>',
+      '  <article class="map-console glass-card reveal" data-tilt><div class="radar"><span></span><span></span><span></span><b></b></div><h2>' + esc(lang() === "zh" ? "坐标网格" : "Coordinate Grid") + '</h2><p>' + esc(lang() === "zh" ? '曲阜师范大学日照校区 · 山东省日照市烟台北路 80 号' : 'Qufu Normal University Rizhao Campus · 80 North Yantai Road, Rizhao, Shandong') + '</p></article>',
+      '  <article class="qr-console glass-card reveal" data-tilt><div class="qr-frame">' + imageTag({ src: wechat.image, alt: lang() === "zh" ? "CVPR 实验室微信公众号二维码" : "CVPR Lab WeChat QR", fit: "contain", position: "center" }) + '</div><h2>' + esc(lang() === "zh" ? "二维码通道" : "QR Channel") + '</h2><p>' + esc(L(wechat.label)) + '</p></article>',
       '</div></section>'
     ].join("");
+  }
+
+  function injectPageMeta(opts) {
+    var canonicalUrl = new URL(window.location.href);
+    canonicalUrl.searchParams.delete("lang");
+    canonicalUrl.hash = "";
+    var url = canonicalUrl.href;
+    var title = opts.title || document.title;
+    var description = opts.description || "";
+    var image = new URL(opts.image || "images/index/index_slideshow_01.png", window.location.href).href;
+    var type = opts.type || "website";
+    var removeSelector = 'meta[name="description"],meta[property^="og:"],meta[name^="twitter:"]';
+    document.querySelectorAll(removeSelector).forEach(function (el) { el.parentNode.removeChild(el); });
+    var setMeta = function (attr, key, value) {
+      if (!value) return;
+      var meta = document.createElement("meta");
+      meta.setAttribute(attr, key);
+      meta.setAttribute("content", value);
+      document.head.appendChild(meta);
+    };
+    setMeta("name", "description", description);
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", type);
+    setMeta("property", "og:url", url);
+    setMeta("property", "og:image", image);
+    setMeta("property", "og:site_name", "CVPR-Lab");
+    setMeta("property", "og:locale", lang() === "zh" ? "zh_CN" : "en_US");
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", image);
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", url);
+    if (opts.jsonLd) {
+      var ld = document.createElement("script");
+      ld.type = "application/ld+json";
+      ld.text = JSON.stringify(opts.jsonLd);
+      ld.id = "ld-json-page";
+      var existing = document.getElementById("ld-json-page");
+      if (existing) existing.parentNode.removeChild(existing);
+      document.head.appendChild(ld);
+    }
+  }
+
+  var META_MAP = {
+    people: {
+      title: "团队成员 | CVPR-Lab",
+      description: lang() === "zh" ? "CVPR 计算机视觉与模式识别实验室团队成员，包括教师、研究生、毕业生。" : "CVPR Lab members — faculty, graduate students, and alumni."
+    },
+    news: {
+      title: "新闻动态 | CVPR-Lab",
+      description: lang() === "zh" ? "CVPR 实验室新闻动态、学术前沿与常见问题。" : "CVPR Lab news, research frontiers, and FAQ."
+    },
+    contact: {
+      title: "联系我们 | CVPR-Lab",
+      description: lang() === "zh" ? "CVPR 实验室联系信息、招生方向与合作交流。" : "CVPR Lab contact, admissions, and collaboration."
+    }
+  };
+
+  function applyStaticMeta(page) {
+    var cfg = META_MAP[page];
+    if (!cfg) return;
+    document.title = cfg.title;
+    injectPageMeta({ title: cfg.title, description: cfg.description, type: "website" });
   }
 
   function init() {
@@ -510,6 +646,7 @@
       article: renderArticle,
       contact: renderContact
     };
+    applyStaticMeta(page);
     (renderers[page] || renderHome)(root);
   }
 
