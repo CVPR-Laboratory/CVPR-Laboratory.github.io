@@ -8,6 +8,15 @@
   background: var(--color-bg);
   color: var(--color-primary);
   transition: opacity 420ms ease, visibility 420ms ease;
+  animation: loader-failsafe 1ms linear 8s forwards;
+}
+
+@keyframes loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .site-loader span {

@@ -79,6 +79,7 @@ Run the static validation before publishing:
 python scripts/optimize-images.py
 node scripts/build-sitemap.mjs
 node scripts/check-static.mjs
+python scripts/check-dois.py --proxy http://127.0.0.1:7897
 ```
 
 Release, rollback, content, media, privacy, URL migration, testing and known limitations are documented in `docs/`.

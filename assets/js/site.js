@@ -121,7 +121,8 @@
 
   function removeLoader() {
     var loader = document.getElementById("site-loader");
-    if (!loader) return;
+    if (!loader || loader.getAttribute("data-closing") === "true") return;
+    loader.setAttribute("data-closing", "true");
     setTimeout(function () {
       loader.classList.add("is-hidden");
       setTimeout(function () { loader.remove(); }, 420);
@@ -129,31 +130,38 @@
   }
 
   function boot() {
-    window.CVPR.components.renderChrome();
-    window.CVPR.i18n.init();
-    window.CVPR.render.init();
-    window.CVPR.i18n.apply();
-    window.CVPR.theme.initControls();
-    bindInteractions();
-    window.CVPR.effects.init();
-    removeLoader();
-
-    window.addEventListener("cvpr:languagechange", function () {
+    try {
+      window.CVPR.components.renderChrome();
+      window.CVPR.i18n.init();
       window.CVPR.render.init();
       window.CVPR.i18n.apply();
-      window.CVPR.theme.updateControls();
-      window.CVPR.effects.refresh();
-    });
+      window.CVPR.theme.initControls();
+      bindInteractions();
+      window.CVPR.effects.init();
 
-    if (window.location.hash) {
-      setTimeout(function () {
-        var target = document.querySelector(window.location.hash);
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 250);
+      window.addEventListener("cvpr:languagechange", function () {
+        window.CVPR.render.init();
+        window.CVPR.i18n.apply();
+        window.CVPR.theme.updateControls();
+        window.CVPR.effects.refresh();
+      });
+
+      if (window.location.hash) {
+        setTimeout(function () {
+          var target = document.querySelector(window.location.hash);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 250);
+      }
+    } catch (error) {
+      console.error("CVPR-Lab page initialization failed", error);
+    } finally {
+      removeLoader();
     }
   }
 
   document.addEventListener("DOMContentLoaded", boot);
+  window.addEventListener("load", removeLoader);
+  setTimeout(removeLoader, 5000);
 
   window.CVPR.site = {
     boot: boot
