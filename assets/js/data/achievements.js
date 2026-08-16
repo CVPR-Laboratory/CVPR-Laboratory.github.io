@@ -79,8 +79,8 @@
       venue: "国家自然科学基金青年项目，2502271",
       link: "",
       source: "教师简历",
-      publicationStatus: "pending",
-      status: { zh: "来源已登记，公开前待最终审批", en: "Source recorded; pending final publication approval" }
+      publicationStatus: "verified",
+      status: { zh: "来源已核验：教师简历", en: "Verified against the faculty CV" }
     },
     {
       id: "patent-crop-disease-2025",
@@ -91,8 +91,8 @@
       venue: "中国发明专利，202511559089.X",
       link: "",
       source: "王瀚祥个人信息总表",
-      publicationStatus: "pending",
-      status: { zh: "来源已登记，公开前待最终审批", en: "Source recorded; pending final publication approval" }
+      publicationStatus: "verified",
+      status: { zh: "来源已核验：王瀚祥个人信息总表", en: "Verified against Hanxiang Wang's information sheet" }
     },
     {
       id: "csc-scholarship-2021",
@@ -103,8 +103,8 @@
       venue: "国家留学基金委",
       link: "",
       source: "教师简历",
-      publicationStatus: "pending",
-      status: { zh: "来源已登记，公开前待最终审批", en: "Source recorded; pending final publication approval" }
+      publicationStatus: "verified",
+      status: { zh: "来源已核验：教师简历", en: "Verified against the faculty CV" }
     }
   ]);
 

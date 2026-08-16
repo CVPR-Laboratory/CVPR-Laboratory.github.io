@@ -59,9 +59,9 @@
         motto: "慧眼识界，智算万物",
         intro: "面向智能感知、计算机视觉与模式识别前沿问题的科研实验室网站。",
         contact: "联系信息",
-        address: "地址待内容负责人核验后公开",
-        email: "邮箱待内容负责人核验后公开",
-        phone: "电话待内容负责人核验后公开",
+        address: "山东省日照市烟台北路 80 号，曲阜师范大学日照校区",
+        email: "hanxiang@qfnu.edu.cn",
+        phone: "137-9157-1602",
         copyright: "CVPR-Laboratory. 静态网站可部署于 GitHub Pages。"
       }
     },
@@ -120,9 +120,9 @@
         motto: "Vision Intelligence for a Connected World",
         intro: "A static research laboratory website for intelligent perception, computer vision, and pattern recognition.",
         contact: "Contact",
-        address: "Address pending content review.",
-        email: "Email pending content review.",
-        phone: "Phone pending content review.",
+        address: "80 North Yantai Road, Qufu Normal University Rizhao Campus, Rizhao, Shandong",
+        email: "hanxiang@qfnu.edu.cn",
+        phone: "137-9157-1602",
         copyright: "CVPR-Laboratory. Static website ready for GitHub Pages."
       }
     }

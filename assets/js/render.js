@@ -297,27 +297,19 @@
       ["images/index/index_slideshow_05.png", lang() === "zh" ? "实验室相册图片" : "Laboratory gallery image", "cover", "center"]
     ];
     var timeline = lang() === "zh" ? [
-      ["2020", "旧站资料显示：实验室正式成立，首批研究生入学。"],
-      ["2021", "发展节点待资料核验后补充。"],
-      ["2022", "发展节点待资料核验后补充。"],
-      ["2023", "发展节点待资料核验后补充。"],
-      ["2024", "发展节点待资料核验后补充。"]
+      ["2020", "旧站资料显示：实验室正式成立，首批研究生入学。"]
     ] : [
-      ["2020", "Existing site data indicates the lab was established and the first postgraduate cohort joined."],
-      ["2021", "Milestone pending content review."],
-      ["2022", "Milestone pending content review."],
-      ["2023", "Milestone pending content review."],
-      ["2024", "Milestone pending content review."]
+      ["2020", "Existing site data indicates the lab was established and the first postgraduate cohort joined."]
     ];
     root.innerHTML = [
       pageHero({ key: "about", eyebrow: "DIGITAL ARCHIVE", title: lang() === "zh" ? "实验室数字档案馆" : "Laboratory Digital Archive", subtitle: lang() === "zh" ? "从发展定位、研究特色到团队文化，构建可持续维护的科研档案。" : "A maintainable research archive for mission, research features, culture, and activities.", code: "ARCHIVE" }),
       '<section class="section"><div class="container archive-grid">',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">PROFILE</span><h2>' + esc(lang() === "zh" ? "实验室简介" : "Lab Profile") + '</h2><p>' + esc(lang() === "zh" ? "CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，旧站资料显示成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。完整简介待资料核验后补充。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University according to existing site data, and the old page states that it was established in 2020. The lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. The complete profile is pending content review.") + '</p></article>',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">POSITIONING</span><h2>' + esc(lang() === "zh" ? "发展定位" : "Mission") + '</h2><p>' + esc(lang() === "zh" ? "面向智能视觉、数字农业、遥感解译、医学影像和红外感知等交叉场景，建设具有科研创新、人才培养和技术转化能力的实验室。具体表述待资料核验后完善。" : "The lab aims to address intelligent vision, digital agriculture, remote-sensing interpretation, medical imaging, and infrared perception. Detailed mission wording is pending content review.") + '</p></article>',
-      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">FEATURES</span><h2>' + esc(lang() === "zh" ? "研究特色" : "Research Features") + '</h2><p>' + esc(lang() === "zh" ? "围绕小目标、细粒度、复杂背景、多尺度和跨模态等关键视觉问题，构建从算法设计到场景应用的研究链路。具体特色待资料核验后完善。" : "The research frame connects algorithm design with scenario applications around small objects, fine-grained cues, complex backgrounds, multi-scale features, and multimodal perception. Detailed features are pending content review.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">PROFILE</span><h2>' + esc(lang() === "zh" ? "实验室简介" : "Lab Profile") + '</h2><p>' + esc(lang() === "zh" ? "CVPR实验室（Computer Vision and Pattern Recognition Laboratory）依托曲阜师范大学计算机学院，旧站资料显示成立于2020年。实验室致力于计算机视觉、模式识别、深度学习及智慧农业等领域的前沿研究，旨在培养具有创新能力和国际视野的高层次人才。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University according to existing site data, and the old page states that it was established in 2020. The lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">POSITIONING</span><h2>' + esc(lang() === "zh" ? "发展定位" : "Mission") + '</h2><p>' + esc(lang() === "zh" ? "面向智能视觉、数字农业、遥感解译、医学影像和红外感知等交叉场景，建设具有科研创新、人才培养和技术转化能力的实验室。" : "The lab aims to address intelligent vision, digital agriculture, remote-sensing interpretation, medical imaging, and infrared perception through research innovation, talent development, and technology transfer.") + '</p></article>',
+      '  <article class="glass-card archive-copy reveal" data-tilt><span class="eyebrow">FEATURES</span><h2>' + esc(lang() === "zh" ? "研究特色" : "Research Features") + '</h2><p>' + esc(lang() === "zh" ? "围绕小目标、细粒度、复杂背景、多尺度和跨模态等关键视觉问题，构建从算法设计到场景应用的研究链路。" : "The research frame connects algorithm design with scenario applications around small objects, fine-grained cues, complex backgrounds, multi-scale features, and multimodal perception.") + '</p></article>',
       '</div></section>',
       '<section class="section"><div class="container">',
-      sectionTitle("TIMELINE", lang() === "zh" ? "发展历程" : "Development Timeline", lang() === "zh" ? "滚动时节点依次点亮，待核验节点以审慎状态展示。" : "Timeline nodes light up on scroll, with pending milestones shown conservatively."),
+      sectionTitle("TIMELINE", lang() === "zh" ? "发展历程" : "Development Timeline", lang() === "zh" ? "记录现有资料中可追溯的发展节点。" : "Traceable milestones from the available laboratory records."),
       '  <div class="timeline">' + timeline.map(function (item) { return '<article class="timeline-item reveal"><span>' + esc(item[0]) + '</span><p>' + esc(item[1]) + '</p></article>'; }).join("") + '</div>',
       '</div></section>',
       '<section class="section"><div class="container">',
