@@ -61,6 +61,21 @@ for (const source of ["assets/js/data/research.js", "assets/js/data/achievements
   if (/TODO[:：]/i.test(fs.readFileSync(path.join(root, source), "utf8"))) errors.push(`${source}: public TODO marker found`);
 }
 
+const obsoletePublicCopy = [
+  "真实信息待核验后公开",
+  "待内容负责人核验后公开",
+  "来源已登记，公开前待最终审批",
+  "Verified information will be published after review.",
+  "pending final publication approval",
+  "pending content review"
+];
+for (const source of ["assets/js/i18n.js", "assets/js/render.js", "assets/js/data/achievements.js"]) {
+  const content = fs.readFileSync(path.join(root, source), "utf8");
+  for (const phrase of obsoletePublicCopy) {
+    if (content.includes(phrase)) errors.push(`${source}: obsolete public placeholder found: ${phrase}`);
+  }
+}
+
 if (errors.length) {
   console.error([...new Set(errors)].join("\n"));
   process.exit(1);

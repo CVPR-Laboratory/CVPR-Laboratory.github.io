@@ -22,7 +22,7 @@
   }
 
   function pendingText() {
-    return lang() === "zh" ? "待核验内容暂未公开" : "Verified content pending publication";
+    return "";
   }
 
   function cleanDisplayValue(value) {
@@ -176,12 +176,12 @@
     var doi = item.doi ? '<span>DOI: ' + esc(item.doi) + '</span>' : "";
     return [
       '<article class="achievement-item glass-card reveal filter-item" data-category="' + esc(item.type) + '" data-tilt style="--delay:' + (index * 50) + 'ms">',
-      '  <div class="achievement-year">' + esc(item.year || (lang() === "zh" ? "待核验" : "Pending")) + '</div>',
+      '  <div class="achievement-year">' + esc(item.year || "—") + '</div>',
       '  <div class="achievement-body">',
       '    <span class="category-code">' + esc(t("common." + (item.type === "paper" ? "publications" : item.type + "s"), item.type)) + '</span>',
       '    <h3>' + esc(L(item.title)) + '</h3>',
       description ? '    <p>' + esc(description) + '</p>' : "",
-      '    <div class="achievement-meta"><span>' + esc(item.authors || (lang() === "zh" ? "待核验" : "Pending")) + '</span><span>' + esc(item.venue || (lang() === "zh" ? "待核验" : "Pending")) + '</span>' + doi + '<span>' + esc(L(item.status)) + '</span></div>',
+      '    <div class="achievement-meta"><span>' + esc(item.authors || "—") + '</span><span>' + esc(item.venue || "—") + '</span>' + doi + '<span>' + esc(L(item.status)) + '</span></div>',
       link,
       '  </div>',
       '</article>'
@@ -243,7 +243,7 @@
       '    <div class="glass-card large-copy reveal" data-tilt>',
       '      <span class="eyebrow">LAB PROFILE</span>',
       '      <h2 class="gradient-text">' + esc(lang() === "zh" ? "面向未来智能感知的视觉实验室" : "A Vision Lab for Future Intelligent Perception") + '</h2>',
-      '      <p>' + esc(lang() === "zh" ? "CVPR实验室聚焦计算机视觉、模式识别、深度学习及智慧农业等方向，旧站资料显示实验室依托曲阜师范大学计算机学院。完整介绍将在资料核验后继续补充。" : "CVPR-Lab focuses on computer vision, pattern recognition, deep learning, and smart agriculture. Existing site data indicates affiliation with the School of Computer Science at Qufu Normal University. The complete profile will be expanded after content review.") + '</p>',
+      '      <p>' + esc(lang() === "zh" ? "CVPR实验室聚焦计算机视觉、模式识别、深度学习及智慧农业等方向，依托曲阜师范大学计算机学院开展科研创新与人才培养。" : "CVPR-Lab is affiliated with the School of Computer Science at Qufu Normal University and focuses on computer vision, pattern recognition, deep learning, and smart agriculture.") + '</p>',
       '    </div>',
       '    <div class="metric-grid">' + statCards() + '</div>',
       '  </div>',
@@ -270,7 +270,7 @@
       '</section>',
       '<section class="section">',
       '  <div class="container">',
-      sectionTitle("RESEARCH FEED", lang() === "zh" ? "新闻动态信息流" : "Research Feed", lang() === "zh" ? "新闻事实留待补充，视觉系统先完成可维护信息流框架。" : "A maintainable news feed frame with verified content placeholders."),
+      sectionTitle("RESEARCH FEED", lang() === "zh" ? "新闻动态信息流" : "Research Feed", lang() === "zh" ? "汇集实验室动态、学术前沿与科研进展。" : "Laboratory updates, research frontiers, and scientific progress."),
       '    <div class="news-grid">' + news.map(newsCard).join("") + '</div>',
       '  </div>',
       '</section>',
@@ -279,7 +279,7 @@
       '    <div class="glass-card cta-panel reveal" data-tilt>',
       '      <span class="eyebrow">JOIN / COLLABORATE</span>',
       '      <h2 class="gradient-text">' + esc(lang() === "zh" ? "招生与合作交流" : "Admissions and Collaboration") + '</h2>',
-      '      <p>' + esc(t("common.todo")) + '</p>',
+      '      <p>' + esc(lang() === "zh" ? "实验室面向计算机视觉、深度学习、智慧农业、医学影像分析与遥感目标检测等方向开展招生和合作交流。" : "The lab welcomes admissions and collaboration in computer vision, deep learning, smart agriculture, medical image analysis, and remote sensing object detection.") + '</p>',
       '      <a class="btn btn-primary" href="contact.html">' + esc(t("nav.contact")) + '</a>',
       '    </div>',
       '  </div>',
@@ -352,7 +352,7 @@
           '      <div><h3>' + esc(lang() === "zh" ? "方法" : "Methods") + '</h3><ul>' + list(L(item.topics)) + '</ul></div>',
           '      <div><h3>' + esc(lang() === "zh" ? "应用" : "Applications") + '</h3><ul>' + list(L(item.applications)) + '</ul></div>',
           '    </div>',
-          '    <div class="research-records"><p><b>' + esc(lang() === "zh" ? "成员：" : "Members: ") + '</b>' + esc((item.members || []).join(", ") || (lang() === "zh" ? "待公开核验" : "Pending public verification")) + '</p><p><b>' + esc(lang() === "zh" ? "代表成果：" : "Representative achievements: ") + '</b>' + esc(achievementTitles(item.representativeAchievements).join("; ") || (lang() === "zh" ? "待公开核验" : "Pending public verification")) + '</p><p><b>' + esc(lang() === "zh" ? "更新：" : "Updated: ") + '</b>' + esc(item.updatedAt || "") + '</p></div>',
+          '    <div class="research-records">' + ((item.members || []).length ? '<p><b>' + esc(lang() === "zh" ? "成员：" : "Members: ") + '</b>' + esc(item.members.join(", ")) + '</p>' : "") + (achievementTitles(item.representativeAchievements).length ? '<p><b>' + esc(lang() === "zh" ? "代表成果：" : "Representative achievements: ") + '</b>' + esc(achievementTitles(item.representativeAchievements).join("; ")) + '</p>' : "") + (item.updatedAt ? '<p><b>' + esc(lang() === "zh" ? "更新：" : "Updated: ") + '</b>' + esc(item.updatedAt) + '</p>' : "") + '</div>',
           '    <p class="research-caption">' + esc(L(item.caption)) + '</p>',
           '  </div>',
           '</article>'
@@ -423,7 +423,7 @@
       '    <p>' + esc(L(person.role)) + '</p>',
       chips(L(person.research)),
       '    <div class="profile-actions">',
-      person.email && person.email !== "TODO" ? '<a class="btn btn-ghost" href="mailto:' + esc(person.email) + '">' + esc(person.email) + '</a>' : '<span class="todo-line">' + esc(t("common.todo")) + '</span>',
+      person.email && person.email !== "TODO" ? '<a class="btn btn-ghost" href="mailto:' + esc(person.email) + '">' + esc(person.email) + '</a>' : "",
       person.cv ? '<a class="btn btn-primary" href="' + esc(person.cv) + '" target="_blank" rel="noopener">' + esc(lang() === "zh" ? "查看简历" : "View CV") + '</a>' : "",
       person.homepage ? '<a class="btn btn-ghost" href="' + esc(person.homepage) + '" target="_blank" rel="noopener">' + esc(lang() === "zh" ? "学术主页" : "Academic Profile") + '</a>' : "",
       '    </div>',
@@ -444,7 +444,11 @@
   }
 
   function profileListSection(title, items) {
-    return '<article class="profile-section glass-card reveal"><h2>' + esc(title) + '</h2><ul class="signal-list">' + list(items || [t("common.todo")]) + '</ul></article>';
+    var confirmed = (items || []).map(sanitizeText).filter(function (item) {
+      return item && !/(待补充|待核验|pending(?: verification)?)/i.test(item);
+    });
+    if (!confirmed.length) return "";
+    return '<article class="profile-section glass-card reveal"><h2>' + esc(title) + '</h2><ul class="signal-list">' + list(confirmed) + '</ul></article>';
   }
 
   function renderAchievements(root) {
