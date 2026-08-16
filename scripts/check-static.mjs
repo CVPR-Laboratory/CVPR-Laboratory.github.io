@@ -75,9 +75,15 @@ const obsoletePublicCopy = [
   "统计从成果数据自动生成",
   "organized through detection boxes",
   "aspect-aware cropping and robust fallbacks",
-  "Mixed image ratios use an adaptive gallery"
+  "Mixed image ratios use an adaptive gallery",
+  "旧站资料显示",
+  "Existing site data indicates",
+  "the old page states",
+  "记录现有资料中可追溯",
+  "获得可公开证据后补充",
+  "retained from the existing site"
 ];
-for (const source of ["assets/js/i18n.js", "assets/js/render.js", "assets/js/data/achievements.js"]) {
+for (const source of ["assets/js/i18n.js", "assets/js/render.js", "assets/js/data/achievements.js", "assets/js/data/research.js"]) {
   const content = fs.readFileSync(path.join(root, source), "utf8");
   for (const phrase of obsoletePublicCopy) {
     if (content.includes(phrase)) errors.push(`${source}: obsolete public placeholder found: ${phrase}`);

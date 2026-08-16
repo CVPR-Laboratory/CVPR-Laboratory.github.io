@@ -71,7 +71,7 @@
       icon: "thermal",
       title: { zh: "红外目标检测", en: "Infrared Target Detection" },
       subtitle: { zh: "低对比度、弱纹理与复杂环境下的红外视觉感知", en: "Infrared visual perception under low contrast, weak texture, and complex environments" },
-      description: { zh: "该方向保留原网站的稳定研究入口，聚焦红外小目标增强、背景杂波抑制与复杂环境下的鲁棒检测；代表论文将在获得可公开证据后补充。", en: "This stable research entry is retained from the existing site. It focuses on infrared small-target enhancement, clutter suppression, and robust detection; representative publications will be added after public evidence is available." },
+      description: { zh: "聚焦红外小目标增强、背景杂波抑制与复杂环境下的鲁棒检测。", en: "Focuses on infrared small-target enhancement, clutter suppression, and robust detection in complex environments." },
       keyProblems: { zh: ["弱小目标与低对比度", "复杂背景杂波干扰", "夜间和恶劣天气中的有限纹理信息"], en: ["Small low-contrast targets", "Complex background clutter", "Limited texture cues at night and in adverse weather"] },
       topics: { zh: ["小目标增强", "背景杂波抑制", "多尺度上下文建模"], en: ["Small-target enhancement", "Background clutter suppression", "Multi-scale context modeling"] },
       applications: { zh: ["夜间感知", "低可见度监测", "复杂环境目标识别"], en: ["Night-time perception", "Low-visibility monitoring", "Complex-environment target recognition"] },
