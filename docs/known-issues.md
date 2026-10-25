@@ -1,6 +1,9 @@
-# Known Issues
+# 已知限制与后续资料
 
-- Dynamic profile and article URLs use query parameters. Their generic templates have static fallback metadata; JavaScript replaces title, canonical, Open Graph and JSON-LD metadata after loading. Crawlers without JavaScript may only see the template metadata.
-- GitHub Pages provides no server-side redirects or custom response rules. Legacy pages are retained and excluded in `robots.txt` during migration.
-- Some member details remain intentionally withheld pending individual confirmation. This is represented by `verified-partial` in data and is not a rendering failure.
-- Event-specific photographs are unavailable for several news entries, so approved repository images are reused as non-deceptive generic illustrations.
+- 学术活动、新闻、研究图片仍使用仓库已有资料；缺少逐事件照片或论文实图时，未伪造素材。后续替换清单见 `media-register.md`。
+- 6 条新闻/前沿记录和 6 条 FAQ 存在具体冲突或缺少支持材料，暂不公开，原始数据保留。详见 `content-review.md`。
+- 现有教师职称、成员年级、学生在读状态沿用原始资料；需要人员负责人维护最新状态。
+- 语言切换和筛选需要 JavaScript；主页面、成员和公开文章已有静态正文。旧 query 参数详情页在无 JavaScript 时显示入口/空状态，应使用独立 profiles/articles 页进行分享和索引。
+- 不提供后端站内全文索引；成果搜索覆盖标题、作者、期刊/会议和 DOI，新闻搜索覆盖标题、摘要。
+- 没有真实用户 INP 数据，没有宣称移动网络 LCP/CLS/INP 达标。测试采用本机浏览器，不能替代正式发布后的网络性能实测。
+- 旧版 `legacy/` 资源为兼容和归档保留，当前导航不调用它们，robots 排除索引。GitHub Pages 不支持服务器端自定义重定向。

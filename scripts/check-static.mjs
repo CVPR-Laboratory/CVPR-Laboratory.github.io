@@ -1,101 +1,114 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
-
-const root = process.cwd();
-const corePages = ["index.html", "about.html", "research.html", "people.html", "achievements.html", "news.html", "contact.html", "profile.html", "article.html"];
-const requiredDocs = ["content-maintenance.md", "media-register.md", "media-register.csv", "privacy-authorization.md", "url-migration.md", "test-report.md", "deployment.md", "todo.md", "known-issues.md"];
-const errors = [];
-
-if (/\bsanitizeText\b/.test(fs.readFileSync(path.join(root, "assets/js/render.js"), "utf8"))) {
-  errors.push("assets/js/render.js: obsolete undefined sanitizeText reference found");
-}
-
-function exactPath(relativePath) {
-  const parts = relativePath.replaceAll("\\", "/").split("/").filter(Boolean);
+const root = process.cwd(),
+  errors = [];
+const context = { window: {}, URLSearchParams, Date };
+vm.createContext(context);
+for (const file of fs
+  .readdirSync("assets/js/data")
+  .filter((n) => n.endsWith(".js") && n !== "editorial.js")
+  .concat("editorial.js"))
+  vm.runInContext(fs.readFileSync("assets/js/data/" + file, "utf8"), context);
+vm.runInContext(fs.readFileSync("assets/js/portal.js", "utf8"), context);
+const data = context.window.CVPR_DATA,
+  view = context.window.CVPR_VIEW;
+const pages = fs
+  .readdirSync(".")
+  .filter((n) => n.endsWith(".html"))
+  .concat(
+    ...["profiles", "articles"].map((dir) =>
+      fs
+        .readdirSync(dir)
+        .filter((n) => n.endsWith(".html"))
+        .map((n) => dir + "/" + n),
+    ),
+  );
+function exact(file) {
   let current = root;
-  for (const part of parts) {
-    if (!fs.existsSync(current)) return false;
-    const match = fs.readdirSync(current).find((name) => name === part);
-    if (!match) return false;
-    current = path.join(current, match);
+  for (const part of file.replaceAll("\\", "/").split("/").filter(Boolean)) {
+    if (!fs.existsSync(current) || !fs.readdirSync(current).includes(part))
+      return false;
+    current = path.join(current, part);
   }
   return fs.existsSync(current);
 }
-
-function localReference(reference) {
-  if (!reference || /^(https?:|mailto:|tel:|data:|#)/i.test(reference)) return;
-  const clean = reference.split("#")[0].split("?")[0];
-  if (clean && !exactPath(clean)) errors.push(`Missing or case-mismatched path: ${reference}`);
-}
-
-for (const page of fs.readdirSync(root).filter((name) => name.endsWith(".html"))) {
-  const html = fs.readFileSync(path.join(root, page), "utf8");
-  if (!/<title[^>]*>[^<]+<\/title>/i.test(html)) errors.push(`${page}: missing title`);
-  if (!/<meta\s+name="description"/i.test(html)) errors.push(`${page}: missing description`);
-  if (corePages.includes(page)) {
-    if (!/<link\s+rel="canonical"\s+href="https:\/\/cvpr-laboratory\.github\.io\//i.test(html)) errors.push(`${page}: missing absolute canonical URL`);
-    if (!/<meta\s+property="og:title"/i.test(html)) errors.push(`${page}: missing Open Graph metadata`);
-    if (!/id="page-root"/i.test(html)) errors.push(`${page}: missing page root`);
+function reference(page, ref) {
+  if (ref.includes(",") && /\s\d+w/.test(ref)) {
+    for (const candidate of ref.split(",")) reference(page, candidate.trim().split(/\s+/)[0]);
+    return;
   }
-  for (const match of html.matchAll(/(?:src|href)="([^"]+)"/gi)) localReference(match[1]);
+  ref = ref.replaceAll("&amp;", "&");
+  if (/^(https?:|mailto:|tel:|data:|#)/i.test(ref)) return;
+  const local = decodeURI(ref.split(/[?#]/)[0]);
+  if (!local) return;
+  const resolved = path
+    .relative(root, path.resolve(path.dirname(page), local))
+    .replaceAll("\\", "/");
+  if (!exact(resolved))
+    errors.push(page + ": missing or case-mismatched resource " + ref);
 }
-
-const context = { window: {} };
-context.window.CVPR_DATA = {};
-vm.createContext(context);
-for (const file of fs.readdirSync(path.join(root, "assets/js/data")).filter((name) => name.endsWith(".js"))) {
-  vm.runInContext(fs.readFileSync(path.join(root, "assets/js/data", file), "utf8"), context, { filename: file });
+for (const page of pages) {
+  const html = fs.readFileSync(page, "utf8");
+  if ((html.match(/<h1(?:\s|>)/g) || []).length !== 1)
+    errors.push(page + ": expected exactly one H1");
+  for (const pattern of [
+    /<title>.+<\/title>/,
+    /<meta name="description" content="[^"]+"/,
+    /<link rel="canonical" href="https:\/\/cvpr-laboratory.github.io\//,
+    /<meta property="og:image"/,
+    /<header id="site-header">/,
+    /<main id="page-root">/,
+  ])
+    if (!pattern.test(html))
+      errors.push(page + ": missing metadata or landmark " + pattern);
+  for (const match of html.matchAll(/(?:src|href|srcset)="([^"]+)"/g))
+    reference(page, match[1]);
+  if (
+    /site-loader|cursor-glow|data-theme-toggle|effects\.js|theme\.js|<canvas/.test(
+      html,
+    )
+  )
+    errors.push(page + ": retired visual effect is referenced");
 }
-const data = context.window.CVPR_DATA;
-for (const item of [...(data.RESEARCH || []), ...(data.PEOPLE || []), ...(data.NEWS || [])]) {
-  localReference(item.image || item.avatar);
-}
-for (const item of data.NEWS || []) {
-  for (const field of ["author", "source", "updatedAt", "status"]) if (!item[field]) errors.push(`NEWS ${item.id}: missing ${field}`);
-}
-for (const item of data.PEOPLE || []) {
-  for (const field of ["source", "status", "verification"]) if (!item[field]) errors.push(`PEOPLE ${item.id}: missing ${field}`);
-}
-
-const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
-for (const loc of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) if (!loc[1].startsWith("https://cvpr-laboratory.github.io/")) errors.push(`sitemap.xml: non-absolute URL ${loc[1]}`);
-for (const doc of requiredDocs) if (!exactPath(`docs/${doc}`)) errors.push(`Missing maintenance document: docs/${doc}`);
-for (const source of ["assets/js/data/research.js", "assets/js/data/achievements.js"]) {
-  if (/TODO[:：]/i.test(fs.readFileSync(path.join(root, source), "utf8"))) errors.push(`${source}: public TODO marker found`);
-}
-
-const obsoletePublicCopy = [
-  "真实信息待核验后公开",
-  "待内容负责人核验后公开",
-  "来源已登记，公开前待最终审批",
-  "Verified information will be published after review.",
-  "pending final publication approval",
-  "pending content review",
-  "成员头像使用真实竖图比例裁切",
-  "筛选动效组织实验室人员",
-  "masonry-like 网格展示",
-  "静态数据和本地脚本展示",
-  "统计从成果数据自动生成",
-  "organized through detection boxes",
-  "aspect-aware cropping and robust fallbacks",
-  "Mixed image ratios use an adaptive gallery",
-  "旧站资料显示",
-  "Existing site data indicates",
-  "the old page states",
-  "记录现有资料中可追溯",
-  "获得可公开证据后补充",
-  "retained from the existing site"
-];
-for (const source of ["assets/js/i18n.js", "assets/js/render.js", "assets/js/data/achievements.js", "assets/js/data/research.js"]) {
-  const content = fs.readFileSync(path.join(root, source), "utf8");
-  for (const phrase of obsoletePublicCopy) {
-    if (content.includes(phrase)) errors.push(`${source}: obsolete public placeholder found: ${phrase}`);
+for (const lang of ["zh", "en"])
+  for (const p of data.PEOPLE) {
+    const r = view.render("profile", { lang, id: p.id });
+    if (
+      !r.body.includes("profile-summary") ||
+      !r.body.includes("biography") ||
+      !r.body.includes(p.name[lang])
+    )
+      errors.push("Profile failed: " + p.id + " " + lang);
   }
+for (const lang of ["zh", "en"])
+  for (const article of view.publicNews()) {
+    const r = view.render("article", { lang, id: article.id });
+    if (
+      !r.body.includes("article-body") ||
+      !r.body.includes(article.title[lang])
+    )
+      errors.push("Article failed: " + article.id + " " + lang);
+  }
+const all = view.render("achievements", { search: "type=paper&q=Transformer" });
+if (!all.body.includes("publication"))
+  errors.push("Publication search returned no content");
+if (data.ACHIEVEMENTS.filter((a) => a.type === "paper").length !== 44)
+  errors.push("Publication records changed unexpectedly");
+if (data.PEOPLE.length !== 9)
+  errors.push("Member records changed unexpectedly");
+for (const record of data.ACHIEVEMENTS) {
+  if (record.doi && record.link !== "https://doi.org/" + record.doi)
+    errors.push("DOI link mismatch: " + record.id);
 }
-
+const sitemap = fs.readFileSync("sitemap.xml", "utf8");
+for (const loc of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g))
+  if (!loc[1].startsWith("https://cvpr-laboratory.github.io/"))
+    errors.push("Invalid sitemap URL: " + loc[1]);
 if (errors.length) {
   console.error([...new Set(errors)].join("\n"));
   process.exit(1);
 }
-console.log(`Static checks passed for ${corePages.length} core pages, structured data, media paths, sitemap, and maintenance documents.`);
+console.log(
+  `Static integrity passed: ${pages.length} HTML pages, 9 bilingual profiles, ${view.publicNews().length} bilingual articles, 44 papers, paths and metadata.`,
+);

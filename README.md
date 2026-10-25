@@ -1,173 +1,58 @@
-# CVPR Laboratory Website
+# 曲阜师范大学计算机视觉与模式识别实验室网站
 
-This repository contains the static GitHub Pages website for CVPR-Laboratory.
+2026-10-20 根据 `Prompt.txt` 完成红色高校门户式重构。原生 HTML、CSS、JavaScript，纯静态 GitHub Pages 部署，不需要后端或生产环境 Node.js。
 
-The current version is a pure static, data-driven laboratory website built with native HTML, CSS, SVG, Canvas, and JavaScript. It does not use React, Vue, Next.js, Vite, Webpack, backend services, build steps, external CDN assets, Bootstrap, Swiper, or Font Awesome.
+## 本地查看
 
-## Core Pages
+直接打开 `index.html`。所有页面已经生成正文，关闭 JavaScript 仍可阅读；交互增强使用本地脚本，没有外部 CDN。
 
-```text
-index.html          Home
-about.html          About
-research.html       Research
-people.html         People
-achievements.html   Achievements
-news.html           News
-contact.html        Contact
-profile.html        Member profile template, e.g. profile.html?id=wang-hanxiang
-article.html        News article template, e.g. article.html?id=news-001
-```
+也可以在项目目录执行 `python -m http.server 8787 --bind 127.0.0.1`，访问 `http://127.0.0.1:8787/`。
 
-Legacy HTML pages from the previous site have been moved to `legacy/`.
-
-## Structure
-
-```text
-assets/
-  css/
-    base.css          variables, reset, base typography
-    layout.css        containers, sections, grids, page heroes
-    components.css    header, footer, cards, buttons, filters, FAQ
-    effects.css       particles, glow, scanlines, reveal animations
-    pages.css         page-specific visual systems
-    responsive.css    tablet and mobile rules
-  js/
-    theme.js          dark/light theme
-    i18n.js           zh/en language system
-    components.js     header and footer
-    render.js         data-driven page rendering
-    effects.js        Canvas particles, tilt, scroll reveal, typewriter
-    site.js           bootstrapping and interactions
-    data/
-      images.js
-      research.js
-      people.js
-      achievements.js
-      news.js
-      contact.js
-  images/common/
-    placeholder-tech.svg
-    default-avatar.svg
-  files/cv/
-```
-
-Existing image assets remain in `images/` and are referenced directly by the data files. This avoids duplicating or overwriting original images.
-
-## Local Preview
-
-Open `index.html` directly, or run a tiny static server:
-
-```bash
-python -m http.server 8787 --bind 127.0.0.1
-```
-
-Then visit:
-
-```text
-http://127.0.0.1:8787/index.html
-```
-
-## GitHub Pages Deployment
-
-The site is fully static. Deploy the repository root with GitHub Pages. No build command is required.
-
-## Release Checks
-
-Run the static validation before publishing:
+## 维护与生成
 
 ```powershell
-python scripts/optimize-images.py
+node scripts/build-site.mjs
 node scripts/build-sitemap.mjs
 node scripts/check-static.mjs
-python scripts/check-dois.py --proxy http://127.0.0.1:7897
+python scripts/check-dois.py
+python scripts/optimize-images.py --register-only
 ```
 
-Release, rollback, content, media, privacy, URL migration, testing and known limitations are documented in `docs/`.
+日常只修改 `assets/js/data/` 中的数据、`assets/js/portal.js` 中的公共组件和页面模板、`assets/js/site.js` 中的交互、`assets/css/site.css` 中的样式。HTML 为生成结果，修改源文件后重新生成。`build-site.mjs` 仅依赖 Node 标准库。
 
-## Maintenance
+论文、研究方向、成员、新闻、联系信息原始数据分别保存在原来的数据文件中。`editorial.js` 单独登记本次发现的内容冲突和公开规则。
 
-Update content in the data files:
+## 页面与功能
 
-```text
-assets/js/data/research.js       Research directions
-assets/js/data/people.js         Members and profile data
-assets/js/data/achievements.js   Papers, projects, patents, awards
-assets/js/data/news.js           News, article content, FAQ
-assets/js/data/contact.js        Contact, admissions, collaboration
-assets/js/data/images.js         Image path, size, fit, position, alt mapping
+- 首页、实验室概况、研究方向、科研团队、科研成果、新闻动态、联系我们、404。
+- 9 个独立成员主页位于 `profiles/`，12 个独立文章页位于 `articles/`。
+- `profile.html?id=...`、`article.html?id=...` 旧地址继续工作。
+- `publications.html` 提供无脚本情况下的全部成果文字归档。
+- 中英切换、二级菜单、移动菜单、轮播暂停、成果年份/类型/关键词/排序/分页、新闻筛选分页、复制邮箱和返回顶部。
+
+## 浏览器回归
+
+```powershell
+node scripts/check-browser.cjs
+node scripts/check-carousel.cjs
+node scripts/check-sticky-navigation.cjs
+node scripts/check-performance.cjs
 ```
 
-Use real verified information only. If a fact is not yet confirmed, keep the public page conservative instead of inventing content. Internal data may still carry a review status, but user-facing copy should use wording such as:
+回归脚本需要可用的 Playwright 和本机 Chrome；可通过 `CHROME_PATH` 指定浏览器，通过 `QA_OUTPUT` 指定截图目录。该依赖仅用于开发测试，不参与网站运行。Windows 的集成环境可通过 `NODE_PATH` 指向已安装的 Playwright。
 
-```text
-真实信息待核验后公开
-Verified information will be published after review.
-```
+## 部署
 
-## 2026-07-21 Developer A Update - LTQ
+将完整项目放入现有 Git 仓库，保留原仓库 `.git`，在确认后正常提交和推送。GitHub Pages 选择 `main` 分支根目录发布；不用安装 npm 依赖或运行服务。本次只修改本地下载目录，没有创建提交或推送远程。
 
-- LTQ updated `assets/js/data/achievements.js` with five traceable achievement records from the provided faculty CV / information sheet instead of public TODO placeholders.
-- LTQ changed achievement statistics to be generated from structured achievement types, avoiding manual `--` numbers.
-- LTQ added DOI / official-link rendering for achievement records that provide a link.
-- LTQ replaced visible TODO wording in Developer A pages with conservative review-pending copy.
-- LTQ added static fallback content to `index.html`, `about.html`, `research.html`, and `achievements.html` so the pages are not empty when scripts are unavailable.
+## 文档
 
-## 2026-07-28 Developer A Update - LTQ
+- `docs/redesign-20261020.md`：设计规范、结构和交付说明。
+- `docs/content-review.md`：冲突内容、公开规则及后续资料。
+- `docs/content-maintenance.md`：数据维护和页面生成。
+- `docs/media-register.md` / `.csv`：素材来源与替换。
+- `docs/test-report.md`：实际测试结果。
+- `docs/deployment.md`：部署与回滚。
+- `docs/known-issues.md`：限制与后续事项。
 
-- LTQ consolidated the two faculty publication lists into 44 de-duplicated, source-backed paper records; corrected seven inconsistent DOI entries against public Crossref title records.
-- LTQ completed the four research-direction data records with bilingual content, stable anchors, research fields, members, representative publications, captions, update dates, and source notes.
-- LTQ made homepage and achievement statistics count only verified records, added DOI rendering, image dimensions, a high-priority hero preload, and page-specific data loading for the four Developer A pages.
-- LTQ added keyboard skip navigation, visible focus states, mobile-menu ARIA state, Canvas visibility pause and resize throttling, `404.html`, editor attributes, static CI checks, and the Developer A maintenance guide.
-
-## 2026-08-17 Integrated Release - LTQ
-
-- LTQ integrated Developer Jia and Developer Yi deliveries while retaining the 44 faculty publications sourced from the two supplied paper lists.
-- LTQ repaired news media paths, centralized contact data, added source/review status to people, news and FAQ records, and kept unconfirmed profile fields unpublished.
-- LTQ completed canonical/Open Graph metadata, sitemap and robots configuration, full media inventory with WebP delivery, release checks, and the maintenance documentation set.
-
-## Image Rules
-
-Images should be configured with:
-
-```javascript
-image: "images/index/index_research_RS.png",
-imageFit: "cover",
-imagePosition: "center",
-imageAlt: {
-  zh: "遥感目标检测方向示意图",
-  en: "Illustration for remote sensing object detection"
-}
-```
-
-Portraits use square/circular containers with `object-fit: cover` and `object-position: center top`. Gallery images keep natural proportions where possible. Missing images fall back to `assets/images/common/placeholder-tech.svg` or `assets/images/common/default-avatar.svg`.
-
-## Theme And Language
-
-Theme:
-
-```text
-dark  default high-tech theme
-light ice-blue glass theme
-```
-
-Language:
-
-```text
-zh default
-en English
-```
-
-Language priority:
-
-```text
-URL ?lang=zh/en > localStorage > zh
-```
-
-Examples:
-
-```text
-index.html?lang=en
-research.html#remote-sensing
-profile.html?id=wang-hanxiang
-article.html?id=news-001
-```
+原版已另存为本机工作目录 `outputs/cvpr-before-20261020.zip`；旧版历史页面及其根目录资源继续保存在 `legacy/`、`css/`、`js/`，不再被当前页面调用。

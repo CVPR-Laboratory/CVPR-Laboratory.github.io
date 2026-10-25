@@ -1,6 +1,14 @@
 ﻿path,type,width,height,bytes,optimized_path,source_status,authorization_status
+assets/images/brand/qfnu-logo.png,png,298,87,10896,,https://www.qfnu.edu.cn/images/logo_mob.png,current site delivery
 assets/images/common/default-avatar.svg,svg,,,1419,,repository asset,current site delivery
 assets/images/common/placeholder-tech.svg,svg,,,1826,,repository asset,current site delivery
+assets/images/hero/discussion-1-1920.webp,webp,,,121012,,repository asset,current site delivery
+assets/images/hero/discussion-1-960.webp,webp,,,43908,,repository asset,current site delivery
+assets/images/hero/discussion-2-1920.webp,webp,,,221304,,repository asset,current site delivery
+assets/images/hero/discussion-2-960.webp,webp,,,80990,,repository asset,current site delivery
+assets/images/icons.svg,svg,,,1151,,Lucide ISC license,current site delivery
+assets/images/lucide-LICENSE,,,,3208,,repository asset,current site delivery
+assets/images/placeholders/media.svg,svg,,,434,,repository asset,current site delivery
 images/about/about_activities_head_bg.png,png,1920,300,159441,assets/images/optimized/images/about/about_activities_head_bg.webp,repository asset,current site delivery
 images/about/about_culture_head_bg.png,png,1920,300,254655,assets/images/optimized/images/about/about_culture_head_bg.webp,repository asset,current site delivery
 images/about/about_history_head_bg.png,png,1920,300,298943,assets/images/optimized/images/about/about_history_head_bg.webp,repository asset,current site delivery

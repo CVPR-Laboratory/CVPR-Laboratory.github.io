@@ -1,0 +1,14 @@
+{
+  "lcp": 1668,
+  "cls": 0,
+  "hero": "http://127.0.0.1:55381/assets/images/hero/discussion-1-960.webp",
+  "conditions": {
+    "viewport": "390x844",
+    "cpuSlowdown": 4,
+    "downloadMbps": 1.6,
+    "latencyMs": 150,
+    "cache": "disabled",
+    "INP": "not measured",
+    "scope": "single local laboratory sample; not field data"
+  }
+}
