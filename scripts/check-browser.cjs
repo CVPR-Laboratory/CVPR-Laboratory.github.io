@@ -216,18 +216,11 @@ const server = http.createServer((req, res) => {
   if (await page.locator("#main-navigation").isVisible())
     failures.push("Escape did not close menu");
   await page.locator("[data-carousel=next]").click();
-  // Slide changes wait for image decoding before replacing the current frame.
-  try {
-    await page.locator('[data-slide="1"]').waitFor({ state: "visible", timeout: 5000 });
-  } catch (_) {
+  if (!(await page.locator('[data-slide="1"]').isVisible()))
     failures.push("Carousel next failed");
-  }
   await page.locator('[data-carousel-index="0"]').click();
-  try {
-    await page.locator('[data-slide="0"]').waitFor({ state: "visible", timeout: 5000 });
-  } catch (_) {
+  if (!(await page.locator('[data-slide="0"]').isVisible()))
     failures.push("Carousel indicator failed");
-  }
   const noJs = await browser.newContext({
     javaScriptEnabled: false,
     viewport: { width: 1440, height: 900 },

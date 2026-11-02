@@ -1,0 +1,74 @@
+# workLog — CVPR-Laboratory.github.io 本次修改工作日志
+
+## 工程架构（实现路径确认）
+- 项目根：组内项目\CVPR-Laboratory.github.io-main\（一切操作仅限此目录内）
+- 静态页面：index.html / people.html / news.html / articles\*.html（预渲染）
+- 渲染层：assets\js\portal.js（按 data-page 重新渲染 #site-header / #page-root / #site-footer；当有 ?query 或 lang=en 时触发；JS 故障时预渲染内容兜底可读）
+- 数据层：assets\js\data\research.js / people.js / achievements.js / news.js / editorial.js / images.js
+- 样式层：assets\css\site.css（主题色 --color-primary: #af201e）
+- 运行：python -m http.server 8787 --bind 127.0.0.1 后访问 http://127.0.0.1:8787/
+
+## 重要修改.txt 任务拆解（全部完成 P1/P1b/I1/I2/I3/I4/N1 + T1）
+- [x] P1 people.html：删除毕业生板块虚构信息（people.js 中 xu-yang / li-zhen 两位 alumni + profiles\*.html），保留板块容器（portal.js groups() 动态生成：板块存在取决于数据里是否有该 category 的人，需保留 alumni 板块容器）
+- [x] P1b people.html：预留 3 个 26 级研一学术型研究生占位（people.js 加 3 条 postgraduate 占位 + portal.js people() 渲染占位卡片）
+- [x] I1 index.html 研究方向：.research-item img 改 object-fit:cover 铺满容器（site.css L544-549）
+- [x] I2 index.html 研究方向：.research-item 设 flex column + 「查看详情」margin-top:auto 贴底对齐
+- [x] I3 index.html 实验室概况：intro 模块增加图片排版容器（预留图片位，图片放指定文件夹）
+- [x] I4 index.html 代表性科研成果：4 条 .publication hover 红色长条从左淡入（::before width 0→100% transition）+ 文字颜色同步切换
+- [x] N1 news.html / articles\*.html：上一篇/下一篇同行左右分栏（.article-nav flex + space-between），「返回新闻列表」独立一行；改 portal.js article() + 12 个预渲染 articles\*.html
+- [x] T1（追加需求）研究方向卡片底部「查看详情」与人员卡片底部「个人主页」.text-link 按钮化：圆角红色背景（#af201e 同色系）、白字去下划线、容器内居中、hover 变深色 #7b1719；其余 .text-link 调用点保持原样
+
+## 执行记录
+- [x] 架构确认完成：通读 重要修改.txt、portal.js、site.css、people.js、research.js、site.js、check-static.mjs、12 个 articles\*.html 的 article-nav 结构，确认双轨（预渲染 HTML + JS 渲染）均需修改
+- [x] P1 删除虚构毕业生（数据层）：people.js 删除 xu-yang/li-zhen 两条 alumni 记录；删除 profiles\xu-yang.html、profiles\li-zhen.html；sitemap.xml 移除对应 2 条 URL
+- [x] P1 保留板块容器：portal.js groups() 改为 alumni 永远保留入口（"alumni" 不过滤）；侧边栏入口保留
+- [x] P1b 预留 3 个 26 级研一学术型研究生占位（数据层）：people.js 新增 student-2026-01/02/03（category=postgraduate，头像 default-avatar.svg，信息标"待补充"）；check-static.mjs PEOPLE 数量 9→11
+- [x] P1 people.html 预渲染：在读研究生板块补 3 个占位卡片（链接指向新建的占位 profile 页）；毕业生板块清空为 empty-state 容器（侧边栏仍保留「毕业生」入口）
+- [x] P1b 新建 3 个占位 profile 页：profiles\student-2026-01/02/03.html（default-avatar.svg，信息标"待补充"，完整 head/nav/footer 模板）；sitemap.xml 补 3 条占位 URL；check-static.mjs PEOPLE 9→10、输出文案同步
+- [x] P1/P1b 收尾修复（check-static 通过项）：占位英文 name 去掉 ASCII 撇号（Master's→Graduate Student，避免 E() 转义成 &#39; 导致 includes 校验失败）；node 复核 PEOPLE 实际数量=10（7 真实 + 3 占位，原 9=7+2 虚构）
+- [x] I1+I2 研究方向模块样式（site.css L541-565 区）：
+  - .research-item 增加 display:flex; flex-direction:column;
+  - .research-item img：object-fit contain→cover（保留 aspect-ratio 4/3 与 #eee 底色），图片铺满展示框、溢出裁切
+  - 新增 .research-item > .text-link { margin-top:auto; align-self:flex-start; padding-bottom:4px; }：「查看详情」按钮统一贴条目底部并水平左对齐
+  - 仅改 CSS，DOM 结构未动（portal.js 首页 research-item 内 text-link 是直接子元素，> 选择器精确命中）
+- [x] I3 实验室概况图片排版容器：
+  - 新建 images\about\intro\ 目录（放 README.txt 说明放图方式：about-intro-1/2/3.png）
+  - portal.js intro()：intro-layout 增加第 3 列 .intro-images，3 个 figure.intro-image-slot 占位位（data-src 指向 images/about/intro/about-intro-N.png，放图即显示）
+  - site.css：.intro-images/.intro-image-slot 样式（虚线边框占位 + .img-placeholder 文字提示；:has(> img) 放图后自动隐藏提示）
+  - 响应式：max-width:1199px 时占位区 3 列铺满底部；max-width:767px 时 1 列
+  - index.html 预渲染同步更新（双轨一致）
+- [x] I4 代表性科研成果 hover 动画（site.css，DOM 未动）：
+  - .publication 加 position:relative; isolation:isolate; overflow:hidden
+  - .publication::before：红色长条（var(--color-primary) #af201e，opacity 0.92），默认 width:0，hover/focus-within 时 width:100%，transition 0.35s ease（从左侧淡入展开，不动 background-color）
+  - 同步文字切白：.publication 自身 + h3 + .publication-venue + .publication-authors + .publication-links a 全部 color:#fff，红底白字对比度清晰
+  - hover 时 border-bottom 改 transparent；首页 4 条「代表性科研成果」纯 CSS 生效（JS 渲染与预渲染双轨一致）
+- [x] N1 文章底部导航（portal.js article() L1175-1185 + site.css L932-956 区 + 12 个 articles\*.html）：
+  - portal.js article()：.article-nav 拆为 .article-nav-row（display:flex + space-between：上一篇靠左顶格、下一篇靠右顶格）+ .article-nav-back（「返回新闻列表」独立一行居中，布局不受影响）
+  - 单边缺失时（frontier-001 只有下一篇、news-012 只有上一篇）空 span 占位，flex 对齐不塌
+  - 12 个预渲染 articles\*.html 同步改为新结构；check-static 通过（33 页、10 profile、12 文章、44 论文全绿）
+  - 备注：10 个双边文件用 PowerShell 正则批量替换成功；frontier-001 / news-012 因脚本块被 -replace 误写成字面量导致损坏，已手工修复回正确 markup
+- [x] T1 研究方向/人员卡片底部 .text-link 按钮化（site.css L643-691 区，DOM 未动）：
+  - .research-item > .text-link：圆角红色背景按钮（var(--color-primary) #af201e 与「研究方向」标题同色系），白字加粗，去下划线/边框，align-self:center 容器内居中，margin-top:auto 保留贴底；hover 切 var(--color-primary-dark) #7b1719 + opacity 0.9
+  - .member > .text-link：同款样式（圆角红底白字、去下划线、hover 加深），display:block + text-align:center 单独一行居中，适配人员模块布局
+  - 其余 .text-link 调用点（了解实验室/返回首页/返回新闻列表等）保持原样，仅覆盖 .research-item 和 .member 直接子元素
+
+## 追加任务 M1-M5（2026级硕士实名化 + 曹继培更新）
+- 映射：student-2026-01→qiu-haoyu（邱浩宇，目标检测/深度学习）、student-2026-02→li-tongqing（李同庆，图像分割/深度学习）、student-2026-03→jiao-fangyu（焦方玉，目标检测/大语言模型，素材待补）
+- 曹继培：avatar 改 team_core_caojipei_new.png（1344x1792 PNG），email TODO→""，cv 挂 曹继培简历.pdf
+
+- [x] M1 素材迁移：pic_future → images\team\（team_core_qiuhaoyu.png 853x1280 / team_core_litongqing.png 1279x1705 / team_core_caojipei_new.png 1344x1792）+ assets\files\cv\（曹继培/李同庆/邱浩宇简历.pdf）；焦方玉文件夹为空，沿用 default-avatar.svg 占位；pic_future 保留待用户清理
+- [x] M2 people.js：3 条占位记录实名化（id/姓名/研究方向/头像/简历链接），曹继培记录更新（新头像+简历）；PEOPLE 总数不变=10
+- [x] M3 people.html 预渲染：3 张占位卡片改实名（邱浩宇/李同庆/焦方玉，实名头像+研究方向+个人主页链接）+ 曹继培头像改 team_core_caojipei_new.png
+- [x] M4 profiles 页：qiu-haoyu.html（原 student-2026-01 改名+实名化 meta/h1/头像/简历链接）、li-tongqing.html（原 02 重建）、jiao-fangyu.html（原 03 重建，default-avatar 占位）；旧 student-2026-*.html 已删
+- [x] M5 cao-jipei.html：profile-summary 改新头像（去 webp picture，直用 PNG）+ profile-contact 挂 曹继培简历.pdf + og:image/ld+json 同步；sitemap.xml 3 条 URL 改 qiu-haoyu/li-tongqing/jiao-fangyu；PEOPLE 总数 10 不变，check-static 无需改
+- [x] M1-M5 验证：node scripts/check-static.mjs 通过（33 页、10 profile、12 文章、44 论文全绿，路径/元数据检查含 3 张新卡片图片、3 份简历 PDF、新 profile 页均命中磁盘文件）
+- 备注：team_core_caojipei_new.png 暂无 webp 优化版（本机无 cwebp/ImageMagick），people.html/cao-jipei.html 直用 PNG 兜底；webp 工具可用后可补 assets/images/optimized/images/team/ 并恢复 picture 双格式
+
+## 追加任务 C1-C3（曹继培简历详情化）
+- 简历 PDF 已提取全文（dsh-office/LibreOffice-kit 渲染管线在本沙箱 spawn EPERM，最终由用户手动提供提取文本；pdf-extract.mjs/pdf-diag.mjs 留在 Learning\ 根目录可删）
+- 曹继培研究方向按简历更正为「目标检测、红外小目标检测」（原「目标检测、图像分割」）
+
+- [x] C1 people.html：曹继培卡片研究方向改「目标检测、红外小目标检测」（头像 M3 已是 team_core_caojipei_new.png，未再动）
+- [x] C2 cao-jipei.html 详情重写（对齐 wang-hanxiang.html 排版）：meta/og/ld+json 摘要更新；profile-contact 补邮箱 jipeicv@qfnu.edu.cn + 电话 176-6320-8598 + 简历 PDF；biography 详写（项目/论文/竞赛/审稿人）；education 硕士+本科两级；experience 5 项科研项目；publications 精选 5 条 + related 全量 10 条（ol 列表）；新增 honors/skills 两个 section；H1 唯一
+- [x] C1-C3 验证：check-static 33 页全绿；JS 双语文案渲染验证（zh/en 均含 荣誉奖项/专业技能 section）；http://127.0.0.1:8787/ 在线验证 cao-jipei.html（红外小目标/荣誉/技能/全部论文命中）与 people.html（新头像+新研究方向命中）；服务器为后台 job pwsh-37
+- [x] C4 修复 people.html 曹继培卡片仍显示旧图：M3 时只替换了 <img src>，外层 <picture><source srcset> 仍指向旧图 webp（team_core_caojipei.webp），浏览器优先加载 webp 导致新照片不显示；去掉 picture 包装直用 <img>（新图无 webp 版，与 M5 备注一致）；check-static 全绿，服务器返回已确认无旧 webp 引用

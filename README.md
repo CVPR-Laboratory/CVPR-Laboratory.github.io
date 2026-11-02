@@ -35,7 +35,6 @@ python scripts/optimize-images.py --register-only
 ```powershell
 node scripts/check-browser.cjs
 node scripts/check-carousel.cjs
-node scripts/check-sticky-navigation.cjs
 node scripts/check-performance.cjs
 ```
 

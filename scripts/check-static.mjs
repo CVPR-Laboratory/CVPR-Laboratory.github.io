@@ -95,7 +95,7 @@ if (!all.body.includes("publication"))
   errors.push("Publication search returned no content");
 if (data.ACHIEVEMENTS.filter((a) => a.type === "paper").length !== 44)
   errors.push("Publication records changed unexpectedly");
-if (data.PEOPLE.length !== 9)
+if (data.PEOPLE.length !== 10)
   errors.push("Member records changed unexpectedly");
 for (const record of data.ACHIEVEMENTS) {
   if (record.doi && record.link !== "https://doi.org/" + record.doi)
@@ -110,5 +110,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `Static integrity passed: ${pages.length} HTML pages, 9 bilingual profiles, ${view.publicNews().length} bilingual articles, 44 papers, paths and metadata.`,
+  `Static integrity passed: ${pages.length} HTML pages, 10 bilingual profiles, ${view.publicNews().length} bilingual articles, 44 papers, paths and metadata.`,
 );

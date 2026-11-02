@@ -421,13 +421,49 @@ time {
 }
 .intro-layout {
   display: grid;
-  grid-template-columns: 1fr 310px;
-  gap: 60px;
+  grid-template-columns: 1fr minmax(0, 310px) 310px;
+  gap: 40px;
   align-items: start;
 }
 .intro-copy p {
   line-height: 1.9;
   margin-bottom: 20px;
+}
+/* 实验室概况模块：图片预留位（用户往 images/about/intro/ 放图，改 data-src 即可生效） */
+.intro-images {
+  display: grid;
+  gap: 14px;
+}
+.intro-image-slot {
+  position: relative;
+  min-height: 0;
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+.intro-image-slot .img-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  letter-spacing: 2px;
+}
+.intro-image-slot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.intro-image-slot figcaption {
+  position: static;
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+.intro-image-slot:has(> img) .img-placeholder {
+  display: none;
 }
 .stats {
   display: grid;
@@ -506,8 +542,47 @@ time {
   margin-bottom: 6px;
 }
 .publication {
+  position: relative;
   border-bottom: 1px solid var(--color-border);
   padding: 26px 0;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* 鼠标悬浮：红色长条从左侧淡入展开覆盖条目背景（::before width 0→100% 过渡） */
+.publication::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: var(--color-primary);
+  opacity: 0.92;
+  transition:
+    width 0.35s ease,
+    opacity 0.35s ease;
+  z-index: -1;
+}
+.publication:hover::before,
+.publication:focus-within::before {
+  width: 100%;
+  opacity: 0.92;
+}
+/* 悬浮时同步切换文字颜色，保证红色背景上对比度清晰可读 */
+.publication:hover,
+.publication:focus-within {
+  color: #fff;
+}
+.publication:hover h3,
+.publication:focus-within h3,
+.publication:hover .publication-venue,
+.publication:focus-within .publication-venue,
+.publication:hover .publication-authors,
+.publication:focus-within .publication-authors,
+.publication:hover .publication-links a,
+.publication:focus-within .publication-links a {
+  color: #fff;
+}
+.publication:hover {
+  border-bottom-color: transparent;
 }
 .publication:first-child {
   padding-top: 0;
@@ -546,10 +621,12 @@ time {
 }
 .research-item {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 .research-item img {
   aspect-ratio: 4/3;
-  object-fit: contain;
+  object-fit: cover;
   background: #eee;
   width: 100%;
 }
@@ -568,6 +645,50 @@ time {
   font-size: 17px;
   color: var(--color-text-secondary);
   margin: 14px 0;
+}
+/* 研究方向卡片底部「查看」按钮：圆角红色背景（取「研究方向」标题同色系），居中，无下划线，hover 加深 */
+.research-item > .text-link {
+  margin-top: auto;
+  display: inline-block;
+  align-self: center;
+  padding: 10px 28px;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+.research-item > .text-link:hover {
+  background: var(--color-primary-dark);
+  opacity: 0.9;
+}
+/* 人员卡片底部「个人主页」按钮：样式与研究方向查看按钮统一，单独一行居中适配人员模块布局 */
+.member > .text-link {
+  display: block;
+  margin: 16px 0 0;
+  padding: 10px 28px;
+  color: #fff;
+  background: var(--color-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 999px;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+.member > .text-link:hover {
+  background: var(--color-primary-dark);
+  opacity: 0.9;
 }
 .text-link {
   color: var(--color-primary);
@@ -863,6 +984,24 @@ select {
 .article-nav a {
   color: var(--color-primary);
 }
+/* 上一篇/下一篇同行左右分栏：上一篇靠左顶格，下一篇靠右顶格 */
+.article-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.article-nav-prev {
+  text-align: left;
+}
+.article-nav-next {
+  text-align: right;
+}
+/* 「返回新闻列表」独立一行，布局不受同行分栏影响 */
+.article-nav-back {
+  text-align: center;
+}
 .contact-details {
   margin: 0;
 }
@@ -987,6 +1126,14 @@ select {
   .intro-layout {
     grid-template-columns: 1fr 230px;
     gap: 30px;
+  }
+  .intro-images {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .intro-image-slot .img-placeholder {
+    min-height: 110px;
   }
   .research-grid {
     grid-template-columns: repeat(2, 1fr);

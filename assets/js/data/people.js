@@ -72,29 +72,86 @@
       name: { zh: "曹继培", en: "Jipei Cao" },
       role: { zh: "2023级硕士研究生", en: "Master's Student, Class of 2023" },
       category: "postgraduate",
-      avatar: "images/team/team_core_caojipei.png",
+      avatar: "images/team/team_core_caojipei_new.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["目标检测", "图像分割"], en: ["Object Detection", "Image Segmentation"] },
+      research: { zh: ["目标检测", "红外小目标检测"], en: ["Object Detection", "Infrared Small Target Detection"] },
       bio: {
-        zh: "曹继培，2023级硕士研究生，研究方向为目标检测、图像分割。",
-        en: "Jipei Cao, Master's student (2023 cohort), research interests in object detection and image segmentation."
+        zh: "曹继培，曲阜师范大学2023级硕士研究生，研究方向为目标检测、红外小目标检测。参与国家自然科学基金青年项目、山东省自然科学基金等多项科研项目，在Applied Intelligence、Expert Systems with Applications等期刊发表论文多篇。",
+        en: "Jipei Cao, Master's student (2023 cohort) at Qufu Normal University, research interests in object detection and infrared small target detection. Participated in NSFC青年项目 and multiple provincial fund projects, with publications in Applied Intelligence, Expert Systems with Applications and other journals."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2023.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2023.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机技术 硕士 | 2024.09 - 2027.06",
+          "曲阜师范大学 | 信息与计算科学 学士 | 2020.09 - 2024.06"
+        ],
+        en: [
+          "Qufu Normal University | M.Eng. Computer Technology | 2024.09 - 2027.06",
+          "Qufu Normal University | B.Sc. Information and Computational Science | 2020.09 - 2024.06"
+        ]
       },
       experience: {
-        zh: ["实验室科研训练 | 参与多项计算机视觉相关课题"],
-        en: ["Lab research training | Participated in multiple computer vision projects"]
+        zh: [
+          "国家自然科学基金青年项目(C类) No.62502271 | 科研骨干 | 2026.01 - 2028.12",
+          "山东省自然科学基金青年项目(C类) No.ZR2025QC630 | 科研骨干 | 2025.10 - 2028.10",
+          "山东省自然科学基金青年项目(C类) No.ZR2026QC0803 | 项目申报助理 | 2026.10 - 2029.10",
+          "日照市自然科学基金青年项目 No.RZ2024ZR33 | 科研骨干 | 2025.07 - 2028.07",
+          "日照市自然科学基金青年项目 No.RZ2024ZR34 | 项目申报助理 | 2025.07 - 2028.07"
+        ],
+        en: [
+          "NSFC Youth Project (Cat. C) No.62502271 | Researcher | 2026.01 - 2028.12",
+          "Shandong Provincial NSFC Youth Project (Cat. C) No.ZR2025QC630 | Researcher | 2025.10 - 2028.10",
+          "Shandong Provincial NSFC Youth Project (Cat. C) No.ZR2026QC0803 | Project Application Assistant | 2026.10 - 2029.10",
+          "Rizhao Municipal NSFC Youth Project No.RZ2024ZR33 | Researcher | 2025.07 - 2028.07",
+          "Rizhao Municipal NSFC Youth Project No.RZ2024ZR34 | Project Application Assistant | 2025.07 - 2028.07"
+        ]
       },
       publications: {
-        zh: ["成果待补充"],
-        en: ["Publications pending."]
+        zh: [
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, IF=3.5, 已发表)",
+          "Structure-Preserving Iterative Refinement and Cross-Scale Gated Aggregation for Infrared Small Target Detection | Expert Systems with Applications 2026 (中科院一区TOP, IF=9.4, Major Revision)",
+          "ADCGNet: Asymmetric Dual-Branch and Dual-Scale Cross-Gating Network for Crop Disease Detection | Computers and Electronics in Agriculture (中科院一区TOP, IF=10.3, Major Revision)",
+          "Spatial-Frequency DualMamba Network with Rank-Guided Loss for Infrared Small Target Detection | IEEE TGRS (中科院一区TOP, IF=9.4, CCF-B, Under Review)",
+          "Wavelet-Guided Mamba with High-Frequency Aware and Wavelet Residual Prediction for Infrared Small Target Detection | ICASSP (CCF-B会议, Under Review)"
+        ],
+        en: [
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (Q3, IF=3.5, Published)",
+          "Structure-Preserving Iterative Refinement and Cross-Scale Gated Aggregation for Infrared Small Target Detection | Expert Systems with Applications 2026 (Q1-TOP, IF=9.4, Major Revision)",
+          "ADCGNet: Asymmetric Dual-Branch and Dual-Scale Cross-Gating Network for Crop Disease Detection | Computers and Electronics in Agriculture (Q1-TOP, IF=10.3, Major Revision)",
+          "Spatial-Frequency DualMamba Network with Rank-Guided Loss for Infrared Small Target Detection | IEEE TGRS (Q1-TOP, IF=9.4, CCF-B, Under Review)",
+          "Wavelet-Guided Mamba with High-Frequency Aware and Wavelet Residual Prediction for Infrared Small Target Detection | ICASSP (CCF-B, Under Review)"
+        ]
       },
-      email: "TODO",
-      homepage: "",
-      cv: ""
+      honors: {
+        zh: [
+          "第二十二届中国研究生数学建模竞赛 国家二等奖",
+          "\"华为杯\"第八届中国研究生人工智能创新大赛 国家三等奖",
+          "二等奖学金（2022）、优秀团员（2022）、三等学业奖学金（2024、2026）"
+        ],
+        en: [
+          "China Graduate Mathematical Contest in Modeling, National Second Prize",
+          "8th Huawei Cup China Graduate AI Innovation Contest, National Third Prize",
+          "Second-class Scholarship (2022), Third-class Academic Scholarship (2024, 2026)"
+        ]
+      },
+      skills: {
+        zh: [
+          "熟悉CNN、Transformer、Mamba架构下目标检测与语义分割；熟练Linux开发环境",
+          "熟练Python、OpenCV、PyTorch；掌握MATLAB、Visio、LaTeX科研工具",
+          "英语CET-6，可独立完成英文学术论文写作",
+          "多次受邀担任IEEE TII、TGRS、TAES、GRSL等期刊审稿人"
+        ],
+        en: [
+          "Proficient in object detection and semantic segmentation with CNN/Transformer/Mamba; Linux development environment",
+          "Proficient in Python, OpenCV, PyTorch; MATLAB, Visio, LaTeX research tools",
+          "CET-6 English; independent English academic paper writing",
+          "Invited reviewer for IEEE TII, TGRS, TAES, GRSL"
+        ]
+      },
+      email: "jipeicv@qfnu.edu.cn",
+      phone: "176-6320-8598",
+      homepage: "https://cvpr-laboratory.github.io",
+      cv: "assets/files/cv/曹继培简历.pdf"
     },
     {
       id: "ma-mengyao",
@@ -212,61 +269,93 @@
       homepage: "",
       cv: ""
     },
+    // 26级研一学术型研究生（原占位 1，已实名）
     {
-      id: "xu-yang",
-      name: { zh: "许洋", en: "Yang Xu" },
-      role: { zh: "2025届毕业生", en: "Class of 2025" },
-      category: "alumni",
-      avatar: "images/team/team_core_xuyang.png",
+      id: "qiu-haoyu",
+      name: { zh: "邱浩宇", en: "Haoyu Qiu" },
+      role: { zh: "2026级硕士研究生", en: "Master's Student, Class of 2026" },
+      category: "postgraduate",
+      avatar: "images/team/team_core_qiuhaoyu.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["计算机视觉"], en: ["Computer Vision"] },
+      research: { zh: ["目标检测", "深度学习"], en: ["Object Detection", "Deep Learning"] },
       bio: {
-        zh: "许洋，2025届硕士毕业生，研究方向为计算机视觉。",
-        en: "Yang Xu, Master's graduate (Class of 2025), research interest in computer vision."
+        zh: "邱浩宇，2026级硕士研究生，研究方向为目标检测、深度学习。",
+        en: "Haoyu Qiu, Master's student (2026 cohort), research interests in object detection and deep learning."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士 | 2022.09 - 2025.06"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2022.09 - 2025.06"]
+        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
+        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
       },
       experience: {
-        zh: ["实验室科研训练 | 计算机视觉方向"],
-        en: ["Lab research training | Computer Vision"]
+        zh: ["实验室科研训练 | 信息待补充"],
+        en: ["Lab research training | Details pending"]
       },
       publications: {
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
-      email: "TODO",
+      email: "",
       homepage: "",
-      cv: ""
+      cv: "assets/files/cv/邱浩宇简历.pdf"
     },
+    // 26级研一学术型研究生（原占位 2，已实名）
     {
-      id: "li-zhen",
-      name: { zh: "李珍", en: "Zhen Li" },
-      role: { zh: "2025届毕业生", en: "Class of 2025" },
-      category: "alumni",
-      avatar: "images/team/team_core_lizhen.png",
+      id: "li-tongqing",
+      name: { zh: "李同庆", en: "Tongqing Li" },
+      role: { zh: "2026级硕士研究生", en: "Master's Student, Class of 2026" },
+      category: "postgraduate",
+      avatar: "images/team/team_core_litongqing.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["计算机视觉"], en: ["Computer Vision"] },
+      research: { zh: ["图像分割", "深度学习"], en: ["Image Segmentation", "Deep Learning"] },
       bio: {
-        zh: "李珍，2025届硕士毕业生，研究方向为计算机视觉。",
-        en: "Zhen Li, Master's graduate (Class of 2025), research interest in computer vision."
+        zh: "李同庆，2026级硕士研究生，研究方向为图像分割、深度学习。",
+        en: "Tongqing Li, Master's student (2026 cohort), research interests in image segmentation and deep learning."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士 | 2022.09 - 2025.06"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2022.09 - 2025.06"]
+        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
+        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
       },
       experience: {
-        zh: ["实验室科研训练 | 计算机视觉方向"],
-        en: ["Lab research training | Computer Vision"]
+        zh: ["实验室科研训练 | 信息待补充"],
+        en: ["Lab research training | Details pending"]
       },
       publications: {
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
-      email: "TODO",
+      email: "",
+      homepage: "",
+      cv: "assets/files/cv/李同庆简历.pdf"
+    },
+    // 26级研一学术型研究生（原占位 3，已实名；素材待补充，暂复用统一占位头像）
+    {
+      id: "jiao-fangyu",
+      name: { zh: "焦方玉", en: "Fangyu Jiao" },
+      role: { zh: "2026级硕士研究生", en: "Master's Student, Class of 2026" },
+      category: "postgraduate",
+      avatar: "assets/images/common/default-avatar.svg",
+      avatarFit: "cover",
+      avatarPosition: "center",
+      research: { zh: ["目标检测", "大语言模型"], en: ["Object Detection", "Large Language Models"] },
+      bio: {
+        zh: "焦方玉，2026级硕士研究生，研究方向为目标检测、大语言模型。",
+        en: "Fangyu Jiao, Master's student (2026 cohort), research interests in object detection and large language models."
+      },
+      education: {
+        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
+        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
+      },
+      experience: {
+        zh: ["实验室科研训练 | 信息待补充"],
+        en: ["Lab research training | Details pending"]
+      },
+      publications: {
+        zh: ["成果待补充"],
+        en: ["Publications pending."]
+      },
+      email: "",
       homepage: "",
       cv: ""
     }

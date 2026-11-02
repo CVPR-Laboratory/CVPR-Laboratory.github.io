@@ -16,7 +16,7 @@ vm.runInContext(fs.readFileSync("assets/js/portal.js", "utf8"), context, {
 });
 const view = context.window.CVPR_VIEW,
   data = context.window.CVPR_DATA,
-  version = "20261025";
+  version = "20261102";
 const escape = (v) =>
   String(v).replace(
     /[&<>"']/g,

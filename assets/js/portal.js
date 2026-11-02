@@ -113,7 +113,8 @@
         "</picture>"
       );
     }
-    return /^images\/.+\.(png|jpe?g)$/i.test(src)
+    // Only registered legacy images have pre-generated WebP variants.
+    return m && /^images\/.+\.(png|jpe?g)$/i.test(src)
       ? '<picture><source srcset="' +
           url(
             "assets/images/optimized/" +
@@ -170,13 +171,15 @@
     });
   }
   function groups() {
-    return ["teacher", "postgraduate", "undergraduate", "alumni"].filter(
+    // alumni 始终保留板块容器（方便后续扩展），其余按数据动态生成
+    var all = ["teacher", "postgraduate", "undergraduate", "alumni"].filter(
       function (k) {
-        return D().PEOPLE.some(function (p) {
+        return k === "alumni" || D().PEOPLE.some(function (p) {
           return p.category === k;
         });
       },
     );
+    return all;
   }
   function types() {
     return ["paper", "project", "patent", "award"].filter(function (k) {
@@ -841,27 +844,31 @@
   }
   function people() {
     var chosen = query.get("category") || "all";
+    // 侧边栏始终保留全部入口（含空板块），但内容区只渲染有成员的板块
+    var sections = groups()
+      .filter(function (k) {
+        return chosen === "all" || chosen === k;
+      })
+      .map(function (k) {
+        var ms = D()
+          .PEOPLE.filter(function (m) {
+            return m.category === k;
+          })
+          .map(member)
+          .join("");
+        // 空板块不渲染内容容器，但侧边栏入口保留（方便后续扩展）
+        if (!ms) return "";
+        return section(k, name(k), '<div class="member-grid">' + ms + "</div>");
+      })
+      .join("");
+    if (!sections)
+      sections =
+        '<div class="empty-state"><p>' +
+        C("该类别暂无成员，后续补充。", "No members in this category yet.") +
+        "</p></div>";
     return layout(
       "people",
-      groups()
-        .filter(function (k) {
-          return chosen === "all" || chosen === k;
-        })
-        .map(function (k) {
-          return section(
-            k,
-            name(k),
-            '<div class="member-grid">' +
-              D()
-                .PEOPLE.filter(function (m) {
-                  return m.category === k;
-                })
-                .map(member)
-                .join("") +
-              "</div>",
-          );
-        })
-        .join("") || empty(),
+      sections,
       [["people.html", C("全部成员", "All Members")]].concat(
         groups().map(function (k) {
           return ["people.html?category=" + k, name(k)];
@@ -912,6 +919,8 @@
       ["education", C("教育经历", "Education")],
       ["experience", C("工作与科研经历", "Research Experience")],
       ["publications", C("代表性成果", "Selected Publications")],
+      ["honors", C("荣誉奖项", "Honors and Awards")],
+      ["skills", C("专业技能", "Skills")],
     ].forEach(function (c) {
       var items = (L(m[c[0]]) || []).map(clean).filter(Boolean);
       if (items.length) b += section(c[0], c[1], ul(items));
@@ -1168,15 +1177,16 @@
       paragraphs(L(n.content)) +
       '</div><nav class="article-nav" aria-label="' +
       C("文章导航", "Article navigation") +
-      '">' +
+      '"><div class="article-nav-row">' +
       (prev
-        ? a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title))
-        : "") +
+        ? '<span class="article-nav-prev">' + a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title)) + "</span>"
+        : '<span class="article-nav-prev"></span>') +
       (next
-        ? a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title))
-        : "") +
+        ? '<span class="article-nav-next">' + a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title)) + "</span>"
+        : '<span class="article-nav-next"></span>') +
+      '</div><div class="article-nav-back">' +
       a("news.html", C("返回新闻列表", "Back to News"), "text-link") +
-      "</nav></article></div>"
+      "</div></nav></article></div>"
     );
   }
   function contact() {
