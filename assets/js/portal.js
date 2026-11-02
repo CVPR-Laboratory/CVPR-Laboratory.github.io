@@ -11,7 +11,8 @@
     achievements: ["科研成果", "Publications"],
     publications: ["全部科研成果", "All Research Outputs"],
     news: ["新闻动态", "News"],
-    contact: ["联系我们", "Contact"],
+    activities: ["团队活动", "Team Activities"],
+    contact: ["合作交流", "Collaboration"],
     profile: ["成员主页", "Profile"],
     article: ["新闻详情", "Article"],
     teacher: ["教师队伍", "Faculty"],
@@ -174,9 +175,12 @@
     // alumni 始终保留板块容器（方便后续扩展），其余按数据动态生成
     var all = ["teacher", "postgraduate", "undergraduate", "alumni"].filter(
       function (k) {
-        return k === "alumni" || D().PEOPLE.some(function (p) {
-          return p.category === k;
-        });
+        return (
+          k === "alumni" ||
+          D().PEOPLE.some(function (p) {
+            return p.category === k;
+          })
+        );
       },
     );
     return all;
@@ -238,11 +242,19 @@
         ],
       },
       {
+        key: "activities",
+        path: "activities.html",
+        children: [
+          ["activities.html#academic-exchange", C("学术交流", "Academic Exchange")],
+          ["activities.html#team-building", C("团队建设", "Team Building")],
+        ],
+      },
+      {
         key: "contact",
         path: "contact.html",
         children: [
           ["contact.html#admissions", C("招生信息", "Admissions")],
-          ["contact.html#collaboration", C("合作交流", "Collaboration")],
+          ["contact.html#contact-details", C("联系我们", "Contact Us")],
         ],
       },
     ];
@@ -1179,14 +1191,37 @@
       C("文章导航", "Article navigation") +
       '"><div class="article-nav-row">' +
       (prev
-        ? '<span class="article-nav-prev">' + a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title)) + "</span>"
+        ? '<span class="article-nav-prev">' +
+          a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title)) +
+          "</span>"
         : '<span class="article-nav-prev"></span>') +
       (next
-        ? '<span class="article-nav-next">' + a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title)) + "</span>"
+        ? '<span class="article-nav-next">' +
+          a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title)) +
+          "</span>"
         : '<span class="article-nav-next"></span>') +
       '</div><div class="article-nav-back">' +
       a("news.html", C("返回新闻列表", "Back to News"), "text-link") +
       "</div></nav></article></div>"
+    );
+  }
+  function activities() {
+    return layout(
+      "activities",
+      section(
+        "academic-exchange",
+        C("学术交流", "Academic Exchange"),
+        '<div class="empty-state">' +
+          p(C("暂无已发布的学术交流活动记录。", "No academic exchange activities have been published yet.")) +
+          "</div>",
+      ) +
+        section(
+          "team-building",
+          C("团队建设", "Team Building"),
+          '<div class="empty-state">' +
+            p(C("暂无已发布的团队建设活动记录。", "No team building activities have been published yet.")) +
+            "</div>",
+        ),
     );
   }
   function contact() {
@@ -1324,6 +1359,7 @@
         name("publications"),
       );
     else if (page === "news") body = results(true);
+    else if (page === "activities") body = activities();
     else if (page === "article") body = article(id);
     else if (page === "contact") body = contact();
     else

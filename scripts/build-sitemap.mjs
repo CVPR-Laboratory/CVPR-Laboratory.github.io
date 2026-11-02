@@ -13,6 +13,7 @@ const pages = [
   "people.html",
   "achievements.html",
   "news.html",
+  "activities.html",
   "contact.html",
   "publications.html",
 ];
