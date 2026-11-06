@@ -40,30 +40,37 @@
   }
   function applyMetadata(meta) {
     document.title = meta.title;
-    document.querySelector('meta[name="description"]').content =
-      meta.description;
-    document.querySelector('link[rel="canonical"]').href = meta.canonical;
+    var desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.content = meta.description;
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = meta.canonical;
     [
       ["og:title", meta.title],
       ["og:description", meta.description],
       ["og:url", meta.canonical],
       ["og:image", meta.image],
     ].forEach(function (pair) {
-      document.querySelector('meta[property="' + pair[0] + '"]').content =
-        pair[1];
+      var el = document.querySelector('meta[property="' + pair[0] + '"]');
+      if (el) el.content = pair[1];
     });
   }
   function render() {
     clearInterval(timer);
+    var headerEl = document.getElementById("site-header");
+    var pageEl = document.getElementById("page-root");
+    var footerEl = document.getElementById("site-footer");
+    if (!headerEl || !pageEl || !footerEl) return;
+    if (typeof window.CVPR_VIEW === "undefined" || !window.CVPR_VIEW.render)
+      return;
     var result = window.CVPR_VIEW.render(page, {
       prefix: prefix,
       lang: language(),
       search: location.search,
       id: document.body.dataset.id,
     });
-    document.getElementById("site-header").innerHTML = result.header;
-    document.getElementById("page-root").innerHTML = result.body;
-    document.getElementById("site-footer").innerHTML = result.footer;
+    headerEl.innerHTML = result.header;
+    pageEl.innerHTML = result.body;
+    footerEl.innerHTML = result.footer;
     document.documentElement.lang = language() === "en" ? "en" : "zh-CN";
     applyMetadata(result.meta);
     carouselIndex = 0;
@@ -129,6 +136,16 @@
   document.addEventListener("click", function (event) {
     var target = event.target.closest("button,a");
     if (!target) return;
+    // 分页链接（带 ?page= 参数）：阻止 SPA 拦截，让浏览器全量导航
+    if (target.tagName === "A" && target.closest(".pagination")) {
+      var href = target.getAttribute("href");
+      var u = new URL(href, location.origin);
+      if (u.pathname.indexOf(".html") !== -1 && u.searchParams.get("page")) {
+        event.preventDefault();
+        location.href = u.toString();
+        return;
+      }
+    }
     if (target.hasAttribute("data-language")) {
       var next = language() === "en" ? "zh" : "en",
         u = new URL(location.href);

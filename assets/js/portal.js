@@ -11,8 +11,8 @@
     achievements: ["科研成果", "Publications"],
     publications: ["全部科研成果", "All Research Outputs"],
     news: ["新闻动态", "News"],
+    contact: ["合作交流", "Contact"],
     activities: ["团队活动", "Team Activities"],
-    contact: ["合作交流", "Collaboration"],
     profile: ["成员主页", "Profile"],
     article: ["新闻详情", "Article"],
     teacher: ["教师队伍", "Faculty"],
@@ -114,8 +114,7 @@
         "</picture>"
       );
     }
-    // Only registered legacy images have pre-generated WebP variants.
-    return m && /^images\/.+\.(png|jpe?g)$/i.test(src)
+    return /^images\/.+\.(png|jpe?g)$/i.test(src) && m
       ? '<picture><source srcset="' +
           url(
             "assets/images/optimized/" +
@@ -175,12 +174,9 @@
     // alumni 始终保留板块容器（方便后续扩展），其余按数据动态生成
     var all = ["teacher", "postgraduate", "undergraduate", "alumni"].filter(
       function (k) {
-        return (
-          k === "alumni" ||
-          D().PEOPLE.some(function (p) {
-            return p.category === k;
-          })
-        );
+        return k === "alumni" || D().PEOPLE.some(function (p) {
+          return p.category === k;
+        });
       },
     );
     return all;
@@ -245,8 +241,8 @@
         key: "activities",
         path: "activities.html",
         children: [
-          ["activities.html#academic-exchange", C("学术交流", "Academic Exchange")],
-          ["activities.html#team-building", C("团队建设", "Team Building")],
+          ["activities.html#academic", C("学术交流", "Academic Exchange")],
+          ["activities.html#team", C("团队建设", "Team Building")],
         ],
       },
       {
@@ -254,7 +250,7 @@
         path: "contact.html",
         children: [
           ["contact.html#admissions", C("招生信息", "Admissions")],
-          ["contact.html#contact-details", C("联系我们", "Contact Us")],
+          ["contact.html#collaboration", C("合作交流", "Collaboration")],
         ],
       },
     ];
@@ -347,46 +343,55 @@
   }
   function footer() {
     var c = D().CONTACT;
-    return (
-      '<div class="container footer-main"><div><h2>' +
-      C(
-        "计算机视觉与模式识别实验室",
-        "Computer Vision and Pattern Recognition Laboratory",
-      ) +
-      "</h2>" +
-      p(
-        C(
-          "曲阜师范大学 · 计算机学院",
-          "School of Computer Science, Qufu Normal University",
-        ),
-      ) +
-      "</div><div><h2>" +
-      C("联系信息", "Contact") +
-      "</h2><p>" +
-      C("邮箱：", "Email: ") +
-      a("mailto:" + c.email, c.email) +
-      "</p><p>" +
-      C("电话：", "Phone: ") +
-      a("tel:+86" + c.phone.replace(/\D/g, ""), c.phone) +
-      "</p>" +
-      p(L(c.address)) +
-      '</div><div class="footer-links">' +
-      a("https://www.qfnu.edu.cn/", C("曲阜师范大学", "University Website")) +
-      a(
-        "https://jsj.qfnu.edu.cn/",
-        C("计算机学院", "School of Computer Science"),
-      ) +
-      a("https://yjs.qfnu.edu.cn/", C("研究生招生", "Graduate Admissions")) +
-      a("contact.html", name("contact")) +
-      '</div></div><div class="footer-bottom">© ' +
-      new Date().getFullYear() +
-      " " +
-      C(
-        "计算机视觉与模式识别实验室 · 曲阜师范大学",
-        "CVPR Laboratory · Qufu Normal University",
-      ) +
-      "</div>"
+    var s = "";
+    s += '<div class="container footer-main">';
+    /* 第1栏：上下结构，上方 Logo 占位，下方实验室名 + 学院 */
+    s += '<div class="footer-brand"><div class="footer-logo-slot"><span class="footer-logo-hint">';
+    s += C("实验室 Logo（预留位置）", "Lab Logo (reserved)");
+    s += '</span></div><div><h2>';
+    s += C(
+      "计算机视觉与模式识别实验室",
+      "Computer Vision and Pattern Recognition Laboratory",
     );
+    s += "</h2>";
+    s += p(
+      C(
+        "曲阜师范大学 · 计算机学院",
+        "School of Computer Science, Qufu Normal University",
+      ),
+    );
+    s += "</div></div>";
+    /* 第2栏：联系信息（加宽，联系方式已更新） */
+    s += '<div><h2>' + C("联系信息", "Contact") + "</h2><p>";
+    s += C("邮箱：", "Email: ");
+    s += a("mailto:" + c.email, c.email);
+    s += "</p><p>";
+    s += C("电话：", "Phone: ");
+    s += a("tel:+86" + c.phone.replace(/\D/g, ""), c.phone);
+    s += "</p>";
+    s += p(L(c.address));
+    s += "</div>";
+    /* 第3栏：上红底白字「实验室微信二维码」+ 下二维码图（素材已迁移至 images/about/） */
+    s += '<div class="footer-qr"><div class="footer-qr-title">';
+    s += C("实验室微信二维码", "WeChat QR Code");
+    s += "</div>";
+    s += img("images/about/wechat-qr.png", C("实验室微信二维码", "Lab WeChat QR code"));
+    s += "</div>";
+    /* 第4栏：复用原有 footer-links */
+    s += '<div class="footer-links">';
+    s += a("https://www.qfnu.edu.cn/", C("曲阜师范大学", "University Website"));
+    s += a("https://jsj.qfnu.edu.cn/", C("计算机学院", "School of Computer Science"));
+    s += a("https://yjs.qfnu.edu.cn/", C("研究生招生", "Graduate Admissions"));
+    s += a("contact.html", name("contact"));
+    s += '</div></div><div class="footer-bottom">© ';
+    s += String(new Date().getFullYear());
+    s += " ";
+    s += C(
+      "计算机视觉与模式识别实验室 · 曲阜师范大学",
+      "CVPR Laboratory · Qufu Normal University",
+    );
+    s += "</div>";
+    return s;
   }
   function heading(t, h) {
     return (
@@ -459,40 +464,40 @@
     );
   }
   function publication(r) {
-    var links = "";
-    if (r.doi)
-      links +=
-        '<a href="https://doi.org/' +
-        E(r.doi) +
-        '" target="_blank" rel="noopener noreferrer">DOI: ' +
-        E(r.doi) +
-        "</a>";
-    [
-      ["pdf", "PDF"],
-      ["code", C("代码", "Code")],
-      ["link", C("官方链接", "Official Link")],
-    ].forEach(function (c) {
-      if (r[c[0]] && !(c[0] === "link" && r.doi))
-        links +=
-          '<a href="' +
-          url(r[c[0]]) +
-          '" target="_blank" rel="noopener noreferrer">' +
-          c[1] +
-          "</a>";
-    });
-    return (
-      '<li class="publication" data-record-id="' +
-      E(r.id) +
-      '"><h3>' +
+    /* H4：三栏布局（左时间 / 中论文信息 / 右占位图）
+       条目整体可点击：有 DOI 时 li 包裹 <a> 跳转 https://doi.org/{doi}；
+       无 DOI 时条目不可点击（缺失清单见会话记录）
+       数据层仅有 year，无 month；月份暂缺，显示 01 占位 */
+    var year = String(r.year || "").slice(0, 4);
+    var inner =
+      '<div class="publication-time"><span class="pub-month">01</span><span class="pub-year">' +
+      E(year) +
+      '</span></div><div class="publication-info"><h3>' +
       E(L(r.title)) +
       '</h3><p class="publication-venue">' +
       E(r.venue) +
       '</p><p class="publication-authors">' +
       E(r.authors) +
-      " · " +
-      E(r.year) +
-      "</p>" +
-      (links ? '<div class="publication-links">' + links + "</div>" : "") +
+      "</p></div>" +
+      '<div class="publication-thumb" aria-hidden="true"></div>';
+    var doi = (r.doi || "").trim();
+    if (doi) {
+      return (
+        '<li class="publication" data-record-id="' +
+        E(r.id) +
+        '"><a class="publication-link" href="https://doi.org/' +
+        E(doi) +
+        '" target="_blank" rel="noopener noreferrer">' +
+        inner +
+        "</a></li>"
+      );
+    }
+    /* 无 DOI：条目保留但不可点击 */
+    return (
+      '<li class="publication" data-record-id="' +
+      E(r.id) +
+      '">' +
+      inner +
       "</li>"
     );
   }
@@ -630,7 +635,7 @@
       p(intro()) +
       a("about.html", C("了解实验室", "About the Laboratory"), "text-link") +
       '</div><div class="stats"><div class="stat"><strong>' +
-      papers.length +
+      records().length +
       "</strong><span>" +
       C("学术论文", "Publications") +
       '</span></div><div class="stat"><strong>' +
@@ -638,7 +643,7 @@
       "</strong><span>" +
       C("研究方向", "Research Areas") +
       "</span></div></div></div></section>" +
-      '<section class="section section-gray"><div class="container">' +
+      '<section class="section section-gray news-activities"><div class="container">' +
       heading(
         C("新闻动态与学术活动", "News and Academic Activities"),
         "news.html",
@@ -815,7 +820,7 @@
             '<div class="research-detail"><p class="english-title" lang="en">' +
               E(r.title.en) +
               "</p>" +
-              img(r.image, L(r.imageAlt)) +
+              '<div class="research-img">' + img(r.image, L(r.imageAlt)) + "</div>" +
               p(L(r.description)) +
               '<div class="research-points"><div><h3>' +
               C("关键研究问题", "Key Problems") +
@@ -967,6 +972,35 @@
       ],
       L(m.name),
     );
+  }
+  function activities() {
+    /* H11：团队活动页 — 沿用现有设计样式，预留两个内容区（学术交流 / 团队建设） */
+    var b =
+      section(
+        "academic",
+        C("学术交流", "Academic Exchange"),
+        '<div class="activity-slot" id="academic-slot"><div><p class="slot-label">' +
+          C("学术交流内容（预留）", "Academic Exchange Content (Reserved)") +
+          '</p><p>' +
+          C(
+            "学术报告、合作研讨、国际会议等动态将在此处展示。",
+            "Lectures, joint seminars, international conferences and other academic activities will be shown here.",
+          ) +
+          "</p></div></div>",
+      ) +
+      section(
+        "team",
+        C("团队建设", "Team Building"),
+        '<div class="activity-slot" id="team-slot"><div><p class="slot-label">' +
+          C("团队建设内容（预留）", "Team Building Content (Reserved)") +
+          '</p><p>' +
+          C(
+            "团建活动、文体竞赛、节日聚会等动态将在此处展示。",
+            "Team events, sports and cultural competitions, and holiday gatherings will be shown here.",
+          ) +
+          "</p></div></div>",
+      );
+    return layout("activities", b);
   }
   function empty(t) {
     return (
@@ -1191,37 +1225,14 @@
       C("文章导航", "Article navigation") +
       '"><div class="article-nav-row">' +
       (prev
-        ? '<span class="article-nav-prev">' +
-          a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title)) +
-          "</span>"
+        ? '<span class="article-nav-prev">' + a(articleUrl(prev), C("上一篇：", "Previous: ") + L(prev.title)) + "</span>"
         : '<span class="article-nav-prev"></span>') +
       (next
-        ? '<span class="article-nav-next">' +
-          a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title)) +
-          "</span>"
+        ? '<span class="article-nav-next">' + a(articleUrl(next), C("下一篇：", "Next: ") + L(next.title)) + "</span>"
         : '<span class="article-nav-next"></span>') +
       '</div><div class="article-nav-back">' +
       a("news.html", C("返回新闻列表", "Back to News"), "text-link") +
       "</div></nav></article></div>"
-    );
-  }
-  function activities() {
-    return layout(
-      "activities",
-      section(
-        "academic-exchange",
-        C("学术交流", "Academic Exchange"),
-        '<div class="empty-state">' +
-          p(C("暂无已发布的学术交流活动记录。", "No academic exchange activities have been published yet.")) +
-          "</div>",
-      ) +
-        section(
-          "team-building",
-          C("团队建设", "Team Building"),
-          '<div class="empty-state">' +
-            p(C("暂无已发布的团队建设活动记录。", "No team building activities have been published yet.")) +
-            "</div>",
-        ),
     );
   }
   function contact() {

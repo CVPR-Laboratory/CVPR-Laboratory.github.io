@@ -293,7 +293,7 @@ time {
 }
 .hero {
   position: relative;
-  height: 440px;
+  height: 500px;
   overflow: hidden;
   background: #eee;
   color: white;
@@ -384,6 +384,59 @@ time {
   display: grid;
   place-items: center;
 }
+/* H3：首页新闻动态与学术活动区背景图（素材已迁移至 images/about/，禁引 pic_future）
+   用 ::before 承载背景图并加轻微高斯模糊（blur 作用于背景层，不影响前景文字清晰度） */
+.news-activities {
+  position: relative;
+  overflow: hidden;
+}
+.news-activities::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    url("../../images/about/news-activities-bg.jpg") center / cover
+      no-repeat;
+  filter: blur(4px);
+  transform: scale(1.05); /* 补偿 blur 造成的边缘透明渗出 */
+  z-index: 0;
+  pointer-events: none;
+}
+.news-activities::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.news-activities > .container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.87);
+  padding: 32px 28px;
+  border-radius: 12px;
+}
+/* H11：团队活动页预留区（虚线占位容器，后续填内容） */
+.activity-slot {
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface);
+  padding: 40px;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 16px;
+  min-height: 120px;
+  display: grid;
+  place-items: center;
+}
+.activity-slot + .activity-slot {
+  margin-top: 20px;
+}
+.activity-slot .slot-label {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 .section {
   padding-block: 58px;
 }
@@ -392,9 +445,9 @@ time {
 }
 .section-heading {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   border-bottom: 1px solid var(--color-border);
   margin-bottom: 30px;
 }
@@ -404,14 +457,16 @@ time {
   position: relative;
   padding-bottom: 14px;
   margin: 0;
+  text-align: center;
 }
 .section-heading h2::after {
   content: "";
   width: 60px;
   height: 3px;
   position: absolute;
-  left: 0;
-  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
   background: var(--color-primary);
 }
 .more-link {
@@ -419,14 +474,19 @@ time {
   color: var(--color-text-secondary);
   font-size: 16px;
 }
+/* 标题行（.section-heading 为 flex column 居中）：「更多」按钮独立一行、贴到区块最右侧；h2 保持居中不变 */
+.section-heading > .more-link {
+  align-self: flex-end;
+}
 .intro-layout {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 310px) 310px;
+  grid-template-columns: 1fr minmax(0, 310px);
   gap: 40px;
   align-items: start;
+  justify-items: center;
+  text-align: center;
 }
-.intro-copy p {
-  line-height: 1.9;
+.intro-copy p {  line-height: 1.9;
   margin-bottom: 20px;
 }
 /* 实验室概况模块：图片预留位（用户往 images/about/intro/ 放图，改 data-src 即可生效） */
@@ -541,88 +601,104 @@ time {
   color: var(--color-primary);
   margin-bottom: 6px;
 }
+/* H4：publication 三栏布局（左时间 / 中论文信息 / 右占位图），固定宽度对齐 */
 .publication {
-  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
   border-bottom: 1px solid var(--color-border);
   padding: 26px 0;
-  isolation: isolate;
-  overflow: hidden;
-}
-/* 鼠标悬浮：红色长条从左侧淡入展开覆盖条目背景（::before width 0→100% 过渡） */
-.publication::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 0;
-  background: var(--color-primary);
-  opacity: 0.92;
-  transition:
-    width 0.35s ease,
-    opacity 0.35s ease;
-  z-index: -1;
-}
-.publication:hover::before,
-.publication:focus-within::before {
-  width: 100%;
-  opacity: 0.92;
-}
-/* 悬浮时同步切换文字颜色，保证红色背景上对比度清晰可读 */
-.publication:hover,
-.publication:focus-within {
-  color: #fff;
-}
-.publication:hover h3,
-.publication:focus-within h3,
-.publication:hover .publication-venue,
-.publication:focus-within .publication-venue,
-.publication:hover .publication-authors,
-.publication:focus-within .publication-authors,
-.publication:hover .publication-links a,
-.publication:focus-within .publication-links a {
-  color: #fff;
-}
-.publication:hover {
-  border-bottom-color: transparent;
 }
 .publication:first-child {
   padding-top: 0;
 }
-.publication h3 {
-  font-size: 21px;
-  margin-bottom: 10px;
+/* 左侧时间栏：月份在上、年份在下，左右边距 5px */
+.publication-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+  min-width: 84px;
+  text-align: center;
+}.publication-time .pub-month {
+  font: 600 38px/1.1 Arial, sans-serif;
+  color: var(--color-primary);
 }
-.publication-venue {
+.publication-time .pub-year {
+  font: 400 20px/1.3 Arial, sans-serif;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+/* 中间论文信息区：自适应铺满剩余空间，文字左对齐，h3 预留两行高度 */
+.publication-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0 8px;
+  text-align: left;
+}
+.publication-info h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 0 0 10px;
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.publication-info .publication-venue {
   margin: 0 0 7px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 1.4;
 }
-.publication-authors {
-  margin: 0 0 10px;
+.publication-info .publication-authors {
+  margin: 0;
   color: var(--color-text-secondary);
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
-.publication-links {
+/* 右侧占位图栏：左右边距 5px，空 div 后续放配图；高度自适应文字区 */
+.publication-thumb {
+  width: 120px;
+  height: 100%;
+  margin: 0 5px;
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  flex-shrink: 0;
+  min-height: 90px;
+}
+/* 条目整体可点击跳 DOI：内层 <a> 铺满 li（flex 布局不变，文字不继承链接色） */
+.publication-link {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  font-size: 16px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
 }
-.publication-links a {
-  color: var(--color-primary);
-  overflow-wrap: anywhere;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+li.publication:hover .publication-link {
+  background: var(--color-primary-light);
 }
 .research-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 }
+/* H5：研究方向卡片红色外边框，标识模块边界 */
 .research-item {
   min-width: 0;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--color-primary);
+  padding: 0 0 16px;
 }
 .research-item img {
   aspect-ratio: 4/3;
@@ -630,9 +706,11 @@ time {
   background: #eee;
   width: 100%;
 }
+/* H5：模块内 h3/small 文字居中 */
 .research-item h3 {
   font-size: 22px;
-  margin: 20px 0 8px;
+  margin: 20px 12px 8px;
+  text-align: center;
 }
 .research-item small {
   display: block;
@@ -640,38 +718,17 @@ time {
     15px/1.5 Arial,
     sans-serif;
   min-height: 46px;
+  text-align: center;
+  margin: 0 12px;
 }
 .research-item p {
   font-size: 17px;
   color: var(--color-text-secondary);
-  margin: 14px 0;
+  margin: 14px 12px 0;
 }
-/* 研究方向卡片底部「查看」按钮：圆角红色背景（取「研究方向」标题同色系），居中，无下划线，hover 加深 */
-.research-item > .text-link {
-  margin-top: auto;
+/* H10：全局 .text-link 统一为定稿按钮样式（圆角红底白字，无下划线，hover 加深） */
+a.text-link {
   display: inline-block;
-  align-self: center;
-  padding: 10px 28px;
-  color: #fff;
-  background: var(--color-primary);
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1;
-  text-decoration: none;
-  border: none;
-  border-radius: 999px;
-  transition:
-    background-color 0.2s ease,
-    opacity 0.2s ease;
-}
-.research-item > .text-link:hover {
-  background: var(--color-primary-dark);
-  opacity: 0.9;
-}
-/* 人员卡片底部「个人主页」按钮：样式与研究方向查看按钮统一，单独一行居中适配人员模块布局 */
-.member > .text-link {
-  display: block;
-  margin: 16px 0 0;
   padding: 10px 28px;
   color: #fff;
   background: var(--color-primary);
@@ -686,14 +743,20 @@ time {
     background-color 0.2s ease,
     opacity 0.2s ease;
 }
-.member > .text-link:hover {
+a.text-link:hover {
   background: var(--color-primary-dark);
   opacity: 0.9;
+  color: #fff;
 }
-.text-link {
-  color: var(--color-primary);
-  font-size: 17px;
-  border-bottom: 1px solid var(--color-primary);
+/* 布局微调：研究方向卡片底部按钮贴底居中；人员卡片按钮单独一行居中 */
+.research-item > .text-link {
+  margin-top: auto;
+  align-self: center;
+}
+.member > .text-link {
+  display: block;
+  margin: 16px auto 0;
+  max-width: 220px;
 }
 .member-grid {
   display: grid;
@@ -712,14 +775,17 @@ time {
   object-position: center top;
   background: var(--color-surface);
 }
+/* H6：人员卡片 h3/p/member-research 全部居中对齐 */
 .member h3 {
   font-size: 24px;
   margin: 15px 0 5px;
+  text-align: center;
 }
 .member p {
   font-size: 16px;
   line-height: 1.7;
   margin: 6px 0;
+  text-align: center;
 }
 .member .member-research {
   color: var(--color-text-secondary);
@@ -784,9 +850,22 @@ time {
 .content-heading {
   color: var(--color-primary-dark);
   font-size: 28px;
+  text-align: center;
+  position: relative;
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 15px;
   margin-bottom: 24px;
+}
+/* H2：其余页面 h2.content-heading 居中 + 红色下划线居中 */
+.content-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
 }
 .prose p {
   line-height: 1.9;
@@ -794,6 +873,7 @@ time {
 .prose li {
   margin-block: 8px;
 }
+/* H7：about #environment 图片铺满外层容器，保持宽高比，溢出裁切 */
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -802,7 +882,7 @@ time {
 .gallery img {
   width: 100%;
   height: 260px;
-  object-fit: contain;
+  object-fit: cover;
   background: var(--color-surface);
 }
 figcaption {
@@ -810,10 +890,25 @@ figcaption {
   color: var(--color-text-secondary);
   margin-top: 8px;
 }
+/* H8：research.html 页面图片统一套入外层容器，铺满、保持宽高比、溢出裁切
+   （.research-img 为规范容器，参考遥感目标检测栏目图片尺寸） */
+.research-img {
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  margin: 0 auto 26px;
+  max-width: 440px;
+}
+.research-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
 .research-detail > img {
   max-height: 400px;
   margin: 0 auto 26px;
-  object-fit: contain;
+  object-fit: cover;
 }
 .research-detail h3 {
   margin-top: 26px;
@@ -829,11 +924,22 @@ figcaption {
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
+/* H9：profile-summary 横向一行三栏（证件照 | 基础信息 | 联系信息），区块间留合理间距 */
 .profile-summary {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 220px minmax(0, 1fr) 240px;
   gap: 34px;
+  align-items: start;
   margin-bottom: 40px;
+}
+/* 联系栏内按钮：浅色底 + 深色文字，与页面整体更协调（红底白字在浅背景上对比过强） */
+.profile-summary .profile-contact a.text-link {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+.profile-summary .profile-contact a.text-link:hover {
+  background: var(--color-primary);
+  color: #fff;
 }
 .profile-summary img {
   width: 220px;
@@ -851,6 +957,10 @@ figcaption {
 }
 .profile-summary p {
   margin-bottom: 12px;
+}
+/* 联系信息栏：作为独立第三栏，靠右列布局 */
+.profile-summary .profile-contact {
+  min-width: 0;
 }
 .filter-form {
   display: flex;
@@ -1002,6 +1112,10 @@ select {
 .article-nav-back {
   text-align: center;
 }
+/* 新闻详情页底部返回按钮：保持红底，文字改白保证可读性 */
+.article-nav-back a.text-link {
+  color: #fff;
+}
 .contact-details {
   margin: 0;
 }
@@ -1029,11 +1143,59 @@ select {
   background: var(--color-primary-dark);
   color: white;
 }
+/* H12：footer-main 四栏同行布局（Logo位 | 联系信息加宽 | 微信二维码 | 原links） */
 .footer-main {
   display: grid;
-  grid-template-columns: 1fr 1.3fr 0.7fr;
-  gap: 60px;
+  grid-template-columns: 0.9fr 1.5fr 0.7fr 0.7fr;
+  gap: 48px;
   padding-block: 44px;
+}
+/* 第1栏：上下结构（Logo 占位 + 文字），中间留合理间距 */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.footer-logo-slot {
+  min-height: 76px;
+  border: 1px dashed #ffffff45;
+  display: grid;
+  place-items: center;
+  color: #ffffffb0;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.footer-logo-slot:has(> img) {
+  border: 0;
+  min-height: 0;
+  place-items: start;
+}
+.footer-logo-slot:has(> img) .footer-logo-hint {
+  display: none;
+}
+.footer-logo-slot img {
+  width: 100%;
+  height: auto;
+}
+/* 第3栏：微信二维码（上红底白字标题 + 下二维码图） */
+.footer-qr {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-qr-title {
+  background: var(--color-primary);
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 12px;
+}
+.footer-qr img {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding: 6px;
 }
 .footer-main h2 {
   font-size: 22px;
@@ -1127,14 +1289,6 @@ select {
     grid-template-columns: 1fr 230px;
     gap: 30px;
   }
-  .intro-images {
-    grid-column: 1 / -1;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .intro-image-slot .img-placeholder {
-    min-height: 110px;
-  }
   .research-grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 36px;
@@ -1148,11 +1302,24 @@ select {
     gap: 22px;
   }
   .footer-main {
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
+  }
+  .footer-qr {
+    grid-column: 1 / -1;
   }
   .profile-summary {
     grid-template-columns: 180px minmax(0, 1fr);
     gap: 24px;
+  }
+  .profile-summary .profile-contact {
+    grid-column: 1 / -1;
+  }
+  .publication {
+    max-width: 100%;
+  }
+  .publication-thumb {
+    display: none;
   }
 }
 @media (max-width: 767px) {
@@ -1297,14 +1464,6 @@ select {
   .news-columns {
     display: block;
   }
-  .stats {
-    border: 0;
-    background: var(--color-surface);
-    margin-top: 24px;
-  }
-  .stat strong {
-    font-size: 34px;
-  }
   .feature-news {
     margin-bottom: 30px;
   }
@@ -1416,6 +1575,12 @@ select {
   }
   .publication-authors {
     font-size: 15px;
+  }
+  .publication {
+    max-width: 100%;
+  }
+  .publication-thumb {
+    display: none;
   }
   .article {
     padding-block: 28px 42px;

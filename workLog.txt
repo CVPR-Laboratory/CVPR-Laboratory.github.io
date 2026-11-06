@@ -72,3 +72,20 @@
 - [x] C2 cao-jipei.html 详情重写（对齐 wang-hanxiang.html 排版）：meta/og/ld+json 摘要更新；profile-contact 补邮箱 jipeicv@qfnu.edu.cn + 电话 176-6320-8598 + 简历 PDF；biography 详写（项目/论文/竞赛/审稿人）；education 硕士+本科两级；experience 5 项科研项目；publications 精选 5 条 + related 全量 10 条（ol 列表）；新增 honors/skills 两个 section；H1 唯一
 - [x] C1-C3 验证：check-static 33 页全绿；JS 双语文案渲染验证（zh/en 均含 荣誉奖项/专业技能 section）；http://127.0.0.1:8787/ 在线验证 cao-jipei.html（红外小目标/荣誉/技能/全部论文命中）与 people.html（新头像+新研究方向命中）；服务器为后台 job pwsh-37
 - [x] C4 修复 people.html 曹继培卡片仍显示旧图：M3 时只替换了 <img src>，外层 <picture><source srcset> 仍指向旧图 webp（team_core_caojipei.webp），浏览器优先加载 webp 导致新照片不显示；去掉 picture 包装直用 <img>（新图无 webp 版，与 M5 备注一致）；check-static 全绿，服务器返回已确认无旧 webp 引用
+
+## H1-H13 重要修改（重要修改.txt 第二批需求）
+- 素材迁移（H3/H12 前置）：pic_future\新闻动态与学术活动背景图\IMG_20251222_155544.jpg → images/about/news-activities-bg.jpg；pic_future\实验室二维码\实验室二维码.png（434x432）→ images/about/wechat-qr.png；pic_future 已零代码引用（仅 CSS 注释提及禁令）
+- [x] H1 .hero 高度 440px→500px（site.css）
+- [x] H2 首页各 section 标题（.section-heading）与内容区标题（.content-heading）改上下居中结构，红色下划线居中
+- [x] H3 首页「新闻动态与学术活动」区加 .news-activities：background url(images/about/news-activities-bg.jpg) center/cover + ::before 半透明白色遮罩 + 内容 z-index 提升；portal.js home() 同步；index.html 预渲染同步
+- [x] H4 li.publication 改三栏 grid（时间列 month 30px/year 16px + 信息列 2 行截断 + 120x90 虚线缩略图占位）；portal.js publication() 重写；index/publications/achievements/research/li-yanfen/wang-hanxiang 6 个预渲染页批量替换；数据层仅有 year，月份暂硬编码 01 占位（portal.js 内注释标注数据缺口）；cao-jipei.html 用 ol 列表不受影响
+- [x] H5 .research-item 加 1px 主色边框 + padding，h3/small 居中留边距
+- [x] H6 .member h3/p 居中
+- [x] H7 .gallery img object-fit: contain→cover（CSS-only，about.html 环境区自动生效）
+- [x] H8 research.html 四个方向图套 .research-img 容器（铺满 440px 宽裁切）：预渲染 research.html 包 <div class="research-img">，portal.js research() 同步
+- [x] H9 .profile-summary 改三栏 grid（220px 头像 | 信息 | 240px 联系栏），联系栏为第三列；10 个预渲染 profile 页已验证均为 图|信息|profile-contact 三块结构；中间信息列保留原有标记
+- [x] H10 a.text-link 全局化按钮样式（原 T1 作用域规则废弃）：圆角红底白字粗体无下划线 hover 加深；布局类规则保留（.research-item > .text-link margin-top:auto；.member > .text-link 居中块级）
+- [x] H11 导航「联系我们」→「合作交流」；新闻动态与合作交流之间插入顶层「团队活动」（子菜单 学术交流 activities.html#academic / 团队建设 activities.html#team）；新建 activities.html（34 页中第 1 个新页，page-banner + sidebar + 两个预留 .activity-slot section，沿用现有设计样式）；portal.js labels/navItems()/render 分支/activities() 全部接入；33 个旧页 + activities.html 头部导航批量同步（子目录页 ../ 前缀已修正）
+- [x] H12 页脚改四栏：col1 .footer-brand（logo 预留虚线框 + 实验室名/学院）；col2 联系信息（加宽，邮箱 rigcv@qfnu.edu.cn、电话 198-6301-2151、地址不变）；col3 .footer-qr（红底白字标题 + images/about/wechat-qr.png）；col4 保留原 .footer-links；contact.js 邮箱/电话已更新；34 页页脚全部同步；portal.js footer() 重写
+- [x] H13 规范复查：全库 pic_future 零引用（仅 CSS 注释提及）；check-static 页数 33→34 更新 + sitemap.xml 增 activities.html；check-static 34 页全绿（10 双语 profile / 12 双语 article / 44 论文 / 路径与元数据）
+- 备注：portal.js footer() 原字符串拼接版在 node --check 下报「Unexpected identifier 'footer'」（V8 对长 return 表达式 + 中文注释的解析问题），已改写为 var s; s += ... 累加形式，语法通过且输出等价

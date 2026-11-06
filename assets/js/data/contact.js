@@ -2,8 +2,8 @@
   window.CVPR_DATA = window.CVPR_DATA || {};
 
   window.CVPR_DATA.CONTACT = {
-    email: "hanxiang@qfnu.edu.cn",
-    phone: "137-9157-1602",
+    email: "rigcv@qfnu.edu.cn",
+    phone: "198-6301-2151",
     address: {
       zh: "山东省日照市烟台北路 80 号，曲阜师范大学日照校区",
       en: "80 North Yantai Road, Qufu Normal University Rizhao Campus, Rizhao, Shandong"
