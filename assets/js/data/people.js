@@ -473,7 +473,7 @@
           "Third Prize in the 10th National College Student Statistical Modeling Competition",
           "Third Prize in the National College Student Artificial Intelligence Algorithm Design and Application Competition",
           "Third Prize in the National College English Vocabulary Ability Competition",
-          "Third Prize in Shandong Province College Student Artificial Intelligence Competition,
+          "Third Prize in Shandong Province College Student Artificial Intelligence Competition",
         ]
       },
       email: "",
