@@ -69,11 +69,11 @@
       skills: {
         zh: [
           "审稿人：Computers and Electronics in Agriculture、Engineering Applications of Artificial Intelligence、Computers in Industry、Construction and Building Materials 等国际期刊",
-          "中国计算机学会（CCF）会员、IEEE 会员、中国人工智能学会会员、山东省青年科学家委员会会员"
+          "中国计算机学会（CCF）会员、中国人工智能学会会员、山东省青年科学家委员会会员"
         ],
         en: [
           "Reviewer for Computers and Electronics in Agriculture, Engineering Applications of Artificial Intelligence, Computers in Industry, Construction and Building Materials and other international journals",
-          "Member of CCF, IEEE, CAAI, and Shandong Youth Scientists Committee"
+          "Member of CCF, CAAI, and Shandong Youth Scientists Committee"
         ]
       },
       publications: {
@@ -366,12 +366,10 @@
       },
       honors: {
         zh: [
-          "第二十二届中国研究生数学建模竞赛 国家二等奖",
           "\"华为杯\"第八届中国研究生人工智能创新大赛 国家三等奖",
           "一等奖学金（2022、2023）、二等奖学金（2024、2025、2026）二等创新创业奖学金（2022）"
         ],
         en: [
-          "China Graduate Mathematical Contest in Modeling, National Second Prize",
           "8th Huawei Cup China Graduate AI Innovation Contest, National Third Prize",
           "First-Class Scholarship (2022, 2023), Second-class Scholarship (2024, 2025, 2026), Second Class Innovation and Entrepreneurship Scholarship (2022)"
         ]
