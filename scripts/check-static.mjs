@@ -81,6 +81,21 @@ for (const lang of ["zh", "en"])
     )
       errors.push("Profile failed: " + p.id + " " + lang);
   }
+const caoProfileZh = view.render("profile", {
+  lang: "zh",
+  id: "cao-jipei",
+}).body;
+const caoProfileEn = view.render("profile", {
+  lang: "en",
+  id: "cao-jipei",
+}).body;
+if (
+  !caoProfileZh.includes("Google 学术主页") ||
+  !caoProfileZh.includes('href="https://jipeicao.github.io/">个人主页') ||
+  !caoProfileEn.includes("Google Scholar Profile") ||
+  !caoProfileEn.includes('href="https://jipeicao.github.io/">Personal Homepage')
+)
+  errors.push("Cao Jipei profile homepage links are missing");
 for (const lang of ["zh", "en"])
   for (const article of view.publicNews()) {
     const r = view.render("article", { lang, id: article.id });

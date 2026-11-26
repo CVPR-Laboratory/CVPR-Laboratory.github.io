@@ -209,6 +209,7 @@
       email: "jipeicv@qfnu.edu.cn",
       phone: "176-6320-8598",
       homepage: "https://scholar.google.com/citations?user=UGo3_1UAAAAJ&hl=en",
+      personalHomepage: "https://jipeicao.github.io/",
       cv: ""
     },
     {

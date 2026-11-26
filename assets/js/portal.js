@@ -1078,6 +1078,11 @@
           a(m.homepage, C("Google 学术主页", "Google Scholar Profile"), "text-link") +
           "</p>"
         : "") +
+      (m.personalHomepage
+        ? "<p>" +
+          a(m.personalHomepage, C("个人主页", "Personal Homepage"), "text-link") +
+          "</p>"
+        : "") +
       "</div></div>" +
       section("biography", C("个人简介", "Biography"), p(L(m.bio)));
     [
