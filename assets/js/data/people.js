@@ -510,6 +510,14 @@
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
+      honors: {
+        zh: [
+          "第二十三届中国研究生数学建模竞赛 国家二等奖"
+        ],
+        en: [
+          "The 23nd China Graduate Mathematical Modeling Competition National Second Prize"
+        ]
+      },
       email: "",
       homepage: "",
       cv: ""
