@@ -366,11 +366,11 @@
       },
       honors: {
         zh: [
-          "\"华为杯\"第八届中国研究生人工智能创新大赛 国家三等奖",
+          "第十三届蓝桥杯全国软件和信息技术专业人才大赛山东赛区C/C++程序设计大学B组二等奖",
           "一等奖学金（2022、2023）、二等奖学金（2024、2025、2026）二等创新创业奖学金（2022）"
         ],
         en: [
-          "8th Huawei Cup China Graduate AI Innovation Contest, National Third Prize",
+          "The 13th Blue Bridge Cup National Software and Information Technology Professional Talent Competition Shandong Division C/C++Programming Design University Group B Second Prize",
           "First-Class Scholarship (2022, 2023), Second-class Scholarship (2024, 2025, 2026), Second Class Innovation and Entrepreneurship Scholarship (2022)"
         ]
       },
