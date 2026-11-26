@@ -172,7 +172,7 @@
       },
       publications: {
         zh: [
-          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)"
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)",
           "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)"
         ],
         en: [
@@ -240,7 +240,7 @@
       },
       publications: {
         zh: [
-          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)"
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)",
           "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)"
         ],
         en: [
@@ -396,11 +396,11 @@
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机科学与技术 硕士在读 | 2026.09 - 至今"
+          "曲阜师范大学 | 计算机科学与技术 硕士在读 | 2026.09 - 至今",
           "宿迁学院 | 信息与计算科学 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
           "Suqian University | B.Sc. Information and Computational Science | 2022.09 - 2026.06"
         ]
       },
@@ -440,11 +440,11 @@
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"
+          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今",
           "山东农业工程学院 | 人工智能 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
           "Shandong Agriculture And Engineering University | B.Sc. Artificial Intelligence | 2022.09 - 2026.06"
         ]
       },
@@ -459,12 +459,12 @@
       honors: {
         zh: [
           "第二十三届中国研究生数学建模竞赛 国家二等奖",
-          "第十八届全国大学生智能汽车竞赛 二等奖"
+          "第十八届全国大学生智能汽车竞赛 二等奖",
           "山东省大学生智能技术应用设计大赛 二等奖",
           "第十届全国大学生统计建模大赛 三等奖",
-          "全国大学生人工智能算法设计与应用大赛 三等奖"，
-          "全国大学生英语词汇能力大赛 三等奖"，
-          "山东省大学生人工智能大赛 三等奖"，
+          "全国大学生人工智能算法设计与应用大赛 三等奖",
+          "全国大学生英语词汇能力大赛 三等奖",
+          "山东省大学生人工智能大赛 三等奖",
         ],
         en: [
           "The 23nd China Graduate Mathematical Modeling Competition National Second Prize",
@@ -496,11 +496,11 @@
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"
+          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今",
           "菏泽学院 | 数据科学与大数据技术 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
           "Heze University | B.Sc. Data Science and Big Data Technology | 2022.09 - 2026.06"
         ]
       },
