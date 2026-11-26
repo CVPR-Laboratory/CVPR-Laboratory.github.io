@@ -177,7 +177,7 @@
         ],
         en: [
           "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Computers and Electronics in Agriculture 2026 (Q1, IF=10.3, Published)",
-
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (Q1, IF=10.3, Published)"
         ]
       },
       honors: {
