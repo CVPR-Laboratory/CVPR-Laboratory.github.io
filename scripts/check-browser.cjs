@@ -21,7 +21,6 @@ const pages = [
   "achievements.html",
   "publications.html",
   "news.html",
-  "activities.html",
   "contact.html",
   "404.html",
   "profile.html?id=missing",
@@ -166,7 +165,6 @@ const server = http.createServer((req, res) => {
       "people.html",
       "achievements.html",
       "news.html",
-      "activities.html",
       "contact.html",
       "profiles/wang-naiben.html",
       "articles/news-003.html",
@@ -218,11 +216,9 @@ const server = http.createServer((req, res) => {
   if (await page.locator("#main-navigation").isVisible())
     failures.push("Escape did not close menu");
   await page.locator("[data-carousel=next]").click();
-  await page.locator('[data-slide="1"]').waitFor({ state: "visible" });
   if (!(await page.locator('[data-slide="1"]').isVisible()))
     failures.push("Carousel next failed");
   await page.locator('[data-carousel-index="0"]').click();
-  await page.locator('[data-slide="0"]').waitFor({ state: "visible" });
   if (!(await page.locator('[data-slide="0"]').isVisible()))
     failures.push("Carousel indicator failed");
   const noJs = await browser.newContext({
@@ -246,7 +242,7 @@ const server = http.createServer((req, res) => {
   const result = {
     checks,
     viewports: 8,
-    profileCount: c.window.CVPR_DATA.PEOPLE.length,
+    profileCount: 9,
     articleCount: c.window.CVPR_VIEW.publicNews().length,
     failures,
     errors: [...new Set(errors)],

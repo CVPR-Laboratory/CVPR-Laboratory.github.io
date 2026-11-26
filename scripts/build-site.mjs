@@ -16,7 +16,7 @@ vm.runInContext(fs.readFileSync("assets/js/portal.js", "utf8"), context, {
 });
 const view = context.window.CVPR_VIEW,
   data = context.window.CVPR_DATA,
-  version = "20261106";
+  version = "20261020";
 const escape = (v) =>
   String(v).replace(
     /[&<>"']/g,
@@ -114,7 +114,6 @@ for (const p of [
   "profile",
   "article",
   "404",
-  "activities",
 ])
   fs.writeFileSync(p === "home" ? "index.html" : p + ".html", document(p));
 for (const [folder, page, items] of [
@@ -137,5 +136,5 @@ for (const [folder, page, items] of [
     );
 }
 console.log(
-  `Generated 12 root pages, ${data.PEOPLE.length} member profiles and ${view.publicNews().length} articles.`,
+  `Generated 11 root pages, ${data.PEOPLE.length} member profiles and ${view.publicNews().length} articles.`,
 );

@@ -22,7 +22,7 @@
     },
     wechat: {
       image: "images/index/index_footer_WeChat.png",
-      label: { zh: "微信公众号：CVPR-Lab", en: "WeChat: CVPR-Lab" }
+      label: { zh: "微信公众号：CVIU Lab", en: "WeChat: CVIU Lab" }
     },
     source: "legacy/contact_main.html and the current Developer B reviewed content",
     verificationStatus: "verified",

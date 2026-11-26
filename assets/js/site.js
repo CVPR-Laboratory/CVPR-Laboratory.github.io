@@ -8,22 +8,6 @@
     hovering = false,
     focused = false;
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var siteHeader = document.getElementById("site-header");
-  function updateStickyNavigation() {
-    var nav = document.getElementById("main-navigation");
-    if (!siteHeader || !nav) return;
-    var mastheadHeight =
-      siteHeader.querySelector(".utility").offsetHeight +
-      siteHeader.querySelector(".identity").offsetHeight;
-    var mobile = window.matchMedia("(max-width: 767px)").matches;
-    var style = document.documentElement.style;
-    // Let the desktop masthead scroll away while the navigation stays visible.
-    style.setProperty("--header-offset", (mobile ? 0 : -mastheadHeight) + "px");
-    style.setProperty(
-      "--header-visible-height",
-      (mobile ? mastheadHeight : nav.offsetHeight) + "px",
-    );
-  }
   function savedLanguage() {
     try {
       return localStorage.getItem("lang");
@@ -77,7 +61,6 @@
     hovering = false;
     focused = false;
     setupCarousel();
-    updateStickyNavigation();
   }
   async function moveSlide(index, automatic) {
     var slides = [].slice.call(document.querySelectorAll("[data-slide]"));
@@ -284,8 +267,4 @@
     console.error("CVPR page initialization failed", error);
     // Pre-rendered content remains readable if an optional enhancement fails.
   }
-  updateStickyNavigation();
-  window.addEventListener("resize", updateStickyNavigation);
-  if (siteHeader && window.ResizeObserver)
-    new ResizeObserver(updateStickyNavigation).observe(siteHeader);
 })();

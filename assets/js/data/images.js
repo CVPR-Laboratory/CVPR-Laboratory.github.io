@@ -2,7 +2,7 @@
   window.CVPR_DATA = window.CVPR_DATA || {};
 
   window.CVPR_DATA.IMAGES = [
-    { id: "logo", src: "images/logo.png", type: "logo", width: 420, height: 90, ratio: "4.67", fit: "contain", position: "center", usedIn: ["header"], alt: { zh: "CVPR-Laboratory 实验室标识", en: "CVPR-Laboratory logo" } },
+    { id: "logo", src: "images/logo.png", type: "logo", width: 420, height: 90, ratio: "4.67", fit: "contain", position: "center", usedIn: ["header"], alt: { zh: "CVIU Lab 实验室标识", en: "CVIU Lab logo" } },
     { id: "home-hero-01", src: "images/index/index_slideshow_01.png", type: "hero", width: 2730, height: 1535, ratio: "16:9", fit: "cover", position: "center", usedIn: ["home hero"], alt: { zh: "实验室首页横幅图", en: "Laboratory homepage banner" } },
     { id: "home-hero-02", src: "images/index/index_slideshow_02.png", type: "hero", width: 2730, height: 1535, ratio: "16:9", fit: "cover", position: "center", usedIn: ["home visual panel"], alt: { zh: "智慧感知研究横幅图", en: "Intelligent perception banner" } },
     { id: "home-hero-03", src: "images/index/index_slideshow_03.png", type: "hero", width: 2730, height: 1535, ratio: "16:9", fit: "cover", position: "center", usedIn: ["home visual panel"], alt: { zh: "医学图像分析横幅图", en: "Medical image analysis banner" } },
@@ -24,7 +24,7 @@
     { id: "research-remote-sensing", src: "images/index/index_research_RS.png", type: "research", width: 2730, height: 1535, ratio: "16:9", fit: "cover", position: "center", usedIn: ["research card"], alt: { zh: "遥感目标检测方向图片", en: "Remote sensing object detection image" } },
     { id: "research-medical", src: "images/index/index_research_medical.png", type: "research", width: 2730, height: 1535, ratio: "16:9", fit: "cover", position: "center", usedIn: ["research card"], alt: { zh: "医学图像分析方向图片", en: "Medical image analysis image" } },
     { id: "research-infrared", src: "images/index/index_research_infrared.png", type: "research", width: 2025, height: 1535, ratio: "4:3", fit: "cover", position: "center", usedIn: ["research card"], alt: { zh: "红外目标检测方向图片", en: "Infrared target detection image" } },
-    { id: "member-wanghanxiang", src: "images/team/team_core_wanghanxiang.png", type: "avatar", width: 1773, height: 2364, ratio: "3:4", fit: "cover", position: "center top", usedIn: ["people", "profile"], alt: { zh: "王瀚祥老师个人照片", en: "Portrait of Hanxiang Wang" } },
+    { id: "member-wanghanxiang", src: "images/team/team_core_wanghanxiang_new.jpg", type: "avatar", width: 709, height: 992, ratio: "3:4", fit: "cover", position: "center top", usedIn: ["people", "profile"], alt: { zh: "王瀚祥老师个人照片", en: "Portrait of Hanxiang Wang" } },
     { id: "member-liyanfen", src: "images/team/team_core_liyanfen.png", type: "avatar", width: 1773, height: 2364, ratio: "3:4", fit: "cover", position: "center top", usedIn: ["people", "profile"], alt: { zh: "厉彦芬老师个人照片", en: "Portrait of Yanfen Li" } },
     { id: "member-caojipei", src: "images/team/team_core_caojipei.png", type: "avatar", width: 1773, height: 2364, ratio: "3:4", fit: "cover", position: "center top", usedIn: ["people", "profile"], alt: { zh: "曹继培个人照片", en: "Portrait of Jipei Cao" } },
     { id: "member-mamengyao", src: "images/team/team_core_mamengyao.png", type: "avatar", width: 1730, height: 2422, ratio: "portrait", fit: "cover", position: "center top", usedIn: ["people", "profile"], alt: { zh: "马梦瑶个人照片", en: "Portrait of Mengyao Ma" } },

@@ -7,12 +7,12 @@
     home: ["首页", "Home"],
     about: ["实验室概况", "About"],
     research: ["研究方向", "Research"],
-    people: ["科研团队", "People"],
+    people: ["科研团队", "Members"],
     achievements: ["科研成果", "Publications"],
     publications: ["全部科研成果", "All Research Outputs"],
     news: ["新闻动态", "News"],
     contact: ["合作交流", "Contact"],
-    activities: ["团队活动", "Team Activities"],
+    activities: ["团队活动", "Activities"],
     profile: ["成员主页", "Profile"],
     article: ["新闻详情", "Article"],
     teacher: ["教师队伍", "Faculty"],
@@ -28,6 +28,14 @@
   };
   function D() {
     return global.CVPR_DATA;
+  }
+  /* 实验室名称集中引用（单一数据源：assets/js/data/lab.js → window.CVPR_DATA.LAB）
+     lab(key) 返回 lab.js 中对应字段的本地化值；lab.js 未加载时返回 "" */
+  function lab(key) {
+    var v = D().LAB;
+    if (!v || !v[key]) return "";
+    var val = v[key];
+    return typeof val === "object" ? L(val) : val;
   }
   function C(zh, en) {
     return lang === "en" ? en : zh;
@@ -77,6 +85,105 @@
     return (
       '<svg class="icon" aria-hidden="true"><use href="#' + n + '"></use></svg>'
     );
+  }
+  /* 期刊封面匹配：venue 前缀 → images/covers/{key}.webp
+     covers.json 由 scripts 侧生成（assets/js/data/covers.json），
+     浏览器运行时无法 fetch 本地文件（file:// 协议受限），
+     故将映射内联为常量；无匹配时不渲染封面 */
+  var COVER_MAP = {
+    "Computers and Electronics in Agriculture": "elsevier",
+    "Engineering Applications of Artificial Intelligence": "elsevier",
+    "Pattern Recognition": "elsevier",
+    "Applied Soft Computing": "elsevier",
+    "Artificial Intelligence Review": "elsevier",
+    "Information Sciences": "elsevier",
+    "Neurocomputing": "elsevier",
+    "Computers & Industrial Engineering": "elsevier",
+    "Multimedia Tools and Applications": "elsevier",
+    "Computer-Aided Civil and Infrastructure Engineering": "elsevier",
+    "Journal of Building Engineering": "elsevier",
+    "Tunnelling and Underground Space Technology": "elsevier",
+    "Process Safety and Environmental Protection": "elsevier",
+    "Measurement": "elsevier",
+    "IEEE Access": "ieee",
+    "Remote Sensing": "mdpi-remote-sensing",
+    "Sensors": "mdpi-sensors",
+    "Construction and Building Materials": "springer-construction",
+    "Computers in Industry": "springer-comput-ind",
+    "Journal of Computer-Aided Molecular Design": "springer-jcimd",
+    "Journal of Chemical Information and Modeling": "springer-jcim",
+    "Physics in Medicine": "springer-pmb",
+    "BMC Bioinformatics": "springer-bmc",
+    "International Journal of Data Science and Analytics": "springer-ijdsa",
+    "Scientific Reports": "springer-sci-rep",
+    "Tsinghua Science and Technology": "tsinghua",
+    "The Botanical Review": "wiley-botanical",
+    "Computers, Materials": "cc",
+    "International Workshop on Advanced Imaging Technology": "iwait",
+    "IWAIT": "iwait",
+    "Proceedings of the Korean Society of Broadcast Engineers": "korean-conf",
+    "Korean Conference": "korean-conf"
+  };
+  function venueCover(venue) {
+    if (!venue) return null;
+    var v = venue.split(",")[0].trim().toLowerCase();
+    var keys = Object.keys(COVER_MAP).sort(function (a, b) {
+      return b.length - a.length;
+    });
+    for (var i = 0; i < keys.length; i++) {
+      if (v.indexOf(keys[i].toLowerCase()) === 0) return COVER_MAP[keys[i]];
+    }
+    /* 兜底：无匹配 venue 也显示通用大字报封面，保证每条论文都有封面 */
+    return "general";
+  }
+  function coverHtml(r) {
+    var key = venueCover(r.venue);
+    var src = "images/covers/" + key + ".webp";
+    return (
+      '<picture class="publication-cover"><source srcset="' +
+      url(src) +
+      '" type="image/webp"><img src="' +
+      url(src) +
+      '" alt="' +
+      E(r.venue || "") +
+      '" width="400" height="500" loading="lazy" decoding="async"></picture>'
+    );
+  }
+  /* 按成果类型生成对应的大字报封面：
+     科研项目/知识产权/荣誉奖励/通用成果 各一张，标题字号加大 */
+  var TYPE_COVERS = {
+    project: "cover-project",
+    patent: "cover-patent",
+    award: "cover-award",
+    paper: "cover-paper",
+    default: "cover-general"
+  };
+  function typeCover(r) {
+    var t = r.type || "default";
+    var key = TYPE_COVERS[t] || TYPE_COVERS.default;
+    var src = "images/covers/" + key + ".webp";
+    var alt =
+      t === "project"
+        ? C("科研项目封面占位图", "Project placeholder cover")
+        : t === "patent"
+        ? C("知识产权封面占位图", "Patent placeholder cover")
+        : t === "award"
+        ? C("荣誉奖励封面占位图", "Award placeholder cover")
+        : C("科研成果封面占位图", "Research output placeholder cover");
+    return (
+      '<picture class="publication-cover"><source srcset="' +
+      url(src) +
+      '" type="image/webp"><img src="' +
+      url(src) +
+      '" alt="' +
+      E(alt) +
+      '" width="400" height="500" loading="lazy" decoding="async"></picture>'
+    );
+  }
+  function recordCover(r) {
+    /* 论文 → 期刊封面；其它类型 → 类型大字报 */
+    if (r.type === "paper" || !r.type) return coverHtml(r);
+    return typeCover(r);
   }
   function img(src, alt, opts) {
     opts = opts || {};
@@ -256,9 +363,8 @@
     ];
   }
   function header(page) {
-    var active =
-      page === "profile" ? "people" : page === "article" ? "news" : page;
-    if (page === "publications") active = "achievements";
+    /* profile 页只高亮「科研团队」，不显示「成员主页」导航项（避免双高亮） */
+    var active = page === "profile" ? "people" : page;
     return (
       '<a class="skip-link" href="#page-root">' +
       C("跳至正文", "Skip to content") +
@@ -283,15 +389,9 @@
       '"></a><a class="lab-brand" href="' +
       url("index.html") +
       '"><span class="lab-name">' +
-      C(
-        "计算机视觉与模式识别实验室",
-        "Computer Vision and Pattern Recognition",
-      ) +
+      lab("name") +
       '</span><span class="lab-name-en">' +
-      C(
-        "Computer Vision and Pattern Recognition Laboratory",
-        "Laboratory · Qufu Normal University",
-      ) +
+      lab("name") +
       '</span></a><button type="button" class="menu-toggle" data-menu aria-controls="main-navigation" aria-expanded="false" aria-label="' +
       C("导航菜单", "Navigation menu") +
       '" title="' +
@@ -349,16 +449,10 @@
     s += '<div class="footer-brand"><div class="footer-logo-slot"><span class="footer-logo-hint">';
     s += C("实验室 Logo（预留位置）", "Lab Logo (reserved)");
     s += '</span></div><div><h2>';
-    s += C(
-      "计算机视觉与模式识别实验室",
-      "Computer Vision and Pattern Recognition Laboratory",
-    );
+    s += lab("name");
     s += "</h2>";
     s += p(
-      C(
-        "曲阜师范大学 · 计算机学院",
-        "School of Computer Science, Qufu Normal University",
-      ),
+      lab("university") + " · " + lab("department"),
     );
     s += "</div></div>";
     /* 第2栏：联系信息（加宽，联系方式已更新） */
@@ -386,10 +480,7 @@
     s += '</div></div><div class="footer-bottom">© ';
     s += String(new Date().getFullYear());
     s += " ";
-    s += C(
-      "计算机视觉与模式识别实验室 · 曲阜师范大学",
-      "CVPR Laboratory · Qufu Normal University",
-    );
+    s += lab("copyright");
     s += "</div>";
     return s;
   }
@@ -439,10 +530,12 @@
         }) || {}
       ).children ||
       [];
+    /* profile 页侧栏标题用「成员主页」，避免与「科研团队」双高亮 */
+    var sidebarTitle = page === "profile" ? name("profile") : name(page);
     return (
       banner(title || name(page), page) +
       '<div class="container page-layout"><aside class="sidebar"><h2 class="sidebar-title">' +
-      name(page) +
+      sidebarTitle +
       "</h2><ul>" +
       links
         .map(function (c) {
@@ -463,23 +556,42 @@
       "</div></div>"
     );
   }
-  function publication(r) {
-    /* H4：三栏布局（左时间 / 中论文信息 / 右占位图）
+  function publication(r, idx) {
+    /* H4：三栏布局（左序号 / 中论文信息 / 右占位图）
+       左侧为跨页连续编号（idx，1 基）；有可靠日期时在标题后简洁标注「YYYY-MM」；
+       有公开可访问 PDF 时显示「下载 PDF」按钮，否则不显示
        条目整体可点击：有 DOI 时 li 包裹 <a> 跳转 https://doi.org/{doi}；
-       无 DOI 时条目不可点击（缺失清单见会话记录）
-       数据层仅有 year，无 month；月份暂缺，显示 01 占位 */
-    var year = String(r.year || "").slice(0, 4);
+       无 DOI 时条目不可点击（缺失清单见会话记录） */
+    var dateNote =
+      r.month
+        ? "（" + String(r.year || "").slice(0, 4) + "-" + String(r.month).padStart(2, "0") + "）"
+        : "";
+    var pdfHtml = r.pdfUrl
+      ? '<a class="publication-pdf" href="' + E(r.pdfUrl) + '" target="_blank" rel="noopener noreferrer">' +
+        C("下载 PDF", "Download PDF") +
+        "</a>"
+      : "";
+    var roleNote =
+      r.role
+        ? '<span class="publication-role-note">（' + E(r.role) + "）</span>"
+        : "";
     var inner =
-      '<div class="publication-time"><span class="pub-month">01</span><span class="pub-year">' +
-      E(year) +
+      '<div class="publication-time"><span class="pub-month">' +
+      String(idx).padStart(2, "0") +
       '</span></div><div class="publication-info"><h3>' +
       E(L(r.title)) +
+      roleNote +
+      (dateNote ? '<span class="publication-date-note">' + E(dateNote) + "</span>" : "") +
       '</h3><p class="publication-venue">' +
       E(r.venue) +
       '</p><p class="publication-authors">' +
       E(r.authors) +
-      "</p></div>" +
-      '<div class="publication-thumb" aria-hidden="true"></div>';
+      "</p>" +
+      pdfHtml +
+      "</div>" +
+      '<div class="publication-thumb" aria-hidden="true">' +
+      recordCover(r) +
+      "</div>";
     var doi = (r.doi || "").trim();
     if (doi) {
       return (
@@ -501,9 +613,16 @@
       "</li>"
     );
   }
-  function publications(rs) {
+  function publications(rs, startIndex) {
+    startIndex = startIndex || 1;
     return (
-      '<ul class="publication-list">' + rs.map(publication).join("") + "</ul>"
+      '<ul class="publication-list">' +
+      rs
+        .map(function (r, i) {
+          return publication(r, startIndex + i);
+        })
+        .join("") +
+      "</ul>"
     );
   }
   function member(m) {
@@ -551,9 +670,11 @@
     );
   }
   function intro() {
-    return C(
-      "计算机视觉与模式识别实验室依托曲阜师范大学计算机学院，围绕计算机视觉、模式识别、深度学习与智能感知开展研究。实验室重点关注精准农业与植物病害检测、遥感目标检测、医学图像分析和红外目标检测，结合算法研究与场景应用开展研究生培养与学术交流。",
-      "The Computer Vision and Pattern Recognition Laboratory at the School of Computer Science, Qufu Normal University conducts research in computer vision, pattern recognition, deep learning, and intelligent perception. Its research covers precision agriculture, remote sensing, medical imaging, and infrared target detection, connecting algorithm development with applications and postgraduate education.",
+    return (
+      lab("name") +
+      (lang === "en"
+        ? " at the " + lab("department") + ", " + lab("university") + " conducts research in computer vision, pattern recognition, deep learning, and intelligent perception. Its research covers precision agriculture, remote sensing, medical imaging, and infrared target detection, connecting algorithm development with applications and postgraduate education."
+        : "依托" + lab("university") + lab("department") + "，围绕计算机视觉、模式识别、深度学习与智能感知开展研究。实验室重点关注精准农业与植物病害检测、遥感目标检测、医学图像分析和红外目标检测，结合算法研究与场景应用开展研究生培养与学术交流。")
     );
   }
   function home() {
@@ -565,6 +686,48 @@
       papers = records().filter(function (r) {
         return r.type === "paper";
       });
+    var newsSection = stories.length
+      ? '<div class="news-columns"><article class="feature-news"><a href="' +
+        url(articleUrl(primary)) +
+        '">' +
+        img(
+          "images/index/index_news_recommend_01.png",
+          C(
+            "实验室资料图片，非本次事件现场",
+            "Laboratory archive photograph; not the event described",
+          ),
+        ) +
+        '</a><span class="aux">' +
+        C(
+          "实验室资料图片（非本次事件现场）",
+          "Laboratory archive photograph; not the event described",
+        ) +
+        "</span><h3>" +
+        a(articleUrl(primary), L(primary.title)) +
+        "</h3><time>" +
+        primary.date +
+        "</time>" +
+        p(L(primary.summary)) +
+        "</article><div>" +
+        newsRows(
+          stories
+            .filter(function (n) {
+              return n.id !== primary.id;
+            })
+            .slice(0, 6),
+          false,
+        ) +
+        "</div></div>"
+      : '<div class="news-columns"><div class="news-empty">' +
+        p(
+          C(
+            "暂无新闻动态，后续将在此发布项目获批、学生论文接收等消息。",
+            "No news yet. Project approvals, paper acceptances and other updates will be posted here.",
+          )
+        ) +
+        a("news.html", C("查看新闻动态", "View News"), "text-link") +
+        "</div></div>";
+    var heroSlides = D().EDITORIAL.slides.length;
     return (
       '<section class="hero" aria-roledescription="' +
       C("轮播图", "carousel") +
@@ -588,13 +751,11 @@
           );
         })
         .join("") +
-      '<div class="hero-caption"><h1>' +
-      C(
-        "计算机视觉与模式识别实验室",
-        "Computer Vision and Pattern Recognition Laboratory",
-      ) +
-      "</h1>" +
-      p(C("学术交流 · 科研育人", "Academic Exchange and Research Education")) +
+      '<div class="hero-caption">' +
+      (lang === "en"
+        ? '<h1>' + E(lab("name").en) + "</h1>"
+        : '<h1>' + E(lab("name").zh) + "</h1>") +
+      p(lab("slogan")) +
       "</div>" +
       '<button class="hero-arrow hero-prev" data-carousel="prev" aria-label="' +
       C("上一张", "Previous slide") +
@@ -637,7 +798,7 @@
       '</div><div class="stats"><div class="stat"><strong>' +
       records().length +
       "</strong><span>" +
-      C("学术论文", "Publications") +
+      C("科研成果", "Research Outputs") +
       '</span></div><div class="stat"><strong>' +
       D().RESEARCH.length +
       "</strong><span>" +
@@ -648,37 +809,9 @@
         C("新闻动态与学术活动", "News and Academic Activities"),
         "news.html",
       ) +
-      '<div class="news-columns"><article class="feature-news"><a href="' +
-      url(articleUrl(primary)) +
-      '">' +
-      img(
-        "images/index/index_news_recommend_01.png",
-        C(
-          "实验室资料图片，非本次事件现场",
-          "Laboratory archive photograph; not the event described",
-        ),
-      ) +
-      '</a><span class="aux">' +
-      C(
-        "实验室资料图片（非本次事件现场）",
-        "Laboratory archive photograph; not the event described",
-      ) +
-      "</span><h3>" +
-      a(articleUrl(primary), L(primary.title)) +
-      "</h3><time>" +
-      primary.date +
-      "</time>" +
-      p(L(primary.summary)) +
-      "</article><div>" +
-      newsRows(
-        stories
-          .filter(function (n) {
-            return n.id !== primary.id;
-          })
-          .slice(0, 6),
-        false,
-      ) +
-      "</div></div></div></section>" +
+      '<div class="news-columns">' +
+      newsSection +
+      "</div></div></section>" +
       '<section class="section"><div class="container">' +
       heading(
         C("代表性科研成果", "Selected Publications"),
@@ -692,11 +825,25 @@
           "rice-growth-multispectral-2025",
         ]
           .map(function (id) {
-            return papers.find(function (r) {
-              return r.id === id;
+            var i = papers.findIndex(function (x) {
+              return x.id === id;
             });
+            return i >= 0 ? papers[i] : null;
           })
           .filter(Boolean),
+        Math.min(
+          ...[
+            "pd-tr-plant-disease-2024",
+            "drone-remote-sensing-2026",
+            "ct-denoimer-2025",
+            "rice-growth-multispectral-2025",
+          ].map(function (id) {
+            var i = papers.findIndex(function (x) {
+              return x.id === id;
+            });
+            return i >= 0 ? i + 1 : 1;
+          })
+        )
       ) +
       "</div></section>" +
       '<section class="section section-gray"><div class="container">' +
@@ -756,7 +903,7 @@
         section(
           "environment",
           C("实验室环境与学术交流", "Environment and Academic Exchange"),
-          '<div class="gallery">' +
+          '<div class="gallery gallery-2">' +
             [
               [
                 "images/index/lab_environment.png",
@@ -765,10 +912,6 @@
               [
                 "images/index/index_news_recommend_01.png",
                 C("团队研讨（资料图片）", "Team discussion (archive)"),
-              ],
-              [
-                "images/index/index_quick_entrance_02.png",
-                C("学术交流（资料图片）", "Academic discussion (archive)"),
               ],
             ]
               .map(function (c) {
@@ -788,8 +931,8 @@
           C("发展历程", "History"),
           p(
             C(
-              "2020 年，实验室正式成立，首批研究生入学。",
-              "In 2020, the laboratory was established and welcomed its first postgraduate cohort.",
+              "实验室于 2024 年成立。",
+              "The laboratory was established in 2024.",
             ),
           ),
         ),
@@ -800,13 +943,23 @@
       "research",
       D()
         .RESEARCH.map(function (r) {
+          var all = records();
           var related = (r.representativeAchievements || [])
-              .map(function (id) {
-                return records().find(function (a) {
-                  return a.id === id;
-                });
-              })
-              .filter(Boolean),
+            .map(function (id) {
+              return all.find(function (a) {
+                return a.id === id;
+              });
+            })
+            .filter(Boolean),
+            relatedStart = related.length
+              ? Math.min(
+                  ...related.map(function (x) {
+                    return all.findIndex(function (a) {
+                      return a.id === x.id;
+                    }) + 1;
+                  })
+                )
+              : 1,
             members = (r.members || [])
               .map(function (n) {
                 return D().PEOPLE.find(function (p) {
@@ -849,7 +1002,7 @@
                 ? "<h3>" +
                   C("代表性成果", "Selected Publications") +
                   "</h3>" +
-                  publications(related)
+                  publications(related, relatedStart)
                 : "") +
               '<p class="aux">' +
               E(L(r.caption)) +
@@ -922,12 +1075,7 @@
         : "") +
       (m.homepage
         ? "<p>" +
-          a(m.homepage, C("学术主页", "Academic Profile"), "text-link") +
-          "</p>"
-        : "") +
-      (m.cv
-        ? "<p>" +
-          a(m.cv, C("个人简历 PDF", "Curriculum Vitae (PDF)"), "text-link") +
+          a(m.homepage, C("Google 学术主页", "Google Scholar Profile"), "text-link") +
           "</p>"
         : "") +
       "</div></div>" +
@@ -935,16 +1083,19 @@
     [
       ["education", C("教育经历", "Education")],
       ["experience", C("工作与科研经历", "Research Experience")],
+      ["projects", C("主持科研项目", "Hosted Projects")],
       ["publications", C("代表性成果", "Selected Publications")],
+      ["patents", C("知识产权", "Patents")],
       ["honors", C("荣誉奖项", "Honors and Awards")],
-      ["skills", C("专业技能", "Skills")],
+      ["skills", C("学术兼职与社会服务", "Academic Service")],
     ].forEach(function (c) {
       var items = (L(m[c[0]]) || []).map(clean).filter(Boolean);
       if (items.length) b += section(c[0], c[1], ul(items));
     });
+    var allRecs = records();
     var matched =
       m.category === "teacher"
-        ? records()
+        ? allRecs
             .filter(function (r) {
               return (
                 r.type === "paper" &&
@@ -953,18 +1104,27 @@
             })
             .slice(0, 6)
         : [];
+    var matchedStart = matched.length
+      ? Math.min(
+          ...matched.map(function (x) {
+            return allRecs.findIndex(function (a) {
+              return a.id === x.id;
+            }) + 1;
+          })
+        )
+      : 1;
     if (matched.length)
       b += section(
         "related",
         C("相关论文", "Related Publications"),
-        publications(matched),
+        publications(matched, matchedStart),
       );
     b +=
       "<p>" +
       a("people.html", C("返回科研团队", "Back to People"), "text-link") +
       "</p>";
     return layout(
-      "people",
+      "profile",
       b,
       [
         ["profiles/" + m.id + ".html#biography", C("个人简介", "Biography")],
@@ -1098,63 +1258,19 @@
         );
         return (sort === "asc" ? -d : d) || a.id.localeCompare(b.id);
       });
+    /* 导师指示：移除检索栏；检索参数仍可用于 ?page 翻页（achievements 分页） */
     var size = isNews ? 8 : 10,
+      maxPage = Math.max(1, Math.ceil(rs.length / size)),
       current = Math.min(
-        Math.max(1, Math.ceil(rs.length / size)),
+        maxPage,
         Math.max(1, parseInt(query.get("page"), 10) || 1),
       );
-    var form =
-      '<form class="filter-form" data-filters action="' +
-      url(page + ".html") +
-      '">' +
-      (lang === "en" ? '<input type="hidden" name="lang" value="en">' : "") +
-      field(
-        key,
-        C("类别", "Category"),
-        [["all", C("全部", "All")]].concat(
-          (isNews ? ["lab-news", "frontiers"] : types()).map(function (k) {
-            return [k, name(k)];
-          }),
-        ),
-        type,
-      ) +
-      field(
-        "year",
-        C("年份", "Year"),
-        [["all", C("全部年份", "All Years")]].concat(
-          years.map(function (y) {
-            return [y, y];
-          }),
-        ),
-        year,
-      ) +
-      '<div class="field field-search"><label for="filter-q">' +
-      C("关键词搜索", "Keyword Search") +
-      '</label><input id="filter-q" type="search" name="q" value="' +
-      E(q) +
-      '" placeholder="' +
-      C("标题、作者、期刊", "Title, author, venue") +
-      '"></div>' +
-      field(
-        "sort",
-        C("排序", "Order"),
-        [
-          ["desc", C("最新优先", "Newest First")],
-          ["asc", C("最早优先", "Oldest First")],
-        ],
-        sort,
-      ) +
-      '<button type="submit" class="button">' +
-      icon("search") +
-      C("检索", "Search") +
-      "</button></form>";
     var b =
       '<div id="results" tabindex="-1"><div class="result-summary" role="status"><span>' +
       C("共 ", "Results: ") +
       rs.length +
       C(" 条", "") +
       "</span>" +
-      a(page + ".html", C("重置筛选", "Reset Filters")) +
       (isNews
         ? ""
         : a("publications.html", C("全部成果目录", "All Research Outputs"))) +
@@ -1162,7 +1278,7 @@
       (rs.length
         ? isNews
           ? newsRows(rs.slice((current - 1) * size, current * size), true)
-          : publications(rs.slice((current - 1) * size, current * size))
+          : publications(rs.slice((current - 1) * size, current * size), (current - 1) * size + 1)
         : empty()) +
       pagination(page, rs.length, current, size) +
       "</div>";
@@ -1185,7 +1301,7 @@
           })
           .join(""),
       );
-    return layout(page, form + b);
+    return layout(page, b);
   }
   function article(id) {
     var ns = publicNews(),
@@ -1306,10 +1422,7 @@
   }
   function meta(page, id) {
     var title = name(page),
-      description = C(
-        "曲阜师范大学计算机视觉与模式识别实验室。",
-        "Computer Vision and Pattern Recognition Laboratory, Qufu Normal University.",
-      ),
+      description = lab("desc"),
       canonical =
         "https://cvpr-laboratory.github.io/" +
         (page === "home" ? "" : page + ".html"),
@@ -1334,13 +1447,9 @@
         canonical = "https://cvpr-laboratory.github.io/" + articleUrl(record);
       }
     }
-    if (page === "home")
-      title = C(
-        "计算机视觉与模式识别实验室",
-        "Computer Vision and Pattern Recognition Laboratory",
-      );
+    if (page === "home") title = lab("name");
     return {
-      title: title + " | " + C("曲阜师范大学", "Qufu Normal University"),
+      title: title + " | " + lab("university"),
       description: description,
       canonical: canonical,
       image:
@@ -1365,8 +1474,8 @@
     else if (page === "publications")
       body = layout(
         "achievements",
-        publications(records()),
-        [["achievements.html", C("检索科研成果", "Search Outputs")]],
+        publications(records(), 1),
+        [["achievements.html", C("科研成果", "Research Outputs")]],
         name("publications"),
       );
     else if (page === "news") body = results(true);

@@ -98,8 +98,8 @@ if (data.ACHIEVEMENTS.filter((a) => a.type === "paper").length !== 44)
 if (data.PEOPLE.length !== 10)
   errors.push("Member records changed unexpectedly");
 if (fs.readdirSync(".").filter((n) => n.endsWith(".html")).length +
-    ["profiles", "articles"].reduce((n, d) => n + fs.readdirSync(d).filter((f) => f.endsWith(".html")).length, 0) !== 34)
-  errors.push("Page count changed unexpectedly (expected 34)");
+    ["profiles", "articles"].reduce((n, d) => n + fs.readdirSync(d).filter((f) => f.endsWith(".html")).length, 0) !== 30)
+  errors.push("Page count changed unexpectedly (expected 30)");
 for (const record of data.ACHIEVEMENTS) {
   if (record.doi && record.link !== "https://doi.org/" + record.doi)
     errors.push("DOI link mismatch: " + record.id);

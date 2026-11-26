@@ -5,19 +5,16 @@
     reviewedAt: "2026-10-20",
     source:
       "Prompt.txt and comparison of existing faculty/publication/news records",
+    // 导师指示：新闻动态保留入口、清空旧内容（供以后发布项目获批/学生论文接收等消息）
     heldNews: {
-      "news-001":
-        "Project title/year differs from the faculty CV project record; faculty rank also differs.",
-      "news-002":
-        "The complete supplied paper lists do not identify these three CVPR papers.",
-      "news-008":
-        "The complete supplied paper lists do not identify the claimed T-PAMI paper.",
-      "news-009":
-        "ICCV 2024 is an inconsistent conference edition; requires original event evidence.",
-      "news-010":
-        "No corresponding Shandong Key R&D project record in the supplied achievement data.",
-      "frontier-002":
-        "The February 2025 review describes CVPR 2025 as already concluded; date needs correction.",
+      "frontier-001": true,
+      "frontier-002": true,
+      "frontier-003": true,
+      "news-013": true,
+      "news-014": true,
+      "news-015": true,
+      "news-016": true,
+      "news-017": true
     },
     heldFaq: [
       "faq-join",
