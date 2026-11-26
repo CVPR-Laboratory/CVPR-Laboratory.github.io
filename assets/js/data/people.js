@@ -275,8 +275,8 @@
         en: "Naiben Wang, Master's student (2025 cohort), research interests in multimodal learning and model compression."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2025.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2025.09 - Present"]
+        zh: ["曲阜师范大学 | 计算机技术 硕士在读 | 2025.09 - 至今"],
+        en: ["Qufu Normal University | Master's in Computer Technology | 2025.09 - Present"]
       },
       experience: {
         zh: ["实验室科研训练 | 参与多模态学习相关课题"],
@@ -303,7 +303,7 @@
       name: { zh: "贾中豪", en: "Zhonghao Jia" },
       role: { zh: "2025级硕士研究生", en: "Master's Student, Class of 2025" },
       category: "postgraduate",
-      avatar: "images/team/team_core_jiazhonghao.png",
+      avatar: "images/team/team_core_jiazhonghao.jpg",
       avatarFit: "cover",
       avatarPosition: "center top",
       research: { zh: ["实例分割", "红外小目标检测"], en: ["Weakly Supervised Learning", "Remote Sensing Image Analysis"] },
@@ -400,7 +400,7 @@
           "宿迁学院 | 信息与计算科学 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
+          "Qufu Normal University | Master's in Computer Technology | 2026.09 - Present",
           "Suqian University | B.Sc. Information and Computational Science | 2022.09 - 2026.06"
         ]
       },
@@ -435,16 +435,16 @@
       avatarPosition: "center top",
       research: { zh: ["目标检测", "城市基础设施缺陷检测"], en: ["Object Detection", "Defect detection of Urban Infrastructure"] },
       bio: {
-        zh: "李同庆，2026级硕士研究生，研究方向为目标检测、深度学习。",
+        zh: "李同庆，2026级硕士研究生，研究方向为目标检测、城市基础设施缺陷检测。",
         en: "Tongqing Li, Master's student (2026 cohort), research interests in object detection and defect detection of urban infrastructure."
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今",
+          "曲阜师范大学 | 计算机技术 硕士在读 | 2026.09 - 至今",
           "山东农业工程学院 | 人工智能 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
+          "Qufu Normal University | Master's in Computer Technology | 2026.09 - Present",
           "Shandong Agriculture And Engineering University | B.Sc. Artificial Intelligence | 2022.09 - 2026.06"
         ]
       },
@@ -496,11 +496,11 @@
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今",
+          "曲阜师范大学 | 计算机技术 硕士在读 | 2026.09 - 至今",
           "菏泽学院 | 数据科学与大数据技术 学士 | 2022.09 - 2026.06"
         ],
         en: [
-          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present",
+          "Qufu Normal University | Master's in Computer Technology | 2026.09 - Present",
           "Heze University | B.Sc. Data Science and Big Data Technology | 2022.09 - 2026.06"
         ]
       },
