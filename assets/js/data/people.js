@@ -146,11 +146,11 @@
       },
       education: {
         zh: [
-          "曲阜师范大学 | 计算机技术 硕士 | 2024.09 - 2027.06",
+          "曲阜师范大学 | 计算机技术 硕士 | 2024.09 - 至今",
           "曲阜师范大学 | 信息与计算科学 学士 | 2020.09 - 2024.06"
         ],
         en: [
-          "Qufu Normal University | M.Eng. Computer Technology | 2024.09 - 2027.06",
+          "Qufu Normal University | M.Eng. Computer Technology | 2024.09 - Present",
           "Qufu Normal University | B.Sc. Information and Computational Science | 2020.09 - 2024.06"
         ]
       },
@@ -172,18 +172,12 @@
       },
       publications: {
         zh: [
-          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, IF=3.5, 已发表)",
-          "Structure-Preserving Iterative Refinement and Cross-Scale Gated Aggregation for Infrared Small Target Detection | Expert Systems with Applications 2026 (中科院一区TOP, IF=9.4, Major Revision)",
-          "ADCGNet: Asymmetric Dual-Branch and Dual-Scale Cross-Gating Network for Crop Disease Detection | Computers and Electronics in Agriculture (中科院一区TOP, IF=10.3, Major Revision)",
-          "Spatial-Frequency DualMamba Network with Rank-Guided Loss for Infrared Small Target Detection | IEEE TGRS (中科院一区TOP, IF=9.4, CCF-B, Under Review)",
-          "Wavelet-Guided Mamba with High-Frequency Aware and Wavelet Residual Prediction for Infrared Small Target Detection | ICASSP (CCF-B会议, Under Review)"
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)"
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)"
         ],
         en: [
-          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (Q3, IF=3.5, Published)",
-          "Structure-Preserving Iterative Refinement and Cross-Scale Gated Aggregation for Infrared Small Target Detection | Expert Systems with Applications 2026 (Q1-TOP, IF=9.4, Major Revision)",
-          "ADCGNet: Asymmetric Dual-Branch and Dual-Scale Cross-Gating Network for Crop Disease Detection | Computers and Electronics in Agriculture (Q1-TOP, IF=10.3, Major Revision)",
-          "Spatial-Frequency DualMamba Network with Rank-Guided Loss for Infrared Small Target Detection | IEEE TGRS (Q1-TOP, IF=9.4, CCF-B, Under Review)",
-          "Wavelet-Guided Mamba with High-Frequency Aware and Wavelet Residual Prediction for Infrared Small Target Detection | ICASSP (CCF-B, Under Review)"
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Computers and Electronics in Agriculture 2026 (Q1, IF=10.3, Published)",
+
         ]
       },
       honors: {
@@ -225,43 +219,64 @@
       avatar: "images/team/team_core_mamengyao_new.jpg",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["图像分割", "智慧农业"], en: ["Image Segmentation", "Smart Agriculture"] },
+      research: { zh: ["目标检测", "智慧农业"], en: ["Object Detection", "Smart Agriculture"] },
       bio: {
-        zh: "马梦瑶，2024级硕士研究生，研究方向为图像分割、智慧农业。",
-        en: "Mengyao Ma, Master's student (2024 cohort), research interests in image segmentation and smart agriculture."
+        zh: "马梦瑶，2024级硕士研究生，研究方向为目标检测、智慧农业。",
+        en: "Mengyao Ma, Master's student (2024 cohort), research interests in object detection and smart agriculture."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2023.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2023.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机技术 硕士 | 2024.09 - 至今",
+          "山东财经大学燕山学院 | 计算机科学与技术 学士 | 2021.09 - 2023.06"
+        ],
+        en: [
+          "Qufu Normal University | M.Eng. Computer Technology | 2024.09 - Present",
+          "YanShan College Shandong University of Finance and Economics | B.Sc. Computer Science and Technology | 2021.09 - 2023.06"
+        ]
       },
       experience: {
         zh: ["实验室科研训练 | 参与智慧农业相关课题"],
         en: ["Lab research training | Participated in smart agriculture projects"]
       },
       publications: {
-        zh: ["成果待补充"],
-        en: ["Publications pending."]
+        zh: [
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)"
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)"
+        ],
+        en: [
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (Q1, IF=10.3, Published)",
+          "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (Q3, CCF-C, IF=3.5, Published)"
+        ]
       },
-      email: "TODO",
+      honors: {
+        zh: [
+          "研究生国家奖学金（2026）、二等奖学金（2022、2024、2025、2026）",
+        ],
+        en: [
+          "Graduate National Scholarship (2026), Second Class Scholarship (2022, 2024, 2025, 2026),",
+        ]
+      },
+
+      email: "Mmy15610723764@qfnu.edu.cn",
       homepage: "",
       cv: ""
     },
     {
       id: "wang-naiben",
       name: { zh: "王乃奔", en: "Naiben Wang" },
-      role: { zh: "2023级硕士研究生", en: "Master's Student, Class of 2023" },
+      role: { zh: "2025级硕士研究生", en: "Master's Student, Class of 2025" },
       category: "postgraduate",
       avatar: "images/team/team_core_wangnaiben.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["多模态学习", "模型压缩"], en: ["Multimodal Learning", "Model Compression"] },
+      research: { zh: ["目标检测", "智慧农业"], en: ["Multimodal Learning", "Model Compression"] },
       bio: {
-        zh: "王乃奔，2023级硕士研究生，研究方向为多模态学习、模型压缩。",
-        en: "Naiben Wang, Master's student (2023 cohort), research interests in multimodal learning and model compression."
+        zh: "王乃奔，2025级硕士研究生，研究方向为目标检测、智慧农业。",
+        en: "Naiben Wang, Master's student (2025 cohort), research interests in multimodal learning and model compression."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2023.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2023.09 - Present"]
+        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2025.09 - 至今"],
+        en: ["Qufu Normal University | Master's in Computer Science | 2025.09 - Present"]
       },
       experience: {
         zh: ["实验室科研训练 | 参与多模态学习相关课题"],
@@ -271,26 +286,40 @@
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
-      email: "TODO",
+      honors: {
+        zh: [
+          "\"华为杯\"第八届中国研究生人工智能创新大赛 国家三等奖",
+        ],
+        en: [
+          "8th Huawei Cup China Graduate AI Innovation Contest, National Third Prize",
+        ]
+      },
+      email: "rigcv@qfnu.edu.cn",
       homepage: "",
       cv: ""
     },
     {
       id: "jia-zhonghao",
       name: { zh: "贾中豪", en: "Zhonghao Jia" },
-      role: { zh: "2024级硕士研究生", en: "Master's Student, Class of 2024" },
+      role: { zh: "2025级硕士研究生", en: "Master's Student, Class of 2025" },
       category: "postgraduate",
       avatar: "images/team/team_core_jiazhonghao.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["弱监督学习", "遥感图像分析"], en: ["Weakly Supervised Learning", "Remote Sensing Image Analysis"] },
+      research: { zh: ["实例分割", "红外小目标检测"], en: ["Weakly Supervised Learning", "Remote Sensing Image Analysis"] },
       bio: {
-        zh: "贾中豪，2024级硕士研究生，研究方向为弱监督学习、遥感图像分析。",
+        zh: "贾中豪，2025级硕士研究生，研究方向为实例分割、红外小目标检测。",
         en: "Zhonghao Jia, Master's student (2024 cohort), research interests in weakly supervised learning and remote sensing image analysis."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2024.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2024.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机技术 硕士 | 2025.09 - 至今",
+          "曲阜师范大学 | 信息与计算科学 学士 | 2020.09 - 2024.06"
+        ],
+        en: [
+          "Qufu Normal University | M.Eng. Computer Technology | 2025.09 - Present",
+          "Qufu Normal University | B.Sc. Information and Computational Science | 2020.09 - 2024.06"
+        ]
       },
       experience: {
         zh: ["实验室科研训练 | 参与遥感图像分析相关课题"],
@@ -300,36 +329,54 @@
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
-      email: "TODO",
+      email: "jzh@qfnu.edu.cn",
       homepage: "",
       cv: ""
     },
     {
       id: "wan-huanhuan",
       name: { zh: "万换换", en: "Huanhuan Wan" },
-      role: { zh: "2024级硕士研究生", en: "Master's Student, Class of 2024" },
+      role: { zh: "2025级硕士研究生", en: "Master's Student, Class of 2025" },
       category: "postgraduate",
       avatar: "images/team/team_core_wanhuanhuan.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["深度学习", "无人机图像分析"], en: ["Deep Learning", "UAV Image Analysis"] },
+      research: { zh: ["深度学习", "医学图像分割"], en: ["Deep Learning", "Medical Image Segmentation"] },
       bio: {
-        zh: "万换换，2024级硕士研究生，研究方向为深度学习、无人机图像分析。",
-        en: "Huanhuan Wan, Master's student (2024 cohort), research interests in deep learning and UAV image analysis."
+        zh: "万换换，2025级硕士研究生，研究方向为深度学习、医学图像分割。",
+        en: "Huanhuan Wan, Master's student (2025 cohort), research interests in deep learning and medical image segmentation."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2024.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2024.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机技术 硕士 | 2025.09 - 至今",
+          "临沂大学 | 计算机科学与技术 学士 | 2021.09 - 2025.06"
+        ],
+        en: [
+          "Qufu Normal University | M.Eng. Computer Technology | 2025.09 - Present",
+          "Linyi University | B.Sc. Computer Science and Technology | 2021.09 - 2025.06"
+        ]
       },
-      experience: {
-        zh: ["实验室科研训练 | 参与无人机图像分析相关课题"],
-        en: ["Lab research training | Participated in UAV image analysis projects"]
-      },
+      // experience: {
+      //   zh: ["实验室科研训练 | 参与无人机图像分析相关课题"],
+      //   en: ["Lab research training | Participated in UAV image analysis projects"]
+      // },
       publications: {
         zh: ["成果待补充"],
         en: ["Publications pending."]
       },
-      email: "TODO",
+      honors: {
+        zh: [
+          "第二十二届中国研究生数学建模竞赛 国家二等奖",
+          "\"华为杯\"第八届中国研究生人工智能创新大赛 国家三等奖",
+          "一等奖学金（2022、2023）、二等奖学金（2024、2025、2026）二等创新创业奖学金（2022）"
+        ],
+        en: [
+          "China Graduate Mathematical Contest in Modeling, National Second Prize",
+          "8th Huawei Cup China Graduate AI Innovation Contest, National Third Prize",
+          "First-Class Scholarship (2022, 2023), Second-class Scholarship (2024, 2025, 2026), Second Class Innovation and Entrepreneurship Scholarship (2022)"
+        ]
+      },
+      email: "huanhuan@qfnu.edu.cn",
       homepage: "",
       cv: ""
     },
@@ -348,8 +395,14 @@
         en: "Haoyu Qiu, Master's student (2026 cohort), research interests in object detection and deep learning."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机科学与技术 硕士在读 | 2026.09 - 至今"
+          "宿迁学院 | 信息与计算科学 学士 | 2022.09 - 2026.06"
+        ],
+        en: [
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Suqian University | B.Sc. Information and Computational Science | 2022.09 - 2026.06"
+        ]
       },
       experience: {
         zh: ["实验室科研训练 | 信息待补充"],
@@ -358,6 +411,14 @@
       publications: {
         zh: ["成果待补充"],
         en: ["Publications pending."]
+      },
+      honors: {
+        zh: [
+          "第二十三届中国研究生数学建模竞赛 国家二等奖",
+        ],
+        en: [
+          "The 23nd China Graduate Mathematical Modeling Competition National Second Prize",
+        ]
       },
       email: "",
       homepage: "",
@@ -372,14 +433,20 @@
       avatar: "images/team/team_core_litongqing.png",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["图像分割", "深度学习"], en: ["Image Segmentation", "Deep Learning"] },
+      research: { zh: ["目标检测", "城市基础设施缺陷检测"], en: ["Object Detection", "Defect detection of Urban Infrastructure"] },
       bio: {
-        zh: "李同庆，2026级硕士研究生，研究方向为图像分割、深度学习。",
-        en: "Tongqing Li, Master's student (2026 cohort), research interests in image segmentation and deep learning."
+        zh: "李同庆，2026级硕士研究生，研究方向为目标检测、深度学习。",
+        en: "Tongqing Li, Master's student (2026 cohort), research interests in object detection and defect detection of urban infrastructure."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"
+          "山东农业工程学院 | 人工智能 学士 | 2022.09 - 2026.06"
+        ],
+        en: [
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Shandong Agriculture And Engineering University | B.Sc. Artificial Intelligence | 2022.09 - 2026.06"
+        ]
       },
       experience: {
         zh: ["实验室科研训练 | 信息待补充"],
@@ -388,6 +455,26 @@
       publications: {
         zh: ["成果待补充"],
         en: ["Publications pending."]
+      },
+      honors: {
+        zh: [
+          "第二十三届中国研究生数学建模竞赛 国家二等奖",
+          "第十八届全国大学生智能汽车竞赛 二等奖"
+          "山东省大学生智能技术应用设计大赛 二等奖",
+          "第十届全国大学生统计建模大赛 三等奖",
+          "全国大学生人工智能算法设计与应用大赛 三等奖"，
+          "全国大学生英语词汇能力大赛 三等奖"，
+          "山东省大学生人工智能大赛 三等奖"，
+        ],
+        en: [
+          "The 23nd China Graduate Mathematical Modeling Competition National Second Prize",
+          "Second Prize in the 18th National College Student Intelligent Vehicle Competition",
+          "Second Prize in Shandong Province College Students' Intelligent Technology Application Design Competition",
+          "Third Prize in the 10th National College Student Statistical Modeling Competition",
+          "Third Prize in the National College Student Artificial Intelligence Algorithm Design and Application Competition",
+          "Third Prize in the National College English Vocabulary Ability Competition",
+          "Third Prize in Shandong Province College Student Artificial Intelligence Competition,
+        ]
       },
       email: "",
       homepage: "",
@@ -402,14 +489,20 @@
       avatar: "images/team/team_core_jiaofangyu.jpg",
       avatarFit: "cover",
       avatarPosition: "center top",
-      research: { zh: ["目标检测", "大语言模型"], en: ["Object Detection", "Large Language Models"] },
+      research: { zh: ["目标检测", "视觉语言模型"], en: ["Object Detection", "Visual Language Model"] },
       bio: {
         zh: "焦方玉，2026级硕士研究生，研究方向为目标检测、大语言模型。",
-        en: "Fangyu Jiao, Master's student (2026 cohort), research interests in object detection and large language models."
+        en: "Fangyu Jiao, Master's student (2026 cohort), research interests in object detection and visual language model."
       },
       education: {
-        zh: ["曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"],
-        en: ["Qufu Normal University | Master's in Computer Science | 2026.09 - Present"]
+        zh: [
+          "曲阜师范大学 | 计算机相关专业 硕士在读 | 2026.09 - 至今"
+          "菏泽学院 | 数据科学与大数据技术 学士 | 2022.09 - 2026.06"
+        ],
+        en: [
+          "Qufu Normal University | Master's in Computer Science | 2026.09 - Present"
+          "Heze University | B.Sc. Data Science and Big Data Technology | 2022.09 - 2026.06"
+        ]
       },
       experience: {
         zh: ["实验室科研训练 | 信息待补充"],
