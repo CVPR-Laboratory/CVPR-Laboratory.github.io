@@ -173,7 +173,7 @@
       publications: {
         zh: [
           "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Applied Intelligence 2026 (中科院三区, CCF-C, IF=3.5, 已发表)",
-          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (, IF=10.3, 已发表)"
+          "LSCDNet: leveraging fine-grained contextual cues for precise detection of small target crop disease spots in complex field environments | Computers and Electronics in Agriculture 2026 (中科院一区Top, IF=10.3, 已发表)"
         ],
         en: [
           "AgriEyeNet: Seeing Smarter in Agriculture with Medium-Difficulty Aware Loss and Lightweight Adaptive Detection | Computers and Electronics in Agriculture 2026 (Q1, IF=10.3, Published)",
@@ -491,7 +491,7 @@
       avatarPosition: "center top",
       research: { zh: ["目标检测", "视觉语言模型"], en: ["Object Detection", "Visual Language Model"] },
       bio: {
-        zh: "焦方玉，2026级硕士研究生，研究方向为目标检测、大语言模型。",
+        zh: "焦方玉，2026级硕士研究生，研究方向为目标检测、视觉语言模型。",
         en: "Fangyu Jiao, Master's student (2026 cohort), research interests in object detection and visual language model."
       },
       education: {
