@@ -37,6 +37,7 @@ const dataFiles = [
 function document(page, id = "", prefix = "") {
   const result = view.render(page, { lang: "zh", id, prefix });
   const m = result.meta;
+  const customProfile = page === "profile" && id === "wang-naiben";
   let ld = {
     "@context": "https://schema.org",
     "@type": "ResearchOrganization",
@@ -88,9 +89,14 @@ function document(page, id = "", prefix = "") {
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="${prefix}images/favicon.ico">
   <link rel="stylesheet" href="${prefix}assets/css/site.css?v=${version}">
+${customProfile ? `  <link rel="stylesheet" href="${prefix}assets/css/wang-naiben.css?v=${version}">\n` : ""}\
   ${page === "home" ? '<link rel="preload" as="image" type="image/webp" href="assets/images/hero/discussion-1-1920.webp" imagesrcset="assets/images/hero/discussion-1-960.webp 960w, assets/images/hero/discussion-1-1920.webp 1920w" imagesizes="100vw">' : ""}
   <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>
-  ${scripts.map((src) => `<script defer src="${prefix}${src}?v=${version}"></script>`).join("\n  ")}
+  ${scripts.map((src) => {
+    const scriptVersion =
+      customProfile && src === "assets/js/portal.js" ? version + "-profile" : version;
+    return `<script defer src="${prefix}${src}?v=${scriptVersion}"></script>`;
+  }).join("\n  ")}
 </head>
 <body data-page="${page}" data-prefix="${prefix}"${id ? ` data-id="${id}"` : ""}>
   ${fs.readFileSync("assets/images/icons.svg", "utf8").replace("<svg ", '<svg style="display:none" ')}
@@ -101,6 +107,19 @@ function document(page, id = "", prefix = "") {
 </body>
 </html>
 `;
+}
+if (process.argv[2] === "--profile") {
+  const id = process.argv[3];
+  if (!data.PEOPLE.some((member) => member.id === id))
+    throw new Error(`Unknown profile ID: ${id || "(missing)"}`);
+  const file = path.join("profiles", id + ".html");
+  const { body } = view.render("profile", { lang: "zh", id, prefix: "../" });
+  const main = /<main id="page-root">[\s\S]*?<\/main>/;
+  const html = fs.readFileSync(file, "utf8");
+  if (!main.test(html)) throw new Error(`Profile content landmark is missing: ${file}`);
+  fs.writeFileSync(file, html.replace(main, () => `<main id="page-root">${body}</main>`));
+  console.log(`Updated the main content in ${file}.`);
+  process.exit(0);
 }
 for (const p of [
   "home",

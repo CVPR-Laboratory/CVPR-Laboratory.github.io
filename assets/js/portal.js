@@ -1046,12 +1046,75 @@
       ),
     );
   }
-  function profile(id) {
+  function wangNaibenProfile(m) {
+    var agriculture = D().RESEARCH.find(function (entry) {
+      return entry.id === "precision-agriculture";
+    });
+    var education = L(m.education).map(function (entry) {
+      var [school, degree, period] = entry.split(" | ");
+      return `<li><span class="wang-profile-date">${E(period)}</span>
+        <strong>${E(school)}</strong><p>${E(degree)}</p></li>`;
+    }).join("");
+    var honors = L(m.honors).map(function (entry) {
+      return `<li>${E(entry.replace('"华为杯"', "“华为杯”"))}</li>`;
+    }).join("");
+    // 在此更新个人介绍、研究方向及论文与项目的中英文内容。
+    return `<div class="wang-profile">
+      <div class="profile-summary">
+        <div class="wang-profile-portrait">
+          ${img(m.avatar, C("王乃奔肖像", "Portrait of Naiben Wang"), { eager: true, position: m.avatarPosition })}
+        </div>
+        <div class="wang-profile-identity">
+          <h2>${E(L(m.name))}</h2>
+          ${C('<p class="wang-profile-romanized" lang="en">' + E(m.name.en) + "</p>", "")}
+          <p class="wang-profile-role">${E(L(m.role))}</p>
+          <p>${C("曲阜师范大学计算机学院", "School of Computer Science, Qufu Normal University")}</p>
+          <ul class="wang-profile-interests"><li>${C("目标检测", "Object Detection")}</li><li>${C("智慧农业", "Smart Agriculture")}</li></ul>
+          <p class="wang-profile-mail">${C("邮箱", "Email")} ${a("mailto:" + m.email, m.email)}</p>
+        </div>
+      </div>
+      <div class="wang-profile-grid">
+        <section class="wang-profile-section" id="biography">
+          <h2>${C("个人简介", "Biography")}</h2>
+          <p>${C(
+            "我于 2025 年进入曲阜师范大学计算机学院攻读计算机技术硕士，研究兴趣包括目标检测及其在智慧农业中的应用。我关注如何从复杂田间图像中识别小尺度目标，以及如何应对自然光照、遮挡和背景变化对识别的影响。",
+            "I joined Qufu Normal University’s School of Computer Science in 2025 for a master’s degree in computer technology. My interests include object detection and its applications in smart agriculture, particularly how to detect small targets in field imagery under changing lighting, occlusion, and complex backgrounds.",
+          )}</p>
+        </section>
+        <section class="wang-profile-section wang-profile-record" id="education">
+          <h2>${C("教育经历", "Education")}</h2>
+          <ul>${education}</ul>
+        </section>
+        <section class="wang-profile-section" id="experience">
+          <h2>${C("工作与科研经历", "Research Experience")}</h2>
+          ${p(C("在实验室接受科研训练，参与多模态学习相关课题。", "Completed research training in the lab and participated in multimodal learning projects."))}
+          <figure class="wang-profile-fieldwork">
+            ${img(agriculture.image, L(agriculture.imageAlt), { position: agriculture.imagePosition })}
+            <figcaption><span>${C("田间图像采集示意图", "Illustration of field image collection")}</span>
+              ${a("research.html#precision-agriculture", C("实验室精准农业研究", "Precision agriculture at the lab"))}</figcaption>
+          </figure>
+        </section>
+        <section class="wang-profile-section wang-profile-record" id="honors">
+          <h2>${C("荣誉奖项", "Honors & Awards")}</h2>
+          <ul>${honors}</ul>
+        </section>
+        <section class="wang-profile-section" id="publications">
+          <h2>${C("论文与项目", "Publications & Projects")}</h2>
+          <dl class="wang-profile-topics">
+            <div><dt>${C("代表性论文", "Selected Publications")}</dt><dd>${C("待补充论文题目、发表信息与链接。", "Publication titles, venue details, and links to be added.")}</dd></div>
+            <div><dt>${C("科研项目", "Research Projects")}</dt><dd>${C("待补充项目简介、个人分工与成果。", "Project summaries, contributions, and outcomes to be added.")}</dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>`;
+  }
+  function profile(id, customProfile) {
     var m = D().PEOPLE.find(function (p) {
       return p.id === id;
     });
     if (!m)
       return layout("people", empty(C("未找到该成员", "Member Not Found")));
+    if (customProfile) return profileLayout(m, wangNaibenProfile(m));
     var b =
       '<div class="profile-summary">' +
       img(m.avatar, L(m.name), { position: m.avatarPosition }) +
@@ -1124,13 +1187,16 @@
         C("相关论文", "Related Publications"),
         publications(matched, matchedStart),
       );
-    b +=
+    return profileLayout(m, b);
+  }
+  function profileLayout(m, body) {
+    body +=
       "<p>" +
       a("people.html", C("返回科研团队", "Back to People"), "text-link") +
       "</p>";
     return layout(
       "profile",
-      b,
+      body,
       [
         ["profiles/" + m.id + ".html#biography", C("个人简介", "Biography")],
         ["people.html", C("全部成员", "All Members")],
@@ -1469,12 +1535,13 @@
     query = new URLSearchParams(opts.search || "");
     if (lang === "en") query.set("lang", "en");
     var id = opts.id || query.get("id"),
+      customProfile = page === "profile" && opts.id === "wang-naiben",
       body;
     if (page === "home") body = home();
     else if (page === "about") body = about();
     else if (page === "research") body = research();
     else if (page === "people") body = people();
-    else if (page === "profile") body = profile(id);
+    else if (page === "profile") body = profile(id, customProfile);
     else if (page === "achievements") body = results(false);
     else if (page === "publications")
       body = layout(
