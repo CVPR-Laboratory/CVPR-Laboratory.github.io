@@ -127,7 +127,7 @@
         ]
       },
       email: "liyanfen@qfnu.edu.cn",
-      phone: "132-8715-4589",
+      phone: "132-5600-8699",
       homepage: "",
       cv: ""
     },
@@ -141,8 +141,8 @@
       avatarPosition: "center top",
       research: { zh: ["目标检测", "红外小目标检测"], en: ["Object Detection", "Infrared Small Target Detection"] },
       bio: {
-        zh: "曹继培，曲阜师范大学2024级硕士研究生，研究方向为目标检测、红外小目标检测。参与国家自然科学基金青年项目、山东省自然科学基金等多项科研项目，在Applied Intelligence、Expert Systems with Applications等期刊发表论文多篇。",
-        en: "Jipei Cao, Master's student (2024 cohort) at Qufu Normal University, research interests in object detection and infrared small target detection. Participated in NSFC青年项目 and multiple provincial fund projects, with publications in Applied Intelligence, Expert Systems with Applications and other journals."
+        zh: "曹继培，曲阜师范大学2024级硕士研究生，研究方向为目标检测、红外小目标检测。参与国家自然科学基金青年项目、山东省自然科学基金等多项科研项目，在Applied Intelligence、Computers and Electronics in Agriculture等期刊发表论文多篇。",
+        en: "Jipei Cao, Master's student (2024 cohort) at Qufu Normal University, research interests in object detection and infrared small target detection. Participated in NSFC and multiple provincial fund projects, with publications in Applied Intelligence, Computers and Electronics in Agriculture and other journals."
       },
       education: {
         zh: [
@@ -208,7 +208,7 @@
       },
       email: "jipeicv@qfnu.edu.cn",
       phone: "176-6320-8598",
-      homepage: "https://cvpr-laboratory.github.io",
+      homepage: "https://scholar.google.com/citations?user=UGo3_1UAAAAJ&hl=en",
       cv: ""
     },
     {
